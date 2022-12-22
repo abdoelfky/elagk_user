@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="21.5" viewBox="0 0 19.5 21.5">
+  <g id="Icon_Delete" transform="translate(0.75 0.75)">
+    <path id="Shape" d="M0,0H18" transform="translate(0 4)" fill="none" stroke="#FF1717" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Shape-2" data-name="Shape" d="M12,20H2a2,2,0,0,1-2-2V4H3V2A2,2,0,0,1,5,0H9a2,2,0,0,1,2,2V4h3V18A2,2,0,0,1,12,20Z" transform="translate(2)" fill="none" stroke="#FF1717" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Shape-3" data-name="Shape" d="M0,0V6" transform="translate(7 9)" fill="none" stroke="#FF1717" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Shape-4" data-name="Shape" d="M0,0V6" transform="translate(11 9)" fill="none" stroke="#FF1717" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>
