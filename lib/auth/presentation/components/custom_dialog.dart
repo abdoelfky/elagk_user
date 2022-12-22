@@ -1,6 +1,7 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_values.dart';
 
 void showCustomDialog(BuildContext context) {
   showGeneralDialog(

@@ -1,7 +1,9 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/menu_widget.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_values.dart';
+import 'drawer_widgets/menu_widget.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({Key? key,required this.showDrawer}) : super(key: key);

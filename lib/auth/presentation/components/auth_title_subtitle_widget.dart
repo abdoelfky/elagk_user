@@ -1,5 +1,6 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/utils/app_values.dart';
 
 class AuthTitleAndSubtitle extends StatelessWidget {
   const AuthTitleAndSubtitle(

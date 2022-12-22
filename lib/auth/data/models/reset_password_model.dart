@@ -1,10 +1,20 @@
+class ResetPasswordModel{
+  String? message;
 
-import 'package:elagk_pharmacy/auth/domain/entities/reset_password_entity.dart';
 
-class ResetPasswordModel extends ResetPassword {
-  const ResetPasswordModel({required super.message});
+  ResetPasswordModel({
+    required this.message,
 
-  factory ResetPasswordModel.fromJson(String jsonData) => ResetPasswordModel(
-    message: jsonData,
-  );
+  });
+
+  ResetPasswordModel.fromJson(Map<String, dynamic> json){
+    message: json["message"];
+  }
+
+  Map <String,dynamic> toMap()
+  {
+    return {
+      'message':message,
+    };
+  }
 }

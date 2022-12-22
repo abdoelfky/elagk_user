@@ -1,21 +1,21 @@
-import 'package:elagk_pharmacy/auth/presentation/components/MainTextFormField.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/auth_title_subtitle_widget.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/logo_widget.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/main_button.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/screen_background.dart';
-import 'package:elagk_pharmacy/auth/presentation/controller/login_pharmacy_controller/login_pharmacy_bloc.dart';
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_routes.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/core/utils/text_field_validation.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/about_us_controller/about_us_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/utils/navigation.dart';
+import '../../../drawer/presentation/controller/about_us_controller/about_us_bloc.dart';
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_routes.dart';
+import '../../../shared/utils/app_strings.dart';
+import '../../../shared/utils/app_values.dart';
+import '../../../shared/utils/enums.dart';
+import '../../../shared/utils/navigation.dart';
+import '../../../shared/utils/text_field_validation.dart';
+import '../components/MainTextFormField.dart';
+import '../components/auth_title_subtitle_widget.dart';
+import '../components/logo_widget.dart';
+import '../components/main_button.dart';
+import '../components/screen_background.dart';
+import '../controller/login_pharmacy_controller/login_pharmacy_bloc.dart';
 
 class LoginPharmacyScreen extends StatelessWidget {
   const LoginPharmacyScreen({Key? key}) : super(key: key);

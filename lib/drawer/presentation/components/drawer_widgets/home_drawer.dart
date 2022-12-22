@@ -1,15 +1,16 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/menu_item.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/menu_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/screens/about_us_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/screens/complaints_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/screens/contact_us_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/screens/pharmacy_user_profile_screen.dart';
-import 'package:elagk_pharmacy/home/presentation/screens/home_page.dart';
+import '../../../../home/presentation/screens/home_page.dart';
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
+import '../../screens/about_us_screen.dart';
+import '../../screens/complaints_screen.dart';
+import '../../screens/contact_us_screen.dart';
+import '../../screens/pharmacy_user_profile_screen.dart';
+import 'menu_item.dart';
+import 'menu_screen.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key}) : super(key: key);

@@ -1,15 +1,20 @@
-import 'package:elagk_pharmacy/drawer/domain/entities/about_us_entity.dart';
+class AboutUsModel{
+  String? whoAreWe;
 
-class AboutUsFirstModel extends AboutUsFirst {
-  const AboutUsFirstModel({required super.whoAreWe});
 
-  factory AboutUsFirstModel.fromJson(Map<String, dynamic> json) =>
-      AboutUsFirstModel(whoAreWe: json["message"]);
-}
+  AboutUsModel({
+    required this.whoAreWe,
 
-class AboutUsSecondModel extends AboutUsSecond {
-  const AboutUsSecondModel({required super.vision});
+  });
 
-  factory AboutUsSecondModel.fromJson(Map<String, dynamic> json) =>
-      AboutUsSecondModel(vision: json["message"]);
+  AboutUsModel.fromJson(Map<String, dynamic> json){
+    whoAreWe: json["whoAreWe"];
+  }
+
+  Map <String,dynamic> toMap()
+  {
+    return {
+      'whoAreWe':whoAreWe,
+    };
+  }
 }

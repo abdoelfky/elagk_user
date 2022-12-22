@@ -1,23 +1,24 @@
-import 'package:elagk_pharmacy/auth/presentation/components/MainTextFormField.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/main_button.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/screen_background.dart';
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/local/cache_helper.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/add_medicine/import_product_image.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/add_medicine/show_picker_dialog.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/add_update_space_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/back_appbar_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/update_medicine/product_category_button.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/categories_controller/categories_bloc.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
+import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
+import 'package:elagk/auth/presentation/components/main_button.dart';
+import 'package:elagk/auth/presentation/components/screen_background.dart';
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/local/shared_preference.dart';
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import 'package:elagk/drawer/presentation/components/add_medicine/import_product_image.dart';
+import 'package:elagk/drawer/presentation/components/add_medicine/show_picker_dialog.dart';
+import 'package:elagk/drawer/presentation/components/add_update_space_widget.dart';
+import 'package:elagk/drawer/presentation/components/back_appbar_widget.dart';
+import 'package:elagk/drawer/presentation/components/update_medicine/product_category_button.dart';
+import 'package:elagk/drawer/presentation/controller/categories_controller/categories_bloc.dart';
+import 'package:elagk/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:menu_button/menu_button.dart';
+
+import '../../../../shared/utils/enums.dart';
 
 class AddNewMedicineContent extends StatelessWidget {
   const AddNewMedicineContent({
@@ -201,7 +202,7 @@ class AddNewMedicineContent extends StatelessWidget {
                                               );
                                             case RequestState.error:
                                               return const SizedBox();
-                                          }
+                                          }return const SizedBox();
                                         },
                                       );
                                     }),
@@ -284,7 +285,7 @@ class AddNewMedicineContent extends StatelessWidget {
                           }
                         },
                       );
-                  }
+                  }return const SizedBox();
                 },
               ),
             ],

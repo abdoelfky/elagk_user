@@ -1,9 +1,10 @@
-import 'package:elagk_pharmacy/core/utils/app_assets.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/utils/app_assets.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../controller/medicine_controller/medicine_bloc.dart';
 
 class ImportProductImage extends StatelessWidget {
   const ImportProductImage({

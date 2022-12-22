@@ -1,8 +1,9 @@
-import 'package:elagk_pharmacy/core/utils/app_routes.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/navigation.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../shared/utils/app_routes.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../../../shared/utils/navigation.dart';
 
 class PharmacyProductsBar extends StatelessWidget {
   const PharmacyProductsBar({Key? key}) : super(key: key);

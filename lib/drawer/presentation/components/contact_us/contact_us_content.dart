@@ -1,12 +1,13 @@
-import 'package:elagk_pharmacy/auth/presentation/components/screen_background.dart';
-import 'package:elagk_pharmacy/core/utils/app_assets.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/contact_us/contactus_container_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/contact_us/space_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/about_us_controller/about_us_bloc.dart';
+import 'package:elagk/drawer/presentation/components/contact_us/space_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../auth/presentation/components/screen_background.dart';
+import '../../../../shared/utils/app_assets.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../controller/about_us_controller/about_us_bloc.dart';
+import 'contactus_container_widget.dart';
 
 class ContactUsContent extends StatelessWidget {
   const ContactUsContent({Key? key}) : super(key: key);

@@ -1,7 +1,9 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/categories_controller/categories_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/utils/app_values.dart';
+import '../../controller/categories_controller/categories_bloc.dart';
 
 class ProductCategoryButton extends StatelessWidget {
   const ProductCategoryButton({Key? key})

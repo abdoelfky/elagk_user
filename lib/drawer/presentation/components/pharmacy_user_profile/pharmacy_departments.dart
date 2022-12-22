@@ -1,10 +1,10 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/services/services_locator.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/pharmacy_categories.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/categories_controller/categories_bloc.dart';
+import 'package:elagk/drawer/presentation/components/pharmacy_user_profile/pharmacy_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../controller/categories_controller/categories_bloc.dart';
 
 class PharmacyCategories extends StatelessWidget {
   const PharmacyCategories({Key? key}) : super(key: key);

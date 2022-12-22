@@ -1,18 +1,20 @@
-import 'package:elagk_pharmacy/auth/presentation/components/screen_background.dart';
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/default_network_image_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/fixed_appbar_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/categories_and_products_section.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/pharmacy_info.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/pharmacy_products_bar.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/categories_controller/categories_bloc.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
+
+import 'package:elagk/drawer/presentation/components/pharmacy_user_profile/pharmacy_info.dart';
+import 'package:elagk/drawer/presentation/components/pharmacy_user_profile/pharmacy_products_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../auth/presentation/components/screen_background.dart';
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../../../shared/utils/enums.dart';
+import '../../controller/categories_controller/categories_bloc.dart';
+import '../../controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
+import '../default_network_image_widget.dart';
+import '../fixed_appbar_widget.dart';
+import 'categories_and_products_section.dart';
 
 class PharmacyUserProfileContent extends StatelessWidget {
   const PharmacyUserProfileContent({Key? key}) : super(key: key);
@@ -74,7 +76,7 @@ class PharmacyUserProfileContent extends StatelessWidget {
                             );
                           case RequestState.error:
                             return const PharmacyProductsBar();
-                        }
+                        }return const PharmacyProductsBar();
                       },
                     ),
                   ],

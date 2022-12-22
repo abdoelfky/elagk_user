@@ -1,6 +1,7 @@
-import 'package:elagk_pharmacy/core/utils/app__fonts.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../shared/utils/app__fonts.dart';
+import '../../../../shared/utils/app_values.dart';
 
 class ContactUsContainer extends StatelessWidget {
   const ContactUsContainer({

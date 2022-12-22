@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:elagk_pharmacy/core/utils/app_assets.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../shared/utils/app_assets.dart';
+import '../../../shared/utils/app_values.dart';
 
 class DefaultNetworkImage extends StatelessWidget {
   const DefaultNetworkImage({

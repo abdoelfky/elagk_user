@@ -1,12 +1,14 @@
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/contact_us/contact_us_content.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/error_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/fixed_appbar_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/loading_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/about_us_controller/about_us_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../shared/utils/app_strings.dart';
+import '../../../shared/utils/enums.dart';
+import '../components/contact_us/contact_us_content.dart';
+import '../components/error_screen.dart';
+import '../components/fixed_appbar_widget.dart';
+import '../components/loading_widget.dart';
+import '../controller/about_us_controller/about_us_bloc.dart';
 
 class ContactUsScreen extends StatelessWidget {
   const ContactUsScreen({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class ContactUsScreen extends StatelessWidget {
                   return const ContactUsContent();
                 case RequestState.error:
                   return const ErrorScreen();
-              }
+              } return const ErrorScreen();
             },
           ),
         ),

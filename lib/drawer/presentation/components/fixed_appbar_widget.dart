@@ -1,6 +1,8 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/menu_widget.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../shared/utils/app_values.dart';
+import 'drawer_widgets/menu_widget.dart';
 
 PreferredSizeWidget fixedAppBar({
   required BuildContext context,

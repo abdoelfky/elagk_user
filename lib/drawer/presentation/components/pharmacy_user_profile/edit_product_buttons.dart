@@ -1,7 +1,8 @@
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/utils/app_strings.dart';
+import '../../controller/medicine_controller/medicine_bloc.dart';
 
 class EditProductButton extends StatelessWidget {
   const EditProductButton({

@@ -1,8 +1,10 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/local/cache_helper.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/local/shared_preference.dart';
+import '../../../shared/utils/app_constants.dart';
+import '../../../shared/utils/app_values.dart';
 
 PreferredSizeWidget myAppBarWithBack(
   BuildContext context, {

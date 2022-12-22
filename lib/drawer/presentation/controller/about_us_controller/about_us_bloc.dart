@@ -1,19 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:elagk_pharmacy/core/usecase/base_usecase.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/domain/entities/about_us_entity.dart';
-import 'package:elagk_pharmacy/drawer/domain/entities/contact_us_entity.dart';
-import 'package:elagk_pharmacy/drawer/domain/usecases/get_about_us_first_usecase.dart';
-import 'package:elagk_pharmacy/drawer/domain/usecases/get_about_us_second_usecase.dart';
-import 'package:elagk_pharmacy/drawer/domain/usecases/get_contact_us_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/enums.dart';
 
 part 'about_us_event.dart';
 

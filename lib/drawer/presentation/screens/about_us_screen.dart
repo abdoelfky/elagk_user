@@ -4,6 +4,11 @@ import 'package:elagk/shared/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../components/about_us/about_us_content_widget.dart';
+import '../components/error_screen.dart';
+import '../components/loading_widget.dart';
+import '../controller/about_us_controller/about_us_bloc.dart';
+
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({Key? key}) : super(key: key);
 
@@ -26,7 +31,7 @@ class AboutUsScreen extends StatelessWidget {
                   return const AboutUsContent();
                 case RequestState.error:
                   return const ErrorScreen();
-              }
+              }return const ErrorScreen();
             },
           ),
         ),

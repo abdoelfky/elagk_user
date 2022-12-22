@@ -1,14 +1,13 @@
-import 'package:elagk_pharmacy/auth/presentation/components/MainTextFormField.dart';
-import 'package:elagk_pharmacy/auth/presentation/components/screen_background.dart';
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/services/services_locator.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/complaints/wide_button_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/fixed_appbar_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/complaints_controller/complaints_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../auth/presentation/components/MainTextFormField.dart';
+import '../../../auth/presentation/components/screen_background.dart';
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_strings.dart';
+import '../../../shared/utils/app_values.dart';
+import '../components/complaints/wide_button_widget.dart';
+import '../components/fixed_appbar_widget.dart';
+import '../controller/complaints_controller/complaints_bloc.dart';
 
 class ComplaintsScreen extends StatelessWidget {
   const ComplaintsScreen({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class ComplaintsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<ComplaintsBloc>(),
+      create: (context) => <ComplaintsBloc>(),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: SafeArea(

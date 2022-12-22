@@ -1,7 +1,9 @@
-import 'package:elagk_pharmacy/core/utils/app__fonts.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/default_network_image_widget.dart';
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app__fonts.dart';
+import '../../../../shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
+
+import '../default_network_image_widget.dart';
 
 class HeaderDrawerSection extends StatelessWidget {
   const HeaderDrawerSection({

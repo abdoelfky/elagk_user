@@ -1,4 +1,4 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
+import '../../../../shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
 class AboutUsTitle extends StatelessWidget {

@@ -1,19 +1,30 @@
-import 'package:elagk_pharmacy/drawer/domain/entities/category_entity.dart';
+class CategoryModel{
+  int? categoryId;
+  String? categoryName;
+  String? imageUrl;
+  String? createdAt;
 
-class CategoryModel extends Category {
-  const CategoryModel({
-    required super.categoryId,
-    required super.categoryName,
-    required super.imageUrl,
-    required super.createdAt,
+  CategoryModel({
+    required this.categoryId,
+    required this.categoryName,
+    required this.imageUrl,
+    required this.createdAt,
   });
 
-  factory CategoryModel.fromJson(Map<String, dynamic> json) {
-    return CategoryModel(
-      categoryId: json["categoryId"],
-      categoryName: json["categoryName"],
-      imageUrl: json["imageUrl"],
-      createdAt: json["createdAt"],
-    );
+  CategoryModel.fromJson(Map<String, dynamic> json){
+    categoryId: json["categoryId"];
+    categoryName: json["categoryName"];
+    imageUrl: json["imageUrl"];
+    createdAt: json["createdAt"];
+  }
+
+  Map <String,dynamic> toMap()
+  {
+    return {
+    'categoryId': categoryId,
+    'categoryName': categoryName,
+    'imageUrl': imageUrl,
+    'createdAt': createdAt,
+    };
   }
 }

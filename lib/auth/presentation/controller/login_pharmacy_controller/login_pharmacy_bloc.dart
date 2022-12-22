@@ -1,17 +1,15 @@
 import 'dart:async';
-
-import 'package:elagk_pharmacy/auth/domain/entities/login_pharmacy_entity.dart';
-import 'package:elagk_pharmacy/auth/domain/usecases/login_usecase.dart';
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app__fonts.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_routes.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/core/utils/navigation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app__fonts.dart';
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_routes.dart';
+import '../../../../shared/utils/enums.dart';
+import '../../../../shared/utils/navigation.dart';
 
 part 'login_pharmacy_event.dart';
 

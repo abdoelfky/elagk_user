@@ -1,5 +1,7 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../../shared/utils/app_values.dart';
 
 class AboutUsText extends StatelessWidget {
   const AboutUsText({Key? key, required this.description}) : super(key: key);

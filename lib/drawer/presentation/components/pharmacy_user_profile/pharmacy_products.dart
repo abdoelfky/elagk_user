@@ -1,17 +1,16 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/services/services_locator.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_routes.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/argument_models.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/core/utils/navigation.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/error_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/product_item_pharmacy_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/categories_controller/categories_bloc.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
+import 'package:elagk/drawer/presentation/components/pharmacy_user_profile/product_item_pharmacy_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_routes.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../../../shared/utils/argument_models.dart';
+import '../../../../shared/utils/enums.dart';
+import '../../../../shared/utils/navigation.dart';
+import '../../controller/categories_controller/categories_bloc.dart';
+import '../error_screen.dart';
 
 class PharmacyProducts extends StatefulWidget {
   const PharmacyProducts({Key? key, required this.firstCategoryName}) : super(key: key);
@@ -82,7 +81,7 @@ class _PharmacyProductsState extends State<PharmacyProducts> {
             );
           case RequestState.error:
             return const ErrorScreen();
-        }
+        }return const ErrorScreen();
       },
     );
   }

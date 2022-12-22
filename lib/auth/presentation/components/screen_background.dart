@@ -1,6 +1,7 @@
-import 'package:elagk_pharmacy/core/utils/app_assets.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/utils/app_assets.dart';
+import '../../../shared/utils/app_values.dart';
 
 class ScreenBackground extends StatelessWidget {
   const ScreenBackground({Key? key,required this.child}) : super(key: key);

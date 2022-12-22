@@ -1,8 +1,3 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/edit_product_buttons.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/pharmacy_user_profile/edit_product_fields.dart';
-import 'package:flutter/material.dart';
 
 /*class EditProductDialog extends StatelessWidget {
   const EditProductDialog({Key? key}) : super(key: key);

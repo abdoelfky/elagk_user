@@ -1,5 +1,6 @@
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../shared/utils/app_strings.dart';
 
 class ContentTitleField extends StatelessWidget {
   const ContentTitleField({Key? key, required this.newAmountController,}) : super(key: key);

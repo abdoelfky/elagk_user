@@ -1,17 +1,18 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app__fonts.dart';
-import 'package:elagk_pharmacy/core/utils/app_assets.dart';
-import 'package:elagk_pharmacy/core/utils/app_constants.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/drawer_header.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/logout_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/drawer_widgets/menu_item.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app__fonts.dart';
+import '../../../../shared/utils/app_assets.dart';
+import '../../../../shared/utils/app_constants.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../../../shared/utils/enums.dart';
+import '../../controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
+import 'drawer_header.dart';
+import 'logout_widget.dart';
+import 'menu_item.dart';
 
 class MenuItems {
   static const homepage = MyMenuItem(AppStrings.homeScreen, ImageAssets.home);
@@ -90,7 +91,10 @@ class MenuScreen extends StatelessWidget {
                           title: AppStrings.undefined,
                           imageSrc: AppStrings.undefined,
                         );
-                    }
+                    }return const HeaderDrawerSection(
+                      title: AppStrings.undefined,
+                      imageSrc: AppStrings.undefined,
+                    );
                   },
                 ),
               ),

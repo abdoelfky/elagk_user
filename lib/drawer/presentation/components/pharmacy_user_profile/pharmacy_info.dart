@@ -1,7 +1,8 @@
-import 'package:elagk_pharmacy/core/utils/app_values.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/utils/app_values.dart';
+import '../../controller/pharmacy_user_profile_controller/pharmacy_profile_bloc.dart';
 
 class PharmacyInformation extends StatelessWidget {
   const PharmacyInformation({Key? key}) : super(key: key);

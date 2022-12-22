@@ -1,12 +1,13 @@
-import 'package:elagk_pharmacy/core/global/app_colors.dart';
-import 'package:elagk_pharmacy/core/utils/app_strings.dart';
-import 'package:elagk_pharmacy/core/utils/enums.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/back_appbar_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/error_screen.dart';
-import 'package:elagk_pharmacy/drawer/presentation/components/update_medicine/update_medicine_content_widget.dart';
-import 'package:elagk_pharmacy/drawer/presentation/controller/medicine_controller/medicine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_strings.dart';
+import '../../../shared/utils/enums.dart';
+import '../components/back_appbar_widget.dart';
+import '../components/error_screen.dart';
+import '../components/update_medicine/update_medicine_content_widget.dart';
+import '../controller/medicine_controller/medicine_bloc.dart';
 
 class UpdateMedicineScreen extends StatelessWidget {
   const UpdateMedicineScreen({
@@ -73,6 +74,7 @@ class UpdateMedicineScreen extends StatelessWidget {
                 case RequestState.error:
                   return const ErrorScreen();
               }
+              return const ErrorScreen();
             },
           ),
         ),
