@@ -37,11 +37,13 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
 
+    print('ddddddddddddd');
+    print(CacheHelper.getData(key: AppConstants.token));
     Future.delayed(const Duration(seconds: DurationConstant.d6), () {
       navigateFinalTo(
           context: context,
           screenRoute: CacheHelper.getData(key: AppConstants.token) == null
-              ? Routes.loginScreen : Routes.loginScreen );
+              ? Routes.loginScreen : Routes.homeScreen );
     });
   }
 

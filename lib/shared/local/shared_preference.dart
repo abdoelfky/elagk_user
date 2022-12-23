@@ -7,24 +7,24 @@ class CacheHelper {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static Future<bool?> setData({
+  static Future<bool> setData({
     required String key,
     required dynamic value,
   }) async {
-    if (value is int) return await sharedPreferences?.setInt(key, value);
-    if (value is String) return await sharedPreferences?.setString(key, value);
-    if (value is double) return await sharedPreferences?.setDouble(key, value);
-    if (value is bool) return await sharedPreferences?.setBool(key, value);
+    if (value is int) return await sharedPreferences!.setInt(key, value);
+    if (value is String) return await sharedPreferences!.setString(key, value);
+    if (value is double) return await sharedPreferences!.setDouble(key, value);
+    if (value is bool) return await sharedPreferences!.setBool(key, value);
     return await sharedPreferences!.setStringList(key, value);
   }
 
   static dynamic getData({required String key}) {
-    return sharedPreferences?.get(key);
+    return sharedPreferences!.get(key);
   }
 
-  static Future<bool>? deleteData({
+  static Future<bool> deleteData({
     required String key,
   }) {
-    return sharedPreferences?.remove(key);
+    return sharedPreferences!.remove(key);
   }
 }

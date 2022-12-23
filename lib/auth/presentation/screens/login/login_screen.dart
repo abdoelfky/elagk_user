@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: TextButton(
                           onPressed: () {
-                            navigateFinalTo(
+                            navigateTo(
                               context: context,
                               screenRoute: Routes.forgetPasswordScreen,
                             );
@@ -107,9 +107,9 @@ class LoginScreen extends StatelessWidget {
                               showToast(
                                   text: 'Login Successfully',
                                   state: ToastStates.SUCCESS);
-                              navigateTo(
+                              navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.registerScreen);
+                                  screenRoute: Routes.homeScreen);
                             }else
                             {
                               showToast(
@@ -124,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         builder: (context, state) {
                           return ConditionalBuilder(condition:(state is LoginLoadingState),
-                              builder: (context)=>CircularProgressIndicator(),
+                              builder: (context)=>const CircularProgressIndicator(),
                               fallback: (context)=>MainButton(
                                 title: AppStrings.login,
                                 onPressed: () {

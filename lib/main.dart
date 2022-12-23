@@ -1,6 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:elagk/auth/presentation/controller/login_controller/login_cubit.dart';
+import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
 import 'package:elagk/shared/bloc_observer.dart';
+import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ void main() {
   // await initFCM(); // TODO: enable it after adding app notifications.
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
+  CacheHelper.init();
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
         providers:
         [
           BlocProvider(create: (BuildContext context) =>LoginCubit()),
+          BlocProvider(create: (BuildContext context) =>RegisterCubit()),
 
         ],
         child: MaterialApp(
