@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
 import 'package:elagk/auth/presentation/components/auth_title_subtitle_widget.dart';
 import 'package:elagk/auth/presentation/components/logo_widget.dart';
@@ -83,13 +84,12 @@ class LoginScreen extends StatelessWidget {
                           },
                           child: Text(
                             AppStrings.forgotPassword,
-                            style: Theme
-                                .of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
                                 .copyWith(
-                              color: AppColors.yellowBold,
-                            ),
+                                  color: AppColors.yellowBold,
+                                ),
                           ),
                         ),
                       ),
@@ -97,70 +97,69 @@ class LoginScreen extends StatelessWidget {
                         height: mediaQueryHeight(context) / AppSize.s80,
                       ),
                       BlocConsumer<LoginCubit, LoginStates>(
-                        listener: (context, state)
-                        {
-                          if(state is LoginSuccessState)
-                          {
-                            showToast(
-                                text: 'Login Success',
-                                state: ToastStates.SUCCESS
-                            );
-                            navigateTo(context: context,
-                                screenRoute: Routes.registerScreen);
-                          }
-                          else if (state is LoginErrorState)
-                          {
+                        listener: (context, state) {
+                          if (state is LoginSuccessState) {
+
+                            if (state.loginModel.roles![0]
+                                    .toString()
+                                    .toUpperCase() ==
+                                'USER') {
+                              showToast(
+                                  text: 'Login Successfully',
+                                  state: ToastStates.SUCCESS);
+                              navigateTo(
+                                  context: context,
+                                  screenRoute: Routes.registerScreen);
+                            }else
+                            {
+                              showToast(
+                                  text: 'This User Can\'t Access' ,
+                                  state: ToastStates.ERROR);
+                            }
+                          } else if (state is LoginErrorState) {
                             showToast(
                                 text: '${state.error}',
-                                state: ToastStates.ERROR
-                            );
+                                state: ToastStates.ERROR);
                           }
                         },
                         builder: (context, state) {
-                          return MainButton(
-                            title: AppStrings.login,
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                  LoginCubit.get(context).userLogin(
-                                      email:_emailController.text.trim(),
-                                      password: _passwordController.text
-                                  );
-                              }
-                            },
+                          return ConditionalBuilder(condition:(state is LoginLoadingState),
+                              builder: (context)=>CircularProgressIndicator(),
+                              fallback: (context)=>MainButton(
+                                title: AppStrings.login,
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    LoginCubit.get(context).userLogin(
+                                        email: _emailController.text.trim(),
+                                        password: _passwordController.text);
+                                  }
+                                },
+                              )
                           );
                         },
-
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s60),
                       Center(
                           child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: AppStrings.haveNotAccount,
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .labelMedium,
-                                ),
-                                TextSpan(
-                                  text: ' ${AppStrings.createAccount}',
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .labelMedium,
-
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      navigateTo(context: context,
-                                          screenRoute: Routes.registerScreen);
-                                    },
-                                ),
-                              ],
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: AppStrings.haveNotAccount,
+                              style: Theme.of(context).textTheme.labelMedium,
                             ),
-                          )
-                      ),
-
+                            TextSpan(
+                              text: ' ${AppStrings.createAccount}',
+                              style: Theme.of(context).textTheme.labelMedium,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  navigateTo(
+                                      context: context,
+                                      screenRoute: Routes.registerScreen);
+                                },
+                            ),
+                          ],
+                        ),
+                      )),
                     ],
                   ),
                 ),

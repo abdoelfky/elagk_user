@@ -30,7 +30,6 @@ class LoginCubit extends Cubit<LoginStates> {
       },
     ).then((value)
     {
-      print('dddd');
       print(value.data.toString());
 
       loginModel = LoginModel.fromJson(value.data);
