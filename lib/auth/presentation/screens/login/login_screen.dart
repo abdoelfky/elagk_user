@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                                 text: 'Login Success',
                                 state: ToastStates.SUCCESS
                             );
-                            navigateFinalTo(context: context,
+                            navigateTo(context: context,
                                 screenRoute: Routes.registerScreen);
                           }
                           else if (state is LoginErrorState)

@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:elagk/auth/presentation/controller/login_controller/login_cubit.dart';
 import 'package:elagk/shared/bloc_observer.dart';
+import 'package:elagk/shared/network/dio_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,8 @@ void main() {
   // await Firebase.initializeApp();
   // await initFCM(); // TODO: enable it after adding app notifications.
   Bloc.observer = MyBlocObserver();
+  DioHelper.init();
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
