@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       navigateFinalTo(
           context: context,
           screenRoute: CacheHelper.getData(key: AppConstants.token) == null
-              ? Routes.loginScreen : Routes.homeDrawerScreen ); //  PharmaciesScreen());
+              ? Routes.loginScreen : Routes.loginScreen );
     });
   }
 

@@ -27,6 +27,7 @@ class AppStrings {
       "يجب أن تتكون كلمة المرور من 8 أحرف بحد أدني";
   static const String haveNotAccount = "ليس لديك حساب؟";
   static const String contactWithUs = "اتصل بنا";
+  static const String createAccount = "انشاء حساب";
 
   // OTP verify screen
   static const String emailVerification = "التحقق من البريد الإلكتروني";

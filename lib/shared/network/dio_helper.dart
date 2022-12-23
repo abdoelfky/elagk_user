@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:elagk/shared/network/api_constants.dart';
-import 'package:elagk/shared/utils/app_constants.dart';
-import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class DioHelper {
@@ -17,8 +15,8 @@ class DioHelper {
   }
   static Future<Response> getData({
     required String url,
-    Map<String, dynamic>? query,
-    String? token ,
+    Map<String, dynamic> ?query,
+    String ?token ,
   }) async {
 
     return await dio!.get(
@@ -28,20 +26,19 @@ class DioHelper {
     );
   }
 
-  static Future<Response> postData({
+  static Future<Response?> postData({
     required String url,
     required Map<String, dynamic> data,
-    Map<String, dynamic>? query,
-    String? token ,
+    Map<String, dynamic> ?query,
+    String ?token ,
   }) async {
-    dio!.options.headers ={
+    dio?.options.headers ={
 
-      'Authorization':token?? '',
-      'Content-Type' :'application/json',
+      'Accept': 'application/json',
 
     };
 
-    return   dio!.post(
+    return   dio?.post(
       url,
       queryParameters:query,
       data: data,
@@ -52,7 +49,7 @@ class DioHelper {
   static Future<Response> putData({
     required String url,
     required Map<String, dynamic> data,
-    Map<String, dynamic>? query,
+    Map<String, dynamic> ?query,
     String? token ,
   }) async {
     dio!.options.headers ={
