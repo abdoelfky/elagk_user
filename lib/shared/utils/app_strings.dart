@@ -78,6 +78,9 @@ class AppStrings {
   static const String complaints = "الشكاوى";
   static const String contactUs = "التواصل معنا";
   static const String aboutUs = "عن التطبيق";
+  static const String orders = "الطلبات";
+  static const String offers = "العروض";
+  static const String points = "النقاط";
 
   // About us
   static const String whoAreWe = "من نحن";
@@ -149,7 +152,6 @@ class AppStrings {
   static const String pressToEdit = "إضغط للتعديل";
 
   // All orders screen
-  static const String orders = "الطلبات";
   static const String readyToDeliver = "جاهز للتوصيل";
   static const String deliverDone = "تم التسليم";
   static const String deliveringInProgress = "جاري التسليم";

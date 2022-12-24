@@ -20,7 +20,9 @@ class ImageAssets {
   static const String contactUs = '$IMAGE_PATH/drawer_icons/contact-us.svg';
   static const String aboutUs = '$IMAGE_PATH/drawer_icons/about-us.svg';
   static const String logout = '$IMAGE_PATH/drawer_icons/logout.svg';
-
+  static const String offers = '$IMAGE_PATH/drawer_icons/offer.svg';
+  static const String points = '$IMAGE_PATH/drawer_icons/point.svg';
+  static const String orders = '$IMAGE_PATH/drawer_icons/order.svg';
 
   // About us screen
   static const String info = '$IMAGE_PATH/about_us/info(1).png';
@@ -38,7 +40,7 @@ class ImageAssets {
   // Pharmacy user profile  screen
   static const String mapPin = '$IMAGE_PATH/profile/map-pin.png';
   static const String between = '$IMAGE_PATH/profile/between.png';
-  static const String order = '$IMAGE_PATH/profile/order.png';
+  static const String order = '$IMAGE_PATH/profile/order.svg';
 
   // One order details screen
   static const String mapBackground = '$IMAGE_PATH/order/bg-map.png';

@@ -1,5 +1,11 @@
 import 'package:elagk/drawer/data/models/drawer/menu_item.dart';
 import 'package:elagk/drawer/data/models/drawer/menu_items.dart';
+import 'package:elagk/drawer/presentation/screens/about_us_screen.dart';
+import 'package:elagk/drawer/presentation/screens/complaints_screen.dart';
+import 'package:elagk/drawer/presentation/screens/contact_us_screen.dart';
+import 'package:elagk/drawer/presentation/screens/offers_screen.dart';
+import 'package:elagk/drawer/presentation/screens/orders_screen.dart';
+import 'package:elagk/drawer/presentation/screens/points_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -21,7 +27,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
     switch (currentItem) {
       case MenuItems.homepage:
         return const HomeScreen();
-
+      case MenuItems.points:
+        return const PointsScreen();
+      case MenuItems.offers:
+        return const OffersScreen();
+      case MenuItems.orders:
+        return const OrdersScreen();
+      case MenuItems.contactUs:
+        return const ContactUsScreen();
+      case MenuItems.complaints:
+        return const ComplaintsScreen();
+      case MenuItems.aboutUs:
+        return const AboutUsScreen();
     }
   }
 
