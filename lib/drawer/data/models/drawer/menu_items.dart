@@ -23,17 +23,26 @@ class MenuItems {
 
   static const all = <MyMenuItem>[
     homepage,
-    points,
     elagkStore,
+    profile,
+    points,
     orders,
     specialCustomers,
-    profile,
     complaints,
-    aboutUs,
     contactUs,
-    logOut
+    aboutUs,
+
+
   ];
+
+  static const logOutItem = <MyMenuItem>[
+    logOut
+
+  ];
+
 }
+
+
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({
@@ -102,6 +111,9 @@ class MenuScreen extends StatelessWidget {
                 UserDrawerHeader(context),
                 SizedBox(height: mediaQueryWidth(context) / AppSize.s15),
                 ...MenuItems.all.map(buildMenuItem).toList(),
+                SizedBox(height: mediaQueryWidth(context) / AppSize.s6),
+                ...MenuItems.logOutItem.map(buildMenuItem).toList(),
+
                 // const Spacer(flex: AppSize.si2),
                 // const LogOutSection(),
               ],

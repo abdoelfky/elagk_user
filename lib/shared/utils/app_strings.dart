@@ -76,7 +76,7 @@ class AppStrings {
   static const String homeScreen = "الصفحة الرئيسية";
   static const String profile = "البروفايل";
   static const String complaints = "الشكاوى";
-  static const String contactUs = "التواصل معنا";
+  static const String contactUs = "تواصل معنا";
   static const String aboutUs = "عن التطبيق";
   static const String orders = "الطلبات";
   static const String offers = "العروض";
