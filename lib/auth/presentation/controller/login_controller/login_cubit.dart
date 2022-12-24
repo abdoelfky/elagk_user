@@ -22,7 +22,7 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(LoginLoadingState());
 
    await DioHelper.postData(
-      url: 'http://freelancerr-001-site1.btempurl.com/api/Auth/Login',
+      url: ApiConstants.login,
       data:
       {
         "email": email,

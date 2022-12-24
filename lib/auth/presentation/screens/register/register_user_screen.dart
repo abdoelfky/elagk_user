@@ -4,20 +4,20 @@ import 'package:elagk/auth/presentation/controller/register_controller/register_
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../shared/components/toast_component.dart';
-import '../../../../../shared/global/app_colors.dart';
-import '../../../../../shared/utils/app_routes.dart';
-import '../../../../../shared/utils/app_strings.dart';
-import '../../../../../shared/utils/app_values.dart';
-import '../../../../../shared/utils/navigation.dart';
-import '../../../../../shared/utils/text_field_validation.dart';
-import '../../../components/MainTextFormField.dart';
-import '../../../components/auth_title_subtitle_widget.dart';
-import '../../../components/logo_widget.dart';
-import '../../../components/main_button.dart';
-import '../../../components/screen_background.dart';
-import '../../../controller/login_controller/login_cubit.dart';
-import '../../../controller/login_controller/login_states.dart';
+import '../../../../shared/components/toast_component.dart';
+import '../../../../shared/global/app_colors.dart';
+import '../../../../shared/utils/app_routes.dart';
+import '../../../../shared/utils/app_strings.dart';
+import '../../../../shared/utils/app_values.dart';
+import '../../../../shared/utils/navigation.dart';
+import '../../../../shared/utils/text_field_validation.dart';
+import '../../components/MainTextFormField.dart';
+import '../../components/auth_title_subtitle_widget.dart';
+import '../../components/logo_widget.dart';
+import '../../components/main_button.dart';
+import '../../components/screen_background.dart';
+import '../../controller/login_controller/login_cubit.dart';
+import '../../controller/login_controller/login_states.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class RegisterScreen extends StatelessWidget {
   static final _lastNameController = TextEditingController();
   static final _phoneController = TextEditingController();
   static final _passwordController = TextEditingController();
-  static final _userNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -84,22 +83,7 @@ class RegisterScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
-                      MainTextFormField(
-                        controller: _userNameController,
-                        label: AppStrings.userName,
-                        hintColor: AppColors.lightGrey,
-                        inputType: TextInputType.text,
-                        textDirection: TextDirection.ltr,
-                        obscure: false,
-                        validator: (value) {
-                          if (value!.length < AppSize.s0) {
-                            return AppStrings.enterValidFullName;
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
+
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       //phone
                       MainTextFormField(
@@ -159,7 +143,7 @@ class RegisterScreen extends StatelessWidget {
                                 state: ToastStates.SUCCESS);
                             navigateTo(
                                 context: context,
-                                screenRoute: Routes.registerScreen);
+                                screenRoute: Routes.loginScreen);
                           } else if (state is RegisterErrorState) {
                             showToast(
                                 text: '${state.error}',
@@ -179,12 +163,10 @@ class RegisterScreen extends StatelessWidget {
                                           password:
                                               _passwordController.text.trim(),
                                           phone: _phoneController.text.trim(),
-                                          username:_userNameController.text.trim(),
                                           firstName: _firstNameController.text.trim(),
                                           lastName: _lastNameController.text.trim(),
                                         );
                                       }
-                                      print('${_firstNameController.text.trim()}${_lastNameController.text.trim()}');
                                     },
                                   ));
                         },

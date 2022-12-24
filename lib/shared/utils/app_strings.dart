@@ -3,6 +3,13 @@ class AppStrings {
   static const String appTitle = "3elagk pharmacy - علاجك لصيدليات";
   static const String isNull = "null";
   static const String nA = "N/A";
+  static const String welcome  = " مرحبا بكم في علاجك";
+  static const String pharmacies="صيدليات";
+  static const String search  = "ابحث .....";
+// forget password
+  static const String codeSendButton  = "اعاده تعيين كلمه المرور";
+  static const String codeSendedSuccessFully="تم ارسال كود التفعيل بنجاح";
+  static const String codeSendError  = "برجاء ادخال بريد الكتروني صحيح";
 
   // offline screen
   static const String noInternetConnection = "لا يوجد اتصال بالإنترنت";

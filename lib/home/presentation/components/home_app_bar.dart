@@ -8,16 +8,14 @@ import 'package:flutter/material.dart';
 
 PreferredSizeWidget homePageAppBar(
     BuildContext context, {
-      required String title,
+      required Widget title,
       required Function()? onTap,
       required Widget actionWidget,
     }) =>
     AppBar(
+      toolbarHeight:mediaQueryHeight(context)*.077 ,
       iconTheme: const IconThemeData(color: Colors.black),
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineLarge,
-      ),
+      title: title,
       centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: AppSize.s0,
@@ -46,7 +44,7 @@ PreferredSizeWidget homePageAppBar(
                 ),
                 borderRadius: BorderRadius.circular(AppSize.s15),
               ),
-              child: actionWidget,
+              child: Center(child: actionWidget),
             ),
           ),
         ),

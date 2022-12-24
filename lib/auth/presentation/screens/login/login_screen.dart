@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       MainTextFormField(
                         controller: _emailController,
-                        label: AppStrings.userName,
+                        label: AppStrings.email,
                         hint: AppStrings.emailExample,
                         hintColor: AppColors.lightGrey,
                         inputType: TextInputType.emailAddress,
@@ -149,7 +149,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             TextSpan(
                               text: ' ${AppStrings.createAccount}',
-                              style: Theme.of(context).textTheme.labelMedium,
+                              style:TextStyle(color:AppColors.blue,fontSize: 20),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   navigateTo(

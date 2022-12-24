@@ -1,5 +1,6 @@
+import 'package:elagk/auth/presentation/screens/forget_password/forget_password_screen.dart';
 import 'package:elagk/auth/presentation/screens/login/login_screen.dart';
-import 'package:elagk/auth/presentation/screens/register/presentation/register_user_screen.dart';
+import 'package:elagk/auth/presentation/screens/register/register_user_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_offline/flutter_offline.dart';
 
 class Routes {
   static const String home = '/';
-  static const String notificationsScreen = '/notificationsScreen';
+  static const String basketScreen = '/basketScreen';
   static const String loginScreen = '/loginScreen';
   static const String registerScreen = '/registerScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
@@ -51,6 +52,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.registerScreen:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       // case Routes.forgetPasswordScreen:
       //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       // case Routes.otpVerifyScreen:

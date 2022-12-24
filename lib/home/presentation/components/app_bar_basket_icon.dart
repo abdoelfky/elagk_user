@@ -5,9 +5,12 @@ class AppBarBasketIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
-      Icons.shopping_basket_outlined,
-      color: Colors.black,
+    return Image.asset(
+
+      'assets/images/order/basket.png',
+      height: 22,
+      width: 22,
+
     );
   }
 }

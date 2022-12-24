@@ -65,6 +65,10 @@ dependencies:
   change_app_package_name: ^1.1.0
   flutter_launcher_icons: ^0.11.0
   google_maps_flutter:
+  searchfield: ^0.7.2
+  carousel_slider:
+  advanced_search: ^2.2.3
+  internet_connection_checker:
 
 dev_dependencies:
   flutter_test:
