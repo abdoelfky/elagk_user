@@ -1,6 +1,7 @@
 import 'package:elagk/auth/presentation/screens/forget_password/forget_password_screen.dart';
 import 'package:elagk/auth/presentation/screens/login/login_screen.dart';
 import 'package:elagk/auth/presentation/screens/register/register_user_screen.dart';
+import 'package:elagk/drawer/presentation/components/home_drawe_widget.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
@@ -19,7 +20,7 @@ class Routes {
   static const String resetPasswordScreen = '/resetPasswordScreen';
   static const String homeScreen = '/homeScreen';
   static const String oneOrderDetailsScreen = '/oneOrderDetailsScreen';
-  static const String imageSlideShow = '/imageSlideShow';
+  static const String homeDrawer = '/HomeDrawer';
   static const String allOrdersScreen = '/allOrdersScreen';
   static const String addNewMedicinesScreen = '/addNewMedicinesScreen';
   static const String updateMedicineScreen = '/updateMedicineScreen';
@@ -61,8 +62,8 @@ class RouteGenerator {
       //     final args = routeSettings.arguments as OTPArguments;
       //     return OTPVerifyScreen(email: args.email);
       //   });
-      // case Routes.resetPasswordScreen:
-      //   return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+      case Routes.homeDrawer:
+        return MaterialPageRoute(builder: (_) => const HomeDrawer());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       // case Routes.oneOrderDetailsScreen:

@@ -1,4 +1,5 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
+import 'package:elagk/drawer/presentation/components/home_drawe_widget.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/home/presentation/components/app_bar_title.dart';
 import 'package:elagk/home/presentation/components/body_welcome.dart';
