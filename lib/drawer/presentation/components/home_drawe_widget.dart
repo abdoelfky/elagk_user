@@ -3,9 +3,10 @@ import 'package:elagk/drawer/data/models/drawer/menu_items.dart';
 import 'package:elagk/drawer/presentation/screens/about_us_screen.dart';
 import 'package:elagk/drawer/presentation/screens/complaints_screen.dart';
 import 'package:elagk/drawer/presentation/screens/contact_us_screen.dart';
-import 'package:elagk/drawer/presentation/screens/offers_screen.dart';
+import 'package:elagk/drawer/presentation/screens/elagk_store_screen.dart';
 import 'package:elagk/drawer/presentation/screens/orders_screen.dart';
 import 'package:elagk/drawer/presentation/screens/points_screen.dart';
+import 'package:elagk/drawer/presentation/screens/special_customers_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -29,8 +30,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
         return const HomeScreen();
       case MenuItems.points:
         return const PointsScreen();
-      case MenuItems.offers:
-        return const OffersScreen();
+      case MenuItems.elagkStore:
+        return const ElagkStoreScreen();
+      case MenuItems.specialCustomers:
+        return const SpecialCustomersScreen();
       case MenuItems.orders:
         return const OrdersScreen();
       case MenuItems.contactUs:

@@ -23,7 +23,8 @@ class ImageAssets {
   static const String offers = '$IMAGE_PATH/drawer_icons/offer.svg';
   static const String points = '$IMAGE_PATH/drawer_icons/point.svg';
   static const String orders = '$IMAGE_PATH/drawer_icons/order.svg';
-
+  static const String elagkStore = '$IMAGE_PATH/drawer_icons/offer.svg';
+  static const String specialCustomers = '$IMAGE_PATH/drawer_icons/order.svg';
   // About us screen
   static const String info = '$IMAGE_PATH/about_us/info(1).png';
   static const String visibility = '$IMAGE_PATH/about_us/visibility.png';

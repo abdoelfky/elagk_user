@@ -81,6 +81,8 @@ class AppStrings {
   static const String orders = "الطلبات";
   static const String offers = "العروض";
   static const String points = "النقاط";
+  static const String specialCustomers = "العملاء المميزين";
+  static const String elagkStore = "متجر علاجك";
 
   // About us
   static const String whoAreWe = "من نحن";

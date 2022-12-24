@@ -16,18 +16,21 @@ class MenuItems {
   static const contactUs = MyMenuItem(AppStrings.contactUs, ImageAssets.contactUs);
   static const aboutUs = MyMenuItem(AppStrings.aboutUs, ImageAssets.aboutUs);
   static const orders = MyMenuItem(AppStrings.orders, ImageAssets.orders);
-  static const offers = MyMenuItem(AppStrings.offers, ImageAssets.offers);
   static const points = MyMenuItem(AppStrings.points, ImageAssets.points);
   static const logOut = MyMenuItem(AppStrings.logOut, ImageAssets.logout);
+  static const elagkStore = MyMenuItem(AppStrings.elagkStore, ImageAssets.elagkStore);
+  static const specialCustomers = MyMenuItem(AppStrings.specialCustomers, ImageAssets.specialCustomers);
+
   static const all = <MyMenuItem>[
     homepage,
-    offers,
     points,
+    elagkStore,
     orders,
+    specialCustomers,
     profile,
     complaints,
-    contactUs,
     aboutUs,
+    contactUs,
     logOut
   ];
 }
