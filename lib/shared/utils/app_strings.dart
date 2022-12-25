@@ -153,6 +153,9 @@ class AppStrings {
   static const String newPrice = "السعر الجديد";
   static const String edit = "تعديل";
   static const String cancel = "إلغاء";
+  static const String saveChanges = "حفظ التعديلات";
+
+
   // static const String editProduct = "تعديل المنتج: ";
   static const String pressToEdit = "إضغط للتعديل";
 

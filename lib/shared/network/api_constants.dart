@@ -41,7 +41,8 @@ class ApiConstants {
   static const String pharmacies = "$baseUrl/Pharmacies";
   static const String userPharmacy = "$pharmacies/UserPharmacy";
 
-  static String pharmacyUserIdPath(String userId) => "$userPharmacy/$userId";
+  static String UserIdPath(String userId) => "$baseUrl/Users/$userId";
+
   static const String categories = "$baseUrl/Categories";
 
   // Complaints screen

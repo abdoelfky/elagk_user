@@ -6,6 +6,7 @@ import 'package:elagk/drawer/presentation/screens/contact_us_screen.dart';
 import 'package:elagk/drawer/presentation/screens/elagk_store_screen.dart';
 import 'package:elagk/drawer/presentation/screens/orders_screen.dart';
 import 'package:elagk/drawer/presentation/screens/points_screen.dart';
+import 'package:elagk/drawer/presentation/screens/profile_screen.dart';
 import 'package:elagk/drawer/presentation/screens/special_customers_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/shared/global/app_colors.dart';
@@ -32,6 +33,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
     switch (currentItem) {
       case MenuItems.homepage:
         return const HomeScreen();
+      case MenuItems.profile:
+        return const ProfileScreen();
       case MenuItems.points:
         return const PointsScreen();
       case MenuItems.elagkStore:

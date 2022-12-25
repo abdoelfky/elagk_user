@@ -34,6 +34,7 @@ class MainTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       onEditingComplete: () => FocusScope.of(context).nextFocus(),
       validator: validator,
       controller: controller,
@@ -66,7 +67,7 @@ class MainTextFormField extends StatelessWidget {
         contentPadding: const EdgeInsets.only(
           right: AppPadding.p20,
           left: AppPadding.p20,
-          bottom: AppPadding.p10,
+          bottom: AppPadding.p15,
         ),
         suffixIcon: icon,
         focusedBorder: _outlineInputBorder(),
