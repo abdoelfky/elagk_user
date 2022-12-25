@@ -25,21 +25,21 @@ class RegisterCubit extends Cubit<RegisterStates>
   {
     emit(RegisterLoadingState());
     await DioHelper.postData(
-      url: 'http://freelancerr-001-site1.btempurl.com/api/Auth/register' ,
-      data:{
-        "firstName": "${firstName}",
-        "lastName": "${lastName}",
-        "email": "${email}",
-        "password": "${password}",
-        "phones": [
-          "${phone}"
-        ],
-        "roles": [
-          {
-            "name": "user"
-          }
-        ]
-      }
+        url: 'http://freelancerr-001-site1.btempurl.com/api/Auth/register' ,
+        data:{
+          "firstName": "${firstName}",
+          "lastName": "${lastName}",
+          "email": "${email}",
+          "password": "${password}",
+          "phones": [
+            "${phone}"
+          ],
+          "roles": [
+            {
+              "name": "user"
+            }
+          ]
+        }
     ).then((value) {
       print(value.data.toString());
 

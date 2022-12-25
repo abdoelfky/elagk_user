@@ -1,24 +1,23 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 import '../../../../shared/components/toast_component.dart';
 import '../../../../shared/global/app_colors.dart';
 import '../../../../shared/utils/app_routes.dart';
 import '../../../../shared/utils/app_strings.dart';
 import '../../../../shared/utils/app_values.dart';
 import '../../../../shared/utils/navigation.dart';
-import '../../../../shared/utils/text_field_validation.dart';
-import '../../components/MainTextFormField.dart';
 import '../../components/auth_title_subtitle_widget.dart';
 import '../../components/logo_widget.dart';
 import '../../components/main_button.dart';
 import '../../components/screen_background.dart';
-import '../../controller/forget_passord_controller/forget_passowrd_state.dart';
-import '../../controller/forget_passord_controller/forget_password_cubit.dart';
+import '../../controller/confim_password/confirm_password_cubit.dart';
+import '../../controller/confim_password/confirm_password_state.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({Key? key}) : super(key: key);
+
+class ConfirmPasswordScreen extends StatelessWidget {
+  const ConfirmPasswordScreen({Key? key}) : super(key: key);
 
   static final _formKey = GlobalKey<FormState>();
   static final emailController = TextEditingController();
@@ -45,62 +44,61 @@ class ForgetPasswordScreen extends StatelessWidget {
                     children: [
                       const LogoWidget(),
                       const AuthTitleAndSubtitle(
-                        authTitle: AppStrings.forgotPassword,
-                        authSubtitle: AppStrings.enterValidEmail,
+                        authTitle: AppStrings.codeSendButton,
+                        authSubtitle: AppStrings.enterValidnum,
                       ),
-                      MainTextFormField(
-                        controller: emailController,
-                        label: AppStrings.enterValidEmail,
-                        hint: AppStrings.emailExample,
-                        hintColor: AppColors.lightGrey,
-                        inputType: TextInputType.emailAddress,
-                        textDirection: TextDirection.ltr,
-                        obscure: false,
-                        validator: (value) => validateEmail(value!),
-                      ),
+
+
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
-                      BlocConsumer<ForgetPasswordCubit, ForgetPasswordStates>(
+                      BlocConsumer<ConfirmPasswordCubit, ConfirmPasswordStates>(
                         listener: (context, state) {
-                          if (state is SendOTPSuccessState) {
+                          if (state is SendCodeSuccessState) {
                             {
                               showToast(
-                                  text: AppStrings.codeSendedSuccessFully, state: ToastStates.SUCCESS);
+                                  text: AppStrings.codeSendedSuccessFully1, state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.confirmPasswordScreen);
+                                  screenRoute: Routes.homeDrawer);
                             }
 
-                          } else if (state is SendOTPErrorState) {
+                          } else if (state is SendCodeErrorState) {
                             showToast(
-                                text: AppStrings.codeSendError,
+                                text: AppStrings.codeSendError1,
                                 state: ToastStates.ERROR);
                           }
                         },
                         builder: (context, state) {
                           return ConditionalBuilder(
-                            condition: state is! SendOTPLoadingState,
-                            builder: (context) => MainButton(
-                              title: AppStrings.codeSendButton,
-                              onPressed: () async {
-                                _hasInternet = await InternetConnectionChecker()
-                                    .hasConnection;
-                                if (_hasInternet) {
-                                  if (_formKey.currentState!.validate()) {
-                                    ForgetPasswordCubit.get(context)
-                                        .sendOTP(email: emailController.text.trim());
-                                  }
-                                }
-                                else {
-                                  showToast(
-                                      text:
-                                          'Please Check Your Network Connection',
-                                      state: ToastStates.SUCCESS);
+                            condition: state is! SendCodeLoadingState,
+                            builder: (context) =>  VerificationCode(
+                              textStyle: Theme.of(context).textTheme.bodyText2!
+                                  .copyWith(color: Theme.of(context).primaryColor),
+                              keyboardType: TextInputType.number,
+                              underlineColor: AppColors.offBlue,
+                              length: 6,
+                              cursorColor: Colors.blue,
+                              onCompleted: (String value) {
+                                if (_formKey.currentState!.validate()) {
+                                  ConfirmPasswordCubit.get(context)
+                                      .sendCode(code:int.parse(value) ,);
                                 }
                               },
+                              onEditing: (bool value) {},
+                              margin: const EdgeInsets.all(12),
                             ),
                             fallback: (context) =>
-                                const CircularProgressIndicator(),
+                            const CircularProgressIndicator(),
                           );
+                        },
+                      ),
+                      MainButton(
+                        title: AppStrings.codeSendButton,
+                        onPressed: () async {
+                          navigateFinalTo(
+                              context: context,
+                              screenRoute: Routes.homeScreen);
+
+
                         },
                       ),
                     ],

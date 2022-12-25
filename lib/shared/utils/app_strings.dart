@@ -10,7 +10,8 @@ class AppStrings {
   static const String codeSendButton  = "اعاده تعيين كلمه المرور";
   static const String codeSendedSuccessFully="تم ارسال كود التفعيل بنجاح";
   static const String codeSendError  = "برجاء ادخال بريد الكتروني صحيح";
-
+  static const String codeSendedSuccessFully1=" كود التفعيل صحيح";
+  static const String codeSendError1  = " كود التفعيل غير صحيح";
   // offline screen
   static const String noInternetConnection = "لا يوجد اتصال بالإنترنت";
   static const String failedToConnect =
@@ -50,6 +51,9 @@ class AppStrings {
   static const String verificationCodeSent =
       "ادخل رمز التحقق المكون من 6 أرقام الذي تم إرساله إلى بريدك الإلكتروني:";
   static const String verify = "تأكيد";
+  static const String resetPassword = "تم تغيير كلمة المرور بنجاح";
+  static const String erorrResetPassword = "لم يتم تغيير كلمة المرور بنجاح    ";
+  static const String enterValidnum = "يرجي إدخال الكود";
 
   // Make login screen
   static const String pleaseLoginToBrowseApp =
@@ -70,7 +74,6 @@ class AppStrings {
       "ادخل كلمة مرور تتكون من 8 أحرف بحد أدني، وتحتوي علي رقم وحرف كبير ورمز واحد عالأقل.";
   static const String theNewPassword = "كلمة المرور الجديدة";
   static const String hintPassword = "Aa123456#.*";
-  static const String resetPassword = "تعيين كلمة المرور الجديدة";
 
   // Drawer taps
   static const String homeScreen = "الصفحة الرئيسية";

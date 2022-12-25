@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                                   state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.homeScreen);
+                                  screenRoute: Routes.homeDrawer);
                             }else
                             {
                               showToast(
@@ -149,7 +149,10 @@ class LoginScreen extends StatelessWidget {
                             ),
                             TextSpan(
                               text: ' ${AppStrings.createAccount}',
-                              style:TextStyle(color:AppColors.blue,fontSize: 20),
+                              style: TextStyle(
+                                  color: AppColors.blue,
+                                  fontWeight: FontWeight.bold
+                              ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   navigateTo(

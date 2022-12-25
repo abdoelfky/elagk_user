@@ -1,18 +1,18 @@
-import 'package:elagk/auth/data/models/login_model/login_model.dart';
 
-abstract class ForgetPasswordStates {}
 
-class ForgetPasswordInitialState extends ForgetPasswordStates {}
+abstract class ResetPasswordStates {}
 
-class SendOTPLoadingState extends ForgetPasswordStates {}
+class ResetPasswordInitialState extends ResetPasswordStates {}
 
-class SendOTPSuccessState extends ForgetPasswordStates
+class ResetPassLoadingState extends ResetPasswordStates {}
+
+class ResetPassSuccessState extends ResetPasswordStates
 {
 }
 
-class SendOTPErrorState extends ForgetPasswordStates
+class ResetPassErrorState extends ResetPasswordStates
 {
   final String error;
 
-  SendOTPErrorState(this.error);
+  ResetPassErrorState(this.error);
 }
