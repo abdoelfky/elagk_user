@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,11 +19,65 @@ import '../../components/screen_background.dart';
 import '../../controller/forget_passord_controller/forget_passowrd_state.dart';
 import '../../controller/forget_passord_controller/forget_password_cubit.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
+class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
 
   static final _formKey = GlobalKey<FormState>();
   static final emailController = TextEditingController();
+
+  static const countdownDuration = Duration(minutes: 3);
+
+  @override
+  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+}
+
+class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+  Duration duration = Duration();
+
+  Timer? timer;
+
+  bool countDown =true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    reset();
+  }
+
+  void reset(){
+    if (countDown){
+      setState(() =>
+      duration = ForgetPasswordScreen.countdownDuration);
+    } else{
+      setState(() =>
+      duration = Duration());
+    }
+  }
+
+  void startTimer(){
+    timer = Timer.periodic(Duration(seconds: 1),(_) => addTime());
+  }
+
+  void addTime(){
+    final addSeconds = countDown ? -1 : 1;
+    setState(() {
+      final seconds = duration.inSeconds + addSeconds;
+      if (seconds < 0){
+        timer?.cancel();
+      } else{
+        duration = Duration(seconds: seconds);
+
+      }
+    });
+  }
+
+  void stopTimer({bool resets = true}){
+    if (resets){
+      reset();
+    }
+    setState(() => timer?.cancel());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +94,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppPadding.p15),
                 child: Form(
-                  key: _formKey,
+                  key: ForgetPasswordScreen._formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +105,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                         authSubtitle: AppStrings.enterValidEmail,
                       ),
                       MainTextFormField(
-                        controller: emailController,
+                        controller: ForgetPasswordScreen.emailController,
                         label: AppStrings.enterValidEmail,
                         hint: AppStrings.emailExample,
                         hintColor: AppColors.lightGrey,
@@ -59,6 +115,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                         validator: (value) => validateEmail(value!),
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
+
                       BlocConsumer<ForgetPasswordCubit, ForgetPasswordStates>(
                         listener: (context, state) {
                           if (state is SendOTPSuccessState) {
@@ -85,9 +142,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 _hasInternet = await InternetConnectionChecker()
                                     .hasConnection;
                                 if (_hasInternet) {
-                                  if (_formKey.currentState!.validate()) {
+                                  if (ForgetPasswordScreen._formKey.currentState!.validate()) {
                                     ForgetPasswordCubit.get(context)
-                                        .sendOTP(email: emailController.text.trim());
+                                        .sendOTP(email: ForgetPasswordScreen.emailController.text.trim());
                                   }
                                 }
                                 else {
@@ -114,3 +171,4 @@ class ForgetPasswordScreen extends StatelessWidget {
     );
   }
 }
+

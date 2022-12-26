@@ -15,12 +15,18 @@ class ResetPasswordCubit extends Cubit<ResetPasswordStates>
 
   Future<void> ResetPass({
     required String password,
+    required String email,
 
 
   }) async {
     emit(ResetPassLoadingState());
     await DioHelper.postData(
-      url: "ApiConstants.resetPassword"
+      url: ApiConstants.resetPassword,
+      data: {
+        'password': password,
+        'email': email,
+
+      },
     ).then((value) {
       emit(ResetPassSuccessState());
     }).catchError((error) {
