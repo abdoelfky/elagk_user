@@ -17,8 +17,13 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates>
 
   }) async {
     emit(SendOTPLoadingState());
-    await DioHelper.getData(
-      url: ApiConstants.forgetPasswordEmailPath(email),
+    await DioHelper.postData(
+      url: ApiConstants.sendMail,
+      data:
+      {
+        "email": email,
+
+      }
     ).then((value) {
       emit(SendOTPSuccessState());
     }).catchError((error) {

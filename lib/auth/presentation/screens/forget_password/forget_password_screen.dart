@@ -124,7 +124,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                                   text: AppStrings.codeSendedSuccessFully, state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.confirmPasswordScreen);
+                                  screenRoute: Routes.otpVerifyScreen);
                             }
 
                           } else if (state is SendOTPErrorState) {
@@ -137,23 +137,26 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           return ConditionalBuilder(
                             condition: state is! SendOTPLoadingState,
                             builder: (context) => MainButton(
-                              title: AppStrings.codeSendButton,
+                              title: AppStrings.codeSendButton1,
                               onPressed: () async {
+
                                 _hasInternet = await InternetConnectionChecker()
                                     .hasConnection;
                                 if (_hasInternet) {
-                                  if (ForgetPasswordScreen._formKey.currentState!.validate()) {
+                                  if (ForgetPasswordScreen
+                                      ._formKey.currentState!.validate()) {
                                     ForgetPasswordCubit.get(context)
                                         .sendOTP(email: ForgetPasswordScreen.emailController.text.trim());
+
                                   }
                                 }
                                 else {
                                   showToast(
                                       text:
                                           'Please Check Your Network Connection',
-                                      state: ToastStates.SUCCESS);
+                                      state: ToastStates.ERROR);
                                 }
-                              },
+                                },
                             ),
                             fallback: (context) =>
                                 const CircularProgressIndicator(),

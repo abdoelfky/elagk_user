@@ -6,8 +6,13 @@ class AppStrings {
   static const String welcome  = " مرحبا بكم في علاجك";
   static const String pharmacies="صيدليات";
   static const String search  = "ابحث .....";
+  static const String pharmacyName  = "اسم الصيدليه";
+
+
 // forget password
   static const String codeSendButton  = "اعاده تعيين كلمه المرور";
+  static const String codeSendButton1  = "ارسال كود التفعيل ";
+
   static const String codeSendedSuccessFully="تم ارسال كود التفعيل بنجاح";
   static const String codeSendError  = "برجاء ادخال بريد الكتروني صحيح";
   static const String codeSendedSuccessFully1=" كود التفعيل صحيح";
@@ -35,6 +40,8 @@ class AppStrings {
   static const String enterValidEmail = "يرجي إدخال بريد إلكتروني صحيح!";
   static const String enterValidPassword =
       "يجب أن تتكون كلمة المرور من 8 أحرف بحد أدني";
+  static const String prescriptionAndDeliverPrice =
+      "اطلب الدوا بالروشتة ";
   static const String enterValidFullName =
       "يجب أن يحتوي الاسم بالكامل علي أحرف ";
   static const String enterValidPhone =
