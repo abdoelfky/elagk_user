@@ -6,13 +6,9 @@ class AppStrings {
   static const String welcome  = " مرحبا بكم في علاجك";
   static const String pharmacies="صيدليات";
   static const String search  = "ابحث .....";
-  static const String pharmacyName  = "اسم الصيدليه";
-
-
 // forget password
   static const String codeSendButton  = "اعاده تعيين كلمه المرور";
   static const String codeSendButton1  = "ارسال كود التفعيل ";
-
   static const String codeSendedSuccessFully="تم ارسال كود التفعيل بنجاح";
   static const String codeSendError  = "برجاء ادخال بريد الكتروني صحيح";
   static const String codeSendedSuccessFully1=" كود التفعيل صحيح";
@@ -40,8 +36,6 @@ class AppStrings {
   static const String enterValidEmail = "يرجي إدخال بريد إلكتروني صحيح!";
   static const String enterValidPassword =
       "يجب أن تتكون كلمة المرور من 8 أحرف بحد أدني";
-  static const String prescriptionAndDeliverPrice =
-      "اطلب الدوا بالروشتة ";
   static const String enterValidFullName =
       "يجب أن يحتوي الاسم بالكامل علي أحرف ";
   static const String enterValidPhone =
@@ -52,6 +46,8 @@ class AppStrings {
   static const String createAccount1 = "قم بملى جميع حقول بياناتك لاكمال عملية التسجيل";
   static const String firstName = "الاسم الاول";
   static const String lastName = "الاسم الاخير";
+  static const String prescriptionAndDeliverPrice =
+      "اطلب الدوا بالروشتة ";
 
   // OTP verify screen
   static const String emailVerification = "التحقق من البريد الإلكتروني";
@@ -118,6 +114,7 @@ class AppStrings {
   static const String productPicture = "إضافة صورة";
   static const String confirmDeleteProduct = "هل أنت متأكد من حذف المنتج؟";
   static const String delete = "حذف";
+  static const String searchFor = "ابحث الان عن منجاتك";
 
   // static const String availableQuantity = "الكمية المتاحة";
   static const String enterValidProductName = "من فضلك ادخل اسم صحيح";
@@ -154,6 +151,7 @@ class AppStrings {
   // Pharmacy user profile  screen
   static const String area = "منطقة";
   static const String deliveryOrderIn30Minutes = "توصيل طلب \n 30 دقيقة";
+  static const String deliveryDistance = "تبعد مسافة\n 50 متر";
   static const String noProducts = "لا يوجد منتجات في هذه الصيدلة الآن";
   static const String products = "المنتجات";
   static const String newQuantity = "الكمية الجديدة";
@@ -161,6 +159,8 @@ class AppStrings {
   static const String edit = "تعديل";
   static const String cancel = "إلغاء";
   static const String saveChanges = "حفظ التعديلات";
+  static const String medicine = "           ادوية            ";
+  static const String cost = "مستحضرات تجميل";
 
 
   // static const String editProduct = "تعديل المنتج: ";

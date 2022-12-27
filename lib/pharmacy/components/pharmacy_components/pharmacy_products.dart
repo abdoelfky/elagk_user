@@ -1,12 +1,13 @@
-import 'package:elagk/pharmacy/product_item_pharmacy_widget.dart';
 import 'package:flutter/cupertino.dart';
-import '../shared/utils/app_values.dart';
+import '../../../shared/utils/app_values.dart';
+import 'product_item_pharmacy_widget.dart';
 
 
 class PharmacyProducts extends StatefulWidget {
   const PharmacyProducts({Key? key, required this.firstCategoryName}) : super(key: key);
 
   final String firstCategoryName;
+
 
   @override
   State<PharmacyProducts> createState() => _PharmacyProductsState();
@@ -27,15 +28,13 @@ class _PharmacyProductsState extends State<PharmacyProducts> {
           crossAxisSpacing: AppSize.s10,
           mainAxisSpacing: AppSize.s10,
         ),
-        itemCount: 5,
+        itemCount: 25,
       itemBuilder: (BuildContext context, int index) {
         return ProductItemPharmacy(
-          productName: "productName",
-          productPrice: "23",
+          categoriesName: "productName",
+          categoriesPrice: "23",
           imageSrc: "state.medicines![index].imageUrl ?? AppConstants.empty",
           onTap: () {
-
-
           },
         );
       },

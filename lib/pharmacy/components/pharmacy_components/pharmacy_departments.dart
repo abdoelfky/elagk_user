@@ -1,7 +1,7 @@
-import 'package:elagk/pharmacy/pharmacy_categories.dart';
 import 'package:flutter/material.dart';
-import '../shared/global/app_colors.dart';
-import '../shared/utils/app_values.dart';
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_values.dart';
+import 'pharmacy_categories.dart';
 
 class PharmacyCategories extends StatelessWidget {
   const PharmacyCategories({Key? key}) : super(key: key);
@@ -13,14 +13,15 @@ class PharmacyCategories extends StatelessWidget {
       color: Colors.transparent,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 2,
+        itemCount: 4,
         itemBuilder: (BuildContext context, int index) {
           return Categories(
             onTap: () {
             },
+
             categoryName: 'shefo',
             containerColor:
-                AppColors.offBlue,
+                Color(0xff1d71b8),
             textColor:  Colors.white,
             borderColor:  Border.all(color: AppColors.lightGrey),
           );

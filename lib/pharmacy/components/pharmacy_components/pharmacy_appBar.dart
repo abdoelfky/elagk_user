@@ -5,7 +5,7 @@ import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget pharmacyAppBar({
+PreferredSizeWidget PharmacyAppBar({
   required BuildContext context,
   required String title,
   required Function()? onTap,

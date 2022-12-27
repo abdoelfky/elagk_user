@@ -1,11 +1,11 @@
-import 'package:elagk/pharmacy/pharmacy_departments.dart';
-import 'package:elagk/pharmacy/pharmacy_products.dart';
-import 'package:elagk/pharmacy/pharmacy_products_bar.dart';
+import 'package:elagk/pharmacy/components/pharmacy_components/pharmacy_departments.dart';
+import 'package:elagk/pharmacy/components/pharmacy_components/pharmacy_products.dart';
+import 'package:elagk/pharmacy/components/pharmacy_components/pharmacy_products_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/presentation/components/main_button.dart';
-import '../shared/utils/app_strings.dart';
-import '../shared/utils/app_values.dart';
+import '../../../auth/presentation/components/main_button.dart';
+import '../../../shared/utils/app_strings.dart';
+import '../../../shared/utils/app_values.dart';
 
 class CategoriesAndProductsSection extends StatelessWidget {
   const CategoriesAndProductsSection({Key? key, required this.firstCategoryName})
@@ -17,10 +17,10 @@ class CategoriesAndProductsSection extends StatelessWidget {
     return Column(
       children: [
         const PharmacyProductsBar(),
-        SizedBox(height: mediaQueryWidth(context) / AppSize.s40),
+        SizedBox(height: mediaQueryWidth(context) / AppSize.s30),
         // categories & products.
        const PharmacyCategories(),
-        SizedBox(height: mediaQueryWidth(context) / AppSize.s25),
+        SizedBox(height: mediaQueryWidth(context) / AppSize.s15),
         PharmacyProducts(
           firstCategoryName: firstCategoryName,
         ),

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
   Widget  PharmacyItem(context)=>InkWell(
     onTap: () {
-navigateTo(context: context, screenRoute:Routes.pharmacyScreen);
+navigateTo(context: context, screenRoute:Routes.pharmacy);
     },
     child: Container(
       width: mediaQueryWidth(context) * .4,
