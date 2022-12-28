@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 Widget SpecialCustomerInfo(context) => Container(
       decoration: BoxDecoration(
-        color: AppColors.primary,
+        color: Colors.grey[100],
           borderRadius: BorderRadius.circular(10),
       ),
   child: Padding(
@@ -39,15 +39,15 @@ Widget SpecialCustomerInfo(context) => Container(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
         Text('عمر ابراهيم',
-          style: TextStyle(color: Colors.white,
+          style: TextStyle(color: Colors.black,
               fontWeight:FontWeight.bold ,fontSize: 18)),
         Text('المبلغ: 800\$',
-            style: TextStyle(color: Colors.white,
+            style: TextStyle(color: Colors.black,
                 fontWeight:FontWeight.bold ,fontSize: 18)),
       ],),
       Spacer(),
       Text('200 نقطه',
-          style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold ,fontSize: 18)),
+          style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold ,fontSize: 18)),
 
 
 
