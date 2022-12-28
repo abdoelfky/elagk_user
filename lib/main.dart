@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:elagk/auth/presentation/controller/activator/activator_cubit.dart';
 import 'package:elagk/auth/presentation/controller/confim_password/confirm_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/forget_passord_controller/forget_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/login_controller/login_cubit.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>OtpPasswordCubit()),
           BlocProvider(create: (BuildContext context) =>AboutUsCubit()),
           BlocProvider(create: (BuildContext context) =>BasketCubit()),
+          BlocProvider(create: (BuildContext context) =>ActivatorCubit()),
 
         ],
         child: MaterialApp(

@@ -47,7 +47,44 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: mediaQueryHeight(context)*.025,),
                   WelcomeWidget(),
                   SizedBox(height: mediaQueryHeight(context)*.025,),
-                  SearchWidget(),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      decoration:  BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            AppSize.s8,
+                          ),
+                          gradient:const LinearGradient(
+                              begin:Alignment.topRight ,
+                              end:Alignment.bottomRight ,
+                              colors:
+                              [
+                                Color(0xff137e8f),
+                                Color(0xff059053),
+                              ])
+                      ),
+                      width: mediaQueryWidth(context),
+                      height: AppSize.s180,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: AppSize.s30,
+                          ),
+                          const Center(
+                            child: Text(
+                              AppStrings.searchForPharmacy,
+                              style: TextStyle(
+                                  fontSize: 25,color: Colors.white
+                              ),
+                            ),
+                          ),
+                          SearchWidget(),
+                        ],
+                      ),
+
+
+                    ),
+                  ),                   // Pharmacy information
                   SizedBox(height: mediaQueryHeight(context)*.025,),
                   OffersWidget(),
                   SizedBox(height: mediaQueryHeight(context)*.025,),

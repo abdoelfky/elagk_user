@@ -4,8 +4,6 @@ import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
-
-
 class SearchWidget extends StatelessWidget {
   final List<String> searchableList = [
     "Orange",
@@ -25,51 +23,54 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding:  EdgeInsets.all(AppPadding.p15),
-      child: AdvancedSearch(
-
-        searchItems: searchableList,
-        maxElementsToDisplay: 10,
-        singleItemHeight: 50,
-        borderColor: AppColors.darkGrey,
-        minLettersForSearch: 0,
-        selectedTextColor: Color(0xFF3363D9),
-        fontSize: 14,
-        borderRadius: 10.0,
-        hintText: AppStrings.search,
-        cursorColor: Colors.blueGrey,
-        autoCorrect: false,
-        focusedBorderColor: Colors.blue,
-        searchResultsBgColor: Color(0xFAFAFA),
-        disabledBorderColor: Colors.cyan,
-        enabledBorderColor: Colors.black,
-        enabled: true,
-        caseSensitive: true,
-        inputTextFieldBgColor: Colors.white10,
-        clearSearchEnabled: true,
-        itemsShownAtStart: 10,
-        searchMode: SearchMode.CONTAINS,
-        showListOfResults: true,
-        unSelectedTextColor: Colors.black54,
-        verticalPadding: 15,
-        horizontalPadding: 20,
-        hideHintOnTextInputFocus: true,
-        hintTextColor: Colors.grey,
-        searchItemsWidget: searchWidget,
-        onItemTap: (index, value) {
-          print("selected item Index is $index");
-        },
-        onSearchClear: () {
-          print("Cleared Search");
-        },
-        onSubmitted: (value, value2) {
-          print("Submitted: " + value);
-        },
-        onEditingProgress: (value, value2) {
-          print("TextEdited: " + value);
-          print("LENGTH: " + value2.length.toString());
-        },
+    var width = MediaQuery.of(context).size.width;
+    return Flexible(
+      child: Container(
+        color: Color(0x35a9a3),
+        width: width * .75,
+        padding: EdgeInsets.all(AppPadding.p15),
+        child: AdvancedSearch(
+          searchItems: searchableList,
+          maxElementsToDisplay: 10,
+          singleItemHeight: 50,
+          minLettersForSearch: 0,
+          selectedTextColor: Color(0xFF3363D9),
+          fontSize: 14,
+          borderRadius: 10.0,
+          hintText: AppStrings.search,
+          cursorColor: Colors.white,
+          autoCorrect: false,
+          focusedBorderColor: Colors.blue,
+          searchResultsBgColor: Color(0xFAFAFA),
+          disabledBorderColor: Colors.cyan,
+          enabledBorderColor: Color(0x35a9a3),
+          enabled: true,
+          caseSensitive: true,
+          inputTextFieldBgColor: Colors.white10,
+          clearSearchEnabled: true,
+          itemsShownAtStart: 10,
+          searchMode: SearchMode.CONTAINS,
+          showListOfResults: true,
+          unSelectedTextColor: Colors.white,
+          verticalPadding: 15,
+          horizontalPadding: 20,
+          hideHintOnTextInputFocus: true,
+          hintTextColor: Colors.white,
+          searchItemsWidget: searchWidget,
+          onItemTap: (index, value) {
+            print("selected item Index is $index");
+          },
+          onSearchClear: () {
+            print("Cleared Search");
+          },
+          onSubmitted: (value, value2) {
+            print("Submitted: " + value);
+          },
+          onEditingProgress: (value, value2) {
+            print("TextEdited: " + value);
+            print("LENGTH: " + value2.length.toString());
+          },
+        ),
       ),
     );
   }
@@ -90,7 +91,7 @@ class SearchWidget extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.normal,
           fontSize: 12,
-          color: Colors.black26,
+          color: Colors.white,
         ),
       ),
     );
