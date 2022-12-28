@@ -170,6 +170,7 @@ class AppStrings {
   static const String saveChanges = "حفظ التعديلات";
   static const String medicine = "           ادوية            ";
   static const String cost = "مستحضرات تجميل";
+  static const String editProfile = "تعديل الحساب";
 
 
   // static const String editProduct = "تعديل المنتج: ";

@@ -4,6 +4,7 @@ import 'package:elagk/auth/presentation/screens/login/login_screen.dart';
 import 'package:elagk/auth/presentation/screens/register/register_user_screen.dart';
 import 'package:elagk/drawer/presentation/components/home_drawe_widget.dart';
 import 'package:elagk/drawer/presentation/screens/basket_screen.dart';
+import 'package:elagk/drawer/presentation/screens/edit_profile_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
@@ -29,6 +30,8 @@ class Routes {
   static const String oneOrderDetailsScreen = '/oneOrderDetailsScreen';
   static const String homeDrawer = '/HomeDrawer';
   static const String pharmacy = '/PharmacyScreen';
+  static const String editProfileScreen = '/EditProfileScreen';
+
   static const String categories = '/CategoriesScreen';
   static const String allOrdersScreen = '/allOrdersScreen';
   static const String addNewMedicinesScreen = '/addNewMedicinesScreen';
@@ -58,8 +61,8 @@ class RouteGenerator {
             child: const Center(child: CircularProgressIndicator()),
           ),
         );
-    // case Routes.notificationsScreen:
-    //   return MaterialPageRoute(builder: (_) => const NotificationScreen());
+    case Routes.editProfileScreen:
+      return MaterialPageRoute(builder: (_) => const EditProfileScreen());
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.registerScreen:

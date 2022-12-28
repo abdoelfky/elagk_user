@@ -1,7 +1,7 @@
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/drawer/presentation/components/points_components/points_widget.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
-import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_appBar.dart';
+import 'package:elagk/shared/components/second_appBar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../auth/presentation/components/screen_background.dart';

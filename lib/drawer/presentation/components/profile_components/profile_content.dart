@@ -1,3 +1,5 @@
+import 'package:elagk/shared/utils/app_routes.dart';
+import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
@@ -10,6 +12,8 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:elagk/shared/utils/text_field_validation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import 'profile_text_form_feild.dart';
 class ProfileContent extends StatelessWidget {
   static final _formKey = GlobalKey<FormState>();
   bool _hasInternet = false;
@@ -21,19 +25,6 @@ class ProfileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ProfileCubit,ProfileStates>(
         listener: (context, state) {
-          if(state is ProfileUpdateUserDataSuccessState)
-          {
-            showToast(
-                text: 'Data Updated Successfully',
-                state: ToastStates.SUCCESS);
-          }
-          else if(state is ProfileUpdateUserDataErrorState)
-          {
-            showToast(
-                text: 'Enter valid Data',
-                state: ToastStates.ERROR);
-
-          }
 
 
         },
@@ -81,7 +72,7 @@ class ProfileContent extends StatelessWidget {
                   height: mediaQueryHeight(context) * .025,
                 ),
                 //phone number
-                MainTextFormField(
+                ProfileTextFormField(
                   controller: _phoneController,
                   label: AppStrings.phoneNumber,
                   hint: AppStrings.phoneExample,
@@ -101,7 +92,7 @@ class ProfileContent extends StatelessWidget {
                   height: mediaQueryHeight(context) * .025,
                 ),
                 //userName
-                MainTextFormField(
+                ProfileTextFormField(
                   controller: _nameController,
                   label: AppStrings.userName,
                   hint: AppStrings.userName,
@@ -121,7 +112,7 @@ class ProfileContent extends StatelessWidget {
                   height: mediaQueryHeight(context) * .025,
                 ),
                 //email
-                MainTextFormField(
+                ProfileTextFormField(
                   controller: _emailController,
                   label: AppStrings.email,
                   hint: AppStrings.emailExample,
@@ -134,7 +125,7 @@ class ProfileContent extends StatelessWidget {
                 SizedBox(
                   height: mediaQueryHeight(context) * .025,
                 ),
-                MainTextFormField(
+                ProfileTextFormField(
                   controller: _passwordController,
                   label: AppStrings.password,
                   hint: AppStrings.passwordExample,
@@ -153,28 +144,12 @@ class ProfileContent extends StatelessWidget {
                 SizedBox(
                   height: mediaQueryHeight(context) * .14,
                 ),
-                ConditionalBuilder(
-                    condition:
-                    (state is ProfileUpdateUserDataLoadingState),
-                    builder: (context) =>
-                    const CircularProgressIndicator(),
-                    fallback: (context) => MainButton(
-                      title: AppStrings.saveChanges,
-                      onPressed: () async {
-                        _hasInternet = await InternetConnectionChecker()
-                            .hasConnection;
-                        if (_hasInternet) {
-                          if (_formKey.currentState!.validate())
-                          {
-                            ProfileCubit.get(context).updateUserProfileData
-                              (email: _emailController.text.trim(),
-                                userName: _nameController.text,
-                                phone: _phoneController.text,
-                                password: _passwordController.text);
-
-                          }}
-                      },
-                    )),
+                MainButton(
+                  title: AppStrings.editProfile,
+                  onPressed: ()  {
+                   navigateTo(context: context, screenRoute: Routes.editProfileScreen);
+                  },
+                ),
 
 
               ],
