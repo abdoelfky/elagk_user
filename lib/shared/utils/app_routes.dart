@@ -3,6 +3,7 @@ import 'package:elagk/auth/presentation/screens/forget_password/forget_password_
 import 'package:elagk/auth/presentation/screens/login/login_screen.dart';
 import 'package:elagk/auth/presentation/screens/register/register_user_screen.dart';
 import 'package:elagk/drawer/presentation/components/home_drawe_widget.dart';
+import 'package:elagk/drawer/presentation/screens/basket_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
@@ -18,7 +19,7 @@ import '../../auth/presentation/screens/vrification/activator_screen.dart';
 
 class Routes {
   static const String home = '/';
-  static const String basketScreen = '/basketScreen';
+  static const String basketScreen = '/BasketScreen';
   static const String loginScreen = '/loginScreen';
   static const String registerScreen = '/registerScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
@@ -85,8 +86,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const PharmacyScreen());
       case Routes.categories:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
-    // case Routes.oneOrderDetailsScreen:
-    //   return MaterialPageRoute(builder: (_) => const OneOrderDetailsScreen());
+    case Routes.basketScreen:
+      return MaterialPageRoute(builder: (_) => const BasketScreen());
 
 
       default:

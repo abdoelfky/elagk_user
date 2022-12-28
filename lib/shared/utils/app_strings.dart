@@ -186,7 +186,11 @@ class AppStrings {
   static const String pharmacyName = "اسم الصيدليه";
   static const String writeYourOrder = "اكتب طلبك يدويا";
   static const String addPrescriptionImage = "اضافه صوره الروشته";
-
+  static const String basket = "عربة التسوق";
+  static const String buy = "تاكيد الشراء";
+  static const String numOfPoints = "عدد النقاط";
+  static const String pointsReplace = "استبدال النقاط";
+  static const String pointsForReplace = "منتجات لاستبدال النقاط";
 
 
   // One order details screen
