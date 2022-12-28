@@ -230,7 +230,7 @@ class RegisterScreen extends StatelessWidget {
                                 state: ToastStates.SUCCESS);
                             navigateTo(
                                 context: context,
-                                screenRoute: Routes.loginScreen);
+                                screenRoute: Routes.activator);
                           } else if (state is RegisterErrorState) {
                             showToast(
                                 text: '${state.error}',

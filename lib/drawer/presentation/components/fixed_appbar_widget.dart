@@ -13,7 +13,7 @@ PreferredSizeWidget fixedAppBar({
 }) =>
     AppBar(
       iconTheme: const IconThemeData(color: Colors.black),
-      title: Text(title, style: Theme.of(context).textTheme.headlineLarge),
+      title: Text(title, style: Theme.of(context).textTheme.titleMedium),
       centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: AppSize.s0,

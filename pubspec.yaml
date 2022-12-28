@@ -71,6 +71,7 @@ dependencies:
   internet_connection_checker:
   flutter_pw_validator:
   flutter_verification_code: ^1.1.6
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:

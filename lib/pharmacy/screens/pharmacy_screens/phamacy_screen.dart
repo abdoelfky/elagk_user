@@ -20,7 +20,7 @@ class PharmacyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: SafeArea(
@@ -95,6 +95,9 @@ class PharmacyScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(AppPadding.p15),
                         ),
                         onPressed: () => {
+                          navigateTo(
+                              context: context,
+                              screenRoute: Routes.orderByPrescription)
 
                         },
                         color:AppColors.offBlue,

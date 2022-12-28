@@ -10,6 +10,8 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/category_components/search_categories.dart';
+
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({
@@ -42,7 +44,7 @@ class CategoriesScreen extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: double.infinity,
-                    height: AppSize.s180,
+                    height: AppSize.s170,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
@@ -64,7 +66,7 @@ class CategoriesScreen extends StatelessWidget {
                                     ])
                             ),
                             width: mediaQueryWidth(context),
-                            height: AppSize.s170,
+                            height: AppSize.s300,
                             child: Column(
                               children: [
                                 const SizedBox(
@@ -78,16 +80,13 @@ class CategoriesScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SearchWidget(),
+                                SearchCategoriesWidget(),
                               ],
                             ),
 
 
                           ),
-                        ),
-
-                        // Pharmacy information
-
+                        ),                   // Pharmacy information
                       ],
                     ),
                   ),

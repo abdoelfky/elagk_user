@@ -49,7 +49,6 @@ class ProfileContent extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.all(AppPadding.p15),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Form(
             key: _formKey,
             child: Column(
@@ -175,7 +174,9 @@ class ProfileContent extends StatelessWidget {
 
                           }}
                       },
-                    ))
+                    )),
+
+
               ],
             ),
           ),

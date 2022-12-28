@@ -4,7 +4,7 @@ import 'package:elagk/drawer/presentation/screens/about_us_screen.dart';
 import 'package:elagk/drawer/presentation/screens/complaints_screen.dart';
 import 'package:elagk/drawer/presentation/screens/contact_us_screen.dart';
 import 'package:elagk/drawer/presentation/screens/elagk_store_screen.dart';
-import 'package:elagk/drawer/presentation/screens/orders_screen.dart';
+import 'package:elagk/drawer/presentation/screens/past_orders_screen.dart';
 import 'package:elagk/drawer/presentation/screens/points_screen.dart';
 import 'package:elagk/drawer/presentation/screens/profile_screen.dart';
 import 'package:elagk/drawer/presentation/screens/special_customers_screen.dart';

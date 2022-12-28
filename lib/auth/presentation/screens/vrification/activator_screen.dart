@@ -11,13 +11,12 @@ import '../../../../shared/utils/navigation.dart';
 import '../../components/auth_title_subtitle_widget.dart';
 import '../../components/logo_widget.dart';
 import '../../components/screen_background.dart';
-import '../../controller/otp_password/otp_password_cubit.dart';
-import '../../controller/otp_password/otp_password_state.dart';
-import 'otp_componant/otp_componants.dart';
 
-class OtpPasswordScreen extends StatelessWidget {
+import '../../controller/activator/activator_cubit.dart';
+import '../../controller/activator/activator_state.dart';
+
+class ActivatorScreen extends StatelessWidget {
   static final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,16 +24,16 @@ class OtpPasswordScreen extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           resizeToAvoidBottomInset: true,
-          body: BlocConsumer<OtpPasswordCubit, OtpPasswordStates>(
+          body: BlocConsumer<ActivatorCubit, ActivatorStates>(
             listener: (context, state) {
-              if (state is OtpSuccessState) {
+              if (state is ActivatorSuccessState) {
                 showToast(
                     text: AppStrings.codeSendedSuccessFully1,
                     state: ToastStates.SUCCESS);
                 navigateFinalTo(
                     context: context,
-                    screenRoute: Routes.confirmPasswordScreen);
-              } else if (state is OtpErrorState) {
+                    screenRoute: Routes.homeDrawer);
+              } else if (state is ActivatorErrorState) {
                 showToast(
                     text: AppStrings.codeSendError1, state: ToastStates.ERROR);
               }
@@ -45,12 +44,6 @@ class OtpPasswordScreen extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              Duration duration = OtpPasswordCubit.get(context).duration;
-
-              if (state is OtpPasswordInitialState ||
-                  (duration == Duration(seconds: 0) &&
-                      state is! ChangeDurationEndState))
-                OtpPasswordCubit.get(context).otpCounter();
               return ScreenBackground(
                 child: Center(
                   child: SingleChildScrollView(
@@ -63,14 +56,14 @@ class OtpPasswordScreen extends StatelessWidget {
                         children: [
                           const LogoWidget(),
                           const AuthTitleAndSubtitle(
-                            authTitle: AppStrings.codeSendButton,
+                            authTitle: AppStrings.activator,
                             authSubtitle: AppStrings.enterValidnum,
                           ),
 
                           SizedBox(
                               height: mediaQueryHeight(context) / AppSize.s30),
                           ConditionalBuilder(
-                            condition: state is! OtpLoadingState,
+                            condition: state is! ActivatorLoadingState,
                             builder: (context) => VerificationCode(
                               textStyle: Theme.of(context)
                                   .textTheme
@@ -83,7 +76,7 @@ class OtpPasswordScreen extends StatelessWidget {
                               cursorColor: Colors.blue,
                               onCompleted: (String value) {
                                 if (_formKey.currentState!.validate()) {
-                                  OtpPasswordCubit.get(context).Otp(
+                                  ActivatorCubit.get(context).Activator(
                                     code: int.parse(value),
                                   );
                                 }
@@ -96,17 +89,15 @@ class OtpPasswordScreen extends StatelessWidget {
                           ),
                           SizedBox(
                               height: mediaQueryHeight(context) / AppSize.s30),
-                          buildTime(
-                            duration,
-                          ),
+                          
                           SizedBox(
                               height: mediaQueryHeight(context) / AppSize.s30),
                           // MainButton(
                           //   title: AppStrings.codeSendButton,
                           //   onPressed: (value) async {
                           //     if (_formKey.currentState!.validate()) {
-                          //       OtpPasswordCubit.get(context)
-                          //           .Otp(code:int.parse(value) ,);
+                          //       ActivatorPasswordCubit.get(context)
+                          //           .Activator(code:int.parse(value) ,);
                           //     }
                           //
                           //   },
