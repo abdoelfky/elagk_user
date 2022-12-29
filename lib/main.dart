@@ -10,6 +10,7 @@ import 'package:elagk/drawer/presentation/controller/basket_controller/basket_cu
 import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/complaints_controller/complaints_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
+import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/shared/bloc_observer.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>AboutUsCubit()..getAboutUs()),
           BlocProvider(create: (BuildContext context) =>BasketCubit()),
           BlocProvider(create: (BuildContext context) =>ActivatorCubit()),
+          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getPharmacies()),
 
         ],
         child: MaterialApp(

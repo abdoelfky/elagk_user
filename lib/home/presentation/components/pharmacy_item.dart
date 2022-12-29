@@ -6,7 +6,7 @@ import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
 
-  Widget  PharmacyItem(context)=>InkWell(
+  Widget  PharmacyItem(context,pharmacyName,pharmacyImage)=>InkWell(
     onTap: () {
 navigateTo(context: context, screenRoute:Routes.pharmacy);
     },
@@ -34,9 +34,10 @@ navigateTo(context: context, screenRoute:Routes.pharmacy);
             width: 10,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'صيدليه 19011 فرع مدينه نصر',
+                pharmacyName,
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               Row(
