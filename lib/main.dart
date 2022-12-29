@@ -16,7 +16,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
