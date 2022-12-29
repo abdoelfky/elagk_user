@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                 , builder: (context, state)
             {
               if(state is ProfileGetUserDataLoadingState) {
-                return Center(child: CircularProgressIndicator(),);
+                return Center(child: CircularProgressIndicator(color: AppColors.primary,),);
               }
 
               else{

@@ -1,7 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,11 +17,9 @@ import '../../components/auth_title_subtitle_widget.dart';
 import '../../components/logo_widget.dart';
 import '../../components/main_button.dart';
 import '../../components/screen_background.dart';
-import '../../controller/login_controller/login_cubit.dart';
-import '../../controller/login_controller/login_states.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+
 
   static final _formKey1 = GlobalKey<FormState>();
   static final _emailController = TextEditingController();
@@ -90,70 +87,6 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       //phone
                       MainTextFormField(
-                        suffixIcon: InkWell(
-                          onTap: () {
-                            showDialog(
-
-                                context: context,
-                                builder: (_) => AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                                  contentPadding: EdgeInsets.only(top: 10.0),
-                                  elevation: 24.0,
-                                  title: Text('Add New Number',
-                                  ),
-                                  content: Padding(
-                                    padding: const EdgeInsets.all(AppSize.s30),
-                                    child: MainTextFormField(
-                                      controller: _phoneController,
-                                      label: AppStrings.phoneNumber,
-                                      hint: AppStrings.enterValidPhone,
-                                      hintColor: AppColors.lightGrey,
-                                      inputType: TextInputType.phone,
-                                      textDirection: TextDirection.ltr,
-                                      obscure: false,
-                                      validator: (value) {
-                                        if (value!.length < AppSize.s12) {
-                                          return AppStrings.enterValidPassword;
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                    ),
-                                  ),
-
-                                  actions: [
-                                    CupertinoDialogAction(
-                                      child: Container(
-                                        child: Text(
-                                          'Done',
-                                          style: TextStyle(color: Colors.blue),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        if (_formKey1.currentState!.validate()) {
-                                          RegisterCubit.get(context).userRegister(
-                                            email: _emailController.text.trim(),
-                                            password:
-                                            _passwordController.text.trim(),
-                                            phone: _phoneController.text.trim(),
-                                            firstName: _firstNameController.text.trim(),
-                                            lastName: _lastNameController.text.trim(),
-                                          );
-                                        };
-                                      },
-                                    ),
-
-                                  ],
-                                ));
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.add,
-                            ),
-                          ),
-                        ),
                         controller: _phoneController,
                         label: AppStrings.phoneNumber,
                         hint: AppStrings.enterValidPhone,
@@ -162,8 +95,8 @@ class RegisterScreen extends StatelessWidget {
                         textDirection: TextDirection.ltr,
                         obscure: false,
                         validator: (value) {
-                          if (value!.length < AppSize.s12) {
-                            return AppStrings.enterValidPassword;
+                          if (value!.length < AppSize.s10) {
+                            return AppStrings.enterValidPhone;
                           } else {
                             return null;
                           }

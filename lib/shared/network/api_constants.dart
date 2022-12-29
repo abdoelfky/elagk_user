@@ -6,6 +6,7 @@ class ApiConstants {
   // End points | Paths.
   // Login pharmacy screen
   static const String login = "$baseUrl/$auth/Login";
+  static const String register = "$baseUrl/$auth/register";
 
   // Forget password screen
   static const String forgetPassword = "$baseUrl/$auth/Forgetpassword";

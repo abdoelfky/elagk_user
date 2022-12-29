@@ -1,8 +1,8 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/drawer/presentation/components/contact_us_components/contactus_container_widget.dart';
 import 'package:elagk/drawer/presentation/components/contact_us_components/space_widget.dart';
-import 'package:elagk/drawer/presentation/controller/about_us_controller/about_us_cubit.dart';
-import 'package:elagk/shared/utils/app_assets.dart';
+import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_state.dart';import 'package:elagk/shared/utils/app_assets.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,14 @@ class ContactUsContent extends StatelessWidget {
     return ScreenBackground(
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(AppPadding.p10),
-        child: BlocBuilder<AboutUsCubit, AboutUsState>(
+        child: BlocConsumer<ContactUsCubit, ContactUsState>(
+            listener: (context, state)
+            {
+              if(state is GetContactUsErrorState)
+              {
+                ContactUsCubit.get(context).getContactUs();
+              }
+            } ,
           builder: (context, state) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,8 +31,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.address,
                   imageSrc: ImageAssets.address,
-                  details:'شارع شرم الشيخ العويسي خان الخليل',
+                  details:ContactUsCubit.get(context).contactUsModel!.address.toString(),
                   onTap: () {
+                  ContactUsCubit.get(context).openMap(30.164064,31.551225);
 
                   },
                 ),
@@ -33,8 +41,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.phoneNumber,
                   imageSrc: ImageAssets.call,
-                  details: '010101212',
+                  details:ContactUsCubit.get(context).contactUsModel!.phoneNumber.toString(),
                   onTap: () {
+                    ContactUsCubit.get(context).phoneCall();
 
                   },
                 ),
@@ -42,8 +51,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.emailAddress,
                   imageSrc: ImageAssets.gmail,
-                  details:'elagk@gmail.com',
+                  details:ContactUsCubit.get(context).contactUsModel!.email.toString(),
                   onTap: () {
+                    ContactUsCubit.get(context).gmail();
 
                   },
                 ),
@@ -51,8 +61,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.whatsapp,
                   imageSrc: ImageAssets.whatsapp,
-                  details:'+201012151417',
+                  details:ContactUsCubit.get(context).contactUsModel!.whatsApp.toString(),
                   onTap: () {
+                    ContactUsCubit.get(context).whatsApp();
 
 
                   },
@@ -61,8 +72,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.facebook,
                   imageSrc: ImageAssets.facebook,
-                  details: 'elagk',
+                  details: ContactUsCubit.get(context).contactUsModel!.facebook.toString(),
                   onTap: () {
+                    ContactUsCubit.get(context).faceBook();
 
                   },
                 ),
@@ -70,8 +82,9 @@ class ContactUsContent extends StatelessWidget {
                 ContactUsContainer(
                   title: AppStrings.instagram,
                   imageSrc: ImageAssets.instagram,
-                  details: 'elagk',
+                  details: ContactUsCubit.get(context).contactUsModel!.instagram.toString(),
                   onTap: () {
+                    ContactUsCubit.get(context).instagram();
 
                   },
                 ),

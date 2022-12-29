@@ -33,6 +33,7 @@ class Routes {
   static const String pharmacy = '/PharmacyScreen';
   static const String editProfileScreen = '/EditProfileScreen';
   static const String offersScreen = '/OffersScreen';
+  static const String otpPasswordScreen = '/OtpPasswordScreen';
 
   static const String categories = '/CategoriesScreen';
   static const String allOrdersScreen = '/allOrdersScreen';
@@ -68,7 +69,7 @@ class RouteGenerator {
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.registerScreen:
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.confirmPasswordScreen:
@@ -77,7 +78,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ActivatorScreen());
         case Routes.offersScreen:
       return MaterialPageRoute(builder: (_) => OffersScreen());
-
+      case Routes.otpPasswordScreen:
+        return MaterialPageRoute(builder: (_) => OtpPasswordScreen());
       case Routes.orderByPrescription:
       return MaterialPageRoute(builder: (_) => const OrderByPrescriptionScreen());
     // case Routes.otpVerifyScreen:

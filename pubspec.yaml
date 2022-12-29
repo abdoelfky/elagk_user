@@ -72,7 +72,7 @@ dependencies:
   flutter_pw_validator:
   flutter_verification_code: ^1.1.6
   dotted_border: ^2.0.0+3
-
+  dotted_line:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,7 +1,6 @@
 class RegisterModel {
   String? firstName;
   String? lastName;
-  String? username;
   String? email;
   String? password;
   List<String>? phones;
@@ -10,7 +9,7 @@ class RegisterModel {
   RegisterModel(
       {this.firstName,
         this.lastName,
-        this.username,
+
         this.email,
         this.password,
         this.phones,
@@ -19,7 +18,7 @@ class RegisterModel {
   RegisterModel.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
     lastName = json['lastName'];
-    username = json['username'];
+
     email = json['email'];
     password = json['password'];
     phones = json['phones'].cast<String>();
@@ -35,7 +34,7 @@ class RegisterModel {
     final Map<String, dynamic> data =  <String, dynamic>{};
     data['firstName'] = firstName;
     data['lastName'] = lastName;
-    data['username'] = username;
+
     data['email'] = email;
     data['password'] = password;
     data['phones'] = phones;

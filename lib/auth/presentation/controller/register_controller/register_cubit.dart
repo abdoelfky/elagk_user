@@ -1,6 +1,7 @@
 import 'package:elagk/auth/data/models/register_model/register_model.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../shared/network/api_constants.dart';
 import '../../../../shared/network/dio_helper.dart';
 
 
@@ -25,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterStates>
   {
     emit(RegisterLoadingState());
     await DioHelper.postData(
-        url: 'http://freelancerr-001-site1.btempurl.com/api/Auth/register' ,
+        url: ApiConstants.register ,
         data:{
           "firstName": "${firstName}",
           "lastName": "${lastName}",
@@ -41,11 +42,11 @@ class RegisterCubit extends Cubit<RegisterStates>
           ]
         }
     ).then((value) {
-      print(value.data.toString());
+      print('value.data.toString()');
 
-      // registerModel= RegisterModel.fromJson(value.data);
+      registerModel= RegisterModel.fromJson(value.data);
 
-      emit(RegisterSuccessState());
+      emit(RegisterSuccessState(registerModel!));
     }).catchError((error){
       print(error.toString());
       emit(RegisterErrorState(error.toString()));

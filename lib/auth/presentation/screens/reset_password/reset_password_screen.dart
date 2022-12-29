@@ -10,6 +10,7 @@ import '../../../../shared/utils/app_routes.dart';
 import '../../../../shared/utils/app_strings.dart';
 import '../../../../shared/utils/app_values.dart';
 import '../../../../shared/utils/navigation.dart';
+import '../../../../shared/utils/text_field_validation.dart';
 import '../../components/MainTextFormField.dart';
 import '../../components/auth_title_subtitle_widget.dart';
 import '../../components/logo_widget.dart';
@@ -55,8 +56,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       const LogoWidget(),
                       const AuthTitleAndSubtitle(
                         authTitle: AppStrings.forgotPassword,
-                        authSubtitle: AppStrings.enterValidEmail,
+                        authSubtitle: AppStrings.pleasePass,
                       ),
+                      MainTextFormField(
+                        controller: ResetPasswordScreen._emailController,
+                        label: AppStrings.email,
+                        hint: AppStrings.emailExample,
+                        hintColor: AppColors.lightGrey,
+                        inputType: TextInputType.emailAddress,
+                        textDirection: TextDirection.ltr,
+                        obscure: false,
+                        validator: (value) => validateEmail(value!),
+                      ),
+                      SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       MainTextFormField(
                         controller: ResetPasswordScreen._passwordController,
                         label: AppStrings.password,
@@ -103,7 +115,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   text: AppStrings.resetPassword, state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.loginScreen);
+                                  screenRoute: Routes.homeDrawer);
                             }
 
                           } else if (state is ResetPassErrorState) {

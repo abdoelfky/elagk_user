@@ -1,28 +1,15 @@
-class AboutUsModel{
-  String? whoAreWe;
-  String? vision;
+class AboutUsModel {
+  String? message;
 
+  AboutUsModel({this.message});
 
-  AboutUsModel({
-    this.whoAreWe,
-    this.vision,
-  });
-
-
-
-
-  AboutUsModel.fromJson(Map<String, dynamic> json){
-    whoAreWe: json["whoAreWe"];
-    vision: json["vision"];
-
+  AboutUsModel.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
   }
-
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['whoAreWe'] = whoAreWe;
-    data['vision'] = vision;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
     return data;
   }
-
 }

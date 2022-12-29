@@ -35,27 +35,7 @@ class BasketScreen extends StatelessWidget {
                     firstCategoryName: "categoryName",
                   ),
 
-                  SizedBox(
-                      width: double.infinity,
-                      height: AppSize.s60,
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppPadding.p15),
-                        ),
-                        onPressed: () => {
 
-                        },
-                        color:AppColors.offBlue,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-
-                            Text(AppStrings.buy,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                          ],
-                        ),
-                      )),
                 ],
 
               ),

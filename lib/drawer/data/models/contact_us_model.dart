@@ -19,12 +19,12 @@ class ContactUsModel{
 
 
   ContactUsModel.fromJson(Map<String, dynamic> json){
-    address: json["address"];
-    phoneNumber: json["phoneNumber"];
-    email: json["email"];
-    whatsApp: json["whatsApp"];
-    facebook: json["facebook"];
-    instagram: json["instagram"];
+    address= json["address"];
+    phoneNumber= json["phoneNumber"];
+    email= json["email"];
+    whatsApp= json["whatsApp"];
+    facebook= json["facebook"];
+    instagram= json["instagram"];
   }
 
 
