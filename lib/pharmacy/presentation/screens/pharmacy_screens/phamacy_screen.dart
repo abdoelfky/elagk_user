@@ -9,6 +9,7 @@ import 'package:elagk/shared/components/second_appBar.dart';
 import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_info.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_assets.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -49,12 +50,14 @@ class PharmacyScreen extends StatelessWidget {
           body: BlocConsumer<CategoriesCubit, CategoriesStates>(
             listener: (context, state) {},
             builder: (context, state) {
-              if (CategoriesCubit.get(context).currentLocation == '') {
+
+              if (AppConstants.pharmacyLocation == '') {
                 CategoriesCubit.get(context).getLocation(
                     pharmacyModel!.latitude, pharmacyModel!.longitude);
               }
-              if (CategoriesCubit.get(context).distance == '') {
-                CategoriesCubit.get(context).getDistance(30.164064,31.551225);
+              if (AppConstants.distance == '') {
+                CategoriesCubit.get(context).getDistance(
+                    pharmacyModel!.latitude, pharmacyModel!.longitude);
               }
               return ScreenBackground(
                 child: SingleChildScrollView(
@@ -89,9 +92,10 @@ class PharmacyScreen extends StatelessWidget {
                             ),
                             // Pharmacy information
                             PharmacyInformation(
-                              distance: CategoriesCubit.get(context).distance,
+                              distance: AppConstants.distance,
                               pharmacyModel: pharmacyModel,
-                              pharmacyLocation: CategoriesCubit.get(context).currentLocation,
+                              pharmacyLocation:
+                              AppConstants.pharmacyLocation,
                             ),
                           ],
                         ),

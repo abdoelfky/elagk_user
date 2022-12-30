@@ -4,6 +4,7 @@ import 'package:elagk/home/presentation/controllers/home_screen_controller/home_
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
@@ -54,6 +55,8 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     {
       currentPostion = LatLng(value.latitude, value.longitude);
       getCurrentLocation(currentPostion!.latitude, currentPostion!.longitude);
+      AppConstants.myLat=currentPostion!.latitude;
+      AppConstants.myLong=currentPostion!.longitude;
     });
 
   }

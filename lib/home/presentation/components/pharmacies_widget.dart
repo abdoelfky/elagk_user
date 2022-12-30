@@ -31,7 +31,7 @@ class PharmaciesWidget extends StatelessWidget {
                 itemBuilder: (context, index)
                 {
                   return PharmacyItem
-                    (context,HomeScreenCubit.get(context).pharmacies[index]);
+                    (pharmacy:HomeScreenCubit.get(context).pharmacies[index],);
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 20,),
                 itemCount:HomeScreenCubit.get(context).pharmacies.length)

@@ -8,6 +8,11 @@ class AppConstants {
   static const String pharmacyId = "pharmacyId";
   static const String categoryId = "categoryId";
   static const String defaultCategory = "defaultCategory";
+  static double? myLat;
+  static double? myLong;
+  static String pharmacyLocation = '';
+  static String distance = '';
+
 
   // About us Screen
   static const String whoAreWeParameter = "whoAreWe";
