@@ -12,6 +12,7 @@ class AppConstants {
   static double? myLong;
   static String pharmacyLocation = '';
   static String distance = '';
+  static String currentLocation='';
 
 
   // About us Screen

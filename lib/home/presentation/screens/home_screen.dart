@@ -10,6 +10,7 @@ import 'package:elagk/home/presentation/components/search_widget.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_state.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -26,14 +27,13 @@ class HomeScreen extends StatelessWidget {
       listener: (context, state) {
       },
       builder: (context, state) {
-        print(HomeScreenCubit.get(context).currentLocation);
         return Directionality(
           textDirection: TextDirection.rtl,
           child: SafeArea(
             child: Scaffold(
               // TODO: remove Scaffold qnd appBar.
               appBar: homePageAppBar(
-                title: AppBarTitle(currentLocation: HomeScreenCubit.get(context).currentLocation,),
+                title: AppBarTitle(currentLocation:AppConstants.currentLocation),
                 onTap: () {
                   navigateTo(
                     context: context,

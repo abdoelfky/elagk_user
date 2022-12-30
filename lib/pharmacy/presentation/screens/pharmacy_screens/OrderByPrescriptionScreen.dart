@@ -12,6 +12,7 @@ import 'package:elagk/home/presentation/components/body_welcome.dart';
 import 'package:elagk/home/presentation/components/offers_slider_widget.dart';
 import 'package:elagk/home/presentation/components/pharmacies_widget.dart';
 import 'package:elagk/home/presentation/components/search_widget.dart';
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/components/OrderByPrescriptionComponents/OrderByPrescriptionContent.dart';
 import 'package:elagk/shared/components/second_appBar.dart';
 import 'package:elagk/shared/components/toast_component.dart';
@@ -25,7 +26,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderByPrescriptionScreen extends StatelessWidget {
-  const OrderByPrescriptionScreen({Key? key}) : super(key: key);
+  final PharmacyModel? pharmacyModel;
+
+  const OrderByPrescriptionScreen({Key? key, this.pharmacyModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class OrderByPrescriptionScreen extends StatelessWidget {
             body: BlocConsumer<ProfileCubit, ProfileStates>(
                 listener: (context, state) {},
                 builder: (context, state) {
-                  return OrderByPrescriptionContent();
+                  return OrderByPrescriptionContent(pharmacyModel:pharmacyModel,);
                 })),
         // HomeScreen
       ),

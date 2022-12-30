@@ -82,7 +82,10 @@ class RouteGenerator {
       case Routes.otpPasswordScreen:
         return MaterialPageRoute(builder: (_) => OtpPasswordScreen());
       case Routes.orderByPrescription:
-      return MaterialPageRoute(builder: (_) => const OrderByPrescriptionScreen());
+        return MaterialPageRoute(builder: (_) {
+          final pharmacyModel = routeSettings.arguments as PharmacyModel;
+          return OrderByPrescriptionScreen(pharmacyModel:pharmacyModel ,);
+        });
     case Routes.pharmacy:
       return MaterialPageRoute(builder: (_) {
         final pharmacyModel = routeSettings.arguments as PharmacyModel;

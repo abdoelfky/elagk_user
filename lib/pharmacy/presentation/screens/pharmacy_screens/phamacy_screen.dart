@@ -124,7 +124,8 @@ class PharmacyScreen extends StatelessWidget {
                             onPressed: () => {
                               navigateTo(
                                   context: context,
-                                  screenRoute: Routes.orderByPrescription)
+                                  screenRoute: Routes.orderByPrescription,
+                              arguments: pharmacyModel)
                             },
                             color: AppColors.offBlue,
                             child: Row(

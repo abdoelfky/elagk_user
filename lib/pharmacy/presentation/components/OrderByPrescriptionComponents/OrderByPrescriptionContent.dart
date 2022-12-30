@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
 import 'package:elagk/auth/presentation/components/main_button.dart';
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_state.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,8 @@ import 'AddPrescriptionImage.dart';
 import 'OrderByPrescriptionDevider.dart';
 
 class OrderByPrescriptionContent extends StatelessWidget {
-  OrderByPrescriptionContent({Key? key}) : super(key: key);
+  final PharmacyModel? pharmacyModel;
+  OrderByPrescriptionContent({Key? key, this.pharmacyModel}) : super(key: key);
   static final _orderController = TextEditingController();
   static final _discountController = TextEditingController();
 
@@ -47,7 +50,7 @@ class OrderByPrescriptionContent extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'مدنية نصر -التجمع الخامس - شارع افريقيا السينمائى',
+                  AppConstants.currentLocation,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
@@ -70,8 +73,8 @@ class OrderByPrescriptionContent extends StatelessWidget {
                     )
                   ],
                 ),
-                const Text(
-                  'صيدليه 19011',
+                Text(
+                  pharmacyModel!.pharmacyName!,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(

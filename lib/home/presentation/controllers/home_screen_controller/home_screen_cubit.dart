@@ -62,7 +62,6 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   }
 
 
-  String currentLocation='';
   Future<void> getCurrentLocation(lat,long)
   async {
     var addresses;
@@ -71,7 +70,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
     first = addresses[5];
     emit(GetUserLocationState());
-    currentLocation=first.addressLine!;
+    AppConstants.currentLocation=first.addressLine!;
     print("${first.addressLine}");
     print("permission:${permission.toString()}");
   }
