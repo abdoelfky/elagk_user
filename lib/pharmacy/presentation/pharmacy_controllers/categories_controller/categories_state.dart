@@ -14,3 +14,6 @@ class CategoriesErrorState extends CategoriesStates
 
   CategoriesErrorState(this.error);
 }
+
+class GetLocationState extends CategoriesStates {}
+

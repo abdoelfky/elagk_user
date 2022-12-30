@@ -9,8 +9,9 @@ import 'package:elagk/shared/utils/app_strings.dart';
 class PharmacyInformation extends StatelessWidget {
   final PharmacyModel? pharmacyModel;
   final String? pharmacyLocation;
+  final String? distance;
   const PharmacyInformation({Key? key,required this.pharmacyModel
-    ,required this.pharmacyLocation}) : super(key: key);
+    ,required this.pharmacyLocation, this.distance}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -85,7 +86,7 @@ class PharmacyInformation extends StatelessWidget {
                           Image.asset(ImageAssets.between),
                           const Spacer(),
                           Text(
-                            AppStrings.deliveryDistance,
+                            " تبعد المسافة \n${distance} كم ",
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
