@@ -27,6 +27,7 @@ class RegisterScreen extends StatelessWidget {
   static final _lastNameController = TextEditingController();
   static final _phoneController = TextEditingController();
   static final _passwordController = TextEditingController();
+  String my='abdo@gmail.com';
 
   @override
   Widget build(BuildContext context) {
@@ -187,6 +188,7 @@ class RegisterScreen extends StatelessWidget {
                                           lastName: _lastNameController.text.trim(),
                                         );
                                       }
+
                                     },
                                   ));
                         },

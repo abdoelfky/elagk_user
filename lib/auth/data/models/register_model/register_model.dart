@@ -21,7 +21,7 @@ class RegisterModel {
 
     email = json['email'];
     password = json['password'];
-    phones = json['phones'].cast<String>();
+    phones = json['phones'];
     if (json['roles'] != null) {
       roles = <Roles>[];
       json['roles'].forEach((v) {

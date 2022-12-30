@@ -30,6 +30,7 @@ class RegisterCubit extends Cubit<RegisterStates>
         data:{
           "firstName": "${firstName}",
           "lastName": "${lastName}",
+          "username":'${email.split(RegExp('\\W'))[0]}',
           "email": "${email}",
           "password": "${password}",
           "phones": [
@@ -42,11 +43,10 @@ class RegisterCubit extends Cubit<RegisterStates>
           ]
         }
     ).then((value) {
-      print('value.data.toString()');
 
-      registerModel= RegisterModel.fromJson(value.data);
+      // registerModel= RegisterModel.fromJson(value.data);
 
-      emit(RegisterSuccessState(registerModel!));
+      emit(RegisterSuccessState());
     }).catchError((error){
       print(error.toString());
       emit(RegisterErrorState(error.toString()));
