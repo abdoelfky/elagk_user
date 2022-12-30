@@ -38,18 +38,43 @@ class ProfileCubit extends Cubit<ProfileStates> {
   Future<void> updateUserProfileData({
     required String email,
     required String userName,
+    required String firstName,
+    required String lastName,
     required String phone,
     required String password,
+    required File profileImage
 
 
   }) async {
     emit(ProfileUpdateUserDataLoadingState());
-    print(CacheHelper.getData(key: AppConstants.userId));
+    // print(CacheHelper.getData(key: AppConstants.userId));
+    // print(profileImage.readAsBytes());
     await DioHelper.putData(
-      url: ApiConstants.UserIdPath(
-          CacheHelper.getData(key: AppConstants.userId).toString()),
+      url: ApiConstants.UserIdPath(userModel!.id!),
       data:
       {
+        "firstName": userModel!.firstName,
+        "lastName": userModel!.lastName,
+        "profilePicturePath":userModel!.profilePicturePath,
+        "profilePicture": userModel!.profilePicture,
+        "isDeleted": userModel!.isDeleted,
+        "userPhones":userModel!.userPhones,
+        "userActivations": userModel!.userActivations,
+        "id": userModel!.id,
+        "userName": userModel!.userName,
+        "normalizedUserName": userModel!.normalizedUserName,
+        "email": userModel!.email,
+        "normalizedEmail": userModel!.normalizedEmail,
+        "emailConfirmed": userModel!.emailConfirmed,
+        "passwordHash": userModel!.passwordHash,
+        "securityStamp": userModel!.securityStamp,
+        "concurrencyStamp":userModel!.concurrencyStamp,
+        "phoneNumber": userModel!.phoneNumber,
+        "phoneNumberConfirmed": userModel!.phoneNumberConfirmed,
+        "twoFactorEnabled": userModel!.twoFactorEnabled,
+        "lockoutEnd": userModel!.lockoutEnd,
+        "lockoutEnabled": userModel!.lockoutEnabled,
+        "accessFailedCount": userModel!.accessFailedCount
       },
     ).then((value) {
       userModel = UserProfileModel.fromJson(value.data);

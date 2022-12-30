@@ -14,9 +14,12 @@ class EditProfileContent extends StatelessWidget {
   static final _formKey = GlobalKey<FormState>();
   bool _hasInternet = false;
   static final _phoneController = TextEditingController();
-  static final _nameController = TextEditingController();
+  static final _userNameController = TextEditingController();
+  static final _firstNameController = TextEditingController();
+  static final _lastNameController = TextEditingController();
   static final _emailController = TextEditingController();
   static final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProfileCubit,ProfileStates>(
@@ -41,8 +44,12 @@ class EditProfileContent extends StatelessWidget {
         {
           _phoneController.text =
           ProfileCubit.get(context).userModel!.userPhones![0];
-          _nameController.text =
+          _userNameController.text =
           ProfileCubit.get(context).userModel!.userName!;
+          _firstNameController.text =
+          ProfileCubit.get(context).userModel!.firstName!;
+          _lastNameController.text =
+          ProfileCubit.get(context).userModel!.lastName!;
           _emailController.text =
           ProfileCubit.get(context).userModel!.email!;
           _passwordController.text ='***********';
@@ -96,6 +103,64 @@ class EditProfileContent extends StatelessWidget {
                     SizedBox(
                       height: mediaQueryHeight(context) * .025,
                     ),
+                    MainTextFormField(
+                      controller: _firstNameController,
+                      label: AppStrings.firstName,
+                      hint: AppStrings.firstName,
+                      hintColor: AppColors.lightGrey,
+                      inputType: TextInputType.name,
+                      textDirection: TextDirection.rtl,
+                      obscure: false,
+                      validator: (value) {
+                        if (value!.length < 3) {
+                          return AppStrings.enterValidFullName;
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: mediaQueryHeight(context) * .025,
+                    ),
+                    MainTextFormField(
+                      controller: _lastNameController,
+                      label: AppStrings.lastName,
+                      hint: AppStrings.lastName,
+                      hintColor: AppColors.lightGrey,
+                      inputType: TextInputType.name,
+                      textDirection: TextDirection.rtl,
+                      obscure: false,
+                      validator: (value) {
+                        if (value!.length < 3) {
+                          return AppStrings.enterValidFullName;
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: mediaQueryHeight(context) * .025,
+                    ),
+                    //userName
+                    MainTextFormField(
+                      controller: _userNameController,
+                      label: AppStrings.userName,
+                      hint: AppStrings.userName,
+                      hintColor: AppColors.lightGrey,
+                      inputType: TextInputType.name,
+                      textDirection: TextDirection.rtl,
+                      obscure: false,
+                      validator: (value) {
+                        if (value!.length < 3) {
+                          return AppStrings.enterValidFullName;
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: mediaQueryHeight(context) * .025,
+                    ),
                     //phone number
                     MainTextFormField(
                       controller: _phoneController,
@@ -113,26 +178,7 @@ class EditProfileContent extends StatelessWidget {
                         }
                       },
                     ),
-                    SizedBox(
-                      height: mediaQueryHeight(context) * .025,
-                    ),
-                    //userName
-                    MainTextFormField(
-                      controller: _nameController,
-                      label: AppStrings.userName,
-                      hint: AppStrings.userName,
-                      hintColor: AppColors.lightGrey,
-                      inputType: TextInputType.name,
-                      textDirection: TextDirection.rtl,
-                      obscure: false,
-                      validator: (value) {
-                        if (value!.length < 3) {
-                          return AppStrings.enterValidFullName;
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
+
                     SizedBox(
                       height: mediaQueryHeight(context) * .025,
                     ),
@@ -184,9 +230,13 @@ class EditProfileContent extends StatelessWidget {
                               {
                                 ProfileCubit.get(context).updateUserProfileData
                                   (email: _emailController.text.trim(),
-                                    userName: _nameController.text,
+                                    userName: _userNameController.text,
                                     phone: _phoneController.text,
-                                    password: _passwordController.text);
+                                    password: _passwordController.text,
+                                    firstName:_firstNameController.text,
+                                    lastName: _lastNameController.text,
+                                    profileImage: profileCubit.profileImage!
+                                );
 
                               }}
                           },
