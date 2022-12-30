@@ -13,12 +13,14 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ComplaintsScreen extends StatelessWidget {
-  const ComplaintsScreen({Key? key}) : super(key: key);
+  ComplaintsScreen({Key? key}) : super(key: key);
   static final _formKey = GlobalKey<FormState>();
   static final _titleController = TextEditingController();
   static final _descriptionController = TextEditingController();
+  bool _hasInternet = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class ComplaintsScreen extends StatelessWidget {
           appBar: fixedAppBar(
             context: context,
             title: AppStrings.suggestionsAndComplaints,
-            actionWidget:const AppBarBasketIcon(),
+            actionWidget: const AppBarBasketIcon(),
             onTap: () {
               navigateTo(
                 context: context,
@@ -80,31 +82,40 @@ class ComplaintsScreen extends StatelessWidget {
                       listener: (context, state) {
                         if (state is SendComplaintSuccessState) {
                           showToast(
-                              text: 'Login Successfully',
+                              text: 'Complaint Sent Successfully',
                               state: ToastStates.SUCCESS);
                           _titleController.text = '';
                           _descriptionController.text = '';
                         } else if (state is SendComplaintErrorState) {
                           showToast(
-                              text: '${state.error}',
-                              state: ToastStates.ERROR);
+                              text: '${state.error}', state: ToastStates.ERROR);
                         }
                       },
                       builder: (context, state) {
-                        return ConditionalBuilder(condition: (state is SendComplaintLoadingState),
-                          builder: (BuildContext context)=>CircularProgressIndicator(),
-                            fallback: (BuildContext context)=> WideButton(
-                              title: AppStrings.sendRequest,
-                              color: AppColors.offBlue,
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  ComplaintsCubit.get(context).sendComplaint(
-                                      issueType: _titleController.text,
-                                      issueDescription: _descriptionController
-                                          .text);
-                                }
-                              },
-                            ));
+                        return ConditionalBuilder(
+                            condition: (state is SendComplaintLoadingState),
+                            builder: (BuildContext context) =>
+                                CircularProgressIndicator(),
+                            fallback: (BuildContext context) => WideButton(
+                                  title: AppStrings.sendRequest,
+                                  color: AppColors.offBlue,
+                                  onPressed: () async {
+                                    _hasInternet =
+                                        await InternetConnectionChecker()
+                                            .hasConnection;
+                                    if (_hasInternet) {
+                                      if (_formKey.currentState!.validate()) {
+                                        ComplaintsCubit.get(context)
+                                            .sendComplaint(
+                                                issueType:
+                                                    _titleController.text,
+                                                issueDescription:
+                                                    _descriptionController
+                                                        .text);
+                                      }
+                                    }
+                                  },
+                                ));
                       },
                     ),
                   ],

@@ -47,7 +47,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       case MenuItems.contactUs:
         return const ContactUsScreen();
       case MenuItems.complaints:
-        return const ComplaintsScreen();
+        return ComplaintsScreen();
       case MenuItems.aboutUs:
         return const AboutUsScreen();
 
