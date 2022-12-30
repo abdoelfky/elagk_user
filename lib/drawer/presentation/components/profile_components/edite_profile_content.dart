@@ -46,6 +46,9 @@ class EditProfileContent extends StatelessWidget {
           _emailController.text =
           ProfileCubit.get(context).userModel!.email!;
           _passwordController.text ='***********';
+          var profileCubit= ProfileCubit.get(context);
+
+
           return Padding(
             padding: const EdgeInsets.all(AppPadding.p15),
             child: SingleChildScrollView(
@@ -56,26 +59,39 @@ class EditProfileContent extends StatelessWidget {
                     SizedBox(
                       height: mediaQueryHeight(context) * .025,
                     ),
-                    Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(
-                            width: 4,
-                            color: AppColors.lightGrey,
-                          )),
-                      child: Center(
-                        child: Image(
-                          image: AssetImage(
-                            'assets/images/menu/profile.png',
+                    Stack(
+                      alignment: AlignmentDirectional.bottomEnd,
+                      children:
+                      [
+                        CircleAvatar(
+                          radius: 88,
+                          backgroundColor: AppColors.primary,
+                          child: CircleAvatar(
+                            radius: 85.0,
+                            backgroundImage:
+                            profileCubit.profileImage != null?
+                            FileImage(profileCubit.profileImage!):
+                            AssetImage(
+                              'assets/images/menu/profile.png',
+                            ) as ImageProvider,
                           ),
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
                         ),
-                      ),
-                    ),
+                        CircleAvatar(
+                          radius: 25.0,
+                          backgroundColor: AppColors.primary,
+                          child: IconButton(
+                              icon: Icon(Icons.camera_alt_outlined,
+                                color: Colors.white,
+                                size: 18.0,
+
+                              ),
+                              onPressed: ()
+                              {
+                                ProfileCubit.get(context).getProfileImage();
+                              }),
+                        )
+
+                      ],),
 
                     SizedBox(
                       height: mediaQueryHeight(context) * .025,

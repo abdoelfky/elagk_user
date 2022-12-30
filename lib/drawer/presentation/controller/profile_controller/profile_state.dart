@@ -32,3 +32,8 @@ class ProfileUpdateUserDataErrorState  extends ProfileStates
 
   ProfileUpdateUserDataErrorState(this.error);
 }
+
+class ProfilePickedSuccessState  extends ProfileStates {}
+
+class ProfilePickedErrorState  extends ProfileStates {}
+

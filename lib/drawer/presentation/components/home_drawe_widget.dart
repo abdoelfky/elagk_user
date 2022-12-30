@@ -18,6 +18,7 @@ import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key}) : super(key: key);
@@ -55,28 +56,38 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return ZoomDrawer(
-      menuBackgroundColor: AppColors.primary,
-      isRtl: true,
-      menuScreen: Builder(
-        builder: (context) => Stack(
-          children: [
-            MenuScreen(
-              currentItem: currentItem,
-              onSelectedItem: (item) {
-                setState(() => currentItem = item);
-                ZoomDrawer.of(context)!.close();
-              },
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: ()
+      async{
+        if (_key.currentState!.isDrawerOpen) {
+          Navigator.of(context).pop();
+          return false;
+        }
+        return true;
+      },
+      child: ZoomDrawer(
+        menuBackgroundColor: AppColors.primary,
+        isRtl: true,
+        menuScreen: Builder(
+          builder: (context) => Stack(
+            children: [
+              MenuScreen(
+                currentItem: currentItem,
+                onSelectedItem: (item) {
+                  setState(() => currentItem = item);
+                  ZoomDrawer.of(context)!.close();
+                },
+              ),
+            ],
+          ),
         ),
+        mainScreenTapClose: false,
+        mainScreen: getScreen(currentItem),
+        style: DrawerStyle.defaultStyle,
+        borderRadius: AppSize.s100,
+        angle: AppSize.s0,
+        slideWidth: mediaQueryWidth(context) * AppSize.s0_7,
       ),
-      mainScreenTapClose: true,
-      mainScreen: getScreen(currentItem),
-      style: DrawerStyle.defaultStyle,
-      borderRadius: AppSize.s100,
-      angle: AppSize.s0,
-      slideWidth: mediaQueryWidth(context) * AppSize.s0_7,
     );
   }
 }
