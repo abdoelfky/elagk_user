@@ -28,9 +28,11 @@ class PharmaciesWidget extends StatelessWidget {
             ListView.separated(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => PharmacyItem
-                  (context,HomeScreenCubit.get(context).pharmacies[index].pharmacyName
-                    ,HomeScreenCubit.get(context).pharmacies[index].imageUrl),
+                itemBuilder: (context, index)
+                {
+                  return PharmacyItem
+                    (context,HomeScreenCubit.get(context).pharmacies[index]);
+                },
                 separatorBuilder: (context, index) => SizedBox(height: 20,),
                 itemCount:HomeScreenCubit.get(context).pharmacies.length)
           ],);

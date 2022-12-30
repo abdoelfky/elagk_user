@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>AboutUsCubit()..getAboutUs()),
           BlocProvider(create: (BuildContext context) =>BasketCubit()),
           BlocProvider(create: (BuildContext context) =>ActivatorCubit()),
-          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getPharmacies()),
+          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..locationPermission()..getPharmacies()),
 
         ],
         child: MaterialApp(

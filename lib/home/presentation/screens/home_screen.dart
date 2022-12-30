@@ -26,13 +26,14 @@ class HomeScreen extends StatelessWidget {
       listener: (context, state) {
       },
       builder: (context, state) {
+        print(HomeScreenCubit.get(context).currentLocation);
         return Directionality(
           textDirection: TextDirection.rtl,
           child: SafeArea(
             child: Scaffold(
               // TODO: remove Scaffold qnd appBar.
               appBar: homePageAppBar(
-                title: AppBarTitle(),
+                title: AppBarTitle(currentLocation: HomeScreenCubit.get(context).currentLocation,),
                 onTap: () {
                   navigateTo(
                     context: context,

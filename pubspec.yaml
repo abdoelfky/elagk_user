@@ -71,8 +71,11 @@ dependencies:
   internet_connection_checker:
   flutter_pw_validator:
   flutter_verification_code: ^1.1.6
-  dotted_border: ^2.0.0+3
+  dotted_border:
   dotted_line:
+  flutter_geocoder: ^0.2.2-nullsafety
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

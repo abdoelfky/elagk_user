@@ -136,7 +136,7 @@ class BasketPharmacy extends StatelessWidget {
 
                     child: const Center(
                       child: Icon(
-                          Icons.highlight_remove_sharp,color: Colors.red,
+                          Icons.restore_from_trash_rounded,color: Colors.red,
                       ),
                     ),
                   ),

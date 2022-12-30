@@ -1,3 +1,4 @@
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
@@ -6,9 +7,10 @@ import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
 
-  Widget  PharmacyItem(context,pharmacyName,pharmacyImage)=>InkWell(
+  Widget  PharmacyItem(context,PharmacyModel pharmacy)=>InkWell(
     onTap: () {
-navigateTo(context: context, screenRoute:Routes.pharmacy);
+      navigateTo(context: context, screenRoute:Routes.pharmacy,
+          arguments:pharmacy );
     },
     child: Container(
       width: mediaQueryWidth(context) * .4,
@@ -37,7 +39,7 @@ navigateTo(context: context, screenRoute:Routes.pharmacy);
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                pharmacyName,
+                pharmacy.pharmacyName!,
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               Row(

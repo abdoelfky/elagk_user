@@ -9,6 +9,7 @@ import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/home/presentation/screens/offers_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/screens/categories_screen/categories_screen.dart';
 import 'package:elagk/pharmacy/presentation/screens/pharmacy_screens/OrderByPrescriptionScreen.dart';
 import 'package:elagk/pharmacy/presentation/screens/pharmacy_screens/phamacy_screen.dart';
@@ -69,7 +70,7 @@ class RouteGenerator {
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.registerScreen:
-        return MaterialPageRoute(builder: (_) => RegisterScreen());
+        return MaterialPageRoute(builder: (_) =>  RegisterScreen());
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.confirmPasswordScreen:
@@ -82,17 +83,18 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OtpPasswordScreen());
       case Routes.orderByPrescription:
       return MaterialPageRoute(builder: (_) => const OrderByPrescriptionScreen());
-    // case Routes.otpVerifyScreen:
-    //   return MaterialPageRoute(builder: (_) {
-    //     final args = routeSettings.arguments as OTPArguments;
-    //     return OTPVerifyScreen(email: args.email);
-    //   });
+    case Routes.pharmacy:
+      return MaterialPageRoute(builder: (_) {
+        final pharmacyModel = routeSettings.arguments as PharmacyModel;
+        // final pharmacyLocation = routeSettings.arguments as String;
+
+        return PharmacyScreen(pharmacyModel:pharmacyModel ,);
+      });
       case Routes.homeDrawer:
         return MaterialPageRoute(builder: (_) => const HomeDrawer());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case Routes.pharmacy:
-        return MaterialPageRoute(builder: (_) => const PharmacyScreen());
+
       case Routes.categories:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
     case Routes.basketScreen:

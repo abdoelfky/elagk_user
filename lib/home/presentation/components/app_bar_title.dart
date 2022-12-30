@@ -2,11 +2,13 @@ import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({Key? key}) : super(key: key);
+final String currentLocation;
+AppBarTitle({Key? key, required this.currentLocation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children:
       [
         Row(
@@ -20,9 +22,9 @@ class AppBarTitle extends StatelessWidget {
            )
           ],
         ),
-        Text('الاسكندريه-الشاطئ النيل',
+        Text(currentLocation,
           style: Theme.of(context).textTheme.displayLarge,
-        )
+        ),
       ],
     );
   }

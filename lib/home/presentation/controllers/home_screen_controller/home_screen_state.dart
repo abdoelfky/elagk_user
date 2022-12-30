@@ -15,3 +15,6 @@ class GetPharmaciesErrorState extends HomeScreenState
 
   GetPharmaciesErrorState(this.error);
 }
+
+class GetUserLocationState extends HomeScreenState {}
+

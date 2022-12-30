@@ -1,5 +1,6 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/components/OrderByPrescriptionComponents/OrderByPrescriptionContent.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/item.dart';
 import 'package:elagk/shared/components/second_appBar.dart';
@@ -16,8 +17,10 @@ import '../../../../shared/components/second_appBar.dart';
 
 class PharmacyScreen extends StatelessWidget {
 
+final PharmacyModel? pharmacyModel;
+// final String? pharmacyLocation;
 
-  const PharmacyScreen({Key? key, }) : super(key: key);
+  PharmacyScreen({Key? key,this.pharmacyModel,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class PharmacyScreen extends StatelessWidget {
           backgroundColor: AppColors.offWhite,
           appBar: SecondAppBar(
             context: context,
-            title: " pharmacyName ",
+            title: pharmacyModel!.pharmacyName!,
             onTap: () {
               navigateTo(
                 context: context,
@@ -69,7 +72,8 @@ class PharmacyScreen extends StatelessWidget {
                           ),
                         ),
                         // Pharmacy information
-                        const PharmacyInformation(),
+                        PharmacyInformation(pharmacyModel: pharmacyModel
+                          ,pharmacyLocation: 'القاهره',),
                       ],
                     ),
                   ),
