@@ -89,7 +89,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   File?  profileImage;
   var picker = ImagePicker();
 
-  Future <void> getProfileImage() async //
+  Future <void> getProfileImageGallery() async //
       {
     await picker.pickImage(source: ImageSource.gallery)
         .then((value) {
@@ -99,6 +99,20 @@ class ProfileCubit extends Cubit<ProfileStates> {
       emit(ProfilePickedErrorState());
     });
   }
+
+  void getProfileImageCamera () async {
+
+    await picker.pickImage(source: ImageSource.camera)
+        .then((value) {
+      profileImage = File(value!.path);
+      emit(ProfilePickedSuccessState());
+    }).catchError((onError) {
+      emit(ProfilePickedErrorState());
+    });
+
+  }
+
+
 }
 
 

@@ -20,6 +20,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
@@ -67,6 +68,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>ActivatorCubit()),
           BlocProvider(create: (BuildContext context) =>CategoriesCubit()),
           BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..locationPermission()..getPharmacies()),
+          BlocProvider(create: (BuildContext context) =>OrderByPerscripiyionCubit()),
+
 
         ],
         child: MaterialApp(
