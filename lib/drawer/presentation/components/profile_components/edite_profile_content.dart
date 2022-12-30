@@ -213,7 +213,7 @@ class EditProfileContent extends StatelessWidget {
                       },
                     ),
                     SizedBox(
-                      height: mediaQueryHeight(context) * .14,
+                      height: mediaQueryHeight(context) * .02,
                     ),
                     ConditionalBuilder(
                         condition:

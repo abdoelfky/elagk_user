@@ -16,11 +16,13 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'profile_text_form_feild.dart';
 class ProfileContent extends StatelessWidget {
   static final _formKey = GlobalKey<FormState>();
-  bool _hasInternet = false;
   static final _phoneController = TextEditingController();
-  static final _nameController = TextEditingController();
+  static final _userNameController = TextEditingController();
+  static final _firstNameController = TextEditingController();
+  static final _lastNameController = TextEditingController();
   static final _emailController = TextEditingController();
   static final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProfileCubit,ProfileStates>(
@@ -32,10 +34,14 @@ class ProfileContent extends StatelessWidget {
     {
       _phoneController.text =
       ProfileCubit.get(context).userModel!.userPhones![0];
-      _nameController.text =
+      _userNameController.text =
       ProfileCubit.get(context).userModel!.userName!;
       _emailController.text =
       ProfileCubit.get(context).userModel!.email!;
+      _firstNameController.text =
+      ProfileCubit.get(context).userModel!.firstName!;
+      _lastNameController.text =
+      ProfileCubit.get(context).userModel!.lastName!;
       _passwordController.text ='***********';
       return Padding(
         padding: const EdgeInsets.all(AppPadding.p15),
@@ -71,6 +77,64 @@ class ProfileContent extends StatelessWidget {
                 SizedBox(
                   height: mediaQueryHeight(context) * .025,
                 ),
+                //userName
+                ProfileTextFormField(
+                  controller: _firstNameController,
+                  label: AppStrings.firstName,
+                  hint: AppStrings.firstName,
+                  hintColor: AppColors.lightGrey,
+                  inputType: TextInputType.name,
+                  textDirection: TextDirection.rtl,
+                  obscure: false,
+                  validator: (value) {
+                    if (value!.length < 3) {
+                      return AppStrings.enterValidFullName;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .025,
+                ),
+                ProfileTextFormField(
+                  controller: _lastNameController,
+                  label: AppStrings.lastName,
+                  hint: AppStrings.lastName,
+                  hintColor: AppColors.lightGrey,
+                  inputType: TextInputType.name,
+                  textDirection: TextDirection.rtl,
+                  obscure: false,
+                  validator: (value) {
+                    if (value!.length < 3) {
+                      return AppStrings.enterValidFullName;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .025,
+                ),
+                ProfileTextFormField(
+                  controller: _userNameController,
+                  label: AppStrings.userName,
+                  hint: AppStrings.userName,
+                  hintColor: AppColors.lightGrey,
+                  inputType: TextInputType.name,
+                  textDirection: TextDirection.rtl,
+                  obscure: false,
+                  validator: (value) {
+                    if (value!.length < 3) {
+                      return AppStrings.enterValidFullName;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .025,
+                ),
                 //phone number
                 ProfileTextFormField(
                   controller: _phoneController,
@@ -91,26 +155,7 @@ class ProfileContent extends StatelessWidget {
                 SizedBox(
                   height: mediaQueryHeight(context) * .025,
                 ),
-                //userName
-                ProfileTextFormField(
-                  controller: _nameController,
-                  label: AppStrings.userName,
-                  hint: AppStrings.userName,
-                  hintColor: AppColors.lightGrey,
-                  inputType: TextInputType.name,
-                  textDirection: TextDirection.rtl,
-                  obscure: false,
-                  validator: (value) {
-                    if (value!.length < 3) {
-                      return AppStrings.enterValidFullName;
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: mediaQueryHeight(context) * .025,
-                ),
+
                 //email
                 ProfileTextFormField(
                   controller: _emailController,
@@ -142,7 +187,7 @@ class ProfileContent extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: mediaQueryHeight(context) * .14,
+                  height: mediaQueryHeight(context) * .02,
                 ),
                 MainButton(
                   title: AppStrings.editProfile,
