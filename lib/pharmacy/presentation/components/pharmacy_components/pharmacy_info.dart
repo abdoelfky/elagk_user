@@ -29,86 +29,84 @@ class PharmacyInformation extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSize.s8),
           color: Colors.white,
         ),
-        child: Flexible(
-          child: Column(
-            children: [
-              Text(
-                 pharmacyModel!.pharmacyName!,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(ImageAssets.mapPin),
-                        SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
-                        InkWell(
-                          onTap: () {
+        child: Column(
+          children: [
+            Text(
+               pharmacyModel!.pharmacyName!,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(ImageAssets.mapPin),
+                      SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
+                      InkWell(
+                        onTap: () {
 
-                          },
-                          child: Text(
-                            pharmacyLocation!,
-                            // TODO: text button to maps.
-                            // cubit.onePharmacyModel!.data!.location.toString(),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium!
-                                .copyWith(
-                              color: AppColors.darkGrey,
-                            ),
+                        },
+                        child: Text(
+                          pharmacyLocation!,
+                          // TODO: text button to maps.
+                          // cubit.onePharmacyModel!.data!.location.toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                            color: AppColors.darkGrey,
                           ),
                         ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: AppPadding.p10),
+                    child: Row(
+                      children: [
+                        Text(
+                          AppStrings.deliveryOrderIn30Minutes,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeightManager.medium,
+                          ),
+                        ),
+                        SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
+                        Image.asset(ImageAssets.between),
+                        const Spacer(),
+                        Text(
+                          " تبعد المسافة \n${distance} كم ",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeightManager.medium,
+                          ),
+                        ),
+                        SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
+
+                        Image.asset(ImageAssets.between),
                       ],
                     ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: AppPadding.p10),
-                      child: Row(
-                        children: [
-                          Text(
-                            AppStrings.deliveryOrderIn30Minutes,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium!
-                                .copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeightManager.medium,
-                            ),
-                          ),
-                          SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
-                          Image.asset(ImageAssets.between),
-                          const Spacer(),
-                          Text(
-                            " تبعد المسافة \n${distance} كم ",
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium!
-                                .copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeightManager.medium,
-                            ),
-                          ),
-                          SizedBox(width: mediaQueryWidth(context) / AppSize.s50),
-
-                          Image.asset(ImageAssets.between),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
 
-            ],
-          ),
+          ],
         )
       ),
     );

@@ -18,3 +18,9 @@ class GetPharmaciesErrorState extends HomeScreenState
 
 class GetUserLocationState extends HomeScreenState {}
 
+class GetPermissionLoadingState extends HomeScreenState {}
+
+class GetPermissionSuccessState extends HomeScreenState {}
+
+class GetPermissionErrorState extends HomeScreenState {}
+

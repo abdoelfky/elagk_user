@@ -74,6 +74,9 @@ dependencies:
   dotted_border:
   dotted_line:
   flutter_geocoder: ^0.2.2-nullsafety
+  permission_handler: ^10.2.0
+  location: ^4.4.0
+
 
 
 dev_dependencies:

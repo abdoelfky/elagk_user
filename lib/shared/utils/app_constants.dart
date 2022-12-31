@@ -5,6 +5,8 @@ class AppConstants {
   // Cache helper
   static const String userId = "userId";
   static const String token = "token";
+  static const String onBoarding = "onBoarding";
+
   static const String pharmacyId = "pharmacyId";
   static const String categoryId = "categoryId";
   static const String defaultCategory = "defaultCategory";

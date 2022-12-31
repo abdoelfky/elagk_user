@@ -20,6 +20,7 @@ class RegisterCubit extends Cubit<RegisterStates>
     required String phone,
     required String firstName,
     required String lastName,
+    required String user,
 
 
   }) async
@@ -30,7 +31,7 @@ class RegisterCubit extends Cubit<RegisterStates>
         data:{
           "firstName": "${firstName}",
           "lastName": "${lastName}",
-          "username":'${email.split(RegExp('\\W'))[0]}',
+          "username":'${email}',
           "email": "${email}",
           "password": "${password}",
           "phones": [
@@ -38,20 +39,38 @@ class RegisterCubit extends Cubit<RegisterStates>
           ],
           "roles": [
             {
-              "name": "user"
+              "name": "${user}"
             }
           ]
         }
     ).then((value) {
-
-      // registerModel= RegisterModel.fromJson(value.data);
-
+      registerModel= RegisterModel.fromJson(value.data);
+      sendOTP(email: email);
       emit(RegisterSuccessState());
     }).catchError((error){
       print(error.toString());
       emit(RegisterErrorState(error.toString()));
     });
   }
+
+  Future<void> sendOTP({
+    required String email,
+
+  }) async {
+    emit(SendOTPLoadingState());
+    await DioHelper.postData(
+        url: ApiConstants.sendMail,
+        data:
+        {
+          "email": email,
+
+        }
+    ).then((value) {
+      emit(SendOTPSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(SendOTPErrorState(error.toString()));
+    });}
 
 
 

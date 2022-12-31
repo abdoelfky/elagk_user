@@ -1,4 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:elagk/auth/presentation/controller/otp_password/otp_password_cubit.dart';
+import 'package:elagk/auth/presentation/controller/otp_password/otp_password_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
@@ -14,6 +16,7 @@ import '../../components/screen_background.dart';
 
 import '../../controller/activator/activator_cubit.dart';
 import '../../controller/activator/activator_state.dart';
+import 'activator_componant/activator_componants.dart';
 
 class ActivatorScreen extends StatelessWidget {
   static final _formKey = GlobalKey<FormState>();
@@ -21,7 +24,7 @@ class ActivatorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Scaffold(
           resizeToAvoidBottomInset: true,
           body: BlocConsumer<ActivatorCubit, ActivatorStates>(
@@ -38,12 +41,19 @@ class ActivatorScreen extends StatelessWidget {
                     text: AppStrings.codeSendError1, state: ToastStates.ERROR);
               }
 
-              if (state is ChangeDurationEndState) {
-                navigateFinalTo(
-                    context: context, screenRoute: Routes.forgetPasswordScreen);
-              }
+              // if (state is ChangeDurationEndState) {
+              //   navigateFinalTo(
+              //       context: context, screenRoute: Routes.forgetPasswordScreen);
+              // }
             },
             builder: (context, state) {
+
+              Duration duration = ActivatorCubit.get(context).duration;
+
+              if (duration == Duration(seconds: 0)&&state is OtpPasswordInitialState) {
+                ActivatorCubit.get(context).otpCounter();
+              }
+
               return ScreenBackground(
                 child: Center(
                   child: SingleChildScrollView(
@@ -89,9 +99,31 @@ class ActivatorScreen extends StatelessWidget {
                           ),
                           SizedBox(
                               height: mediaQueryHeight(context) / AppSize.s30),
-                          
+                          buildTime(
+                            duration,
+                          ),
                           SizedBox(
-                              height: mediaQueryHeight(context) / AppSize.s30),
+                              height: mediaQueryHeight(context) / AppSize.s50),
+
+                          TextButton(
+                            onPressed: () {
+                              if (duration == Duration(seconds: 0)) {
+                                ActivatorCubit.get(context).otpCounter();
+
+                              }
+                            },
+                            child: Text(
+                              AppStrings.sendingVerificationCodeAgain,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(
+                                  color: AppColors.yellowBold,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
+                              ),
+                            ),
+                          ),
                           // MainButton(
                           //   title: AppStrings.codeSendButton,
                           //   onPressed: (value) async {

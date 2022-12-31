@@ -1,3 +1,4 @@
+import 'package:elagk/auth/presentation/screens/forget_password/comfirm_password_screen.dart';
 import 'package:elagk/auth/presentation/screens/forget_password/otp_password_screen.dart';
 import 'package:elagk/auth/presentation/screens/forget_password/forget_password_screen.dart';
 import 'package:elagk/auth/presentation/screens/login/login_screen.dart';
@@ -7,6 +8,7 @@ import 'package:elagk/drawer/presentation/screens/basket_screen.dart';
 import 'package:elagk/drawer/presentation/screens/edit_profile_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/home/presentation/screens/offers_screen.dart';
+import 'package:elagk/onboarding/screens/onboarding_screen.dart';
 import 'package:elagk/opening/presentation/screens/offline_widget.dart';
 import 'package:elagk/opening/presentation/screens/splash_screen.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
@@ -35,7 +37,7 @@ class Routes {
   static const String editProfileScreen = '/EditProfileScreen';
   static const String offersScreen = '/OffersScreen';
   static const String otpPasswordScreen = '/OtpPasswordScreen';
-
+  static const String onBoarding = '/OnBoardingScreen';
   static const String categories = '/CategoriesScreen';
   static const String allOrdersScreen = '/allOrdersScreen';
   static const String addNewMedicinesScreen = '/addNewMedicinesScreen';
@@ -57,6 +59,7 @@ class RouteGenerator {
                 ) {
               final bool connected = connectivity != ConnectivityResult.none;
               if (connected) {
+
                 return const SplashScreen();
               } else {
                 return const OfflineWidget();
@@ -65,6 +68,8 @@ class RouteGenerator {
             child: const Center(child: CircularProgressIndicator()),
           ),
         );
+      case Routes.onBoarding:
+        return MaterialPageRoute(builder: (_) => OnBoardingScreen());
     case Routes.editProfileScreen:
       return MaterialPageRoute(builder: (_) => const EditProfileScreen());
       case Routes.loginScreen:
@@ -74,7 +79,7 @@ class RouteGenerator {
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.confirmPasswordScreen:
-        return MaterialPageRoute(builder: (_) => OtpPasswordScreen());
+        return MaterialPageRoute(builder: (_) => ConfirmPasswordScreen());
       case Routes.activator:
         return MaterialPageRoute(builder: (_) => ActivatorScreen());
         case Routes.offersScreen:

@@ -6,11 +6,17 @@ class AppStrings {
   static const String welcome  = " مرحبا بكم في علاجك";
   static const String pharmacies="صيدليات";
   static const String search  = "ابحث .....";
+  static const String noPharmacies= "لا يوجد صيدليات حتى الآن";
+  static const String pleaseCheckYourInternet= "من فضلك تحقق من اتصال الانترنت لديك ثم أعد تحميل الصفحه";
+  static const String pleaseGiveGPSPermission= "من فضلك قم باعطاء التطبيق صلاحيه الوصول الى GPS من اعدادات جهازك";
+  static const String thenRestartApp= "ثم اعد تشغيل التطبيق";
+
 // forget password
   static const String codeSendButton  = "اعاده تعيين كلمه المرور";
   static const String activator  = "تفعيل الحساب";
   static const String pleasePass  = "برجاء ادخال كلمة المرور";
-
+  static const String sendCodeAgain = " ارسال رمز التحقق مرة اخري";
+  static const String sendingVerificationCodeAgain = " ارسال رمز التفعيل مرة اخري";
   static const String codeSendButton1  = "ارسال كود التفعيل ";
   static const String codeSendedSuccessFully="تم ارسال كود التفعيل بنجاح";
   static const String codeSendError  = "برجاء ادخال بريد الكتروني صحيح";

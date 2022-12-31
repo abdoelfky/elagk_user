@@ -9,16 +9,19 @@ class ScreenBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: mediaQueryHeight(context),
-      width: mediaQueryWidth(context),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(ImageAssets.background),
-          fit: BoxFit.cover,
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Container(
+        height: mediaQueryHeight(context),
+        width: mediaQueryWidth(context),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(ImageAssets.background),
+            fit: BoxFit.cover,
+          ),
         ),
+        child: child,
       ),
-      child: child,
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import 'package:elagk/shared/local/shared_preference.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -40,10 +41,19 @@ class _SplashScreenState extends State<SplashScreen> {
     print('ddddddddddddd');
     print(CacheHelper.getData(key: AppConstants.token));
     Future.delayed(const Duration(seconds: DurationConstant.d6), () {
-      navigateFinalTo(
-          context: context,
-          screenRoute: CacheHelper.getData(key: AppConstants.token) == null
-              ? Routes.loginScreen : Routes.homeDrawer );
+      if(CacheHelper.getData(key: AppConstants.onBoarding)==null)
+      {
+        navigateFinalTo(
+            context: context,
+            screenRoute:Routes.onBoarding );
+      }else
+      {
+        navigateFinalTo(
+            context: context,
+            screenRoute: CacheHelper.getData(key: AppConstants.token) == null
+                ? Routes.loginScreen : Routes.homeDrawer );
+      }
+
     });
   }
 
