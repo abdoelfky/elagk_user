@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_state.dart';
+import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
@@ -109,7 +110,7 @@ class ActivatorScreen extends StatelessWidget {
                             onPressed: () {
                               if (duration == Duration(seconds: 0)) {
                                 ActivatorCubit.get(context).otpCounter();
-
+                                RegisterCubit.get(context).sendOTP(email: RegisterCubit.get(context).registerModel!.email! );
                               }
                             },
                             child: Text(
