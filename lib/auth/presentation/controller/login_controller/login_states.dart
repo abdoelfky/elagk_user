@@ -21,3 +21,19 @@ class LoginErrorState extends LoginStates
   LoginErrorState(this.error);
 }
 
+class ProfileGetUserDataLoadingState  extends LoginStates {}
+
+class ProfileGetUserDataSuccessState  extends LoginStates
+{
+  final UserProfileModel userModel;
+
+  ProfileGetUserDataSuccessState(this.userModel);
+}
+
+class ProfileGetUserDataErrorState  extends LoginStates
+{
+  final String error;
+
+  ProfileGetUserDataErrorState(this.error);
+}
+

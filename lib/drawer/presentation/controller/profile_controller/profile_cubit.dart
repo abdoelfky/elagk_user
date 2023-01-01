@@ -18,7 +18,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   static ProfileCubit get(context) => BlocProvider.of(context);
 
-  UserProfileModel? userModel;
 
   Future<void> getUserProfileData() async {
     emit(ProfileGetUserDataLoadingState());
@@ -27,8 +26,8 @@ class ProfileCubit extends Cubit<ProfileStates> {
       url: ApiConstants.UserIdPath(
           CacheHelper.getData(key: AppConstants.userId).toString()),
     ).then((value) {
-      userModel = UserProfileModel.fromJson(value.data);
-      emit(ProfileGetUserDataSuccessState(userModel!));
+      AppConstants.userModel = UserProfileModel.fromJson(value.data);
+      emit(ProfileGetUserDataSuccessState(AppConstants.userModel!));
     }).catchError((error) {
       print(error.toString());
       emit(ProfileGetUserDataErrorState(error.toString()));
@@ -37,11 +36,11 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   Future<void> updateUserProfileData(
       {required String email,
-      required String firstName,
-      required String lastName,
-      required String phones,
-      required String password,
-      required File profileImage}) async {
+        required String firstName,
+        required String lastName,
+        required String phones,
+        required String password,
+        required File profileImage}) async {
     emit(ProfileUpdateUserDataLoadingState());
     // print(CacheHelper.getData(key: AppConstants.userId));
     // print(password);
@@ -50,13 +49,13 @@ class ProfileCubit extends Cubit<ProfileStates> {
       "LastName": lastName,
       "Email": email,
       "Password": password,
-      // "Phones":[phones],
-      // "ProfilePicture":profileImage
+      "Phones":[phones],
+      "ProfilePicture":profileImage
     });
     await DioHelper.putData(
-            url: ApiConstants.UserIdPath(
-                CacheHelper.getData(key: AppConstants.userId).toString()),
-            data: formData)
+        url: ApiConstants.UserIdPath(
+            CacheHelper.getData(key: AppConstants.userId).toString()),
+        data: formData)
         .then((value) {
       // userModel = UserProfileModel.fromJson(value.data);
       emit(ProfileUpdateUserDataSuccessState());
@@ -70,9 +69,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
   var picker = ImagePicker();
 
   Future<void> getProfileImageGallery() async //
-  {
+      {
     await picker.pickImage(source: ImageSource.gallery).then((value) {
-      profileImage = value! as File?;
+      profileImage = File(value!.path);
       emit(ProfilePickedSuccessState());
     }).catchError((onError) {
       emit(ProfilePickedErrorState());

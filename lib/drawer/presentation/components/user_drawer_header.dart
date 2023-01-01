@@ -1,3 +1,4 @@
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,8 @@ Widget UserDrawerHeader(context) => Padding(
             width: 20,
           ),
           Text(
-            'عمر ابراهيم',
-            style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            AppConstants.userModel!.firstName.toString(),
+            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           )
         ],
       ),

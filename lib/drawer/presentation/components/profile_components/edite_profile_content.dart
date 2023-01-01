@@ -1,3 +1,4 @@
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -34,13 +35,11 @@ class EditProfileContent extends StatelessWidget {
       }
     }, builder: (context, state) {
           if(state is !ProfileUpdateUserDataSuccessState){
-      _phoneController.text =
-          ProfileCubit.get(context).userModel!.userPhones![0];
-      _userNameController.text = ProfileCubit.get(context).userModel!.userName!;
-      _firstNameController.text =
-          ProfileCubit.get(context).userModel!.firstName!;
-      _lastNameController.text = ProfileCubit.get(context).userModel!.lastName!;
-      _emailController.text = ProfileCubit.get(context).userModel!.email!;
+      _phoneController.text = AppConstants.userModel!.userPhones![0];
+      _userNameController.text = AppConstants.userModel!.userName!;
+      AppConstants.userModel!.firstName!;
+      _lastNameController.text = AppConstants.userModel!.lastName!;
+      _emailController.text = AppConstants.userModel!.email!;
       _passwordController.text = '*********';}
       var profileCubit = ProfileCubit.get(context);
 

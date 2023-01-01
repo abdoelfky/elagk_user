@@ -1,3 +1,4 @@
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +34,15 @@ class ProfileContent extends StatelessWidget {
         builder: (context,state)
     {
       _phoneController.text =
-      ProfileCubit.get(context).userModel!.userPhones![0];
+      AppConstants.userModel!.userPhones![0];
       _userNameController.text =
-      ProfileCubit.get(context).userModel!.userName!;
+      AppConstants.userModel!.userName!;
       _emailController.text =
-      ProfileCubit.get(context).userModel!.email!;
+      AppConstants.userModel!.email!;
       _firstNameController.text =
-      ProfileCubit.get(context).userModel!.firstName!;
+      AppConstants.userModel!.firstName!;
       _lastNameController.text =
-      ProfileCubit.get(context).userModel!.lastName!;
+      AppConstants.userModel!.lastName!;
       _passwordController.text ='***********';
       return Padding(
         padding: const EdgeInsets.all(AppPadding.p15),

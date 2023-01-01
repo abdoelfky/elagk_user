@@ -36,7 +36,7 @@ class ActivatorScreen extends StatelessWidget {
                     state: ToastStates.SUCCESS);
                 navigateFinalTo(
                     context: context,
-                    screenRoute: Routes.homeDrawer);
+                    screenRoute: Routes.loginScreen);
               } else if (state is ActivatorErrorState) {
                 showToast(
                     text: AppStrings.codeSendError1, state: ToastStates.ERROR);
