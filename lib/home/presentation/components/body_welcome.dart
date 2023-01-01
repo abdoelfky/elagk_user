@@ -7,6 +7,7 @@ class WelcomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
+    mainAxisAlignment: MainAxisAlignment.end,
     children: [
       Text(AppStrings.welcome,
         style: TextStyle(fontWeight: FontWeight.bold,fontSize:18),
