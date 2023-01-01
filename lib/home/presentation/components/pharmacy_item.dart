@@ -18,57 +18,60 @@ class PharmacyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoriesCubit,CategoriesStates>(
   builder: (context, state) {
-    return InkWell(
-      onTap: () {
-        CategoriesCubit.get(context).changeStringsToDef();
-        navigateTo(context: context, screenRoute:Routes.pharmacy,
-            arguments:pharmacy );
-      },
-      child: Container(
-        width: mediaQueryWidth(context) * .4,
-        height: mediaQueryHeight(context) * .09,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-                color: Colors.white
-            )),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image(
-              image: AssetImage(
-                'assets/images/profile/download (4).png',
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: InkWell(
+        onTap: () {
+          CategoriesCubit.get(context).changeStringsToDef();
+          navigateTo(context: context, screenRoute:Routes.pharmacy,
+              arguments:pharmacy );
+        },
+        child: Container(
+          width: mediaQueryWidth(context) * .4,
+          height: mediaQueryHeight(context) * .09,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                  color: Colors.white
+              )),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image(
+                image: AssetImage(
+                  'assets/images/profile/download (4).png',
+                ),
+                width: mediaQueryWidth(context) * .35,
+                height: mediaQueryHeight(context) * .12,
               ),
-              width: mediaQueryWidth(context) * .35,
-              height: mediaQueryHeight(context) * .12,
-            ),
-            SizedBox(
-              height: 10,
-              width: 10,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  pharmacy.pharmacyName!,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children:
-                  [
-                    const Icon(Icons.location_on_outlined,color: Colors.green,size: 18,),
-                    const SizedBox(width: 5,),
-                    Text('الاسكندريه-الشاطئ النيل',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    )
-                  ],
-                ),
+              SizedBox(
+                height: 10,
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    pharmacy.pharmacyName!,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children:
+                    [
+                      const Icon(Icons.location_on_outlined,color: Colors.green,size: 18,),
+                      const SizedBox(width: 5,),
+                      Text('الاسكندريه-الشاطئ النيل',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      )
+                    ],
+                  ),
 
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

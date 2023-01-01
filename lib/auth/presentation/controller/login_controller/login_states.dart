@@ -1,4 +1,5 @@
 import 'package:elagk/auth/data/models/login_model/login_model.dart';
+import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 
 abstract class LoginStates {}
 
@@ -19,8 +20,4 @@ class LoginErrorState extends LoginStates
 
   LoginErrorState(this.error);
 }
-
-
-
-
 

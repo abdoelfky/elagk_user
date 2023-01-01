@@ -1,3 +1,6 @@
+import 'package:elagk/auth/data/models/login_model/login_model.dart';
+import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
+
 class AppConstants {
   // General
   static const String empty = "";
@@ -15,6 +18,7 @@ class AppConstants {
   static String pharmacyLocation = '';
   static String distance = '';
   static String currentLocation='';
+
 
 
   // About us Screen

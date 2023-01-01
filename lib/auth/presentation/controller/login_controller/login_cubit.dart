@@ -1,6 +1,7 @@
 
 import 'package:elagk/auth/data/models/login_model/login_model.dart';
 import 'package:elagk/auth/presentation/controller/login_controller/login_states.dart';
+import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
@@ -20,7 +21,6 @@ class LoginCubit extends Cubit<LoginStates> {
   })
   async {
     emit(LoginLoadingState());
-
    await DioHelper.postData(
       url: ApiConstants.login,
       data:
@@ -42,4 +42,9 @@ class LoginCubit extends Cubit<LoginStates> {
       emit(LoginErrorState('Invalid Account or Password'));
     });
   }
+
+
+
+
+
 }
