@@ -101,7 +101,9 @@ class PharmacyScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s10),
-                      Row(children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                         HomeScreenItem(
                           image: 'assets/images/make-up.jpg',
                           name: AppStrings.cost,
@@ -129,10 +131,8 @@ class PharmacyScreen extends StatelessWidget {
                             },
                             color: AppColors.offBlue,
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                    width:
-                                        mediaQueryWidth(context) / AppSize.s5),
                                 Text(
                                   AppStrings.prescriptionAndDeliverPrice,
                                   style: Theme.of(context)
@@ -141,7 +141,7 @@ class PharmacyScreen extends StatelessWidget {
                                 ),
                                 SizedBox(
                                     width:
-                                        mediaQueryWidth(context) / AppSize.s20),
+                                        mediaQueryWidth(context) / AppSize.s30),
                                 Image.asset(
                                   ImageAssets.importImage,
                                   color: AppColors.shadow,

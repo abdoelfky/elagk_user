@@ -33,6 +33,7 @@ class EditProfileContent extends StatelessWidget {
         showToast(text: 'Enter valid Data', state: ToastStates.ERROR);
       }
     }, builder: (context, state) {
+          if(state is !ProfileUpdateUserDataSuccessState){
       _phoneController.text =
           ProfileCubit.get(context).userModel!.userPhones![0];
       _userNameController.text = ProfileCubit.get(context).userModel!.userName!;
@@ -40,7 +41,7 @@ class EditProfileContent extends StatelessWidget {
           ProfileCubit.get(context).userModel!.firstName!;
       _lastNameController.text = ProfileCubit.get(context).userModel!.lastName!;
       _emailController.text = ProfileCubit.get(context).userModel!.email!;
-      _passwordController.text = '***********';
+      _passwordController.text = '*********';}
       var profileCubit = ProfileCubit.get(context);
 
       return Padding(
@@ -246,8 +247,7 @@ class EditProfileContent extends StatelessWidget {
                               if (_formKey.currentState!.validate()) {
                                 ProfileCubit.get(context).updateUserProfileData(
                                     email: _emailController.text.trim(),
-                                    userName: _userNameController.text,
-                                    phone: _phoneController.text,
+                                    phones: _phoneController.text,
                                     password: _passwordController.text,
                                     firstName: _firstNameController.text,
                                     lastName: _lastNameController.text,

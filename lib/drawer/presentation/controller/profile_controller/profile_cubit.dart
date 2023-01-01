@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
@@ -34,50 +35,30 @@ class ProfileCubit extends Cubit<ProfileStates> {
     });
   }
 
-
-  Future<void> updateUserProfileData({
-    required String email,
-    required String userName,
-    required String firstName,
-    required String lastName,
-    required String phone,
-    required String password,
-    required File profileImage
-
-
-  }) async {
+  Future<void> updateUserProfileData(
+      {required String email,
+      required String firstName,
+      required String lastName,
+      required String phones,
+      required String password,
+      required File profileImage}) async {
     emit(ProfileUpdateUserDataLoadingState());
     // print(CacheHelper.getData(key: AppConstants.userId));
-    // print(profileImage.readAsBytes());
+    // print(password);
+    var formData = FormData.fromMap({
+      "FirstName": firstName,
+      "LastName": lastName,
+      "Email": email,
+      "Password": password,
+      // "Phones":[phones],
+      // "ProfilePicture":profileImage
+    });
     await DioHelper.putData(
-      url: ApiConstants.UserIdPath(userModel!.id!),
-      data:
-      {
-        "firstName": userModel!.firstName,
-        "lastName": userModel!.lastName,
-        "profilePicturePath":userModel!.profilePicturePath,
-        "profilePicture": userModel!.profilePicture,
-        "isDeleted": userModel!.isDeleted,
-        "userPhones":userModel!.userPhones,
-        "userActivations": userModel!.userActivations,
-        "id": userModel!.id,
-        "userName": userModel!.userName,
-        "normalizedUserName": userModel!.normalizedUserName,
-        "email": userModel!.email,
-        "normalizedEmail": userModel!.normalizedEmail,
-        "emailConfirmed": userModel!.emailConfirmed,
-        "passwordHash": userModel!.passwordHash,
-        "securityStamp": userModel!.securityStamp,
-        "concurrencyStamp":userModel!.concurrencyStamp,
-        "phoneNumber": userModel!.phoneNumber,
-        "phoneNumberConfirmed": userModel!.phoneNumberConfirmed,
-        "twoFactorEnabled": userModel!.twoFactorEnabled,
-        "lockoutEnd": userModel!.lockoutEnd,
-        "lockoutEnabled": userModel!.lockoutEnabled,
-        "accessFailedCount": userModel!.accessFailedCount
-      },
-    ).then((value) {
-      userModel = UserProfileModel.fromJson(value.data);
+            url: ApiConstants.UserIdPath(
+                CacheHelper.getData(key: AppConstants.userId).toString()),
+            data: formData)
+        .then((value) {
+      // userModel = UserProfileModel.fromJson(value.data);
       emit(ProfileUpdateUserDataSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -85,34 +66,25 @@ class ProfileCubit extends Cubit<ProfileStates> {
     });
   }
 
-
-  File?  profileImage;
+  File? profileImage;
   var picker = ImagePicker();
 
-  Future <void> getProfileImageGallery() async //
-      {
-    await picker.pickImage(source: ImageSource.gallery)
-        .then((value) {
-      profileImage = File(value!.path);
+  Future<void> getProfileImageGallery() async //
+  {
+    await picker.pickImage(source: ImageSource.gallery).then((value) {
+      profileImage = value! as File?;
       emit(ProfilePickedSuccessState());
     }).catchError((onError) {
       emit(ProfilePickedErrorState());
     });
   }
 
-  void getProfileImageCamera () async {
-
-    await picker.pickImage(source: ImageSource.camera)
-        .then((value) {
+  void getProfileImageCamera() async {
+    await picker.pickImage(source: ImageSource.camera).then((value) {
       profileImage = File(value!.path);
       emit(ProfilePickedSuccessState());
     }).catchError((onError) {
       emit(ProfilePickedErrorState());
     });
-
   }
-
-
 }
-
-

@@ -48,7 +48,7 @@ class DioHelper {
 
   static Future<Response> putData({
     required String url,
-    required Map<String, dynamic> data,
+    required FormData data,
     Map<String, dynamic>? query,
     String? token ,
   }) async {

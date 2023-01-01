@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                         textDirection: TextDirection.ltr,
                         obscure: false,
                         validator: (value) {
-                          if (value!.length < AppSize.s0) {
+                          if (value!.length < AppSize.s3) {
                             return AppStrings.enterValidFullName;
                           } else {
                             return null;
@@ -76,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
                         textDirection: TextDirection.ltr,
                         obscure: false,
                         validator: (value) {
-                          if (value!.length < AppSize.s0) {
+                          if (value!.length < AppSize.s3) {
                             return AppStrings.enterValidFullName;
                           } else {
                             return null;
