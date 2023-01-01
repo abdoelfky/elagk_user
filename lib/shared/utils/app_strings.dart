@@ -4,7 +4,7 @@ class AppStrings {
   static const String isNull = "null";
   static const String nA = "N/A";
   static const String welcome  = " مرحبا بكم في علاجك";
-  static const String pharmacies="صيدليات";
+  static const String pharmacies="الصيدليات";
   static const String search  = "ابحث .....";
   static const String noPharmacies= "لا يوجد صيدليات حتى الآن";
   static const String pleaseCheckYourInternet= "من فضلك تحقق من اتصال الانترنت لديك ثم أعد تحميل الصفحه";
