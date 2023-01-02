@@ -6,6 +6,8 @@ import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/drawer/presentation/components/past_orders_components/orders_conents.dart';
 import 'package:elagk/drawer/presentation/components/profile_components/profile_content.dart';
+import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_state.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/home/presentation/components/body_welcome.dart';
@@ -42,7 +44,7 @@ class OrdersScreen extends StatelessWidget {
                 );
               },
             ),
-            body: BlocConsumer<ProfileCubit, ProfileStates>(
+            body: BlocConsumer<PastOrdersCubit,PastOrdersStates>(
                 listener: (context, state) {},
                 builder: (context, state) {
                   return OrdersContents();

@@ -1,11 +1,11 @@
 class UserProfileModel {
   String? firstName;
   String? lastName;
-  Null? profilePicturePath;
-  Null? profilePicture;
+  String? profilePicturePath;
+  String? profilePicture;
   bool? isDeleted;
   List<String>? userPhones;
-  Null? userActivations;
+  String? userActivations;
   String? id;
   String? userName;
   String? normalizedUserName;
@@ -18,7 +18,7 @@ class UserProfileModel {
   String? phoneNumber;
   bool? phoneNumberConfirmed;
   bool? twoFactorEnabled;
-  Null? lockoutEnd;
+  String? lockoutEnd;
   bool? lockoutEnabled;
   int? accessFailedCount;
 

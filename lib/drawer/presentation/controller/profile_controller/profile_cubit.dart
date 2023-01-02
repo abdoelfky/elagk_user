@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
@@ -18,6 +20,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   static ProfileCubit get(context) => BlocProvider.of(context);
 
+  UserProfileModel? userModel;
 
   Future<void> getUserProfileData() async {
     emit(ProfileGetUserDataLoadingState());
@@ -26,8 +29,8 @@ class ProfileCubit extends Cubit<ProfileStates> {
       url: ApiConstants.UserIdPath(
           CacheHelper.getData(key: AppConstants.userId).toString()),
     ).then((value) {
-      AppConstants.userModel = UserProfileModel.fromJson(value.data);
-      emit(ProfileGetUserDataSuccessState(AppConstants.userModel!));
+      userModel = UserProfileModel.fromJson(value.data);
+      emit(ProfileGetUserDataSuccessState(userModel!));
     }).catchError((error) {
       print(error.toString());
       emit(ProfileGetUserDataErrorState(error.toString()));
@@ -39,18 +42,27 @@ class ProfileCubit extends Cubit<ProfileStates> {
         required String firstName,
         required String lastName,
         required String phones,
-        required String password,
-        required File profileImage}) async {
+        required String oldPassword,
+        required String newPassword,
+        required String userName,
+      }) async {
     emit(ProfileUpdateUserDataLoadingState());
     // print(CacheHelper.getData(key: AppConstants.userId));
     // print(password);
+
+
     var formData = FormData.fromMap({
       "FirstName": firstName,
       "LastName": lastName,
+      "UserName":userName,
       "Email": email,
-      "Password": password,
+      "OldPassword": userModel!.passwordHash,
+      "NewPassword":newPassword,
       "Phones":[phones],
-      "ProfilePicture":profileImage
+      "profilePicture": await MultipartFile.fromFile(
+        profileImage!.path,
+        filename: profileImage!.path.split('/').last,
+      )
     });
     await DioHelper.putData(
         url: ApiConstants.UserIdPath(
@@ -58,6 +70,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
         data: formData)
         .then((value) {
       // userModel = UserProfileModel.fromJson(value.data);
+      getUserProfileData();
       emit(ProfileUpdateUserDataSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -66,12 +79,15 @@ class ProfileCubit extends Cubit<ProfileStates> {
   }
 
   File? profileImage;
-  var picker = ImagePicker();
-
+  ImagePicker picker = ImagePicker();
+  var bytes;
   Future<void> getProfileImageGallery() async //
       {
-    await picker.pickImage(source: ImageSource.gallery).then((value) {
+
+    await picker.pickImage(source: ImageSource.gallery,imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0).then((value) async {
       profileImage = File(value!.path);
+      print(profileImage!.readAsBytes());
+
       emit(ProfilePickedSuccessState());
     }).catchError((onError) {
       emit(ProfilePickedErrorState());

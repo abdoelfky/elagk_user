@@ -87,6 +87,8 @@ class AppStrings {
 
   // Reset password screen
   static const String newPassword = "كلمة مرور جديدة";
+  static const String oldPassword = "كلمة المرور القديمه";
+
   static const String resetPasswordSubtitle =
       "ادخل كلمة مرور تتكون من 8 أحرف بحد أدني، وتحتوي علي رقم وحرف كبير ورمز واحد عالأقل.";
   static const String theNewPassword = "كلمة المرور الجديدة";

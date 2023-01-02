@@ -4,7 +4,7 @@ import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 class AppConstants {
   // General
   static const String empty = "";
-  static   UserProfileModel? userModel;
+  static const String userName = "userName";
 
 
   // Cache helper

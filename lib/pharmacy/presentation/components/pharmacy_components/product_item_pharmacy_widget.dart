@@ -35,69 +35,72 @@ class ProductItemPharmacy extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onLongPress: onTap,
-      child: Container(
-        height: AppSize.s170,
-        width: AppSize.s110,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(AppSize.s15),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-                child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppSize.s15),
-              child:  Image(
-                image: AssetImage(
-                  "assets/images/medicine.jpg",
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Container(
+          height: AppSize.s170,
+          width: AppSize.s110,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(AppSize.s15),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                  child: ClipRRect(
+                borderRadius: BorderRadius.circular(AppSize.s15),
+                child:  Image(
+                  image: AssetImage(
+                    "assets/images/medicine.jpg",
+                  ),
+                  width: double.infinity,
+                  height:AppSize.s70,
                 ),
-                width: double.infinity,
-                height:AppSize.s70,
+
+              )),
+              SizedBox(height: mediaQueryHeight(context) / AppSize.s120),
+              Text(
+                categoriesName,
+                style: Theme.of(context).textTheme.displaySmall,
               ),
-
-            )),
-            SizedBox(height: mediaQueryHeight(context) / AppSize.s120),
-            Text(
-              categoriesName,
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-            SizedBox(height: mediaQueryHeight(context) / AppSize.s150),
-            Text(
-              categoriesPrice,
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  fontSize: FontSize.s11, fontWeight: FontWeightManager.light),
-            ),
-            SizedBox(height: mediaQueryHeight(context) / AppSize.s60),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                  gradient:const LinearGradient(
-
-                      begin:Alignment.topRight ,
-                      end:Alignment.bottomRight,
-                      colors:
-                      [
-
-                        Color(0xff1d938c),
-                        Color(0xff1c72b5),
-                      ])
+              SizedBox(height: mediaQueryHeight(context) / AppSize.s150),
+              Text(
+                categoriesPrice,
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                    fontSize: FontSize.s11, fontWeight: FontWeightManager.light),
               ),
-              width: AppSize.s110,
-              height: AppSize.s30,
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppPadding.p15),
+              SizedBox(height: mediaQueryHeight(context) / AppSize.s60),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                    gradient:const LinearGradient(
+
+                        begin:Alignment.topRight ,
+                        end:Alignment.bottomRight,
+                        colors:
+                        [
+
+                          Color(0xff1d938c),
+                          Color(0xff1c72b5),
+                        ])
                 ),
-                onPressed: () {},
+                width: AppSize.s110,
+                height: AppSize.s30,
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppPadding.p15),
+                  ),
+                  onPressed: () {},
 
-                child: const Text('اضف الي العربة',
-                    style:TextStyle(
-                      fontSize: 10,
-                      color: AppColors.shadow
-                    )),
-              ),
-            )
-          ],
+                  child: const Text('اضف الي العربة',
+                      style:TextStyle(
+                        fontSize: 10,
+                        color: AppColors.shadow
+                      )),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

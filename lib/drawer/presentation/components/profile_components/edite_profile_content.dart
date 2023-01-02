@@ -1,4 +1,3 @@
-import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -21,7 +20,8 @@ class EditProfileContent extends StatelessWidget {
   static final _firstNameController = TextEditingController();
   static final _lastNameController = TextEditingController();
   static final _emailController = TextEditingController();
-  static final _passwordController = TextEditingController();
+  static final _oldPasswordController = TextEditingController();
+  static final _newPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,17 @@ class EditProfileContent extends StatelessWidget {
         showToast(text: 'Enter valid Data', state: ToastStates.ERROR);
       }
     }, builder: (context, state) {
-          if(state is !ProfileUpdateUserDataSuccessState){
-      _phoneController.text = AppConstants.userModel!.userPhones![0];
-      _userNameController.text = AppConstants.userModel!.userName!;
-      AppConstants.userModel!.firstName!;
-      _lastNameController.text = AppConstants.userModel!.lastName!;
-      _emailController.text = AppConstants.userModel!.email!;
-      _passwordController.text = '*********';}
+      if (state is! ProfileUpdateUserDataSuccessState) {
+        _phoneController.text =
+            ProfileCubit.get(context).userModel!.userPhones![0];
+        _userNameController.text =
+            ProfileCubit.get(context).userModel!.userName!;
+        _firstNameController.text =
+            ProfileCubit.get(context).userModel!.firstName!;
+        _lastNameController.text =
+            ProfileCubit.get(context).userModel!.lastName!;
+        _emailController.text = ProfileCubit.get(context).userModel!.email!;
+      }
       var profileCubit = ProfileCubit.get(context);
 
       return Padding(
@@ -63,9 +67,13 @@ class EditProfileContent extends StatelessWidget {
                         radius: 85.0,
                         backgroundImage: profileCubit.profileImage != null
                             ? FileImage(profileCubit.profileImage!)
-                            : AssetImage(
-                                'assets/images/menu/profile.png',
-                              ) as ImageProvider,
+                            : profileCubit.userModel!.profilePicture != ''
+                                ? NetworkImage(
+                                    '${profileCubit.userModel!.profilePicturePath
+                                        .toString()}')
+                                : AssetImage(
+                                    'assets/images/menu/user.png',
+                                  ) as ImageProvider,
                       ),
                     ),
                     CircleAvatar(
@@ -90,12 +98,10 @@ class EditProfileContent extends StatelessWidget {
                                       CupertinoDialogAction(
                                         child: const Text(
                                           'Gallary',
-                                          style:
-                                          TextStyle(color: Colors.green),
+                                          style: TextStyle(color: Colors.green),
                                         ),
                                         onPressed: () {
-                                          ProfileCubit.get(
-                                              context)
+                                          ProfileCubit.get(context)
                                               .getProfileImageGallery();
                                         },
                                       ),
@@ -104,8 +110,7 @@ class EditProfileContent extends StatelessWidget {
                                             style: TextStyle(
                                                 color: AppColors.primary)),
                                         onPressed: () {
-                                          ProfileCubit.get(
-                                              context)
+                                          ProfileCubit.get(context)
                                               .getProfileImageCamera();
                                         },
                                       ),
@@ -116,8 +121,6 @@ class EditProfileContent extends StatelessWidget {
                     )
                   ],
                 ),
-
-
 
                 SizedBox(
                   height: mediaQueryHeight(context) * .025,
@@ -216,8 +219,8 @@ class EditProfileContent extends StatelessWidget {
                   height: mediaQueryHeight(context) * .025,
                 ),
                 MainTextFormField(
-                  controller: _passwordController,
-                  label: AppStrings.password,
+                  controller: _oldPasswordController,
+                  label: AppStrings.oldPassword,
                   hint: AppStrings.passwordExample,
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.visiblePassword,
@@ -230,6 +233,19 @@ class EditProfileContent extends StatelessWidget {
                       return null;
                     }
                   },
+                ),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .025,
+                ),
+                MainTextFormField(
+                  controller: _newPasswordController,
+                  label: AppStrings.newPassword,
+                  hint: AppStrings.passwordExample,
+                  hintColor: AppColors.lightGrey,
+                  inputType: TextInputType.visiblePassword,
+                  textDirection: TextDirection.ltr,
+                  obscure: true,
+                  validator: (value) {},
                 ),
                 SizedBox(
                   height: mediaQueryHeight(context) * .02,
@@ -247,10 +263,11 @@ class EditProfileContent extends StatelessWidget {
                                 ProfileCubit.get(context).updateUserProfileData(
                                     email: _emailController.text.trim(),
                                     phones: _phoneController.text,
-                                    password: _passwordController.text,
+                                    userName: _userNameController.text,
                                     firstName: _firstNameController.text,
                                     lastName: _lastNameController.text,
-                                    profileImage: profileCubit.profileImage!);
+                                    oldPassword: _oldPasswordController.text,
+                                    newPassword: _newPasswordController.text);
                               }
                             }
                           },

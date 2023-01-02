@@ -9,6 +9,7 @@ import 'package:elagk/drawer/presentation/controller/about_us_controller/about_u
 import 'package:elagk/drawer/presentation/controller/basket_controller/basket_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/complaints_controller/complaints_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/onboarding/controllers/onboarding_cubit.dart';
@@ -21,6 +22,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
+import 'pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
@@ -70,6 +72,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>CategoriesCubit()),
           BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getPermission()),
           BlocProvider(create: (BuildContext context) =>OrderByPerscripiyionCubit()),
+          BlocProvider(create: (BuildContext context) =>PastOrdersCubit()),
+          BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()..getPharmacies()),
 
 
         ],

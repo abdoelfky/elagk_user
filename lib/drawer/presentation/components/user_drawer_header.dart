@@ -1,3 +1,5 @@
+import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
+import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,8 +33,9 @@ Widget UserDrawerHeader(context) => Padding(
             width: 20,
           ),
           Text(
-            AppConstants.userModel!.firstName.toString(),
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            CacheHelper.getData(key: AppConstants.userName),
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           )
         ],
       ),
