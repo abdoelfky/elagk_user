@@ -15,8 +15,10 @@ class BasketSalary extends StatelessWidget {
       padding: const EdgeInsets.all(AppPadding.p20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [ Text(AppStrings.addDiscountCode,style: Theme.of(context).textTheme.displayLarge,),
+        children: [
+          Text(AppStrings.addDiscountCode,style: Theme.of(context).textTheme.displayLarge,),
           const SizedBox(height: 20,),
+
           MainTextFormField(
             controller: _discountController,
             label: AppStrings.discountCode,

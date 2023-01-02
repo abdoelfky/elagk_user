@@ -1,5 +1,5 @@
-import 'package:elagk/drawer/presentation/controller/basket_controller/basket_cubit.dart';
-import 'package:elagk/drawer/presentation/controller/basket_controller/basket_states.dart';
+import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
+import 'package:elagk/basket/basket_presentation/basket_controller/basket_states.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +58,7 @@ class BasketPharmacy extends StatelessWidget {
                         categoriesName,
                         style:const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20
+                            fontSize: 10
                         ),
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s150),

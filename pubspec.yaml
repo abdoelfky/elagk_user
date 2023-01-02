@@ -76,7 +76,7 @@ dependencies:
   flutter_geocoder: ^0.2.2-nullsafety
   permission_handler: ^10.2.0
   location: ^4.4.0
-
+  fancy_cart: ^0.0.4
 
 
 dev_dependencies:

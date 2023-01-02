@@ -5,8 +5,8 @@ import 'package:elagk/auth/presentation/controller/forget_passord_controller/for
 import 'package:elagk/auth/presentation/controller/login_controller/login_cubit.dart';
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
+import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/about_us_controller/about_us_cubit.dart';
-import 'package:elagk/drawer/presentation/controller/basket_controller/basket_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/complaints_controller/complaints_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_cubit.dart';
@@ -17,6 +17,7 @@ import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_cont
 import 'package:elagk/shared/bloc_observer.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
+import 'package:fancy_cart/fancy_cart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +35,9 @@ void main() {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   CacheHelper.init();
-
+  initializeFancyCart(
+    child: MyApp(),
+  );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
