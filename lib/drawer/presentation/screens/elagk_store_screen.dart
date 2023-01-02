@@ -94,7 +94,7 @@ class ElagkStoreScreen extends StatelessWidget {
                   SizedBox(
                       height: mediaQueryHeight(context) / AppSize.s40),
                   CategoriesAndProductsSection(
-                    firstCategoryName: "categoryName",
+                    firstCategoryName: "categoryName", pharmacyId: 0,
                   ),
                 ],
 

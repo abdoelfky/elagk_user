@@ -20,8 +20,6 @@ class EditProfileContent extends StatelessWidget {
   static final _firstNameController = TextEditingController();
   static final _lastNameController = TextEditingController();
   static final _emailController = TextEditingController();
-  static final _oldPasswordController = TextEditingController();
-  static final _newPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +65,7 @@ class EditProfileContent extends StatelessWidget {
                         radius: 85.0,
                         backgroundImage: profileCubit.profileImage != null
                             ? FileImage(profileCubit.profileImage!)
-                            : profileCubit.userModel!.profilePicture != ''
+                            : profileCubit.userModel!.profilePicturePath !=''
                                 ? NetworkImage(
                                     '${profileCubit.userModel!.profilePicturePath
                                         .toString()}')
@@ -90,6 +88,7 @@ class EditProfileContent extends StatelessWidget {
                                 context: context,
                                 builder: (context) {
                                   Future.delayed(Duration(seconds: 4), () {
+
                                     Navigator.of(context).pop(true);
                                   });
                                   return AlertDialog(
@@ -218,35 +217,6 @@ class EditProfileContent extends StatelessWidget {
                 SizedBox(
                   height: mediaQueryHeight(context) * .025,
                 ),
-                MainTextFormField(
-                  controller: _oldPasswordController,
-                  label: AppStrings.oldPassword,
-                  hint: AppStrings.passwordExample,
-                  hintColor: AppColors.lightGrey,
-                  inputType: TextInputType.visiblePassword,
-                  textDirection: TextDirection.ltr,
-                  obscure: true,
-                  validator: (value) {
-                    if (value!.length < AppSize.s8) {
-                      return AppStrings.enterValidPassword;
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: mediaQueryHeight(context) * .025,
-                ),
-                MainTextFormField(
-                  controller: _newPasswordController,
-                  label: AppStrings.newPassword,
-                  hint: AppStrings.passwordExample,
-                  hintColor: AppColors.lightGrey,
-                  inputType: TextInputType.visiblePassword,
-                  textDirection: TextDirection.ltr,
-                  obscure: true,
-                  validator: (value) {},
-                ),
                 SizedBox(
                   height: mediaQueryHeight(context) * .02,
                 ),
@@ -266,8 +236,7 @@ class EditProfileContent extends StatelessWidget {
                                     userName: _userNameController.text,
                                     firstName: _firstNameController.text,
                                     lastName: _lastNameController.text,
-                                    oldPassword: _oldPasswordController.text,
-                                    newPassword: _newPasswordController.text);
+                                );
                               }
                             }
                           },

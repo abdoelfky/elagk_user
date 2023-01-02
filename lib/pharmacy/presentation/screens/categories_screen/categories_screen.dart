@@ -1,5 +1,6 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
+import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/components/OrderByPrescriptionComponents/OrderByPrescriptionContent.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/categories_and_products_section.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/item.dart';
@@ -19,9 +20,10 @@ import '../../components/category_components/search_categories.dart';
 
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({
-    Key? key
+  CategoriesScreen({
+    Key? key,required this.pharmacyModel
   }) : super(key: key);
+final PharmacyModel pharmacyModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class CategoriesScreen extends StatelessWidget {
         child: Scaffold(
           appBar: SecondAppBar(
             context: context,
-            title: " pharmacyName ",
+            title: pharmacyModel.pharmacyName!,
             onTap: () {
               navigateTo(
                 context: context,
@@ -99,6 +101,7 @@ class CategoriesScreen extends StatelessWidget {
                       height: mediaQueryHeight(context) / AppSize.s40),
                   CategoriesAndProductsSection(
                     firstCategoryName: "categoryName",
+                    pharmacyId: pharmacyModel.pharmacyId!,
                   ),
                 ],
 

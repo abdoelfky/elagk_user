@@ -104,7 +104,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       case Routes.categories:
-        return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+        return MaterialPageRoute(builder: (_) {
+          final pharmacyModel = routeSettings.arguments as PharmacyModel;
+          return CategoriesScreen(pharmacyModel: pharmacyModel);
+        });
     case Routes.basketScreen:
       return MaterialPageRoute(builder: (_) => const BasketScreen());
 

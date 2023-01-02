@@ -30,6 +30,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
           CacheHelper.getData(key: AppConstants.userId).toString()),
     ).then((value) {
       userModel = UserProfileModel.fromJson(value.data);
+      profileImageChanged=false;
       emit(ProfileGetUserDataSuccessState(userModel!));
     }).catchError((error) {
       print(error.toString());
@@ -42,27 +43,32 @@ class ProfileCubit extends Cubit<ProfileStates> {
         required String firstName,
         required String lastName,
         required String phones,
-        required String oldPassword,
-        required String newPassword,
         required String userName,
       }) async {
     emit(ProfileUpdateUserDataLoadingState());
     // print(CacheHelper.getData(key: AppConstants.userId));
     // print(password);
 
-
-    var formData = FormData.fromMap({
+    var formData =  profileImageChanged ? FormData.fromMap({
       "FirstName": firstName,
       "LastName": lastName,
       "UserName":userName,
       "Email": email,
       "OldPassword": userModel!.passwordHash,
-      "NewPassword":newPassword,
       "Phones":[phones],
-      "profilePicture": await MultipartFile.fromFile(
+      "profilePicture":await MultipartFile.fromFile(
         profileImage!.path,
         filename: profileImage!.path.split('/').last,
       )
+    }):FormData.fromMap({
+      "FirstName": firstName,
+      "LastName": lastName,
+      "UserName":userName,
+      "Email": email,
+      "OldPassword": userModel!.passwordHash,
+      "Phones":[phones],
+      "ProfilePicturePath":userModel!.profilePicturePath
+
     });
     await DioHelper.putData(
         url: ApiConstants.UserIdPath(
@@ -80,14 +86,14 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
   File? profileImage;
   ImagePicker picker = ImagePicker();
-  var bytes;
+  bool profileImageChanged=false;
   Future<void> getProfileImageGallery() async //
       {
 
     await picker.pickImage(source: ImageSource.gallery,imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0).then((value) async {
       profileImage = File(value!.path);
-      print(profileImage!.readAsBytes());
-
+      // print(profileImage!.readAsBytes());
+      profileImageChanged=true;
       emit(ProfilePickedSuccessState());
     }).catchError((onError) {
       emit(ProfilePickedErrorState());

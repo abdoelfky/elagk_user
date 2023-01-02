@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getPermission()),
           BlocProvider(create: (BuildContext context) =>OrderByPerscripiyionCubit()),
           BlocProvider(create: (BuildContext context) =>PastOrdersCubit()),
-          BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()..getPharmacies()),
+          BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()),
 
 
         ],

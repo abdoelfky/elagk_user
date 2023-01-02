@@ -50,7 +50,6 @@ class PharmacyScreen extends StatelessWidget {
           body: BlocConsumer<CategoriesCubit, CategoriesStates>(
             listener: (context, state) {},
             builder: (context, state) {
-
               if (AppConstants.pharmacyLocation == '') {
                 CategoriesCubit.get(context).getLocation(
                     pharmacyModel!.latitude, pharmacyModel!.longitude);
@@ -94,8 +93,7 @@ class PharmacyScreen extends StatelessWidget {
                             PharmacyInformation(
                               distance: AppConstants.distance,
                               pharmacyModel: pharmacyModel,
-                              pharmacyLocation:
-                              AppConstants.pharmacyLocation,
+                              pharmacyLocation: AppConstants.pharmacyLocation,
                             ),
                           ],
                         ),
@@ -104,16 +102,21 @@ class PharmacyScreen extends StatelessWidget {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                        HomeScreenItem(
-                          image: 'assets/images/make-up.jpg',
-                          name: AppStrings.cost,
-                        ),
-                        SizedBox(
-                            width: mediaQueryHeight(context) / AppSize.s18),
-                        HomeScreenItem(
-                            image: 'assets/images/medicine.jpg',
-                            name: AppStrings.medicine),
-                      ]),
+                            HomeScreenItem(
+                              image: 'assets/images/make-up.jpg',
+                              name: AppStrings.cost,
+                              SuperCategoryId: 1,
+                              pharmacyModel: pharmacyModel!,
+                            ),
+                            SizedBox(
+                                width: mediaQueryHeight(context) / AppSize.s18),
+                            HomeScreenItem(
+                              image: 'assets/images/medicine.jpg',
+                              name: AppStrings.medicine,
+                              SuperCategoryId: 2,
+                              pharmacyModel: pharmacyModel!,
+                            ),
+                          ]),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.si6),
                       SizedBox(
                           width: double.infinity,
@@ -127,7 +130,7 @@ class PharmacyScreen extends StatelessWidget {
                               navigateTo(
                                   context: context,
                                   screenRoute: Routes.orderByPrescription,
-                              arguments: pharmacyModel)
+                                  arguments: pharmacyModel)
                             },
                             color: AppColors.offBlue,
                             child: Row(

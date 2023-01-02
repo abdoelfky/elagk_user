@@ -9,7 +9,7 @@ class ProductModel {
   String? imageUrl;
   Null? image;
   int? point;
-  Null? categoryId;
+  int? categoryId;
   Null? categories;
   String? categoryName;
   int? quantity;

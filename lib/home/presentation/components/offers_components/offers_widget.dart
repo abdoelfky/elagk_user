@@ -1,6 +1,5 @@
-import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_products_bar.dart';
+import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../shared/utils/app_values.dart';
 import 'offers_products.dart';
 
@@ -13,8 +12,15 @@ class OffersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const PharmacyProductsBar(),
+        Padding(
+          padding: EdgeInsets.all(AppPadding.p6),
+          child: Text(
+            AppStrings.products,
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+        ),
         OffersProducts(
           firstCategoryName: firstCategoryName,
         ),

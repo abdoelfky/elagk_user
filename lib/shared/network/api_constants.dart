@@ -38,13 +38,16 @@ class ApiConstants {
   static const String productsByCategoryAndID =
       "$products/GetPharmacyProductByCategory";
 
-  static String productsByCategoryAndIDPath(int pharmacyId, String categoryName) => "$productsByCategoryAndID/$pharmacyId/$categoryName";
+  static String productsByCategoryAndIDPath(int pharmacyId,
+      String categoryName) => "$productsByCategoryAndID/$pharmacyId/$categoryName";
+
   static const String pharmacies = "$baseUrl/Pharmacies";
   static const String userPharmacy = "$pharmacies/UserPharmacy";
 
   static String UserIdPath(String userId) => "$baseUrl/Users/$userId";
 
   static const String categories = "$baseUrl/Categories";
+  static String getCategoryBySuperCategoryId(int SuperCategoryId) => "$categories/GetCategoryBySuperCatgory/$SuperCategoryId";
 
   // Complaints screen
   static const String complaints = "$baseUrl/Issues";
