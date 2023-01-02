@@ -172,7 +172,7 @@ class AppStrings {
   static const String area = "منطقة";
   static const String deliveryOrderIn30Minutes = "توصيل طلب \n 30 دقيقة";
   static const String deliveryDistance = "تبعد مسافة كم";
-  static const String noProducts = "لا يوجد منتجات في هذه الصيدلة الآن";
+  static const String noProducts = "لا يوجد منتجات في هذا القسم الآن";
   static const String products = "المنتجات";
   static const String newQuantity = "الكمية الجديدة";
   static const String newPrice = "السعر الجديد";

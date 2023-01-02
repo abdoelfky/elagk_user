@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                               .get(context)
                               .pharmacies
                               .isEmpty
-                          ? NoDataWidget(AppStrings.noPharmacies)
+                          ? Center(child: NoDataWidget(AppStrings.noPharmacies))
                           : HomeScreenCubit
                           .get(context)
                           .pharmacies

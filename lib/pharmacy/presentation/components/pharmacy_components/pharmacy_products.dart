@@ -1,6 +1,8 @@
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
+import 'package:elagk/shared/components/na_data_widget.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +23,15 @@ class PharmacyProducts extends StatelessWidget {
     return BlocConsumer<PharmacyProductiesCubit, PharmacyProductiesStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is !GetProductiesSuccessState) {
+        if (state is! GetProductiesSuccessState) {
           PharmacyProductiesCubit.get(context).getProducties(
               pharmacyId: pharmacyId,
               categoryName:
                   PharmacyProductiesCubit.get(context).selectedCategoryName);
         }
 
-        if (state is GetProductiesSuccessState)
+        if (state is GetProductiesSuccessState &&
+            PharmacyProductiesCubit.get(context).producties.isNotEmpty)
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -53,6 +56,12 @@ class PharmacyProducts extends StatelessWidget {
               );
             },
           );
+        else if (state is GetProductiesSuccessState &&
+            PharmacyProductiesCubit.get(context).producties.isEmpty)
+          return Center(child: Padding(
+            padding: EdgeInsets.symmetric(vertical:mediaQueryHeight(context) *.1 ),
+            child: NoDataWidget(AppStrings.noProducts),
+          ));
         else
           return Center(
               child: CircularProgressIndicator(
