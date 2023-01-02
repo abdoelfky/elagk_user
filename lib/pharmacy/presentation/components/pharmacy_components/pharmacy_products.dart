@@ -22,7 +22,7 @@ class _PharmacyProductsState extends State<PharmacyProducts> {
   @override
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PharmacyProductiesCubit, PharmacyProductiesStates>(
+    return BlocConsumer<PharmacyProductiesCubit,PharmacyProductiesStates>(
       listener: (context, state) {
       },
       builder: (context, state) {

@@ -21,7 +21,7 @@ class LoginCubit extends Cubit<LoginStates> {
   })
   async {
     emit(LoginLoadingState());
-   await DioHelper.postData(
+    await DioHelper.postData(
       url: ApiConstants.login,
       data:
       {
@@ -35,11 +35,9 @@ class LoginCubit extends Cubit<LoginStates> {
       loginModel = LoginModel.fromJson(value.data);
       CacheHelper.setData(key: AppConstants.userId, value: loginModel!.userId);
       CacheHelper.setData(key: AppConstants.token, value: loginModel!.token);
-      getUserProfileData().then((value)
-      {
-        emit(LoginSuccessState(loginModel!));
+      CacheHelper.setData(key: AppConstants.userName, value: loginModel!.username);
+      emit(LoginSuccessState(loginModel!));
 
-      });
     }).catchError((error)
     {
       print(error.toString());
@@ -48,20 +46,7 @@ class LoginCubit extends Cubit<LoginStates> {
   }
 
 
-  Future<void> getUserProfileData() async {
-    emit(ProfileGetUserDataLoadingState());
-    print(CacheHelper.getData(key: AppConstants.userId));
-    await DioHelper.getData(
-      url: ApiConstants.UserIdPath(
-          CacheHelper.getData(key: AppConstants.userId).toString()),
-    ).then((value) {
-      AppConstants.userModel = UserProfileModel.fromJson(value.data);
-      emit(ProfileGetUserDataSuccessState(AppConstants.userModel!));
-    }).catchError((error) {
-      print(error.toString());
-      emit(ProfileGetUserDataErrorState(error.toString()));
-    });
-  }
+
 
 
 }
