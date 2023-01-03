@@ -22,6 +22,7 @@ class BasketCubit extends Cubit<BasketStates>
             'quantity' :counter[index],
 
           });
+      calcTotalPrice();
       emit(MinusState());
   }
   }
@@ -36,6 +37,7 @@ class BasketCubit extends Cubit<BasketStates>
           'quantity' :counter[index],
 
         });
+    calcTotalPrice();
     emit(PlusState());
   }
 
