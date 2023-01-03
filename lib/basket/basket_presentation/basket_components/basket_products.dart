@@ -23,12 +23,12 @@ class BasketProducts extends StatelessWidget {
     return ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: BasketCubit.get(context).baskets.length,
+        itemCount: BasketCubit.get(context).basketProducts.length,
       itemBuilder: (BuildContext context, int index) {
         return  BasketPharmacy(
-          categoriesName: BasketCubit.get(context).baskets[index].productName!,
-         Basket: BasketCubit.get(context).baskets[index].price!,
-          imageSrc: BasketCubit.get(context).baskets[index].imageUrl!, index: index,
+          categoriesName: BasketCubit.get(context).basketProducts[index].productName!,
+         Basket: BasketCubit.get(context).basketProducts[index].price!,
+          imageSrc: BasketCubit.get(context).basketProducts[index].imageUrl!, index: index,
 
         );
       },

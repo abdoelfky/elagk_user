@@ -6,8 +6,9 @@ import 'package:elagk/shared/utils/app_strings.dart';
 import '../../../../auth/presentation/components/MainTextFormField.dart';
 
 class BasketSalary extends StatelessWidget {
-  const BasketSalary({Key? key}) : super(key: key);
+  BasketSalary({Key? key, required this.totalPrice}) : super(key: key);
   static final _discountController = TextEditingController();
+  final double totalPrice;
   @override
   Widget build(BuildContext context) {
 
@@ -97,7 +98,7 @@ class BasketSalary extends StatelessWidget {
               dashLength: 11, dashGapLength: 10),
           SizedBox(height: mediaQueryHeight(context) / AppSize.s50),
           Row(
-            children: const [
+            children: [
               Text(
                 "اجمالي السعر",
                 style: TextStyle(
@@ -107,8 +108,7 @@ class BasketSalary extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                "165 جنية",
-
+                '${totalPrice}',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,color: Colors.green

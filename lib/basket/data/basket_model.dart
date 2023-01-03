@@ -3,6 +3,7 @@ class BasketModel {
   String? productName;
   String? imageUrl;
   double? price;
+  int? quantity;
 
 
   BasketModel(
@@ -11,6 +12,7 @@ class BasketModel {
         this.productName,
         this.imageUrl,
         this.price,
+        this.quantity,
       });
 
   BasketModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +20,7 @@ class BasketModel {
     productName = json['productName'];
     imageUrl = json['imageUrl'];
     price = json['price'];
+    quantity = json['quantity'];
 
   }
 
@@ -27,6 +30,7 @@ class BasketModel {
     data['productName'] = this.productName;
     data['imageUrl'] = this.imageUrl;
     data['price'] = this.price;
+    data['quantity'] = this.quantity;
     return data;
   }
 }

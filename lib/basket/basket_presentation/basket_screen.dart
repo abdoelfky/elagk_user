@@ -27,7 +27,7 @@ class BasketScreen extends StatelessWidget {
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(AppPadding.p20),
               child: Column(
-                children: const [
+                children:  [
                   BasketSection(
                     firstCategoryName: "categoryName",
                   ),

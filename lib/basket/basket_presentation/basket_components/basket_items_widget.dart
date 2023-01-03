@@ -98,7 +98,7 @@ class BasketPharmacy extends StatelessWidget {
                             ),
                             SizedBox(width: mediaQueryHeight(context) / AppSize.s60),
                             Text(
-                              '${BasketCubit.get(context).counter[index]}',
+                              '${BasketCubit.get(context).basketProducts[index].quantity}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),

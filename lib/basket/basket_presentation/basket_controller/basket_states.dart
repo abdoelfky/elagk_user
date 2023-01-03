@@ -23,3 +23,8 @@ class AddToBasketErrorState extends BasketStates
 class removeFromCartLoadingState extends BasketStates {}
 
 class removeFromCartSuccessState extends BasketStates {}
+
+class CalculatedSuccessfullyState extends BasketStates {}
+
+class CheckIfContainedSuccessfullyState extends BasketStates {}
+
