@@ -18,37 +18,40 @@ class BasketSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BasketCubit, BasketStates>(
       builder: (context, state) {
-        return Column(
-          children: [
-            BasketProducts(
-              firstCategoryName: firstCategoryName,
-            ),
-            BasketSalary(totalPrice: BasketCubit.get(context).totalPrice,),
-            SizedBox(
-                width: double.infinity,
-                height: AppSize.s60,
-                child: MaterialButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppPadding.p15),
-                  ),
-                  onPressed: () =>
-                  {
-                  },
-                  color: AppColors.offBlue,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: Column(
+            children: [
+              BasketProducts(
+                firstCategoryName: firstCategoryName,
+              ),
+              BasketSalary(totalPrice: BasketCubit.get(context).totalPrice,),
+              SizedBox(
+                  width: double.infinity,
+                  height: AppSize.s60,
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppPadding.p15),
+                    ),
+                    onPressed: () =>
+                    {
+                    },
+                    color: AppColors.offBlue,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
 
-                      Text(AppStrings.buy,
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .headlineMedium,
-                      ),
-                    ],
-                  ),
-                )),
-          ],
+                        Text(AppStrings.buy,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headlineMedium,
+                        ),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
         );
       },
     );
