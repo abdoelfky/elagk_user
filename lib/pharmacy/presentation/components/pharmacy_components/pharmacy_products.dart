@@ -1,7 +1,7 @@
 import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/basket/data/basket_model.dart';
-import 'package:elagk/pharmacy/presentation/components/category_components/offer_component.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/product_component.dart';
+import 'package:elagk/pharmacy/presentation/components/category_components/offer_component.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
 import 'package:elagk/shared/components/na_data_widget.dart';

@@ -1,5 +1,5 @@
 import 'package:elagk/home/presentation/components/offers_components/offers_items_widget.dart';
-import 'package:elagk/pharmacy/presentation/components/category_components/product_component.dart';
+import 'package:elagk/pharmacy/presentation/components/category_components/offer_component.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../shared/utils/app_values.dart';
