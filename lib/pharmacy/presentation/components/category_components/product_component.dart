@@ -108,6 +108,10 @@ class OfferComponent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppPadding.p15),
                     ),
                     onPressed: () {
+                      BasketCubit.get(context).AddToCart(
+                          productModel:
+                          PharmacyProductiesCubit.get(context)
+                              .producties[index]);
                     },
                     child: const Text('اضف الي العربة',
                         style: TextStyle(fontSize: 10, color: AppColors.shadow)),
