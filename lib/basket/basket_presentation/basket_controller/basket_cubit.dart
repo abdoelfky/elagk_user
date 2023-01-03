@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'basket_states.dart';
 
 class BasketCubit extends Cubit<BasketStates>

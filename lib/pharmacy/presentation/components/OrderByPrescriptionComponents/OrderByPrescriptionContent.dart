@@ -1,8 +1,4 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
-import 'package:elagk/auth/presentation/components/main_button.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_state.dart';
@@ -10,7 +6,6 @@ import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
-import 'package:fancy_cart/fancy_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'AddPrescriptionImage.dart';
@@ -157,27 +152,16 @@ class OrderByPrescriptionContent extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-
-                AddToCartButton(
-                  actionAfterAdding: () {
-                    print('object');
-                    log("item added", name: "item added");
-                  },
-                  cartModel: CartItem(
-                      id: DateTime.now().millisecondsSinceEpoch,
-                      name: 'روشتة ',
-                      price:0 ,
-                      image:''),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(AppPadding.p15),
-                      color: AppColors.blue,
-                    ),
-                    width: double.infinity,
-                    height: AppSize.s60,
-                    child:  Center(
-                      child: Text(AppStrings.confirmOrder, style: Theme.of(context).textTheme.headlineMedium),
-                    ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(AppPadding.p15),
+                    color: AppColors.blue,
+                  ),
+                  width: double.infinity,
+                  height: AppSize.s60,
+                  child:  Center(
+                    child: Text(AppStrings.confirmOrder,
+                        style: Theme.of(context).textTheme.headlineMedium),
                   ),
                 ),
 

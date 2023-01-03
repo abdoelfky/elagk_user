@@ -17,7 +17,6 @@ import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_cont
 import 'package:elagk/shared/bloc_observer.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
-import 'package:fancy_cart/fancy_cart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,16 +27,18 @@ import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   // await initFCM(); // TODO: enable it after adding app notifications.
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   CacheHelper.init();
-  initializeFancyCart(
-    child: MyApp(),
-  );
+
+  // initializeFancyCart(
+  //   child: MyApp(),
+  // );
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
@@ -45,6 +46,7 @@ void main() {
       statusBarBrightness: Brightness.dark, // For iOS (dark icons)
     ),
   );
+
   runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
 }
 
