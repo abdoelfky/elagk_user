@@ -147,11 +147,7 @@ class BasketCubit extends Cubit<BasketStates>
     });
     emit(CalculatedSuccessfullyState());
     print(basketProducts);
-    if(basketProducts.isNotEmpty)
-    {
-      totalPrice += 15;
 
-    }
   }
 
 
