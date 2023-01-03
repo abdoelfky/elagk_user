@@ -50,8 +50,8 @@ class ProductItemPharmacy extends StatelessWidget {
                   child: ClipRRect(
                 borderRadius: BorderRadius.circular(AppSize.s15),
                 child:  Image(
-                  image: AssetImage(
-                    "assets/images/medicine.jpg",
+                  image: NetworkImage(
+                    "${imageSrc}",
                   ),
                   width: double.infinity,
                   height:AppSize.s70,
@@ -90,7 +90,9 @@ class ProductItemPharmacy extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(AppPadding.p15),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
 
                   child: const Text('اضف الي العربة',
                       style:TextStyle(

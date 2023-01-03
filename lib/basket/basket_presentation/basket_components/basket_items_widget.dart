@@ -14,11 +14,13 @@ class BasketPharmacy extends StatelessWidget {
     required this.categoriesName,
     required this.imageSrc,
     required this.Basket,
+    required this.index
   }) : super(key: key);
 
   final String categoriesName;
-  final String Basket;
+  final double Basket;
   final String imageSrc;
+  final int index;
 
 
   @override
@@ -26,126 +28,130 @@ class BasketPharmacy extends StatelessWidget {
     return BlocConsumer<BasketCubit,BasketStates>(
       listener: (context,state){},
       builder: (context,state){
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: AppSize.s150,
-            width: AppSize.s190,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppSize.s15),
-            ),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppSize.s15),
-                  child: const Image(
-                    image: AssetImage(
-                      "assets/images/profile/r.png",
-                    ),
-                    width: 120,
-                    height: 200,
-                  ),
-                ),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s120),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        categoriesName,
-                        style:const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20
-                        ),
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: AppSize.s150,
+              width: AppSize.s190,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(AppSize.s15),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(width: 20,),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(AppSize.s25),
+                    child: Image(
+                      image: NetworkImage(
+                        '${imageSrc}',
                       ),
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s150),
-                      Text(
-                        Basket,
-                        style:const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20
-                        ),),
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s60),
-                      Row(
-                        children: [
-                          InkWell(
-                            child: Container(
+                      width: 80,
+                      height: 120,
+                    ),
+                  ),
+                  SizedBox(width: 20,),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          categoriesName,
+                          style:const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20
+                          ),
+                        ),
+                        SizedBox(height: mediaQueryHeight(context) / AppSize.s150),
+                        Text(
+                          '$Basket جنيه ',
+                          style:const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20
+                          ),),
+                        SizedBox(height: mediaQueryHeight(context) / AppSize.s60),
+                        Row(
+                          children: [
+                            InkWell(
+                              child: Container(
 
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: AppColors.offWhite,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: AppColors.offWhite,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
 
-                              child: const Center(
-                                child: Icon(
-                                    Icons.add
+                                child: const Center(
+                                  child: Icon(
+                                      Icons.add
+                                  ),
                                 ),
                               ),
+                              onTap: (){
+                                BasketCubit.get(context).plus(index: index);
+                              },
                             ),
-                            onTap: (){
-                              BasketCubit.get(context).plus();
-                            },
-                          ),
-                          SizedBox(width: mediaQueryHeight(context) / AppSize.s60),
-                          Text(
-                            '${BasketCubit.get(context).counter}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: mediaQueryHeight(context) / AppSize.s60),
-                          InkWell(
-
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: AppColors.offWhite,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: const Icon(
-                                  Icons.remove
+                            SizedBox(width: mediaQueryHeight(context) / AppSize.s60),
+                            Text(
+                              '${BasketCubit.get(context).counter[index]}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            onTap: (){
-                              BasketCubit.get(context).minus();
-                            },
-                          ),
-                        ],
-                      ),
+                            SizedBox(width: mediaQueryHeight(context) / AppSize.s60),
+                            InkWell(
+
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: AppColors.offWhite,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: const Icon(
+                                    Icons.remove
+                                ),
+                              ),
+                              onTap: (){
+                                BasketCubit.get(context).minus(index: index);
+                              },
+                            ),
+                          ],
+                        ),
 
 
-                    ],
-                  ),
-                ),
-                SizedBox(width: mediaQueryHeight(context) / AppSize.s15),
-                InkWell(
-                  child: Container(
-
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: AppColors.offWhite,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-
-                    child: const Center(
-                      child: Icon(
-                          Icons.restore_from_trash_rounded,color: Colors.red,
-                      ),
+                      ],
                     ),
                   ),
-                  onTap: (){
-                    BasketCubit.get(context).plus();
-                  },
-                ),
+                  SizedBox(width: mediaQueryHeight(context) / AppSize.s15),
+                  InkWell(
+                    child: Container(
 
-              ],
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: AppColors.offWhite,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+
+                      child: const Center(
+                        child: Icon(
+                            Icons.delete,color: Colors.red,
+                        ),
+                      ),
+                    ),
+                    onTap: (){
+                      BasketCubit.get(context).removeFromCart(index: index);
+                    },
+                  ),
+
+                ],
+              ),
             ),
           ),
         ); },
