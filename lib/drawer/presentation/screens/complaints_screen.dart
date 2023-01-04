@@ -79,12 +79,10 @@ class ComplaintsScreen extends StatelessWidget {
                       label: AppStrings.complaintDetails,
                     ),
 
-
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                     // cubit.isLoadingAuth ? const Center(child: CircularProgressIndicator(color: AppColors.primary),) :
                     BlocConsumer<ComplaintsCubit, ComplaintsState>(
                       listener: (context, state) {
-
                         if (state is SendComplaintSuccessState) {
                           showToast(
                               text: 'Complaint Sent Successfully',
@@ -92,11 +90,11 @@ class ComplaintsScreen extends StatelessWidget {
                           showDialog(
                               context: context,
                               builder: (_) {
-                                Future.delayed(Duration(seconds: 4), () {
-                                  Navigator.of(context).pop(true);
-                                });
-                                return alertDialog(imageSrc:  'assets/images/menu/profile.png',
-                                  text: 'شكرا ليك يسعادنا دايما انك معانا وهنرد على\n             شكاوك في اقرب وقت',);
+                                return alertDialog(
+                                  imageSrc: 'assets/images/menu/profile.png',
+                                  text:
+                                      'شكرا ليك يسعادنا دايما انك معانا وهنرد على\n             شكاوك في اقرب وقت',
+                                );
                               });
                           _titleController.text = '';
                           _descriptionController.text = '';
@@ -106,9 +104,6 @@ class ComplaintsScreen extends StatelessWidget {
                         }
                       },
                       builder: (context, state) {
-
-
-
                         return ConditionalBuilder(
                             condition: (state is SendComplaintLoadingState),
                             builder: (BuildContext context) =>
@@ -117,24 +112,19 @@ class ComplaintsScreen extends StatelessWidget {
                                 title: AppStrings.sendRequest,
                                 color: AppColors.offBlue,
                                 onPressed: () async {
-                                  _hasInternet = await InternetConnectionChecker().hasConnection;
+                                  _hasInternet =
+                                      await InternetConnectionChecker()
+                                          .hasConnection;
                                   if (_hasInternet) {
                                     if (_formKey.currentState!.validate()) {
                                       ComplaintsCubit.get(context)
                                           .sendComplaint(
-                                          issueType:
-                                          _titleController.text,
-                                          issueDescription:
-                                          _descriptionController
-                                              .text);
+                                              issueType: _titleController.text,
+                                              issueDescription:
+                                                  _descriptionController.text);
                                     }
-
                                   }
-
-
-                                }
-                            )
-                        );
+                                }));
                       },
                     ),
                   ],
