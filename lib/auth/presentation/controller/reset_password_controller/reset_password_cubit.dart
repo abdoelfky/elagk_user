@@ -31,7 +31,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordStates>
 
       },
     ).then((value) {
-      resetModel = ResetModel.fromJson(value.data);
+      // resetModel = ResetModel.fromJson(value.data);
       emit(ResetPassSuccessState());
     }).catchError((error) {
       print(error.toString());

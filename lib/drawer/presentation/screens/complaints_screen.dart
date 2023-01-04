@@ -50,33 +50,41 @@ class ComplaintsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
-                    MainTextFormField(
-                      controller: _titleController,
-                      obscure: false,
-                      validator: (value) {
-                        if (value!.length < AppSize.s3) {
-                          return AppStrings.enterValidComplaintTitle;
-                        } else {
-                          return null;
-                        }
-                      },
-                      inputType: TextInputType.text,
-                      label: AppStrings.complaintTitle,
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: MainTextFormField(
+                        controller: _titleController,
+                        textDirection: TextDirection.rtl,
+                        obscure: false,
+                        validator: (value) {
+                          if (value!.length < AppSize.s3) {
+                            return AppStrings.enterValidComplaintTitle;
+                          } else {
+                            return null;
+                          }
+                        },
+                        inputType: TextInputType.text,
+                        label: AppStrings.complaintTitle,
+                      ),
                     ),
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s40),
-                    MainTextFormField(
-                      controller: _descriptionController,
-                      obscure: false,
-                      maxLines: AppSize.si5,
-                      validator: (value) {
-                        if (value!.length < AppSize.s3) {
-                          return AppStrings.enterValidComplaintDetails;
-                        } else {
-                          return null;
-                        }
-                      },
-                      inputType: TextInputType.multiline,
-                      label: AppStrings.complaintDetails,
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: MainTextFormField(
+                        controller: _descriptionController,
+                        textDirection: TextDirection.rtl,
+                        obscure: false,
+                        maxLines: AppSize.si5,
+                        validator: (value) {
+                          if (value!.length < AppSize.s3) {
+                            return AppStrings.enterValidComplaintDetails;
+                          } else {
+                            return null;
+                          }
+                        },
+                        inputType: TextInputType.multiline,
+                        label: AppStrings.complaintDetails,
+                      ),
                     ),
 
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
