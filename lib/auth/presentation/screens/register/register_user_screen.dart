@@ -143,7 +143,7 @@ class RegisterScreen extends StatelessWidget {
                         numericCharCount: 3,
                         specialCharCount: 1,
                         normalCharCount: 1,
-                        width: 400,
+                        width: mediaQueryWidth(context)*.8,
                         height: 150,
                         onSuccess: () {
                           return 'Success';

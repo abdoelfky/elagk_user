@@ -35,9 +35,9 @@ class OtpPasswordScreen extends StatelessWidget {
                   showToast(
                       text: AppStrings.codeSendedSuccessFully1,
                       state: ToastStates.SUCCESS);
-                  navigateFinalTo(
+                  navigateTo(
                       context: context,
-                      screenRoute: Routes.confirmPasswordScreen);
+                      screenRoute: Routes.resetPasswordScreen);
                 } else if (state is OtpErrorState) {
                   showToast(
                       text: AppStrings.codeSendError1, state: ToastStates.ERROR);

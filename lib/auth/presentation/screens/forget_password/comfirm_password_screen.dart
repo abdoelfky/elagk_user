@@ -55,8 +55,9 @@ class ConfirmPasswordScreen extends StatelessWidget {
                           if (state is SendCodeSuccessState) {
                             {
                               showToast(
-                                  text: AppStrings.codeSendedSuccessFully1, state: ToastStates.SUCCESS);
-                              navigateFinalTo(
+                                  text: AppStrings.codeSendedSuccessFully1,
+                                  state: ToastStates.SUCCESS);
+                              navigateTo(
                                   context: context,
                                   screenRoute: Routes.resetPasswordScreen
                               );

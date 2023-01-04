@@ -33,9 +33,9 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return SafeArea(
-      child: Directionality(
-        textDirection: TextDirection.rtl,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: true,
           body: ScreenBackground(
@@ -81,18 +81,15 @@ class ResetPasswordScreen extends StatelessWidget {
                         },
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
-
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       FlutterPwValidator(
                         successColor: AppColors.primary,
-
                         controller: _passwordController,
                         minLength: 8,
                         uppercaseCharCount: 1,
                         numericCharCount: 3,
                         specialCharCount: 1,
                         normalCharCount: 1,
-                        width: 400,
+                        width: mediaQueryWidth(context)*.8,
                         height: 150,
                         onSuccess: (){
 
@@ -102,16 +99,17 @@ class ResetPasswordScreen extends StatelessWidget {
                           return 'Password is Weak';
                         },
                       ),
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
+                      SizedBox(height: mediaQueryHeight(context) / AppSize.s20),
                       BlocConsumer<ResetPasswordCubit, ResetPasswordStates>(
                         listener: (context, state) {
                           if (state is ResetPassSuccessState) {
                             {
                               showToast(
-                                  text: AppStrings.resetPassword, state: ToastStates.SUCCESS);
+                                  text: AppStrings.resetPassword,
+                                  state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.homeDrawer);
+                                  screenRoute: Routes.loginScreen);
                             }
 
                           } else if (state is ResetPassErrorState) {
