@@ -21,20 +21,15 @@ import '../../controller/reset_password_controller/reset_password_cubit.dart';
 import '../../controller/reset_password_controller/reset_password_state.dart';
 import '../forget_password/forget_password_screen.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
+class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
 
-  static final _formKey = GlobalKey<FormState>();
+  static final _formKey = new GlobalKey<FormState>();
   static final _passwordController = TextEditingController();
   static final _emailController = TextEditingController();
 
 
 
-  @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
-}
-
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
 
@@ -48,7 +43,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppPadding.p15),
                 child: Form(
-                  key: ResetPasswordScreen._formKey,
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +54,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         authSubtitle: AppStrings.pleasePass,
                       ),
                       MainTextFormField(
-                        controller: ResetPasswordScreen._emailController,
+                        controller: _emailController,
                         label: AppStrings.email,
                         hint: AppStrings.emailExample,
                         hintColor: AppColors.lightGrey,
@@ -70,7 +65,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       MainTextFormField(
-                        controller: ResetPasswordScreen._passwordController,
+                        controller: _passwordController,
                         label: AppStrings.password,
                         hint: AppStrings.passwordExample,
                         hintColor: AppColors.lightGrey,
@@ -91,11 +86,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       FlutterPwValidator(
                         successColor: AppColors.primary,
 
-                        controller: ResetPasswordScreen._passwordController,
+                        controller: _passwordController,
                         minLength: 8,
                         uppercaseCharCount: 1,
                         numericCharCount: 3,
                         specialCharCount: 1,
+                        normalCharCount: 1,
                         width: 400,
                         height: 150,
                         onSuccess: (){
@@ -130,11 +126,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             builder: (context) => MainButton(
                               title: AppStrings.codeSendButton,
                               onPressed: () async {
-                                  if (ResetPasswordScreen._formKey.currentState!.validate()) {
+                                  if (_formKey.currentState!.validate()) {
                                     ResetPasswordCubit.get(context)
                                         .ResetPass(
-                                        password: ResetPasswordScreen._passwordController.toString(),
-                                      email: ResetPasswordScreen._emailController.toString()
+                                        password: _passwordController.toString(),
+                                      email: _emailController.toString()
                                     );
                                   }
                               },

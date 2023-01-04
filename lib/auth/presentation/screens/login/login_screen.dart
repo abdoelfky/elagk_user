@@ -19,19 +19,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   static final _formKey = GlobalKey<FormState>();
   static final _emailController = TextEditingController();
   static final _passwordController = TextEditingController();
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppPadding.p15),
                 child: Form(
-                  key: LoginScreen._formKey,
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         authSubtitle: AppStrings.pleaseLogin,
                       ),
                       MainTextFormField(
-                        controller: LoginScreen._emailController,
+                        controller: _emailController,
                         label: AppStrings.email,
                         hint: AppStrings.emailExample,
                         hintColor: AppColors.lightGrey,
@@ -67,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
                       MainTextFormField(
-                        controller: LoginScreen._passwordController,
+                        controller: _passwordController,
                         label: AppStrings.password,
                         hint: AppStrings.passwordExample,
                         hintColor: AppColors.lightGrey,
@@ -137,10 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               fallback: (context)=>MainButton(
                                 title: AppStrings.login,
                                 onPressed: () {
-                                  if (LoginScreen._formKey.currentState!.validate()) {
+                                  if (_formKey.currentState!.validate()) {
                                     LoginCubit.get(context).userLogin(
-                                        email: LoginScreen._emailController.text.trim(),
-                                        password: LoginScreen._passwordController.text);
+                                        email: _emailController.text.trim(),
+                                        password: _passwordController.text);
                                   }
                                 },
                               )

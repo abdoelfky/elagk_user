@@ -15,45 +15,48 @@ class AboutUsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenBackground(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppPadding.p10),
-        child: BlocConsumer<AboutUsCubit, AboutUsState>(
-          listener: (context, state)
-          {
-            // if(state is GetAboutUsErrorState)
-            // {
-            //   AboutUsCubit.get(context).getAboutUsWhoWeAre();
-            //   AboutUsCubit.get(context).getAboutUsVision();
-            // }
-          },
-          builder: (context, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const AboutUsTitle(
-                  title: AppStrings.whoAreWe,
-                  imageSrc: ImageAssets.info,
-                ),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
-                AboutUsText(description: AboutUsCubit.get(context).whoWeAre!.message!),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s80),
-                const AboutUsTitle(
-                  title: AppStrings.ourVision,
-                  imageSrc: ImageAssets.visibility,
-                ),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
-                AboutUsText(description: AboutUsCubit.get(context).vision!.message!),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s80),
-                const AboutUsTitle(
-                  title: AppStrings.version,
-                  imageSrc: ImageAssets.refresh,
-                ),
-                SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
-                const AboutUsText(description: AppStrings.versionNum),
-              ],
-            );
-          },
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: ScreenBackground(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppPadding.p10),
+          child: BlocConsumer<AboutUsCubit, AboutUsState>(
+            listener: (context, state)
+            {
+              // if(state is GetAboutUsErrorState)
+              // {
+              //   AboutUsCubit.get(context).getAboutUsWhoWeAre();
+              //   AboutUsCubit.get(context).getAboutUsVision();
+              // }
+            },
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const AboutUsTitle(
+                    title: AppStrings.whoAreWe,
+                    imageSrc: ImageAssets.info,
+                  ),
+                  SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
+                  AboutUsText(description: AboutUsCubit.get(context).whoWeAre!.message!),
+                  SizedBox(height: mediaQueryHeight(context) / AppSize.s80),
+                  const AboutUsTitle(
+                    title: AppStrings.ourVision,
+                    imageSrc: ImageAssets.visibility,
+                  ),
+                  SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
+                  AboutUsText(description: AboutUsCubit.get(context).vision!.message!),
+                  SizedBox(height: mediaQueryHeight(context) / AppSize.s80),
+                  const AboutUsTitle(
+                    title: AppStrings.version,
+                    imageSrc: ImageAssets.refresh,
+                  ),
+                  SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
+                  const AboutUsText(description: AppStrings.versionNum),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

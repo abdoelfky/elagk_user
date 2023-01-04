@@ -19,20 +19,13 @@ import '../../components/screen_background.dart';
 import '../../controller/forget_passord_controller/forget_passowrd_state.dart';
 import '../../controller/forget_passord_controller/forget_password_cubit.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
+class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
 
-  static final _formKey = GlobalKey<FormState>();
+  static final _formKey = new GlobalKey<FormState>();
   static final emailController = TextEditingController();
 
   static const countdownDuration = Duration(minutes: 3);
-
-  @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
-}
-
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +42,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppPadding.p15),
                 child: Form(
-                  key: ForgetPasswordScreen._formKey,
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +53,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         authSubtitle: AppStrings.enterValidEmail,
                       ),
                       MainTextFormField(
-                        controller: ForgetPasswordScreen.emailController,
+                        controller: emailController,
                         label: AppStrings.enterValidEmail,
                         hint: AppStrings.emailExample,
                         hintColor: AppColors.lightGrey,
@@ -98,10 +91,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                                 _hasInternet = await InternetConnectionChecker()
                                     .hasConnection;
                                 if (_hasInternet) {
-                                  if (ForgetPasswordScreen
-                                      ._formKey.currentState!.validate()) {
+                                  if (_formKey.currentState!.validate()) {
                                     ForgetPasswordCubit.get(context)
-                                        .sendOTP(email: ForgetPasswordScreen.emailController.text.trim());
+                                        .sendOTP(email: emailController.text.trim());
 
                                   }
                                 }

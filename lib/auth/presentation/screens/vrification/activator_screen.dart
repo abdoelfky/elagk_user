@@ -20,7 +20,7 @@ import '../../controller/activator/activator_state.dart';
 import 'activator_componant/activator_componants.dart';
 
 class ActivatorScreen extends StatelessWidget {
-  static final _formKey = GlobalKey<FormState>();
+  static final _formKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,7 +51,10 @@ class ActivatorScreen extends StatelessWidget {
 
               Duration duration = ActivatorCubit.get(context).duration;
 
-              if (duration == Duration(seconds: 0)&&state is OtpPasswordInitialState) {
+              if ((duration == Duration(seconds: 0)&&state is OtpPasswordInitialState)||
+                  (
+                      duration == Duration(seconds: 0)&&state is ActivatorInitialState
+                  )) {
                 ActivatorCubit.get(context).otpCounter();
               }
 

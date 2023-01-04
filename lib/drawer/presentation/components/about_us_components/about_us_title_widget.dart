@@ -14,6 +14,7 @@ class AboutUsTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textDirection: TextDirection.rtl,
       text: TextSpan(
         children: [
           WidgetSpan(

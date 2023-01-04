@@ -65,10 +65,10 @@ class EditProfileContent extends StatelessWidget {
                         radius: 85.0,
                         backgroundImage: profileCubit.profileImage != null
                             ? FileImage(profileCubit.profileImage!)
-                            : profileCubit.userModel!.profilePicturePath !=''
+                            : profileCubit.userModel!.profilePicturePath != null
                                 ? NetworkImage(
                                     '${profileCubit.userModel!.profilePicturePath
-                                        .toString()}')
+                                        .toString()}'    )
                                 : AssetImage(
                                     'assets/images/menu/user.png',
                                   ) as ImageProvider,

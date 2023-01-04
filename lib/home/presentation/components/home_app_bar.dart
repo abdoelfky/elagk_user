@@ -34,8 +34,8 @@ PreferredSizeWidget homePageAppBar(
                     );*/
             } : onTap,
             child: Container(
-              width: AppSize.s40,
-              height: AppSize.s40,
+              width: AppSize.s50,
+              height: AppSize.s50,
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(

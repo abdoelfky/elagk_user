@@ -8,10 +8,13 @@ class AboutUsText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppPadding.p6),
-      child: Text(
-        description,
-        textAlign: TextAlign.justify,
-        style: Theme.of(context).textTheme.headlineSmall,
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Text(
+          description,
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
     );
   }

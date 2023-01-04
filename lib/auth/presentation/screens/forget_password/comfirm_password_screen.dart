@@ -58,7 +58,8 @@ class ConfirmPasswordScreen extends StatelessWidget {
                                   text: AppStrings.codeSendedSuccessFully1, state: ToastStates.SUCCESS);
                               navigateFinalTo(
                                   context: context,
-                                  screenRoute: Routes.otpPasswordScreen);
+                                  screenRoute: Routes.resetPasswordScreen
+                              );
                             }
 
                           } else if (state is SendCodeErrorState) {
@@ -91,16 +92,7 @@ class ConfirmPasswordScreen extends StatelessWidget {
                           );
                         },
                       ),
-                      MainButton(
-                        title: AppStrings.codeSendButton,
-                        onPressed: () async {
-                          navigateFinalTo(
-                              context: context,
-                              screenRoute: Routes.homeScreen);
 
-
-                        },
-                      ),
                     ],
                   ),
                 ),

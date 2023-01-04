@@ -20,7 +20,7 @@ import '../../components/screen_background.dart';
 import '../../controller/activator/activator_cubit.dart';
 
 class RegisterScreen extends StatelessWidget {
-  static final _formKey1 = GlobalKey<FormState>();
+  static final _formKey1 = new GlobalKey<FormState>();
   static final _emailController = TextEditingController();
   static final _firstNameController = TextEditingController();
   static final _lastNameController = TextEditingController();
@@ -142,6 +142,7 @@ class RegisterScreen extends StatelessWidget {
                         uppercaseCharCount: 1,
                         numericCharCount: 3,
                         specialCharCount: 1,
+                        normalCharCount: 1,
                         width: 400,
                         height: 150,
                         onSuccess: () {
