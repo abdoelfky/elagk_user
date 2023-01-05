@@ -80,30 +80,7 @@ class MenuScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                // Flexible(
-                //   child: BlocBuilder<PharmacyProfileBloc, PharmacyProfileState>(
-                //     builder: (context, state) {
-                //       switch (state.pharmacyUserRequestState) {
-                //         case RequestState.loading:
-                //           return const HeaderDrawerSection(
-                //             title: AppConstants.empty,
-                //             imageSrc: AppConstants.empty,
-                //           );
-                //         case RequestState.loaded:
-                //           return HeaderDrawerSection(
-                //             title: state.pharmacyUser!.pharmacyName ?? "User Name",
-                //             imageSrc: state.pharmacyUser!.imageUrl!,
-                //           );
-                //         case RequestState.error:
-                //           return const HeaderDrawerSection(
-                //             title: AppStrings.undefined,
-                //             imageSrc: AppStrings.undefined,
-                //           );
-                //       }
-                //     },
-                //   ),
-                // ),
-                UserDrawerHeader(context),
+                UserDrawerHeader(),
                 SizedBox(height: mediaQueryWidth(context) / AppSize.s15),
                 ...MenuItems.all.map(buildMenuItem).toList(),
                 SizedBox(height: mediaQueryWidth(context) / AppSize.s6),

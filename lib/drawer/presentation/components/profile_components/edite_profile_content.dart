@@ -1,4 +1,7 @@
+import 'package:elagk/shared/utils/app_routes.dart';
+import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
@@ -215,9 +218,6 @@ class EditProfileContent extends StatelessWidget {
                   validator: (value) => validateEmail(value!),
                 ),
                 SizedBox(
-                  height: mediaQueryHeight(context) * .025,
-                ),
-                SizedBox(
                   height: mediaQueryHeight(context) * .02,
                 ),
                 ConditionalBuilder(
@@ -241,6 +241,24 @@ class EditProfileContent extends StatelessWidget {
                             }
                           },
                         )),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .01,
+                ),
+                MainButton(
+                  title: AppStrings.changePassword,
+                  onPressed: () async {
+                    _hasInternet =
+                    await InternetConnectionChecker().hasConnection;
+                    if (_hasInternet) {
+                      navigateTo(context: context, screenRoute:
+                      Routes.resetPasswordScreenByOldPassword
+                      );
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: mediaQueryHeight(context) * .03,
+                ),
               ],
             ),
           ),

@@ -5,7 +5,8 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesAndProductsSection extends StatelessWidget {
-  CategoriesAndProductsSection({Key? key, required this.firstCategoryName, required this.pharmacyId})
+  CategoriesAndProductsSection({Key? key, required this.firstCategoryName,
+    required this.pharmacyId})
       : super(key: key);
 
   final String firstCategoryName;
@@ -29,7 +30,7 @@ class CategoriesAndProductsSection extends StatelessWidget {
         SizedBox(height: mediaQueryWidth(context) / AppSize.s15),
         PharmacyProducts(
           firstCategoryName: firstCategoryName,
-          pharmacyId: pharmacyId,
+          pharmacyId: 0,
         ),
 
         /* if (cubit.profileMedicines!.paginate!.currentPage!.toInt()

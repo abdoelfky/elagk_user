@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductComponent extends StatelessWidget {
-  ProductComponent({Key? key, required this.index}) : super(key: key);
-final int index;
+  ProductComponent({Key? key, required this.index, required this.pharmacyId}) : super(key: key);
+  final int index;
+  final int pharmacyId;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PharmacyProductiesCubit, PharmacyProductiesStates>(
@@ -81,7 +82,9 @@ final int index;
                   BasketCubit.get(context).AddToCart(
                       productModel:
                       PharmacyProductiesCubit.get(context)
-                          .producties[index]);
+                          .producties[index],
+                      phId: pharmacyId,
+                      dist: 10);
                 },
                 child: const Text('اضف الي العربة',
                     style: TextStyle(

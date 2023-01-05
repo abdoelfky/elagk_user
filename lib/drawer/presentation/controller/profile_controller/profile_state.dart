@@ -37,3 +37,13 @@ class ProfilePickedSuccessState  extends ProfileStates {}
 
 class ProfilePickedErrorState  extends ProfileStates {}
 
+class ProfileChangePasswordLoadingState  extends ProfileStates {}
+
+class ProfileChangePasswordSuccessState  extends ProfileStates {}
+
+class ProfileChangePasswordErrorState  extends ProfileStates
+{
+  final String error;
+
+  ProfileChangePasswordErrorState(this.error);
+}

@@ -5,7 +5,7 @@ class AppConstants {
   // General
   static const String empty = "";
   static const String userName = "userName";
-
+  static UserProfileModel? userModel ;
 
   // Cache helper
   static const String userId = "userId";

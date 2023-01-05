@@ -65,4 +65,42 @@ class DioHelper {
   }
 
 
+  static Future<Response> putDataFromJson({
+    required String url,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? query,
+    String? token ,
+  }) async {
+    dio?.options.headers ={
+      'Content-Type' :'application/json',
+
+    };
+
+    return  dio!.put(
+      url,
+      queryParameters:query,
+      data: data,
+    );
+  }
+
+  static Future<Response> postDataFromFormData({
+    required String url,
+    required FormData data,
+    Map<String, dynamic>? query,
+    String? token ,
+  }) async {
+    dio!.options.headers ={
+
+      'Content-Type': 'application/json'
+
+
+    };
+
+    return   dio!.post(
+      url,
+      queryParameters:query,
+      data: data,
+
+    );
+  }
 }

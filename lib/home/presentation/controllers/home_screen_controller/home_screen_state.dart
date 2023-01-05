@@ -6,6 +6,18 @@ abstract class HomeScreenState {}
 class HomeScreenInitialState extends HomeScreenState {}
 
 class ProfileGetUserDataLoadingState  extends HomeScreenState {}
+class ProfileGetUserDataSuccessState  extends HomeScreenState
+{
+  final UserProfileModel userModel;
+
+  ProfileGetUserDataSuccessState(this.userModel);
+}
+class ProfileGetUserDataErrorState  extends HomeScreenState
+{
+  final String error;
+
+  ProfileGetUserDataErrorState(this.error);
+}
 
 
 class GetPharmaciesLoadingState extends HomeScreenState {}

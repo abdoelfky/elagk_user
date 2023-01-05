@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                                     Color(0xff059053),
                                   ])),
                           width: mediaQueryWidth(context),
-                          height: AppSize.s180,
+                          height: AppSize.s230,
                           child: Column(
                             children: [
                               const SizedBox(

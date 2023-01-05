@@ -1,8 +1,10 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
 import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_state.dart';
+import 'package:elagk/shared/components/toast_component.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
@@ -18,6 +20,7 @@ import 'OrderByPrescriptionDevider.dart';
 
 class OrderByPrescriptionContent extends StatelessWidget {
   final PharmacyModel? pharmacyModel;
+
   OrderByPrescriptionContent({Key? key, this.pharmacyModel}) : super(key: key);
   static final _orderController = TextEditingController();
   static final _discountController = TextEditingController();
@@ -25,7 +28,22 @@ class OrderByPrescriptionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OrderByPerscripiyionCubit, OrderByPerscripiyionStates>(
-      listener: (context, state) {},
+      listener: (context, state)
+      {
+        if (state is OrderByPerscripiyionSuccessState) {
+          {
+            showToast(
+                text: AppStrings.prescriptionDone,
+                state: ToastStates.SUCCESS);
+
+          }
+
+        } else if (state is OrderByPerscripiyionErrorState) {
+          showToast(
+              text: AppStrings.tryAgain ,
+              state: ToastStates.ERROR);
+        }
+      },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(AppPadding.p20),
@@ -138,12 +156,12 @@ class OrderByPrescriptionContent extends StatelessWidget {
                           color: Colors.green[700]),
                       child: Center(
                           child: Text(
-                            AppStrings.active,
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          )),
+                        AppStrings.active,
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
                     ),
                   ),
                   validator: (value) {
@@ -156,26 +174,39 @@ class OrderByPrescriptionContent extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 60,
-                ),SizedBox(
+                ),
+                SizedBox(
                     width: double.infinity,
                     height: AppSize.s60,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                        BorderRadius.circular(AppPadding.p15),
-                      ),
-                      onPressed: () => {
-                      BasketCubit.get(context).addToCartByPrescription(
-                        image:OrderByPerscripiyionCubit.get(context).imagePath
-                      )
-                      },
-                      color: AppColors.offBlue,
-                      child:  Center(
-                        child: Text(AppStrings.confirmOrder,
-                            style: Theme.of(context).textTheme.headlineMedium),
-                      ),
-                    )),
-
+                    child: ConditionalBuilder(
+                        condition: state is !OrderByPerscripiyionLoadingState,
+                        builder: (context) => MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(AppPadding.p15),
+                              ),
+                              onPressed: () => {
+                                OrderByPerscripiyionCubit.get(context)
+                                    .orderByPerscription(
+                                        prescriptionImageFile:
+                                            OrderByPerscripiyionCubit.get(
+                                                    context)
+                                                .imagePath,
+                                        pharmacyId: pharmacyModel!.pharmacyId)
+                              },
+                              color: AppColors.offBlue,
+                              child: Center(
+                                child: Text(AppStrings.confirmOrder,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium),
+                              ),
+                            ),
+                        fallback: (context) => Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primary,
+                              ),
+                            ))),
 
                 SizedBox(
                   height: 20,

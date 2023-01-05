@@ -11,11 +11,33 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeScreenCubit extends Cubit<HomeScreenState> {
   HomeScreenCubit() : super(HomeScreenInitialState());
 
   static HomeScreenCubit get(context) => BlocProvider.of(context);
+
+
+//userData
+  Future<void> getUserProfileData() async {
+    emit(ProfileGetUserDataLoadingState());
+    print(CacheHelper.getData(key: AppConstants.userId));
+    await DioHelper.getData(
+      url: ApiConstants.UserIdPath(
+          CacheHelper.getData(key: AppConstants.userId).toString()),
+    ).then((value) {
+      AppConstants.userModel = UserProfileModel.fromJson(value.data);
+      print(AppConstants.userModel!.lastName!);
+      emit(ProfileGetUserDataSuccessState(AppConstants.userModel!));
+    }).catchError((error) {
+      print(error.toString());
+      emit(ProfileGetUserDataErrorState(error.toString()));
+    });
+  }
+
+
+
   //get All Pharmacies
   List<PharmacyModel> pharmacies = [];
 
@@ -43,24 +65,28 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   }
 
   Future<void> locationPermission() async {
-    if (permission == null)
-      permission = await Geolocator.requestPermission().then((value) {
+    var status = await Permission.location.request();
+    if (status == Null){
+      permission = await Geolocator.requestPermission().then((value) async {
+        var status = await Permission.location.request();
         emit(GetPermissionSuccessState());
-        if (value == LocationPermission.deniedForever ||
-            value == LocationPermission.denied) {
+        if (status == PermissionStatus.denied ||
+            status == PermissionStatus.permanentlyDenied) {
           emit(GetPermissionErrorState());
+          permission = await Geolocator.requestPermission();
         } else {
           getUserLocation();
         }
-      }).catchError((onError) {
+      })
+          .catchError((onError) {
         emit(GetPermissionErrorState());
         print('fff');
         print(onError);
         print(permission);
-      });
+      });}
     else {
-      if (permission == LocationPermission.deniedForever ||
-          permission == LocationPermission.denied) {
+      if (status == PermissionStatus.denied ||
+          status == PermissionStatus.permanentlyDenied) {
         emit(GetPermissionErrorState());
       } else {
         getUserLocation();

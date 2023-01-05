@@ -23,6 +23,7 @@ class ApiConstants {
 
   // Reset password screen
   static const String resetPassword = "$baseUrl/$auth/ResetPassword";
+  static  String resetPasswordByOldPassword(String userId) => "$baseUrl/Users/PutUserPassword/$userId";
 
   // About us screen
   static const String aboutUs = "$baseUrl/AboutUs";
@@ -51,4 +52,17 @@ class ApiConstants {
 
   // Complaints screen
   static const String complaints = "$baseUrl/Issues";
+
+
+  //cart
+  static String getCartByUserId(String userId) => "$baseUrl/Carts/$userId";
+  static const String postCart = "$baseUrl/Carts";
+  static const String postCartProducts = "$postCart/CartProducts";
+//order
+  static const String postOrder = "$baseUrl/Orders";
+  static const String Prescriptions = "$baseUrl/Prescriptions";
+  static String getUserOrdersByUserId(String userId) => "$baseUrl/Orders/GetUserOrders/$userId";
+
+
+
 }

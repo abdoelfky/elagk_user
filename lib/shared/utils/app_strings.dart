@@ -15,6 +15,8 @@ class AppStrings {
   static const String codeSendButton  = "اعاده تعيين كلمه المرور";
   static const String activator  = "تفعيل الحساب";
   static const String pleasePass  = "برجاء ادخال كلمة المرور";
+  static const String pleaseEnterOldPass  = "برجاء ادخال كلمة المرور القديمه";
+
   static const String sendCodeAgain = " ارسال رمز التحقق مرة اخري";
   static const String sendingVerificationCodeAgain = " ارسال رمز التفعيل مرة اخري";
   static const String codeSendButton1  = "ارسال كود التفعيل ";
@@ -88,6 +90,7 @@ class AppStrings {
   // Reset password screen
   static const String newPassword = "كلمة مرور جديدة";
   static const String oldPassword = "كلمة المرور القديمه";
+  static const String changePassword = "تغيير كلمه المرور";
 
   static const String resetPasswordSubtitle =
       "ادخل كلمة مرور تتكون من 8 أحرف بحد أدني، وتحتوي علي رقم وحرف كبير ورمز واحد عالأقل.";
@@ -227,6 +230,8 @@ class AppStrings {
   static const String total = "الإجمالي";
   static const String quantity = "الكمية: ";
   static const String piecePrice = "سعر القطعة: ";
+  static const String prescriptionDone = "تم ارسال طلب الروشته بنجاح";
+  static const String tryAgain = "من فضلك أعد المحاوله مره اخرى";
 
   // Appbar
   static const String logOut = "تسجيل الخروج";

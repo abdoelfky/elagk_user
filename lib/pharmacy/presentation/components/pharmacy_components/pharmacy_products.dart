@@ -52,9 +52,9 @@ class PharmacyProducts extends StatelessWidget {
               if (PharmacyProductiesCubit.get(context)
                       .producties[index]
                       .discountPercent == 0.0) {
-                return ProductComponent(index: index,);
+                return ProductComponent(index: index, pharmacyId: pharmacyId,);
               } else {
-                return OfferComponent(index: index,);
+                return OfferComponent(index: index, pharmacyId: pharmacyId,);
               }
             },
           );

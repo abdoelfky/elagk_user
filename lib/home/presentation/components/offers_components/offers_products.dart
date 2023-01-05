@@ -32,7 +32,7 @@ class _OffersProductsState extends State<OffersProducts> {
         ),
         itemCount: 25,
       itemBuilder: (BuildContext context, int index) {
-        return OfferComponent(index: index);
+        return OfferComponent(index: index, pharmacyId: 0,);
       },
     );
   }

@@ -13,17 +13,17 @@ class CategoriesCubit extends Cubit<CategoriesStates> {
 
   static CategoriesCubit get(context) => BlocProvider.of(context);
 
-  Future<void> ResetPass() async {
-    emit(CategoriesLoadingState());
-    await DioHelper.getData(
-      url: ApiConstants.categories,
-    ).then((value) {
-      emit(CategoriesSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(CategoriesErrorState(error.toString()));
-    });
-  }
+  // Future<void> ResetPass() async {
+  //   emit(CategoriesLoadingState());
+  //   await DioHelper.getData(
+  //     url: ApiConstants.categories,
+  //   ).then((value) {
+  //     emit(CategoriesSuccessState());
+  //   }).catchError((error) {
+  //     print(error.toString());
+  //     emit(CategoriesErrorState(error.toString()));
+  //   });
+  // }
 void changeStringsToDef()
 {
   AppConstants.pharmacyLocation='';
