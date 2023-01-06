@@ -1,6 +1,7 @@
 
 import 'package:elagk/drawer/data/past_orders_model.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -42,32 +43,31 @@ Widget OrderItem({required context,required PastOrdersModel pastOrder}) =>
                   fontWeight: FontWeight.bold
 
               )),
-              Text(
 
-                  '${DateFormat("yyyy-MM-dd").format(DateTime.parse(
-                      pastOrder.createdAt.toString()))}', style:
-              TextStyle
-                (
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey.shade500
+              Row(
+                children: [
+                  Text(
 
-              )),
-              // Row(
-              //   children: [
-              //
-              //     Spacer(),
-              //     Text(pastOrder.totalPrice.toString() + 'جنيه', style:
-              //     TextStyle
-              //       (
-              //         fontSize: 16,
-              //         fontWeight: FontWeight.w600,
-              //         color: Colors.grey.shade500
-              //
-              //     )),
-              //
-              //   ],
-              // )
+                      '${DateFormat("yyyy-MM-dd").format(DateTime.parse(
+                          pastOrder.createdAt.toString()))}', style:
+                  TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade500
+
+                  )),
+                  SizedBox(width: mediaQueryWidth(context) * 0.25,),
+                  Text(pastOrder.totalPrice.toString() + ' جنيه ', style:
+                  TextStyle
+                    (
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade500
+
+                  )),
+
+                ],
+              )
             ],
           )
         ],
