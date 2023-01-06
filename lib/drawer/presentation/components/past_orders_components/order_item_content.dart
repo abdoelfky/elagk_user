@@ -45,6 +45,7 @@ Widget OrderItem({required context,required PastOrdersModel pastOrder}) =>
               )),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
 
@@ -56,7 +57,7 @@ Widget OrderItem({required context,required PastOrdersModel pastOrder}) =>
                       color: Colors.grey.shade500
 
                   )),
-                  SizedBox(width: mediaQueryWidth(context) * 0.25,),
+                  SizedBox(width: mediaQueryWidth(context) * 0.24,),
                   Text(pastOrder.totalPrice.toString() + ' جنيه ', style:
                   TextStyle
                     (

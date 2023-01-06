@@ -6,6 +6,7 @@ import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'past_orders_state.dart';
 
 class PastOrdersCubit extends Cubit<PastOrdersStates> {
@@ -23,6 +24,7 @@ class PastOrdersCubit extends Cubit<PastOrdersStates> {
       pastOrders = (response.data as List)
           .map((x) => PastOrdersModel.fromJson(x))
           .toList();
+      pastOrders=pastOrders.reversed.toList();
       emit(GetPastOrdersSuccessState(pastOrders));
     } catch (error, stacktrace) {
       emit(GetPastOrdersErrorState(error.toString()));

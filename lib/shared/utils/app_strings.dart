@@ -218,6 +218,7 @@ class AppStrings {
   static const String deliverTo= "التوصيل الى";
   static const String prescriptionPrice = "سعر الروشتة";
   static const String addDiscountCode= "اضافه كود الخصم";
+  static const String noPastOrders= "لا يوجد طلبات سابقه";
 
   static const String sendPrescriptionAndDeliverPrice =
       "ارسال سعر الروشتة والتوصيل";
@@ -244,4 +245,7 @@ class AppStrings {
   // Wrong routes
   static const String wrongScreen = "Wrong Screen";
   static const String routeNotFound = "Screen not found.";
+
+
+
 }
