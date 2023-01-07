@@ -115,6 +115,7 @@ class AppStrings {
   // About us
   static const String whoAreWe = "من نحن";
   static const String ourVision = "رؤيتنا";
+  static const String noTopUsers = "لا يوجد عملاء مميزين حتى الآن";
   static const String vision =
       "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى";
   static const String version = "الاصدار";

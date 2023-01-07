@@ -1,6 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_states.dart';
+import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
+import 'package:elagk/basket/presentation/basket_controller/basket_states.dart';
 import 'package:elagk/shared/components/alert_dialoge.dart';
 import 'package:elagk/shared/components/toast_component.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
@@ -24,16 +24,16 @@ class BasketSection extends StatelessWidget {
     return BlocConsumer<BasketCubit, BasketStates>(
       listener: (context, state) {
         if (state is PostOrderSuccessState) {
-          showToast(
-              text: 'Order Sent Successfully', state: ToastStates.SUCCESS);
+          // showToast(
+          //     text: 'Order Sent Successfully', state: ToastStates.SUCCESS);
 
           showDialog(
               context: context,
               builder: (_) {
                 return alertDialog(
-                  imageSrc: 'assets/images/menu/profile.png',
+                  imageSrc: 'assets/images/menu/orderDone.png',
                   text:
-                  'شكرا ليك يسعادنا دايما انك معانا وهنرد على\n             شكاوك في اقرب وقت',
+                  'شكرا ليك يسعادنا دايما انك معانا',
                 );
               });
 
@@ -68,11 +68,13 @@ class BasketSection extends StatelessWidget {
                                   BorderRadius.circular(AppPadding.p15),
                             ),
                             onPressed: () => {
+                              if(BasketCubit.get(context).basketProducts.isNotEmpty){
                               BasketCubit.get(context).postCart(
-                                  pharmacyId:
-                                      BasketCubit.get(context).pharmacyId,
-                                  distance: BasketCubit.get(context).distance)
-                            },
+                                  pharmacyId:BasketCubit.get(context).pharmacyId,
+                                  distance: BasketCubit.get(context).distance
+                              )
+                            }
+                              },
                             color: AppColors.offBlue,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

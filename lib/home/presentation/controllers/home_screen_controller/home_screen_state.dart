@@ -41,3 +41,5 @@ class GetPermissionSuccessState extends HomeScreenState {}
 
 class GetPermissionErrorState extends HomeScreenState {}
 
+class SearchDoneSuccessState extends HomeScreenState {}
+

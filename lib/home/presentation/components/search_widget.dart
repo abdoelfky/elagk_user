@@ -19,6 +19,8 @@ class SearchWidget extends StatelessWidget {
         .of(context)
         .size
         .width;
+    var height = MediaQuery.of(context).size.height;
+
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
 
@@ -27,27 +29,26 @@ class SearchWidget extends StatelessWidget {
           searchableList.add(element.pharmacyName!.toLowerCase());
 
         });
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: Flexible(
+        return Flexible(
+          child: Directionality(
+            textDirection: TextDirection.rtl,
             child: Container(
               color: Color(0x35a9a3),
-              width: width * .75,
+              width: width * .85,
               padding: EdgeInsets.all(AppPadding.p15),
               child: AdvancedSearch(
-
-                searchItems:searchableList ,
+                searchItems: searchableList,
                 maxElementsToDisplay: 10,
                 singleItemHeight: 50,
                 minLettersForSearch: 0,
-                selectedTextColor: Colors.white,
+                selectedTextColor: Color(0xFF3363D9),
                 fontSize: 14,
                 borderRadius: 10.0,
                 hintText: AppStrings.search,
                 cursorColor: Colors.white,
                 autoCorrect: false,
                 focusedBorderColor: Colors.blue,
-                searchResultsBgColor: Colors.white,
+                searchResultsBgColor: Color(0xFAFAFA),
                 disabledBorderColor: Colors.cyan,
                 enabledBorderColor: Color(0x35a9a3),
                 enabled: true,
@@ -65,19 +66,30 @@ class SearchWidget extends StatelessWidget {
                 searchItemsWidget: searchWidget,
                 onItemTap: (index, value) {
                   print("selected item Index is $index");
-                  navigateTo(context: context,
-                      screenRoute:Routes.pharmacy,
-                      arguments:HomeScreenCubit.get(context).pharmacies[index] );
+                  HomeScreenCubit.get(context).searchWord=value;
+                  HomeScreenCubit.get(context).search();
+
+
                 },
                 onSearchClear: () {
                   print("Cleared Search");
+                  HomeScreenCubit.get(context).searchWord='';
+                  HomeScreenCubit.get(context).searchResult=[];
+                  print(HomeScreenCubit.get(context).searchResult.length);
+                  HomeScreenCubit.get(context).search();
+
                 },
                 onSubmitted: (value, value2) {
                   print("Submitted: " + value);
+                  HomeScreenCubit.get(context).searchWord=value;
+                  HomeScreenCubit.get(context).search();
+
                 },
                 onEditingProgress: (value, value2) {
                   print("TextEdited: " + value);
+                  HomeScreenCubit.get(context).searchWord=value;
                   print("LENGTH: " + value2.length.toString());
+                  HomeScreenCubit.get(context).search();
                 },
               ),
             ),

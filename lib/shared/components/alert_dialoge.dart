@@ -17,8 +17,10 @@ class alertDialog extends StatelessWidget {
       ),
       elevation: 50.0,
       content: Container(
-        height: mediaQueryHeight(context)/AppSize.s6,
+        height: mediaQueryHeight(context)/AppSize.s4,
         child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
@@ -26,17 +28,19 @@ class alertDialog extends StatelessWidget {
                 imageSrc,
 
               ),
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 100,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: mediaQueryHeight(context) / AppSize.s40),
-            Text(text,
-
-              style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold
-              ),)
+            SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(text,
+                style: TextStyle(
+                    fontSize: 17.5,
+                    fontWeight: FontWeight.bold
+                ),),
+            )
           ],
         ),
       ),

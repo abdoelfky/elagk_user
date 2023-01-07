@@ -4,53 +4,55 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget SpecialCustomerInfo(context) => Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(10),
-      ),
-  child: Padding(
-    padding: const EdgeInsets.all(AppPadding.p8),
-    child: Row(children:
-    [
-
-      Container(
-        width: 75,
-        height:75,
+Widget SpecialCustomerInfo(context, userName, points, totalPrice) =>
+    Directionality(
+      textDirection: TextDirection.rtl,
+      child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            border: Border.all(
-              width: 2,
-              color: AppColors.lightGrey,
-            )),
-        child: Center(
-          child: Image(
-            image: AssetImage(
-              'assets/images/menu/profile.png',
-            ),
-            width: 75,
-            height: 75,
-            fit: BoxFit.cover,
+          color: Colors.grey[100],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(AppPadding.p8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: 32,
+                backgroundColor: AppColors.primary,
+                child: CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage:AssetImage(
+                    'assets/images/menu/user.png',
+                  ) ,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(userName.toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18)),
+                  Text('المبلغ: ${totalPrice} جنيه',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18)),
+                ],
+              ),
+              Spacer(),
+              Text('${points} نقطه',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
+            ],
           ),
         ),
       ),
-      SizedBox(width: 20,),
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-        Text('عمر ابراهيم',
-          style: TextStyle(color: Colors.black,
-              fontWeight:FontWeight.bold ,fontSize: 18)),
-        Text('المبلغ: 800\$',
-            style: TextStyle(color: Colors.black,
-                fontWeight:FontWeight.bold ,fontSize: 18)),
-      ],),
-      Spacer(),
-      Text('200 نقطه',
-          style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold ,fontSize: 18)),
-
-
-
-    ],),
-  ),
     );

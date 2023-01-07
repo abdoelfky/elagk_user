@@ -1,8 +1,4 @@
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
-import 'package:elagk/home/presentation/components/menu_widget_component.dart';
-import 'package:elagk/shared/global/app_colors.dart';
-import 'package:elagk/shared/local/shared_preference.dart';
-import 'package:elagk/shared/utils/app_constants.dart';
+import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 

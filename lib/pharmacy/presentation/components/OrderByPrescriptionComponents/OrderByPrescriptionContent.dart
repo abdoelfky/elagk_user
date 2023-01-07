@@ -1,6 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_state.dart';
@@ -11,10 +10,6 @@ import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../shared/utils/app_assets.dart';
-import '../../../../shared/utils/app_routes.dart';
-import '../../../../shared/utils/navigation.dart';
-import '../../pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'AddPrescriptionImage.dart';
 import 'OrderByPrescriptionDevider.dart';
 

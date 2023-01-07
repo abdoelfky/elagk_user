@@ -26,16 +26,22 @@ crossAxisAlignment: CrossAxisAlignment.end,
             SizedBox(
               height: mediaQueryHeight(context) * .025,
             ),
+
             ListView.separated(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index)
                 {
                   return PharmacyItem
-                    (pharmacy:HomeScreenCubit.get(context).pharmacies[index],);
+                    (pharmacy:HomeScreenCubit.get(context).searchResult.isEmpty?
+                  HomeScreenCubit.get(context).pharmacies[index]:
+                  HomeScreenCubit.get(context).searchResult[index]
+                  );
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 20,),
-                itemCount:HomeScreenCubit.get(context).pharmacies.length)
+                itemCount:HomeScreenCubit.get(context).searchResult.isEmpty?
+                HomeScreenCubit.get(context).pharmacies.length:
+                HomeScreenCubit.get(context).searchResult.length)
           ],);
       },
     );

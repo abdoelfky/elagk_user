@@ -6,13 +6,15 @@ import 'package:elagk/auth/presentation/controller/login_controller/login_cubit.
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
 import 'package:elagk/auth/presentation/controller/reset_password_controller/reset_password_cubit.dart';
-import 'package:elagk/auth/presentation/screens/reset_password/reset_password_screen.dart';
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
+import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/about_us_controller/about_us_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/contact_us_controller/contact_us_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/complaints_controller/complaints_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/elagk_store_controller/elagk_store_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/points_controller/points_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/special_customers_controller/special_cutomers_cubit.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/onboarding/controllers/onboarding_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_controller/categories_cubit.dart';
@@ -32,14 +34,11 @@ import 'shared/utils/app_strings.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  // await initFCM(); // TODO: enable it after adding app notifications.
+  // await initFCM(); \ TODO: enable it after adding app notifications.
+
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   CacheHelper.init();
-
-  // initializeFancyCart(
-  //   child: MyApp(),
-  // );
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -54,11 +53,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // const MyApp._internal();
-  //
-  // static const MyApp instance = MyApp._internal();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -82,6 +77,11 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>OrderByPerscripiyionCubit()),
           BlocProvider(create: (BuildContext context) =>PastOrdersCubit()..getPastOrders()),
           BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()),
+          BlocProvider(create: (BuildContext context) =>PointsCubit()..getUserPoints()),
+          BlocProvider(create: (BuildContext context) =>SpecialCustomersCubit()..getSpecialCustomers()),
+          BlocProvider(create: (BuildContext context) =>ElagkStoreCubit()..getCategories(SuperCategoryId: 1)),
+
+
 
 
         ],

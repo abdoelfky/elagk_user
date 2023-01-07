@@ -1,5 +1,5 @@
 
-import 'package:elagk/drawer/data/past_orders_model.dart';
+import 'package:elagk/drawer/data/models/past_orders_model.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';

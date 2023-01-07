@@ -46,6 +46,7 @@ class ApiConstants {
   static const String userPharmacy = "$pharmacies/UserPharmacy";
 
   static String UserIdPath(String userId) => "$baseUrl/Users/$userId";
+  static String getUserPointsIdPath(String userId) => "$baseUrl/Users/GetUserPoint/$userId";
 
   static const String categories = "$baseUrl/Categories";
   static String getCategoryBySuperCategoryId(int SuperCategoryId) => "$categories/GetCategoryBySuperCatgory/$SuperCategoryId";
@@ -62,6 +63,7 @@ class ApiConstants {
   static const String postOrder = "$baseUrl/Orders";
   static const String Prescriptions = "$baseUrl/Prescriptions";
   static String getUserOrdersByUserId(String userId) => "$baseUrl/Orders/GetUserOrders/$userId";
+  static String getTopUsers(int x) => "$baseUrl/Users/GetTopUsers/$x";
 
 
 

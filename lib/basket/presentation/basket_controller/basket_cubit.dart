@@ -126,12 +126,13 @@ class BasketCubit extends Cubit<BasketStates> {
   }
 
   double totalPrice = 0.0;
-
+  double delivery=0.0;
   void calcTotalPrice() {
     totalPrice = 0.0;
     basketProducts.forEach((element) {
       totalPrice += (element.price! * element.quantity!);
     });
+    // totalPrice+=delivery;
     emit(CalculatedSuccessfullyState());
     print(basketProducts);
   }
@@ -201,7 +202,6 @@ class BasketCubit extends Cubit<BasketStates> {
 
         emit(PostCartOrderSuccessState());
 
-
         if(basketProducts.length>1)
         {
           basketProducts.asMap().forEach((elementIndex, element) {
@@ -219,19 +219,15 @@ class BasketCubit extends Cubit<BasketStates> {
                     "price": basketProducts[elementIndex].price
                   }).then((value)
               {
+
                 emit(PutCartOrderSuccessState());
-                postOrder(pharmacyId: pharmacyId, distance: distance);
 
               });
             }
           });
         }
-        else
-        {
-          postOrder(pharmacyId: pharmacyId, distance: distance);
 
-        }
-
+        postOrder(pharmacyId: pharmacyId, distance: distance);
 
       }).catchError((onError) {
         emit(PostCartOrderErrorState(onError.toString()));
@@ -273,8 +269,9 @@ class BasketCubit extends Cubit<BasketStates> {
         }
     ).then((value)
     {
-      deleteCartProducts();
       emit(PostOrderSuccessState());
+
+      deleteCartProducts();
 
     }).catchError((onError)
     {

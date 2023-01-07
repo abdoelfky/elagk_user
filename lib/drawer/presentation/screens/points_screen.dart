@@ -1,8 +1,10 @@
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/drawer/presentation/components/points_components/points_widget.dart';
+import 'package:elagk/drawer/presentation/controller/points_controller/points_cubit.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/shared/components/second_appBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../auth/presentation/components/screen_background.dart';
 
@@ -17,7 +19,12 @@ class PointsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Directionality(
+    return  BlocConsumer<PointsCubit , PointsState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    return Directionality(
       textDirection: TextDirection.rtl,
       child: SafeArea(
         child: Scaffold(
@@ -35,85 +42,98 @@ class PointsScreen extends StatelessWidget {
 
           backgroundColor: AppColors.offWhite,
           body: ScreenBackground(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppPadding.p20),
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: AppSize.s120,
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        // Pharmacy photo
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            decoration:  BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  AppSize.s15,
-                                ),
-                                gradient:const LinearGradient(
-                                    begin:Alignment.topRight ,
-                                    end:Alignment.bottomRight ,
-                                    colors:
-                                    [
+            child: RefreshIndicator(
+              onRefresh: () async
+              {
+                PointsCubit.get(context).getUserPoints();
+              },
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(AppPadding.p20),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: AppSize.s120,
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          // Pharmacy photo
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration:  BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    AppSize.s15,
+                                  ),
+                                  gradient:const LinearGradient(
+                                      begin:Alignment.topRight ,
+                                      end:Alignment.bottomRight ,
+                                      colors:
+                                      [
 
-                                      Color(0xff059053),
-                                      Color(0xff12486e),
-                                    ])
-                            ),
-                            width: mediaQueryWidth(context),
-                            height: AppSize.s170,
-                            child: Column(
-                              children: const [
-                                SizedBox(
-                                  height: AppSize.s20,
-                                ),
-                                Center(
-                                  child: Text(
-                                    AppStrings.numOfPoints,
-                                    style: TextStyle(
-                                        fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold
+                                        Color(0xff059053),
+                                        Color(0xff12486e),
+                                      ])
+                              ),
+                              width: mediaQueryWidth(context),
+                              height: AppSize.s170,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: AppSize.s20,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      AppStrings.numOfPoints,
+                                      style: TextStyle(
+                                          fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),SizedBox(
+                                    height: AppSize.s10,
+                                  ),
+                                  Center(
+                                    child: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Text(
+
+                                        '${PointsCubit.get(context).userPoints.toString()} نقطه',
+                                        style: TextStyle(
+                                            fontSize: 19,color: Colors.white,fontWeight: FontWeight.bold
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),SizedBox(
-                                  height: AppSize.s10,
-                                ),
-                                Center(
-                                  child: Text(
-                                    '150 نقطة',
-                                    style: TextStyle(
-                                        fontSize: 19,color: Colors.white,fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
+
+
                             ),
-
-
                           ),
-                        ),
 
-                        // Pharmacy information
+                          // Pharmacy information
 
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                      height: mediaQueryHeight(context) / AppSize.s40),
-                  const PointsSection(
-                    firstCategoryName: "categoryName",
-                  ),
-                ],
+                    SizedBox(
+                        height: mediaQueryHeight(context) / AppSize.s40),
+                    const PointsSection(
+                      firstCategoryName: "categoryName",
+                    ),
+                  ],
+
+                ),
+
 
               ),
-
-
             ),
           ),
         ),
       ),
     );
+  },
+);
   }
 }

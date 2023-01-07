@@ -108,7 +108,7 @@ class BasketSalary extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                '${totalPrice + 15 }',
+                '${totalPrice+15}',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,color: Colors.green

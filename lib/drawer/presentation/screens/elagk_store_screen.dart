@@ -1,4 +1,5 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
+import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_cat_prod_section.dart';
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/pharmacy/presentation/components/OrderByPrescriptionComponents/OrderByPrescriptionContent.dart';
@@ -93,9 +94,7 @@ class ElagkStoreScreen extends StatelessWidget {
                   ),
                   SizedBox(
                       height: mediaQueryHeight(context) / AppSize.s40),
-                  CategoriesAndProductsSection(
-                    firstCategoryName: "categoryName", pharmacyId: 0,
-                  ),
+                  ElagkStoreCategoriesAndProductsSection(),
                 ],
 
               ),

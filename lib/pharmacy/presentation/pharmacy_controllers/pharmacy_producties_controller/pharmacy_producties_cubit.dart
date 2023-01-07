@@ -63,8 +63,34 @@ class PharmacyProductiesCubit extends Cubit<PharmacyProductiesStates> {
     emit(ChangeSelectedCategorySuccessState());
   }
 
+  String searchWord='';
 
+  List<ProductModel> searchResult=[];
+void search()
+{
+  if(searchWord!=''){
+  searchResult=[];
+  searchResult = producties
+      .where((product) =>
+      product.productName!.toLowerCase()
+          .contains(searchWord.toLowerCase()))
+      .toList();
+  emit(SearchDoneSuccessState());
+  }
+  else
+  {
+    searchWord='';
+    emit(SearchDoneSuccessState());
 
+  }
+
+}
+
+// void deleteSearch()
+// {
+//   searchResult=[];
+//   emit(SearchDeletedSuccessState());
+// }
 
 
 

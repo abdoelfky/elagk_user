@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:elagk/drawer/data/past_orders_model.dart';
+import 'package:elagk/drawer/data/models/past_orders_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';

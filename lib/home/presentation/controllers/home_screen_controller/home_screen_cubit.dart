@@ -112,13 +112,40 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
 
     emit(GetUserLocationState());
-    AppConstants.currentLocation = addresses
-        .sublist(3,addresses.length)
-        .first
-        .addressLine
+    AppConstants.currentLocation = addresses.first.addressLine
         .toString();
     getPharmacies();
     // print("${addresses.addressLine}");
     // print("permission:${permission.toString()}");
   }
+
+
+
+
+
+
+
+  String searchWord='';
+
+  List<PharmacyModel> searchResult=[];
+  void search()
+  {
+    if(searchWord!=''){
+      searchResult=[];
+      searchResult = pharmacies
+          .where((pharmacy) =>
+          pharmacy.pharmacyName!.toLowerCase()
+              .contains(searchWord.toLowerCase()))
+          .toList();
+      emit(SearchDoneSuccessState());
+    }
+    else
+    {
+      searchWord='';
+      emit(SearchDoneSuccessState());
+
+    }
+
+  }
+
 }

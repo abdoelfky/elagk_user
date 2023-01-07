@@ -1,8 +1,9 @@
-import 'package:elagk/basket/basket_presentation/basket_controller/basket_cubit.dart';
+import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app__fonts.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ class OfferComponent extends StatelessWidget {
   OfferComponent({Key? key, required this.index, required this.pharmacyId}) : super(key: key);
   final int index;
   final int pharmacyId;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PharmacyProductiesCubit, PharmacyProductiesStates>(
@@ -109,10 +111,25 @@ class OfferComponent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppPadding.p15),
                     ),
                     onPressed: () {
-                      BasketCubit.get(context).AddToCart(
-                          productModel:
-                          PharmacyProductiesCubit.get(context)
-                              .producties[index], phId:pharmacyId , dist:10 );
+                      if(BasketCubit.get(context).pharmacyId==pharmacyId
+                          ||BasketCubit.get(context).pharmacyId==null){
+                        BasketCubit.get(context).AddToCart(
+                            productModel:
+                            PharmacyProductiesCubit.get(context)
+                                .producties[index],
+                            phId: pharmacyId,
+                            dist: AppConstants.distance);
+                      }else
+                      {
+                        BasketCubit.get(context).deleteCartProducts();
+                        BasketCubit.get(context).AddToCart(
+                            productModel:
+                            PharmacyProductiesCubit.get(context)
+                                .producties[index],
+                            phId: pharmacyId,
+                            dist: AppConstants.distance);
+
+                      }
                     },
                     child: const Text('اضف الي العربة',
                         style: TextStyle(fontSize: 10, color: AppColors.shadow)),

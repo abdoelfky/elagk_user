@@ -27,3 +27,5 @@ class GetProductiesErrorState extends PharmacyProductiesStates
 
 class ChangeSelectedCategorySuccessState extends PharmacyProductiesStates {}
 
+class SearchDoneSuccessState extends PharmacyProductiesStates {}
+

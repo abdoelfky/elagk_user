@@ -51,7 +51,7 @@ final PharmacyModel pharmacyModel;
                 children: [
                   SizedBox(
                     width: double.infinity,
-                    height: AppSize.s170,
+                    height: AppSize.s200,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [

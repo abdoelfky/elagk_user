@@ -1,17 +1,15 @@
+import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_categories_component.dart';
+import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_products_component.dart';
 import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_departments.dart';
 import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_products.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesAndProductsSection extends StatelessWidget {
-  CategoriesAndProductsSection({Key? key,
-    required this.firstCategoryName,
-    required this.pharmacyId})
+class ElagkStoreCategoriesAndProductsSection extends StatelessWidget {
+  ElagkStoreCategoriesAndProductsSection({Key? key,})
       : super(key: key);
 
-  final String firstCategoryName;
-  final int pharmacyId;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +25,9 @@ class CategoriesAndProductsSection extends StatelessWidget {
         ),
         SizedBox(height: mediaQueryWidth(context) / AppSize.s30),
         // categories & products.
-        PharmacyCategories(pharmacyId: pharmacyId,),
+        ElagkStoreCategories(),
         SizedBox(height: mediaQueryWidth(context) / AppSize.s15),
-        PharmacyProducts(
-          firstCategoryName: firstCategoryName,
-          pharmacyId: pharmacyId,
-        ),
+        ElagkStoreProducts(),
       ],
     );
   }

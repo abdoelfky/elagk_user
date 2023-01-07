@@ -92,16 +92,16 @@ class ComplaintsScreen extends StatelessWidget {
                     BlocConsumer<ComplaintsCubit, ComplaintsState>(
                       listener: (context, state) {
                         if (state is SendComplaintSuccessState) {
-                          showToast(
-                              text: 'Complaint Sent Successfully',
-                              state: ToastStates.SUCCESS);
+                          // showToast(
+                          //     text: 'Complaint Sent Successfully',
+                          //     state: ToastStates.SUCCESS);
                           showDialog(
                               context: context,
                               builder: (_) {
                                 return alertDialog(
-                                  imageSrc: 'assets/images/menu/profile.png',
+                                  imageSrc: 'assets/images/menu/contactUsDialoge.jpg',
                                   text:
-                                      'شكرا ليك يسعادنا دايما انك معانا وهنرد على\n             شكاوك في اقرب وقت',
+                                      'شكرا ليك يسعدنا دايما انك معانا وهنرد على شكاوك في اقرب وقت',
                                 );
                               });
                           _titleController.text = '';

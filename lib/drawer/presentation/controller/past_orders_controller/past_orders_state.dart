@@ -1,4 +1,4 @@
-import 'package:elagk/drawer/data/past_orders_model.dart';
+import 'package:elagk/drawer/data/models/past_orders_model.dart';
 
 abstract class PastOrdersStates {}
 
