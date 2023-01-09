@@ -6,7 +6,7 @@ class AppStrings {
   static const String welcome  = " مرحبا بكم في علاجك";
   static const String pharmacies="الصيدليات";
   static const String search  = "ابحث .....";
-  static const String noPharmacies= "لا يوجد صيدليات حتى الآن";
+  static const String noPharmacies= "نأسف على  عدم توافر صيدليات في هذه المنطقه سوف يتم توفير صيدليات في أقرب وقت ممكن ...";
   static const String pleaseCheckYourInternet= "من فضلك تحقق من اتصال الانترنت لديك ثم أعد تحميل الصفحه";
   static const String pleaseGiveGPSPermission= "من فضلك قم باعطاء التطبيق صلاحيه الوصول الى GPS من اعدادات جهازك";
   static const String thenRestartApp= "ثم اعد تشغيل التطبيق";

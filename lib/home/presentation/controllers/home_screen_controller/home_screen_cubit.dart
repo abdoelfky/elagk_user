@@ -51,12 +51,64 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
           .map((x) => PharmacyModel.fromJson(x))
           .toList();
       emit(GetPharmaciesSuccessState());
+      filterPharmacies();
     } catch (error, stacktrace) {
       emit(GetPharmaciesErrorState(error.toString()));
 
       throw Exception("Exception occured: $error stackTrace: $stacktrace");
     }
   }
+
+  List<PharmacyModel> filteredPharmacies=[];
+  List<PharmacyOfferModel> filteredOffers = [];
+
+  void filterPharmacies()
+  {
+    filteredPharmacies=[];
+    filteredOffers = [];
+    emit(FilterPharmaciesLoadingState());
+    pharmacies.forEach((element)
+    {
+      getDistance(element.latitude,element.longitude).then((value)
+      {
+        print("lat1:${element.latitude}");
+        print("long1:${element.longitude}");
+        print("myLat:${AppConstants.myLat}");
+        print("myLong:${AppConstants.myLong}");
+        print(distance.toString());
+        if(distance! < 20000)
+        {
+          filteredPharmacies.add(element);
+        }
+      });
+    });
+    offers.forEach((element)
+    {
+      getDistance(element.latitude,element.longitude).then((value)
+      {
+        print(distance.toString());
+        if(distance! < 20000)
+        {
+          filteredOffers.add(element);
+        }
+      });
+    });
+    emit(FilterPharmaciesSuccessState());
+
+  }
+
+  int? distance;
+//get distance by mitres
+  Future<void> getDistance(lat1, long1) async {
+
+    distance = await Geolocator.distanceBetween(
+        lat1, long1, AppConstants.myLat!,AppConstants.myLong!)
+        .round();
+    emit(CalculateDistanceSuccessState());
+    print(AppConstants.distance);
+  }
+
+
 
   LocationPermission? permission;
 
@@ -65,14 +117,16 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     locationPermission();
   }
 
+  bool permissionStatue=true;
   Future<void> locationPermission() async {
     var status = await Permission.location.request();
-    if (status == Null){
+    if (status == Null) {
       permission = await Geolocator.requestPermission().then((value) async {
         var status = await Permission.location.request();
         emit(GetPermissionSuccessState());
         if (status == PermissionStatus.denied ||
             status == PermissionStatus.permanentlyDenied) {
+          permissionStatue = false;
           emit(GetPermissionErrorState());
           permission = await Geolocator.requestPermission();
         } else {
@@ -80,21 +134,23 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
         }
       })
           .catchError((onError) {
+        permissionStatue = false;
         emit(GetPermissionErrorState());
         print('fff');
         print(onError);
         print(permission);
-      });}
+      });
+    }
     else {
       if (status == PermissionStatus.denied ||
           status == PermissionStatus.permanentlyDenied) {
+        permissionStatue = false;
         emit(GetPermissionErrorState());
       } else {
         getUserLocation();
       }
     }
   }
-
   //get Current Location
   LatLng? currentPostion;
 

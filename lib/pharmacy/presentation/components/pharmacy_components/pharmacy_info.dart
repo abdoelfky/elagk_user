@@ -48,17 +48,20 @@ class PharmacyInformation extends StatelessWidget {
                         onTap: () {
 
                         },
-                        child: Text(
-                          pharmacyLocation!,
-                          // TODO: text button to maps.
-                          // cubit.onePharmacyModel!.data!.location.toString(),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium!
-                              .copyWith(
-                            color: AppColors.darkGrey,
+                        child: Container(
+                          width: mediaQueryWidth(context)*.6,
+                          child: Text(
+                            pharmacyLocation!,
+                            // TODO: text button to maps.
+                            // cubit.onePharmacyModel!.data!.location.toString(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                              color: AppColors.darkGrey,
+                            ),
                           ),
                         ),
                       ),
@@ -72,6 +75,7 @@ class PharmacyInformation extends StatelessWidget {
                         Text(
                           AppStrings.deliveryOrderIn30Minutes,
                           maxLines: 2,
+                          textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
@@ -86,6 +90,7 @@ class PharmacyInformation extends StatelessWidget {
                         const Spacer(),
                         Text(
                           " تبعد المسافة \n${distance} كم ",
+                          textAlign: TextAlign.center,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)

@@ -19,6 +19,7 @@ import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/screens/categories_screen/categories_screen.dart';
 import 'package:elagk/pharmacy/presentation/screens/pharmacy_screens/OrderByPrescriptionScreen.dart';
 import 'package:elagk/pharmacy/presentation/screens/pharmacy_screens/phamacy_screen.dart';
+import 'package:elagk/shared/components/gps_permission_denied.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/argument_models.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,8 @@ class Routes {
   static const String activator = '/ActivatorScreen';
   static const String resetPasswordScreenByOldPassword = '/ResetPasswordScreenByOldPassword';
   static const String stepperScreen = '/StepperScreen';
+
+
 
 }
 
@@ -93,6 +96,7 @@ class RouteGenerator {
       return MaterialPageRoute(builder: (_) => ResetPasswordScreenByOldPassword());
       case Routes.activator:
         return MaterialPageRoute(builder: (_) => ActivatorScreen());
+
       case Routes.offersScreen:
         return MaterialPageRoute(builder: (_) {
 

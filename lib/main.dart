@@ -48,7 +48,8 @@ Future<void> main() async {
     ),
   );
 
-  runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: !kReleaseMode,
+      builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -79,7 +80,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()),
           BlocProvider(create: (BuildContext context) =>PointsCubit()..getProducts()..getUserPoints()),
           BlocProvider(create: (BuildContext context) =>SpecialCustomersCubit()..getSpecialCustomers()),
-          BlocProvider(create: (BuildContext context) =>ElagkStoreCubit()..getCategories(SuperCategoryId: 1)),
+          BlocProvider(create: (BuildContext context) =>ElagkStoreCubit()
+            ..getCategories(SuperCategoryId: 1)),
 
 
 

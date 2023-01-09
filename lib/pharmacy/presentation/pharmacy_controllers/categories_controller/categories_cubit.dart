@@ -13,17 +13,7 @@ class CategoriesCubit extends Cubit<CategoriesStates> {
 
   static CategoriesCubit get(context) => BlocProvider.of(context);
 
-  // Future<void> ResetPass() async {
-  //   emit(CategoriesLoadingState());
-  //   await DioHelper.getData(
-  //     url: ApiConstants.categories,
-  //   ).then((value) {
-  //     emit(CategoriesSuccessState());
-  //   }).catchError((error) {
-  //     print(error.toString());
-  //     emit(CategoriesErrorState(error.toString()));
-  //   });
-  // }
+
 void changeStringsToDef()
 {
   AppConstants.pharmacyLocation='';
@@ -36,14 +26,14 @@ void changeStringsToDef()
     var first;
     final coordinates = new Coordinates(lat,long);
     addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    first = addresses[0];
+    first = addresses[2];
     emit(GetLocationState());
     AppConstants.pharmacyLocation = first.addressLine!;
   }
 
   Future<void> getDistance(lat1, long1) async {
-    AppConstants.distance = await Geolocator.distanceBetween(
-            lat1, long1, AppConstants.myLat!,AppConstants.myLong!)
+    AppConstants.distance = await (Geolocator.distanceBetween(
+            lat1, long1, AppConstants.myLat!,AppConstants.myLong!)/1000)
         .round()
         .toString();
     emit(GetDistanceState());
