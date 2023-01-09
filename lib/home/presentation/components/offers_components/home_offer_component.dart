@@ -1,4 +1,7 @@
 import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
+import 'package:elagk/home/data/models/offer_product_model.dart';
+import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
+import 'package:elagk/pharmacy/data/product_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
 import 'package:elagk/shared/global/app_colors.dart';
@@ -8,12 +11,9 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OfferComponent extends StatelessWidget {
-  OfferComponent({Key? key, required this.index,
-    required this.pharmacyId, required this.search}) : super(key: key);
-  final int index;
-  final int pharmacyId;
-  final bool search;
+class HomeOfferComponent extends StatelessWidget {
+  HomeOfferComponent({Key? key,required this.offerModel}) : super(key: key);
+  final OfferProductModel offerModel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +40,7 @@ class OfferComponent extends StatelessWidget {
                           borderRadius: BorderRadius.circular(AppSize.s15),
                           child:  Image(
                             image: NetworkImage(
-                              !search?
-                              "${PharmacyProductiesCubit
-                                  .get(context).producties[index]
-                                  .imageUrl}":"${PharmacyProductiesCubit
-                                  .get(context).searchResult[index]
-                                  .imageUrl}",
+                              "${offerModel.imageUrl}",
                             ),
                             width: AppSize.s70,
                             height: AppSize.s70,
@@ -60,16 +55,11 @@ class OfferComponent extends StatelessWidget {
                           height: 20,
                           child: Center(
                             child: Text(
-                              !search?'${PharmacyProductiesCubit
-                                .get(context).producties[index]
-                                  .discountPercent} % خصم ':
-                              '${PharmacyProductiesCubit
-                                  .get(context).searchResult[index]
-                                  .discountPercent} % خصم ',
+                              '${offerModel.discountPercent} % خصم ',
                               style: TextStyle(
-                                fontSize: 7,
-                                color: Colors.white
-                            ),),
+                                  fontSize: 7,
+                                  color: Colors.white
+                              ),),
                           ),
                         ),
 
@@ -77,12 +67,7 @@ class OfferComponent extends StatelessWidget {
                     )),
                 SizedBox(height: mediaQueryHeight(context) / AppSize.s120),
                 Text(
-                  !search?PharmacyProductiesCubit
-                      .get(context).producties[index]
-                      .productName.toString():
-                  PharmacyProductiesCubit
-                      .get(context).searchResult[index]
-                      .productName.toString(),
+                  offerModel.productName.toString(),
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
                 SizedBox(height: mediaQueryHeight(context) / AppSize.s150),
@@ -91,19 +76,15 @@ class OfferComponent extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        !search? '${PharmacyProductiesCubit
-                            .get(context)
-                            .producties[index].price} جنيه ': '${PharmacyProductiesCubit
-                            .get(context)
-                            .searchResult[index].price} جنيه ',
+                        offerModel.price.toString(),
                         style: const TextStyle(
                             fontSize: FontSize.s11, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: mediaQueryHeight(context) / AppSize.s100),
                       Text(
-                        PharmacyProductiesCubit
-                            .get(context).producties[index].price.toString(),
-                        style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                          offerModel.price.toString(),
+                        style: Theme.of(context)
+                            .textTheme.displaySmall!.copyWith(
                             decoration: TextDecoration.lineThrough,
                             fontSize: FontSize.s11, fontWeight: FontWeightManager.light),
 
@@ -130,25 +111,18 @@ class OfferComponent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppPadding.p15),
                     ),
                     onPressed: () {
-                      if(BasketCubit.get(context).pharmacyId==pharmacyId
+                      if(BasketCubit.get(context).pharmacyId==offerModel.pharmacyId
                           ||BasketCubit.get(context).pharmacyId==null){
                         BasketCubit.get(context).AddToCart(
-                            productModel:
-                            !search?PharmacyProductiesCubit.get(context)
-                                .producties[index]:PharmacyProductiesCubit.get(context)
-                                .searchResult[index],
-                            phId: pharmacyId,
+                            productModel: offerModel as ProductModel,
+                            phId: offerModel.pharmacyId,
                             dist: AppConstants.distance);
                       }else
                       {
                         BasketCubit.get(context).deleteCartProducts();
                         BasketCubit.get(context).AddToCart(
-                            productModel:
-                            !search?PharmacyProductiesCubit.get(context)
-                                .producties[index]:
-                            PharmacyProductiesCubit.get(context)
-                                .searchResult[index],
-                            phId: pharmacyId,
+                            productModel: offerModel as ProductModel,
+                            phId: offerModel.pharmacyId,
                             dist: AppConstants.distance);
 
                       }

@@ -60,6 +60,7 @@ class HomeScreen extends StatelessWidget {
                   {
                     HomeScreenCubit.get(context).getUserProfileData();
                     HomeScreenCubit.get(context).getPermission();
+                    HomeScreenCubit.get(context).getOffers();
                   },
                   child: SingleChildScrollView(
                     physics: AlwaysScrollableScrollPhysics(),
@@ -108,7 +109,9 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: mediaQueryHeight(context) * .025,
                         ),
-                        OffersWidget(),
+                        HomeScreenCubit.get(context).offers.isNotEmpty?
+                        OffersWidget(offers: HomeScreenCubit.get(context).offers,):
+                            SizedBox(),
                         SizedBox(
                           height: mediaQueryHeight(context) * .025,
                         ),

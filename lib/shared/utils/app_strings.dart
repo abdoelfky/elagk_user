@@ -180,6 +180,7 @@ class AppStrings {
   static const String deliveryOrderIn30Minutes = "توصيل طلب \n 30 دقيقة";
   static const String deliveryDistance = "تبعد مسافة كم";
   static const String noProducts = "لا يوجد منتجات في هذا القسم الآن";
+  static const String noProductsOffers = "لا يوجد منتجات علبها عروض حتى الان";
   static const String products = "المنتجات";
   static const String newQuantity = "الكمية الجديدة";
   static const String newPrice = "السعر الجديد";

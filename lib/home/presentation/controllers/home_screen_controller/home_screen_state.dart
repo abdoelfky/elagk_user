@@ -22,9 +22,7 @@ class ProfileGetUserDataErrorState  extends HomeScreenState
 
 class GetPharmaciesLoadingState extends HomeScreenState {}
 
-class GetPharmaciesSuccessState extends HomeScreenState
-{
-}
+class GetPharmaciesSuccessState extends HomeScreenState{}
 
 class GetPharmaciesErrorState extends HomeScreenState
 {
@@ -43,3 +41,24 @@ class GetPermissionErrorState extends HomeScreenState {}
 
 class SearchDoneSuccessState extends HomeScreenState {}
 
+class GetOffersLoadingState extends HomeScreenState {}
+
+class GetOffersSuccessState extends HomeScreenState{}
+
+class GetOffersErrorState extends HomeScreenState
+{
+  final String error;
+
+  GetOffersErrorState(this.error);
+}
+
+class GetOfferProductsLoadingState extends HomeScreenState {}
+
+class GetOfferProductsSuccessState extends HomeScreenState{}
+
+class GetOfferProductsErrorState extends HomeScreenState
+{
+  final String error;
+
+  GetOfferProductsErrorState(this.error);
+}

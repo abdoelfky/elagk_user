@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
+import 'package:elagk/home/data/models/offer_product_model.dart';
+import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_state.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
@@ -40,7 +42,6 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
 
   //get All Pharmacies
   List<PharmacyModel> pharmacies = [];
-
   Future<void> getPharmacies() async {
     pharmacies = [];
     emit(GetPharmaciesLoadingState());
@@ -119,12 +120,6 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     // print("permission:${permission.toString()}");
   }
 
-
-
-
-
-
-
   String searchWord='';
 
   List<PharmacyModel> searchResult=[];
@@ -147,5 +142,43 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     }
 
   }
+
+
+  List<PharmacyOfferModel> offers = [];
+  Future<void> getOffers() async {
+    offers = [];
+    emit(GetOffersLoadingState());
+    try {
+      Response response = await DioHelper
+          .getData(url: ApiConstants.getOffers);
+      offers = (response.data as List)
+          .map((x) => PharmacyOfferModel.fromJson(x))
+          .toList();
+      emit(GetOffersSuccessState());
+    } catch (error, stacktrace) {
+      emit(GetOffersErrorState(error.toString()));
+
+      throw Exception("Exception occured: $error stackTrace: $stacktrace");
+    }
+  }
+
+  List<OfferProductModel> offerProducts = [];
+  Future<void> getOfferProducts({required int pharmacyId}) async {
+    offerProducts = [];
+    emit(GetOfferProductsLoadingState());
+    try {
+      Response response = await DioHelper
+          .getData(url: ApiConstants.getOfferProducts(pharmacyId));
+      offerProducts = (response.data as List)
+          .map((x) => OfferProductModel.fromJson(x))
+          .toList();
+      emit(GetOfferProductsSuccessState());
+    } catch (error, stacktrace) {
+      emit(GetOfferProductsErrorState(error.toString()));
+
+      throw Exception("Exception occured: $error stackTrace: $stacktrace");
+    }
+  }
+
 
 }

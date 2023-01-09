@@ -1,15 +1,20 @@
 import 'dart:ui';
 
+import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
+import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
-Widget carouselItem(context) => InkWell(
+Widget carouselItem(context,PharmacyOfferModel offer) => InkWell(
       onTap: ()
       {
-        navigateTo(context: context, screenRoute: Routes.offersScreen);
+
+        HomeScreenCubit.get(context).getOfferProducts(pharmacyId: offer.pharmacyId!);
+        navigateTo(context: context,
+            screenRoute: Routes.offersScreen);
       },
       child: Container(
         width: mediaQueryHeight(context) * .26,
@@ -35,7 +40,8 @@ Widget carouselItem(context) => InkWell(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.blue.withOpacity(0.38),
+                    color: Color(offer.longitude!.round()*10
+                        +offer.latitude!.round()).withOpacity(0.38),
                   ),
                 ),
               ),
@@ -58,6 +64,13 @@ Widget carouselItem(context) => InkWell(
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
+                  Text(
+                    '${offer.pharmacyName}',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
                 ],
               ),
             )
@@ -65,3 +78,5 @@ Widget carouselItem(context) => InkWell(
         ),
       ),
     );
+
+

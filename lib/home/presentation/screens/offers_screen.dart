@@ -1,4 +1,5 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
+import 'package:elagk/home/data/models/offer_product_model.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/home/presentation/components/offers_components/offers_widget.dart';
 import 'package:elagk/home/presentation/components/search_widget.dart';
@@ -17,7 +18,6 @@ class OffersScreen extends StatelessWidget {
   const OffersScreen({
     Key? key
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return  Directionality(
@@ -42,14 +42,8 @@ class OffersScreen extends StatelessWidget {
                 bottom: AppPadding.p20,
                 right:AppPadding.p20 ,
                   left :AppPadding.p20),
-              child: Column(
-                children: [
-
-                  OffersSection(
-                    firstCategoryName: "categoryName",
-                  ),
-                ],
-
+              child: OffersSection(
+                firstCategoryName: "categoryName",
               ),
 
 

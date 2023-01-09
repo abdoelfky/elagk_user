@@ -67,6 +67,11 @@ class ApiConstants {
   static String getTopUsers(int x) => "$baseUrl/Users/GetTopUsers/$x";
   static const String updatePoints = "$baseUrl/Users/PutUserPoint";
 
+  //offers
+  static const String getOffers = "$baseUrl/Offers/GetPharmaciesOffers";
+  static String getOfferProducts(int pharmacyId) =>
+      "$baseUrl/Offers/GetProductsOffers/$pharmacyId";
+
 
 
 }
