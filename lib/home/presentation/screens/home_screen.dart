@@ -32,6 +32,10 @@ class HomeScreen extends StatelessWidget {
     return BlocConsumer<HomeScreenCubit, HomeScreenState>(
       listener: (context, state) {},
       builder: (context, state) {
+        if(AppConstants.currentLocation==''&& state is GetUserLocationErrorState)
+        {
+          HomeScreenCubit.get(context).getUserLocation();
+        }
         return Directionality(
             textDirection: TextDirection.rtl,
             child: SafeArea(
@@ -50,6 +54,7 @@ class HomeScreen extends StatelessWidget {
                   context,
                 ),
                 body:
+
                 state is GetPermissionErrorState ? GpsPermissionDenied() :
 
                     ScreenBackground(

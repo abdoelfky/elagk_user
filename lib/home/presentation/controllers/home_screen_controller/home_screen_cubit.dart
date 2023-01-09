@@ -104,6 +104,8 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       getCurrentLocation(currentPostion!.latitude, currentPostion!.longitude);
       AppConstants.myLat = currentPostion!.latitude;
       AppConstants.myLong = currentPostion!.longitude;
+    }).catchError((onError){
+      emit(GetUserLocationErrorState());
     });
   }
 
@@ -112,8 +114,8 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     final coordinates = new Coordinates(lat, long);
     addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
 
-    emit(GetUserLocationState());
-    AppConstants.currentLocation = addresses.first.addressLine
+    emit(GetUserLocationSuccessState());
+    AppConstants.currentLocation = addresses[2].addressLine
         .toString();
     getPharmacies();
     // print("${addresses.addressLine}");
