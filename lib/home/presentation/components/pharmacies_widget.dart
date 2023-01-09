@@ -14,7 +14,7 @@ class PharmaciesWidget extends StatelessWidget {
     return BlocBuilder<HomeScreenCubit,HomeScreenState>(
       builder: (context, state) {
         return Column(
-crossAxisAlignment: CrossAxisAlignment.end,
+crossAxisAlignment: CrossAxisAlignment.start,
           children:
           [
             Text(AppStrings.pharmacies,
@@ -33,7 +33,8 @@ crossAxisAlignment: CrossAxisAlignment.end,
                 itemBuilder: (context, index)
                 {
                   return PharmacyItem
-                    (pharmacy:HomeScreenCubit.get(context).searchResult.isEmpty?
+                    (pharmacy:HomeScreenCubit.get(context)
+                      .searchResult.isEmpty?
                   HomeScreenCubit.get(context).pharmacies[index]:
                   HomeScreenCubit.get(context).searchResult[index]
                   );

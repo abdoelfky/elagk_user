@@ -32,15 +32,13 @@ class HomeScreenItem extends StatelessWidget {
           onTap: () {
             PharmacyProductiesCubit.get(context)
                 .getCategories(SuperCategoryId: SuperCategoryId,
-                )
-                .then((value) {
+                );
               navigateTo(
                 context: context,
                 screenRoute: Routes.categories,
                 arguments: pharmacyModel,
 
               );
-            });
           },
           child: Container(
             width: size.width * .4,

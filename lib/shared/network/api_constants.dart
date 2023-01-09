@@ -33,6 +33,7 @@ class ApiConstants {
 
   // Add medicine screen
   static const String products = "$baseUrl/Products";
+  static const String getStoreProducts = "$baseUrl/Products/GetStoreProducts";
 
   // Pharmacy user profile screen
   static String productIdPath(int productId) => "$products/$productId";
@@ -64,6 +65,7 @@ class ApiConstants {
   static const String Prescriptions = "$baseUrl/Prescriptions";
   static String getUserOrdersByUserId(String userId) => "$baseUrl/Orders/GetUserOrders/$userId";
   static String getTopUsers(int x) => "$baseUrl/Users/GetTopUsers/$x";
+  static const String updatePoints = "$baseUrl/Users/PutUserPoint";
 
 
 

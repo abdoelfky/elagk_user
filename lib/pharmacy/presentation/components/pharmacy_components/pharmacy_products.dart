@@ -27,7 +27,8 @@ class PharmacyProducts extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         if (state is SearchDoneSuccessState &&
-            PharmacyProductiesCubit.get(context).searchResult.isNotEmpty) {
+            PharmacyProductiesCubit.get(context)
+                .searchResult.isNotEmpty) {
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -37,7 +38,8 @@ class PharmacyProducts extends StatelessWidget {
               crossAxisSpacing: AppSize.s10,
               mainAxisSpacing: AppSize.s10,
             ),
-            itemCount: PharmacyProductiesCubit.get(context).searchResult.length,
+            itemCount: PharmacyProductiesCubit.get(context)
+                .searchResult.length,
             itemBuilder: (BuildContext context, int index) {
               if (PharmacyProductiesCubit.get(context)
                       .searchResult[index]
@@ -46,18 +48,19 @@ class PharmacyProducts extends StatelessWidget {
                 return ProductComponent(
                   index: index,
                   pharmacyId: pharmacyId,
+                  search: true,
                 );
               } else {
                 return OfferComponent(
                   index: index,
-                  pharmacyId: pharmacyId,
+                  pharmacyId: pharmacyId, search: true,
                 );
               }
             },
           );
-        } else if (PharmacyProductiesCubit.get(context).producties.isNotEmpty ||
-            (PharmacyProductiesCubit.get(context).producties.isNotEmpty &&
-                PharmacyProductiesCubit.get(context).searchWord != '')) {
+        }
+        else if (PharmacyProductiesCubit.get(context)
+            .producties.isNotEmpty) {
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -67,7 +70,8 @@ class PharmacyProducts extends StatelessWidget {
               crossAxisSpacing: AppSize.s10,
               mainAxisSpacing: AppSize.s10,
             ),
-            itemCount: PharmacyProductiesCubit.get(context).producties.length,
+            itemCount: PharmacyProductiesCubit.get(context)
+                .producties.length,
             itemBuilder: (BuildContext context, int index) {
               if (PharmacyProductiesCubit.get(context)
                       .producties[index]
@@ -75,17 +79,18 @@ class PharmacyProducts extends StatelessWidget {
                   0.0) {
                 return ProductComponent(
                   index: index,
-                  pharmacyId: pharmacyId,
+                  pharmacyId: pharmacyId, search: false,
                 );
               } else {
                 return OfferComponent(
                   index: index,
-                  pharmacyId: pharmacyId,
+                  pharmacyId: pharmacyId, search: false,
                 );
               }
             },
           );
-        } else if (state is GetProductiesSuccessState &&
+        }
+        else if (state is GetProductiesSuccessState &&
             PharmacyProductiesCubit.get(context).producties.isEmpty) {
           return Center(
               child: Padding(

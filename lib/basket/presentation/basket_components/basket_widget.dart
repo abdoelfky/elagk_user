@@ -56,7 +56,11 @@ class BasketSection extends StatelessWidget {
                   width: double.infinity,
                   height: AppSize.s60,
                   child: ConditionalBuilder(
-                      condition: state is PostOrderLoadingState||state is PostCartLoadingState,
+                      condition: state is PostOrderLoadingState||
+                          state is PostCartLoadingState||
+                          state is PutCartOrderLoadingState||
+                          state is GetCartIdLoadingState||
+                      state is PostCartOrderLoadingState,
                       builder: (BuildContext context) => Center(
                             child: CircularProgressIndicator(
                               color: AppColors.primary,

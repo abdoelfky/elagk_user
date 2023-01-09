@@ -8,6 +8,7 @@ import 'package:elagk/basket/presentation/basket_screen.dart';
 import 'package:elagk/drawer/presentation/components/home_drawe_widget.dart';
 import 'package:elagk/drawer/presentation/components/profile_components/reset_password_byOld.dart';
 import 'package:elagk/drawer/presentation/screens/edit_profile_screen.dart';
+import 'package:elagk/drawer/presentation/screens/stepper_screen.dart';
 import 'package:elagk/home/presentation/screens/home_screen.dart';
 import 'package:elagk/home/presentation/screens/offers_screen.dart';
 import 'package:elagk/onboarding/screens/onboarding_screen.dart';
@@ -47,6 +48,7 @@ class Routes {
   static const String confirmPasswordScreen = '/confirmPasswordScreen';
   static const String activator = '/ActivatorScreen';
   static const String resetPasswordScreenByOldPassword = '/ResetPasswordScreenByOldPassword';
+  static const String stepperScreen = '/StepperScreen';
 
 }
 
@@ -116,8 +118,10 @@ class RouteGenerator {
           final pharmacyModel = routeSettings.arguments as PharmacyModel;
           return CategoriesScreen(pharmacyModel: pharmacyModel);
         });
-    case Routes.basketScreen:
-      return MaterialPageRoute(builder: (_) => const BasketScreen());
+      case Routes.basketScreen:
+        return MaterialPageRoute(builder: (_) => const BasketScreen());
+        case Routes.stepperScreen:
+      return MaterialPageRoute(builder: (_) => const StepperScreen());
 
 
       default:

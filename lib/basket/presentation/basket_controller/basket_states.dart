@@ -82,3 +82,5 @@ class PostOrderErrorState extends BasketStates
 
 class DeleteCartProductsSuccessState extends BasketStates {}
 
+class UpdatePointsSuccessState extends BasketStates {}
+

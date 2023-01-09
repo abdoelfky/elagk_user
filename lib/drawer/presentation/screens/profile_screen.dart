@@ -1,3 +1,4 @@
+import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/drawer/presentation/components/profile_components/profile_content.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
@@ -38,11 +39,11 @@ class ProfileScreen extends StatelessWidget {
                 , builder: (context, state)
             {
               if(state is ProfileGetUserDataLoadingState) {
-                return Center(child: CircularProgressIndicator(color: AppColors.primary,),);
+                return ScreenBackground(child: Center(child: CircularProgressIndicator(color: AppColors.primary,),));
               }
 
               else{
-                return  ProfileContent();
+                return  ScreenBackground(child: ProfileContent());
               }
                           })),
         // HomeScreen

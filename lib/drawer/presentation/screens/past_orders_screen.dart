@@ -1,3 +1,4 @@
+import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/drawer/presentation/components/fixed_appbar_widget.dart';
 import 'package:elagk/drawer/presentation/components/past_orders_components/orders_conents.dart';
 import 'package:elagk/drawer/presentation/controller/past_orders_controller/past_orders_cubit.dart';
@@ -29,7 +30,7 @@ class OrdersScreen extends StatelessWidget {
                 );
               },
             ),
-            body: OrdersContents()
+            body: ScreenBackground(child: OrdersContents())
 
     )
       )

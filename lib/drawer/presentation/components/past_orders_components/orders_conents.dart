@@ -31,16 +31,20 @@ class OrdersContents extends StatelessWidget {
                   },
                   child: ListView.separated(
                       physics: const AlwaysScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => OrderItem(
+                      itemBuilder: (context, index) =>
+                          OrderItem(
                           context: context,
-                          pastOrder: PastOrdersCubit.get(context).pastOrders[index]),
+                          pastOrder: PastOrdersCubit.get(context).pastOrders[index],
+                          isActive: PastOrdersCubit.get(context).pastOrders[index]
+                              .status!),
                       separatorBuilder: (context, index) => MyDivider(),
                       itemCount: PastOrdersCubit.get(context).pastOrders.length),
                 ),
               ),
             ],
           );
-        }else if(state is GetPastOrdersSuccessState &&
+        }
+        else if(state is GetPastOrdersSuccessState &&
             PastOrdersCubit.get(context).pastOrders.isEmpty)
         {
           return Center(child: NoDataWidget(AppStrings.noPastOrders));

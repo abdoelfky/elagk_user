@@ -111,6 +111,9 @@ class AppStrings {
   static const String specialCustomers = "العملاء المميزين";
   static const String elagkStore = "متجر علاجك";
   static const String confirmOrder = "تأكيد الطلب";
+  static const String noPointsProductes =  'لا يوجد منتجات متاحه الان للاستبدال';
+  static const String activeOrder =   'طلب نشط';
+  static const String doneOrder =   'طلب مكتمل';
 
   // About us
   static const String whoAreWe = "من نحن";
@@ -248,5 +251,18 @@ class AppStrings {
   static const String routeNotFound = "Screen not found.";
 
 
+  //stepper
+  static const String stepperYourOrder = "تفاصيل الطلب";
+  static const String stepperHeader1 = "حاله الطلب";
+  static const String stepperBody1 = "تم ارسال الطلب بنجاح";
+  static const String stepperHeader2 = "التجهيز";
+  static const String stepperBody2 = "جاري تجهيز طلبك الآن";
+  static const String stepperHeader3 = "التوصيل";
+  static const String stepperBody3 = "طلبك في الطريق   ...";
+  static const String stepperHeader4 = "التسليم";
+  static const String stepperBody4 = "تم التسليم";
+  static const String note = "ملاحظات : ";
+  static const String deliveryName = "اسم السائق : ";
+  static const String deliveryPhone = "رقم هاتفه : ";
 
 }

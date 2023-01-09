@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:elagk/pharmacy/data/product_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
@@ -27,5 +29,35 @@ class PointsCubit extends Cubit<PointsState> {
       emit(GetUserPointsErrorState());
     });
   }
+
+  List<ProductModel> products = [];
+
+  Future<void> getProducts() async {
+    products = [];
+    emit(GetPointProductsLoadingState());
+    try
+    {
+      Response response = await DioHelper.getData(
+          url: ApiConstants.getStoreProducts);
+      products =(response.data as List).map((x) =>
+          ProductModel.fromJson(x)).toList();
+      emit(GetPointProductsSuccessState());
+    }catch (error, stacktrace)
+    {
+      emit(GetPointProductErrorState());
+      throw Exception("Exception occured: $error stackTrace: $stacktrace");
+    }
+  }
+
+
+  void changeUserPoints({required int productPoint})
+  {
+    AppConstants.pointsChanges=true;
+    userPoints -= productPoint;
+    AppConstants.newPoints=userPoints;
+    print(CacheHelper.getData(key: AppConstants.userId));
+    emit(UserPointsSuccessState());
+  }
+
 
 }

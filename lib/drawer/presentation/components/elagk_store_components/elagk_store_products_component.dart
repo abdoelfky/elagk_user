@@ -1,4 +1,6 @@
 import 'package:elagk/basket/data/basket_model.dart';
+import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_offer_component.dart';
+import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_product_component.dart';
 import 'package:elagk/drawer/presentation/controller/elagk_store_controller/elagk_store_cubit.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/product_component.dart';
 import 'package:elagk/pharmacy/presentation/components/category_components/offer_component.dart';
@@ -21,10 +23,9 @@ class ElagkStoreProducts extends StatelessWidget {
     return BlocConsumer<ElagkStoreCubit, ElagkStoreState>(
       listener: (context, state) {},
       builder: (context, state) {
-
-
-        if (state is GetElagkStoreProductiesSuccessState &&
-            ElagkStoreCubit.get(context).products.isNotEmpty) {
+        if (state is SearchDoneSuccessState &&
+            ElagkStoreCubit.get(context)
+                .searchResult.isNotEmpty) {
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -34,27 +35,73 @@ class ElagkStoreProducts extends StatelessWidget {
               crossAxisSpacing: AppSize.s10,
               mainAxisSpacing: AppSize.s10,
             ),
-            itemCount: ElagkStoreCubit.get(context).products.length,
+            itemCount: ElagkStoreCubit.get(context)
+                .searchResult.length,
             itemBuilder: (BuildContext context, int index) {
               if (ElagkStoreCubit.get(context)
-                  .products[index]
-                  .discountPercent == 0.0) {
-                return ProductComponent(index: index, pharmacyId: 58,);
+                  .searchResult[index]
+                  .discountPercent ==
+                  0.0) {
+                return ElagkStoreProductComponent(
+                  index: index,
+                  pharmacyId: 58,
+                  search: true,
+                );
               } else {
-                return OfferComponent(index: index, pharmacyId: 58,);
+                return ElagkStoreOfferComponent(
+                  index: index,
+                  pharmacyId: 58, search: true,
+                );
               }
             },
           );
-        } else if (state is GetElagkStoreProductiesSuccessState &&
-            ElagkStoreCubit.get(context).products.isEmpty)
+        }
+        else if (ElagkStoreCubit.get(context)
+            .products.isNotEmpty) {
+          return GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: AppSize.s150,
+              childAspectRatio: AppSize.s7 / AppSize.s10,
+              crossAxisSpacing: AppSize.s10,
+              mainAxisSpacing: AppSize.s10,
+            ),
+            itemCount: ElagkStoreCubit.get(context)
+                .products.length,
+            itemBuilder: (BuildContext context, int index) {
+              if (ElagkStoreCubit.get(context)
+                  .products[index]
+                  .discountPercent ==
+                  0.0) {
+                return ElagkStoreProductComponent(
+                  index: index,
+                  pharmacyId: 58,
+                  search: false,
+                );
+              } else {
+                return ElagkStoreOfferComponent(
+                  index: index,
+                  pharmacyId: 58,
+                  search: false,
+                );
+              }
+            },
+          );
+        }
+        else if(state is GetElagkStoreProductiesLoadingState)
+          return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.primary,
+              ));
+        else {
           return Center(
               child: Padding(
                 padding:
                 EdgeInsets.symmetric(vertical: mediaQueryHeight(context) * .1),
                 child: NoDataWidget(AppStrings.noProducts),
               ));
-        else
-          return Center(child: CircularProgressIndicator(color: AppColors.primary,));
+        }
       },
     );
   }

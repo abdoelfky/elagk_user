@@ -46,6 +46,7 @@ class PointsScreen extends StatelessWidget {
               onRefresh: () async
               {
                 PointsCubit.get(context).getUserPoints();
+                PointsCubit.get(context).getProducts();
               },
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),

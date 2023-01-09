@@ -13,7 +13,7 @@ class PointsProductsBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: const [
           Text(
             AppStrings.pointsForReplace,

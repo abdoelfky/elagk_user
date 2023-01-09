@@ -8,16 +8,16 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchCategoriesWidget extends StatelessWidget {
+class ElagkStoreSearch extends StatelessWidget {
   final List<String> searchableList = [];
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return BlocBuilder<PharmacyProductiesCubit, PharmacyProductiesStates>(
+    return BlocBuilder<ElagkStoreCubit, ElagkStoreState>(
       builder: (context, state) {
 
-        PharmacyProductiesCubit.get(context).producties.forEach((element) {
+        ElagkStoreCubit.get(context).products.forEach((element) {
           searchableList.add(element.productName!.toLowerCase());
 
         });
@@ -62,7 +62,7 @@ class SearchCategoriesWidget extends StatelessWidget {
                     searchItemsWidget: searchWidget,
                     onItemTap: (index, value) {
                       print("selected item Index is $index");
-                      PharmacyProductiesCubit.get(context)
+                      ElagkStoreCubit.get(context)
                           .changeSearchWord(word: value.toString());
 
                       FocusScope.of(context).unfocus();
@@ -70,21 +70,21 @@ class SearchCategoriesWidget extends StatelessWidget {
                     },
                     onSearchClear: () {
                       print("Cleared Search");
-                      PharmacyProductiesCubit.get(context)
+                      ElagkStoreCubit.get(context)
                           .deleteSearch();
 
 
                     },
                     onSubmitted: (value, value2) {
                       print("Submitted: " + value);
-                      PharmacyProductiesCubit.get(context)
+                      ElagkStoreCubit.get(context)
                           .changeSearchWord(word: value.toString());
 
                     },
                     onEditingProgress: (value, value2) {
                       print("TextEdited: " + value);
 
-                      PharmacyProductiesCubit.get(context)
+                      ElagkStoreCubit.get(context)
                           .changeSearchWord(word: value.toString());
                     },
                   ),
@@ -94,7 +94,7 @@ class SearchCategoriesWidget extends StatelessWidget {
                   {
                     FocusScope.of(context).unfocus();
 
-                    PharmacyProductiesCubit.get(context).search();
+                    ElagkStoreCubit.get(context).search();
                   },
                   child: Container(
                     decoration: BoxDecoration(

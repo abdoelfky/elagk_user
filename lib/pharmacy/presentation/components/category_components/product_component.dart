@@ -10,9 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductComponent extends StatelessWidget {
   ProductComponent({Key? key, required this.index,
-    required this.pharmacyId}) : super(key: key);
+    required this.pharmacyId, required this.search}) : super(key: key);
   final int index;
   final int pharmacyId;
+  final bool search;
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,11 @@ class ProductComponent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppSize.s15),
                   child: Image(
                     image: NetworkImage(
-                      "${PharmacyProductiesCubit.get(context).producties[index].imageUrl}",
+                      !search?"${PharmacyProductiesCubit
+                          .get(context).producties[index].imageUrl}":
+                      "${PharmacyProductiesCubit
+                          .get(context).searchResult[index].imageUrl}"
+                      ,
                     ),
                     width: AppSize.s70,
                     height: AppSize.s70,
@@ -46,8 +52,11 @@ class ProductComponent extends StatelessWidget {
             SizedBox(
                 height: mediaQueryHeight(context) / AppSize.s120),
             Text(
-              PharmacyProductiesCubit.get(context)
+              !search?PharmacyProductiesCubit.get(context)
                   .producties[index]
+                  .productName!:
+              PharmacyProductiesCubit.get(context)
+                  .searchResult[index]
                   .productName!,
               style: Theme.of(context).textTheme.displaySmall,
             ),
@@ -86,8 +95,10 @@ class ProductComponent extends StatelessWidget {
                   ||BasketCubit.get(context).pharmacyId==null){
                   BasketCubit.get(context).AddToCart(
                       productModel:
+                      !search?PharmacyProductiesCubit.get(context)
+                          .producties[index]:
                       PharmacyProductiesCubit.get(context)
-                          .producties[index],
+                          .searchResult[index],
                       phId: pharmacyId,
                       dist: AppConstants.distance);
                   }else
@@ -95,8 +106,9 @@ class ProductComponent extends StatelessWidget {
                     BasketCubit.get(context).deleteCartProducts();
                   BasketCubit.get(context).AddToCart(
                       productModel:
-                      PharmacyProductiesCubit.get(context)
-                          .producties[index],
+                      !search?PharmacyProductiesCubit.get(context)
+                          .producties[index]:PharmacyProductiesCubit.get(context)
+                          .searchResult[index],
                       phId: pharmacyId,
                       dist: AppConstants.distance);
 

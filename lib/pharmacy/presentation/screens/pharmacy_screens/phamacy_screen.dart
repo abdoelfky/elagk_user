@@ -80,9 +80,9 @@ class PharmacyScreen extends StatelessWidget {
                                     AppSize.s8,
                                   ),
                                 ),
-                                child: const DefaultNetworkImage(
+                                child:  DefaultNetworkImage(
                                   imageSrc:
-                                      'assets/images/profile/download (4).png',
+                                      pharmacyModel!.imageUrl!,
                                   height: double.infinity,
                                   width: double.infinity,
                                   padding: AppPadding.p0,

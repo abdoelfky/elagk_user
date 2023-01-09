@@ -1,3 +1,4 @@
+import 'package:elagk/auth/presentation/components/screen_background.dart';
 import 'package:elagk/drawer/presentation/components/profile_components/edite_profile_content.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
@@ -37,11 +38,11 @@ class EditProfileScreen extends StatelessWidget {
                 , builder: (context, state)
             {
               if(state is ProfileGetUserDataLoadingState) {
-                return Center(child: CircularProgressIndicator(),);
+                return ScreenBackground(child: Center(child: CircularProgressIndicator(),));
               }
 
               else{
-                return  EditProfileContent();
+                return  ScreenBackground(child: EditProfileContent());
               }
             })),
         // HomeScreen

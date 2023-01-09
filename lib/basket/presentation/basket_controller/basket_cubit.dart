@@ -270,8 +270,26 @@ class BasketCubit extends Cubit<BasketStates> {
     ).then((value)
     {
       emit(PostOrderSuccessState());
+      if(AppConstants.pointsChanges==true)
+      {
+        DioHelper.patchDataFromJson(
+            url:ApiConstants.updatePoints,
+            data: {
+              "userId": CacheHelper.getData(key: AppConstants.userId)
+                  .toString(),
+              "point": AppConstants.newPoints
+            }
+        ).then((value)
+        {
+          emit(UpdatePointsSuccessState());
+          deleteCartProducts();
 
-      deleteCartProducts();
+        });
+      }else
+      {
+        deleteCartProducts();
+
+      }
 
     }).catchError((onError)
     {
@@ -286,6 +304,7 @@ class BasketCubit extends Cubit<BasketStates> {
     basketProducts=[];
     counter=[];
     totalPrice=0.0;
+    AppConstants.pointsChanges=false;
     emit(DeleteCartProductsSuccessState());
   }
 

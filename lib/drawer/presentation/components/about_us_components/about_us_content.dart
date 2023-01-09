@@ -31,7 +31,7 @@ class AboutUsContent extends StatelessWidget {
             },
             builder: (context, state) {
               return Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AboutUsTitle(
                     title: AppStrings.whoAreWe,

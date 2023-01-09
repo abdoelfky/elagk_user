@@ -1,6 +1,5 @@
 import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
-import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
-import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
+import 'package:elagk/drawer/presentation/controller/elagk_store_controller/elagk_store_cubit.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app__fonts.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
@@ -8,15 +7,15 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OfferComponent extends StatelessWidget {
-  OfferComponent({Key? key, required this.index, required this.pharmacyId, required this.search}) : super(key: key);
+class ElagkStoreOfferComponent extends StatelessWidget {
+  ElagkStoreOfferComponent({Key? key, required this.index, required this.pharmacyId, required this.search}) : super(key: key);
   final int index;
   final int pharmacyId;
   final bool search;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PharmacyProductiesCubit, PharmacyProductiesStates>(
+    return BlocBuilder<ElagkStoreCubit, ElagkStoreState>(
       builder: (context, state) {
         return Directionality(
           textDirection: TextDirection.rtl,
@@ -40,9 +39,9 @@ class OfferComponent extends StatelessWidget {
                           child:  Image(
                             image: NetworkImage(
                               !search?
-                              "${PharmacyProductiesCubit
-                                  .get(context).producties[index]
-                                  .imageUrl}":"${PharmacyProductiesCubit
+                              "${ElagkStoreCubit
+                                  .get(context).products[index]
+                                  .imageUrl}":"${ElagkStoreCubit
                                   .get(context).searchResult[index]
                                   .imageUrl}",
                             ),
@@ -59,16 +58,16 @@ class OfferComponent extends StatelessWidget {
                           height: 20,
                           child: Center(
                             child: Text(
-                              !search?'${PharmacyProductiesCubit
-                                .get(context).producties[index]
+                              !search?'${ElagkStoreCubit
+                                  .get(context).products[index]
                                   .discountPercent} % خصم ':
-                              '${PharmacyProductiesCubit
+                              '${ElagkStoreCubit
                                   .get(context).searchResult[index]
                                   .discountPercent} % خصم ',
                               style: TextStyle(
-                                fontSize: 7,
-                                color: Colors.white
-                            ),),
+                                  fontSize: 7,
+                                  color: Colors.white
+                              ),),
                           ),
                         ),
 
@@ -76,10 +75,10 @@ class OfferComponent extends StatelessWidget {
                     )),
                 SizedBox(height: mediaQueryHeight(context) / AppSize.s120),
                 Text(
-                  !search?PharmacyProductiesCubit
-                      .get(context).producties[index]
+                  !search?ElagkStoreCubit
+                      .get(context).products[index]
                       .productName.toString():
-                  PharmacyProductiesCubit
+                  ElagkStoreCubit
                       .get(context).searchResult[index]
                       .productName.toString(),
                   style: Theme.of(context).textTheme.displaySmall,
@@ -90,9 +89,9 @@ class OfferComponent extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        !search? '${PharmacyProductiesCubit
+                        !search? '${ElagkStoreCubit
                             .get(context)
-                            .producties[index].price} جنيه ': '${PharmacyProductiesCubit
+                            .products[index].price} جنيه ': '${ElagkStoreCubit
                             .get(context)
                             .searchResult[index].price} جنيه ',
                         style: const TextStyle(
@@ -100,8 +99,8 @@ class OfferComponent extends StatelessWidget {
                       ),
                       SizedBox(width: mediaQueryHeight(context) / AppSize.s100),
                       Text(
-                        PharmacyProductiesCubit
-                            .get(context).producties[index].price.toString(),
+                        ElagkStoreCubit
+                            .get(context).products[index].price.toString(),
                         style: Theme.of(context).textTheme.displaySmall!.copyWith(
                             decoration: TextDecoration.lineThrough,
                             fontSize: FontSize.s11, fontWeight: FontWeightManager.light),
@@ -133,8 +132,8 @@ class OfferComponent extends StatelessWidget {
                           ||BasketCubit.get(context).pharmacyId==null){
                         BasketCubit.get(context).AddToCart(
                             productModel:
-                            !search?PharmacyProductiesCubit.get(context)
-                                .producties[index]:PharmacyProductiesCubit.get(context)
+                            !search?ElagkStoreCubit.get(context)
+                                .products[index]:ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
                             dist: AppConstants.distance);
@@ -143,9 +142,9 @@ class OfferComponent extends StatelessWidget {
                         BasketCubit.get(context).deleteCartProducts();
                         BasketCubit.get(context).AddToCart(
                             productModel:
-                            !search?PharmacyProductiesCubit.get(context)
-                                .producties[index]:
-                            PharmacyProductiesCubit.get(context)
+                            !search?ElagkStoreCubit.get(context)
+                                .products[index]:
+                            ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
                             dist: AppConstants.distance);

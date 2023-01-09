@@ -83,6 +83,24 @@ class DioHelper {
     );
   }
 
+  static Future<Response> patchDataFromJson({
+    required String url,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? query,
+    String? token ,
+  }) async {
+    dio?.options.headers ={
+      'Content-Type' :'application/json',
+
+    };
+
+    return  dio!.patch(
+      url,
+      queryParameters:query,
+      data: data,
+    );
+  }
+
   static Future<Response> postDataFromFormData({
     required String url,
     required FormData data,

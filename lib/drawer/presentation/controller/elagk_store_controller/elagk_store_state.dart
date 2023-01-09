@@ -29,3 +29,8 @@ class GetElagkStoreProductiesErrorState extends ElagkStoreState
 
 class ChangeSelectedCategorySuccessState extends ElagkStoreState {}
 
+
+class SearchDoneSuccessState extends ElagkStoreState {}
+class SearchWordChangedSuccessState extends ElagkStoreState {}
+class SearchDeletedSuccessState extends ElagkStoreState {}
+

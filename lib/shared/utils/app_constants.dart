@@ -20,6 +20,8 @@ class AppConstants {
   static String pharmacyLocation = '';
   static String distance = '';
   static String currentLocation='';
+  static bool pointsChanges=false;
+  static int newPoints=0;
 
 
 
