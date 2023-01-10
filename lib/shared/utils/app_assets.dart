@@ -61,6 +61,7 @@ class JsonAssets {
   static const String cosmatics = '$JSON_PATH/cosmatics.json';
   static const String medicens = '$JSON_PATH/medicine.json';
   static const String complaints = '$JSON_PATH/complaints.json';
+  static const String notAvailable = '$JSON_PATH/notAvailable.json';
   static const String orderDone = '$JSON_PATH/orderDone.json';
 
   // Notifications screen

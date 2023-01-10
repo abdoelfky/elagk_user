@@ -25,6 +25,7 @@ class StepperCubit extends Cubit<StepperState> {
 
     }).catchError((onError)
     {
+      print(onError.toString());
       emit(OrderFollowErrorState());
 
     });

@@ -2,7 +2,9 @@ import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class StepperNotes extends StatelessWidget {
-  const StepperNotes({Key? key}) : super(key: key);
+  StepperNotes({Key? key, required this.name, required this.phones}) : super(key: key);
+  final String name;
+  final List<String> phones;
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +12,27 @@ class StepperNotes extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children:
       [
-        Text(AppStrings.deliveryName,
-            style: Theme.of(context).textTheme.displayMedium
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(AppStrings.deliveryName,
+                style: Theme.of(context).textTheme.displayMedium
+            ),
+            Text(name,
+                style: Theme.of(context).textTheme.displayMedium
+            ),
+          ],
         ),
         SizedBox(height: 10,),
-        Text(AppStrings.deliveryPhone,
-            style: Theme.of(context).textTheme.displayMedium
+        Row(
+          children: [
+            Text(AppStrings.deliveryPhone,
+                style: Theme.of(context).textTheme.displayMedium
+            ),
+            Text(phones[0],
+                style: Theme.of(context).textTheme.displayMedium
+            ),
+          ],
         ),
       ],
     );

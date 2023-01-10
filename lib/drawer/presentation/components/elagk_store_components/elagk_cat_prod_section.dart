@@ -1,7 +1,5 @@
 import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_categories_component.dart';
 import 'package:elagk/drawer/presentation/components/elagk_store_components/elagk_store_products_component.dart';
-import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_departments.dart';
-import 'package:elagk/pharmacy/presentation/components/pharmacy_components/pharmacy_products.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
