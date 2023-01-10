@@ -8,6 +8,7 @@ import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/shared/components/alert_dialoge.dart';
 import 'package:elagk/shared/components/toast_component.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_assets.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -99,7 +100,7 @@ class ComplaintsScreen extends StatelessWidget {
                               context: context,
                               builder: (_) {
                                 return alertDialog(
-                                  imageSrc: 'assets/images/menu/contactUsDialoge.jpg',
+                                  imageSrc: JsonAssets.complaints,
                                   text:
                                       'شكرا ليك يسعدنا دايما انك معانا وهنرد على شكاوك في اقرب وقت',
                                 );

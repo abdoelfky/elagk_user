@@ -29,8 +29,7 @@ class OffersProducts extends StatelessWidget {
         {
           return Center(child: CircularProgressIndicator(color: AppColors.primary,),);
         }
-        else if (state is GetOfferProductsSuccessState
-            &&HomeScreenCubit.get(context).offerProducts.isNotEmpty ){
+        else if (HomeScreenCubit.get(context).offerProducts.isNotEmpty){
           return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,

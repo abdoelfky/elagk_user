@@ -1,6 +1,7 @@
 import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class alertDialog extends StatelessWidget {
   alertDialog({
@@ -17,20 +18,18 @@ class alertDialog extends StatelessWidget {
       ),
       elevation: 50.0,
       content: Container(
-        height: mediaQueryHeight(context)/AppSize.s4,
+        height: mediaQueryHeight(context)*.32,
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image(
-              image: AssetImage(
-                imageSrc,
+            Container(
+              width: mediaQueryWidth(context) * .4,
+              height: mediaQueryHeight(context)* .2,
+              child:
+              Lottie.asset(imageSrc),
 
-              ),
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
             ),
             SizedBox(height: mediaQueryHeight(context) / AppSize.s100),
             Directionality(

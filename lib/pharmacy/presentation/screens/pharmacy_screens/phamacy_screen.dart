@@ -103,7 +103,7 @@ class PharmacyScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             HomeScreenItem(
-                              image: 'assets/images/make-up.jpg',
+                              image: JsonAssets.cosmatics,
                               name: AppStrings.cost,
                               SuperCategoryId: 1,
                               pharmacyModel: pharmacyModel!,
@@ -111,7 +111,7 @@ class PharmacyScreen extends StatelessWidget {
                             SizedBox(
                                 width: mediaQueryHeight(context) / AppSize.s18),
                             HomeScreenItem(
-                              image: 'assets/images/medicine.jpg',
+                              image: JsonAssets.medicens,
                               name: AppStrings.medicine,
                               SuperCategoryId: 2,
                               pharmacyModel: pharmacyModel!,

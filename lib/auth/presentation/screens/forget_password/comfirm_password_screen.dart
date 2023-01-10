@@ -19,7 +19,7 @@ import '../../controller/confim_password/confirm_password_state.dart';
 class ConfirmPasswordScreen extends StatelessWidget {
   const ConfirmPasswordScreen({Key? key}) : super(key: key);
 
-  static final _formKey = GlobalKey<FormState>();
+  static final _formKey =new GlobalKey<FormState>();
   static final emailController = TextEditingController();
 
   @override
@@ -28,74 +28,71 @@ class ConfirmPasswordScreen extends StatelessWidget {
     final color = _hasInternet ? Colors.green : Colors.red;
     final text = _hasInternet ? 'Internet' : 'No Internet';
     return SafeArea(
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          body: ScreenBackground(
-            child: Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(AppPadding.p15),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const LogoWidget(),
-                      const AuthTitleAndSubtitle(
-                        authTitle: AppStrings.codeSendButton,
-                        authSubtitle: AppStrings.enterValidnum,
-                      ),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: ScreenBackground(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(AppPadding.p15),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const LogoWidget(),
+                    const AuthTitleAndSubtitle(
+                      authTitle: AppStrings.codeSendButton,
+                      authSubtitle: AppStrings.enterValidnum,
+                    ),
 
 
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
-                      BlocConsumer<ConfirmPasswordCubit, ConfirmPasswordStates>(
-                        listener: (context, state) {
-                          if (state is SendCodeSuccessState) {
-                            {
-                              showToast(
-                                  text: AppStrings.codeSendedSuccessFully1,
-                                  state: ToastStates.SUCCESS);
-                              navigateTo(
-                                  context: context,
-                                  screenRoute: Routes.resetPasswordScreen
-                              );
-                            }
-
-                          } else if (state is SendCodeErrorState) {
+                    SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
+                    BlocConsumer<ConfirmPasswordCubit, ConfirmPasswordStates>(
+                      listener: (context, state) {
+                        if (state is SendCodeSuccessState) {
+                          {
                             showToast(
-                                text: AppStrings.codeSendError1,
-                                state: ToastStates.ERROR);
+                                text: AppStrings.codeSendedSuccessFully1,
+                                state: ToastStates.SUCCESS);
+                            navigateTo(
+                                context: context,
+                                screenRoute: Routes.resetPasswordScreen
+                            );
                           }
-                        },
-                        builder: (context, state) {
-                          return ConditionalBuilder(
-                            condition: state is! SendCodeLoadingState,
-                            builder: (context) =>  VerificationCode(
-                              textStyle: Theme.of(context).textTheme.bodyText2!
-                                  .copyWith(color: Theme.of(context).primaryColor),
-                              keyboardType: TextInputType.number,
-                              underlineColor: AppColors.offBlue,
-                              length: 6,
-                              cursorColor: Colors.blue,
-                              onCompleted: (String value) {
-                                if (_formKey.currentState!.validate()) {
-                                  ConfirmPasswordCubit.get(context)
-                                      .sendCode(code:int.parse(value) ,);
-                                }
-                              },
-                              onEditing: (bool value) {},
-                              margin: const EdgeInsets.all(12),
-                            ),
-                            fallback: (context) =>
-                            const CircularProgressIndicator(),
-                          );
-                        },
-                      ),
 
-                    ],
-                  ),
+                        } else if (state is SendCodeErrorState) {
+                          showToast(
+                              text: AppStrings.codeSendError1,
+                              state: ToastStates.ERROR);
+                        }
+                      },
+                      builder: (context, state) {
+                        return ConditionalBuilder(
+                          condition: state is! SendCodeLoadingState,
+                          builder: (context) =>  VerificationCode(
+                            textStyle: Theme.of(context).textTheme.bodyText2!
+                                .copyWith(color: Theme.of(context).primaryColor),
+                            keyboardType: TextInputType.number,
+                            underlineColor: AppColors.offBlue,
+                            length: 6,
+                            cursorColor: Colors.blue,
+                            onCompleted: (String value) {
+                              if (_formKey.currentState!.validate()) {
+                                ConfirmPasswordCubit.get(context)
+                                    .sendCode(code:int.parse(value) ,);
+                              }
+                            },
+                            onEditing: (bool value) {},
+                            margin: const EdgeInsets.all(12),
+                          ),
+                          fallback: (context) =>
+                          const CircularProgressIndicator(),
+                        );
+                      },
+                    ),
+
+                  ],
                 ),
               ),
             ),

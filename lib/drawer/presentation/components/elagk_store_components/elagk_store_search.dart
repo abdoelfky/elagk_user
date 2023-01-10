@@ -23,6 +23,8 @@ class ElagkStoreSearch extends StatelessWidget {
         });
 
         return Flexible(
+          flex: 1,
+
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: Row(
@@ -101,8 +103,8 @@ class ElagkStoreSearch extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.yellow,
                     ),
-                    width: width * .1,
-                    height: height * .05,
+                    width: 37,
+                    height: 37,
                     child: const Center(
                         child: Icon(
                           Icons.search,

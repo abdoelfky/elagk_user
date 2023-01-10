@@ -1,6 +1,6 @@
 class ApiConstants {
   // Api.
-  static const String baseUrl = "http://freelancerr-001-site1.btempurl.com/api";
+  static const String baseUrl = "http://freeserver23-001-site1.atempurl.com/api";
   static const String auth = "Auth";
 
   // End points | Paths.

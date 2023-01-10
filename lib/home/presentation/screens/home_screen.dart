@@ -78,7 +78,9 @@ class HomeScreen extends StatelessWidget {
                                 ))
                               : HomeScreenCubit.get(context)
                                       .filteredPharmacies
-                                      .isEmpty && state is FilterPharmaciesSuccessState
+                                      .isEmpty &&
+                              state is FilterPharmaciesSuccessState
+
                                   ? Padding(
                                     padding: EdgeInsets.symmetric(vertical:
                                     mediaQueryHeight(context)*.4),

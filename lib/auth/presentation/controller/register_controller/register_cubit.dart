@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:elagk/auth/data/models/register_model/register_model.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,6 @@ class RegisterCubit extends Cubit<RegisterStates>
     required String phone,
     required String firstName,
     required String lastName,
-    required String user,
 
 
   }) async
@@ -39,7 +39,7 @@ class RegisterCubit extends Cubit<RegisterStates>
           ],
           "roles": [
             {
-              "name": "${user}"
+              "name": "User"
             }
           ]
         }
@@ -48,9 +48,12 @@ class RegisterCubit extends Cubit<RegisterStates>
       sendOTP(email: email);
       emit(RegisterSuccessState());
     }).catchError((error){
+
       print(error.toString());
-      emit(RegisterErrorState(error.toString()));
+      emit(RegisterErrorState('هذا المستخدم موجود بالفعل!'));
     });
+
+   
   }
 
   Future<void> sendOTP({

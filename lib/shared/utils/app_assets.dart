@@ -58,6 +58,10 @@ class JsonAssets {
   // Offline screen
   static const String noInternet = '$JSON_PATH/no-internet.json';
   static const String permissionDenied = '$JSON_PATH/permissionDenied.json';
+  static const String cosmatics = '$JSON_PATH/cosmatics.json';
+  static const String medicens = '$JSON_PATH/medicine.json';
+  static const String complaints = '$JSON_PATH/complaints.json';
+  static const String orderDone = '$JSON_PATH/orderDone.json';
 
   // Notifications screen
   static const String noNotifications = '$JSON_PATH/no-notification.json';

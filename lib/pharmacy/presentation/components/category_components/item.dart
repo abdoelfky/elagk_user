@@ -1,11 +1,13 @@
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_state.dart';
+import 'package:elagk/shared/utils/app_assets.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreenItem extends StatelessWidget {
   const HomeScreenItem(
@@ -51,13 +53,15 @@ class HomeScreenItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(
-                  image: AssetImage(
-                    image,
-                  ),
-                  width: size.width * .27,
-                  height: size.height * .1,
+                Container(
+                    width: size.width * .27,
+                    height: size.height * .1,
+                  child:
+                  Lottie.asset(image),
+
                 ),
+
+
                 SizedBox(
                   height: 10,
                 ),

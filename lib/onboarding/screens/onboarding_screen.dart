@@ -65,14 +65,14 @@ class OnBoardingScreen extends StatelessWidget {
   }
 
   Widget buildBoardingItem(BoardingModel model, context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: model.color,
-          body: ScreenBackground(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: model.color,
+        body: ScreenBackground(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Directionality(
+              textDirection: TextDirection.ltr,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -96,7 +96,8 @@ class OnBoardingScreen extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
-                          ))),
+                          )
+                      )),
                   Expanded(
                     child: Image(
                       image: AssetImage(

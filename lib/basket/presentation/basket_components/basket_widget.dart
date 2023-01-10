@@ -4,6 +4,7 @@ import 'package:elagk/basket/presentation/basket_controller/basket_states.dart';
 import 'package:elagk/shared/components/alert_dialoge.dart';
 import 'package:elagk/shared/components/toast_component.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
+import 'package:elagk/shared/utils/app_assets.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,9 +32,9 @@ class BasketSection extends StatelessWidget {
               context: context,
               builder: (_) {
                 return alertDialog(
-                  imageSrc: 'assets/images/menu/orderDone.png',
+                  imageSrc: JsonAssets.orderDone,
                   text:
-                  'شكرا ليك يسعادنا دايما انك معانا',
+                  AppStrings.stepperBody1,
                 );
               });
 
