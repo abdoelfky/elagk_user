@@ -15,7 +15,7 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
+    return ScreenBackground(
       textDirection: TextDirection.rtl,
       child: SafeArea(
         child: Scaffold(
@@ -30,10 +30,10 @@ class OrdersScreen extends StatelessWidget {
                 );
               },
             ),
-            body: ScreenBackground(child: OrdersContents())
+            body: OrdersContents()
 
-    )
       )
+      ),
     );
   }
 }

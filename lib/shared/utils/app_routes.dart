@@ -129,8 +129,10 @@ class RouteGenerator {
       case Routes.basketScreen:
         return MaterialPageRoute(builder: (_) => const BasketScreen());
         case Routes.stepperScreen:
-      return MaterialPageRoute(builder: (_) => const StepperScreen());
-
+          return MaterialPageRoute(builder: (_) {
+            final orderId = routeSettings.arguments as int;
+            return StepperScreen(orderId: orderId);
+          });
 
       default:
         return unDefinedRoute();

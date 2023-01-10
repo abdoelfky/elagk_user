@@ -15,6 +15,7 @@ import 'package:elagk/drawer/presentation/controller/past_orders_controller/past
 import 'package:elagk/drawer/presentation/controller/points_controller/points_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/profile_controller/profile_cubit.dart';
 import 'package:elagk/drawer/presentation/controller/special_customers_controller/special_cutomers_cubit.dart';
+import 'package:elagk/drawer/presentation/controller/stepper_controller/stepper_cubit.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/onboarding/controllers/onboarding_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_controller/categories_cubit.dart';
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>SpecialCustomersCubit()..getSpecialCustomers()),
           BlocProvider(create: (BuildContext context) =>ElagkStoreCubit()
             ..getCategories(SuperCategoryId: 1)),
+          BlocProvider(create: (BuildContext context) =>StepperCubit()),
 
 
 

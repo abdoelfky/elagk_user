@@ -51,6 +51,8 @@ class CategoriesScreen extends StatelessWidget {
             builder: (context, state) {
               if(PharmacyProductiesCubit.get(context).categories.isNotEmpty)
               return ScreenBackground(
+                textDirection: TextDirection.rtl,
+
                 child: SingleChildScrollView(
                   padding: EdgeInsets.all(AppPadding.p20),
                   child: Column(

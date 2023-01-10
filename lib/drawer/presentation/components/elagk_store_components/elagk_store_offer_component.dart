@@ -136,7 +136,7 @@ class ElagkStoreOfferComponent extends StatelessWidget {
                                 .products[index]:ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: '0');
                       }else
                       {
                         BasketCubit.get(context).deleteCartProducts();
@@ -147,7 +147,7 @@ class ElagkStoreOfferComponent extends StatelessWidget {
                             ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: '0');
 
                       }
                     },

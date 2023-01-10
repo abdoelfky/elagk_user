@@ -23,18 +23,16 @@ class BasketScreen extends StatelessWidget {
 
           ),
           backgroundColor: AppColors.offWhite,
-          body: ScreenBackground(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppPadding.p20),
-              child: Column(
-                children:  [
-                  BasketSection(
-                    firstCategoryName: "categoryName",
-                  ),
-                ],
-              ),
-
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.all(AppPadding.p20),
+            child: Column(
+              children:  [
+                BasketSection(
+                  firstCategoryName: "categoryName",
+                ),
+              ],
             ),
+
           ),
         ),
       ),

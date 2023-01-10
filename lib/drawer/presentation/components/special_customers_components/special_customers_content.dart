@@ -17,6 +17,8 @@ class SpecialCustomersContent extends StatelessWidget {
     return BlocBuilder<SpecialCustomersCubit, SpecialCustomersState>(
       builder: (context, state) {
         return ScreenBackground(
+            textDirection: TextDirection.rtl,
+
             child: RefreshIndicator(
               onRefresh: () async
               {

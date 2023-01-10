@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginStates> {
       }
     }).catchError((error) {
       print(error.toString());
-      emit(LoginErrorState('Invalid Account or Password'));
+      emit(LoginErrorState('كلمه المرور او البريد الالكتروني خطأ'));
     });
   }
 }

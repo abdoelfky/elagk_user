@@ -33,6 +33,8 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         body: ScreenBackground(
+          textDirection: TextDirection.rtl,
+
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(AppPadding.p15),

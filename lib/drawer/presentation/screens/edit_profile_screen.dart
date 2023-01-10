@@ -14,7 +14,7 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
+    return ScreenBackground(
       textDirection: TextDirection.rtl,
       child: SafeArea(
         child: Scaffold(
@@ -38,11 +38,11 @@ class EditProfileScreen extends StatelessWidget {
                 , builder: (context, state)
             {
               if(state is ProfileGetUserDataLoadingState) {
-                return ScreenBackground(child: Center(child: CircularProgressIndicator(),));
+                return Center(child: CircularProgressIndicator(),);
               }
 
               else{
-                return  ScreenBackground(child: EditProfileContent());
+                return  EditProfileContent();
               }
             })),
         // HomeScreen

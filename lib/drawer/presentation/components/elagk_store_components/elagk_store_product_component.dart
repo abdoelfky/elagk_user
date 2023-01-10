@@ -99,7 +99,8 @@ class ElagkStoreProductComponent extends StatelessWidget {
                             ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: '0'
+                        );
                       }else
                       {
                         BasketCubit.get(context).deleteCartProducts();
@@ -110,13 +111,15 @@ class ElagkStoreProductComponent extends StatelessWidget {
                             ElagkStoreCubit.get(context)
                                 .searchResult[index],
                             phId: pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: '0'
+                        );
 
                       }
                     },
                     child: const Text('اضف الي العربة',
                         style: TextStyle(
-                            fontSize: 10, color: AppColors.shadow)),
+                            fontSize: 10,
+                            color: AppColors.shadow)),
                   ),
                 )
               ],

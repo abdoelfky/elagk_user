@@ -14,6 +14,8 @@ class ContactUsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenBackground(
+      textDirection: TextDirection.rtl,
+
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(AppPadding.p10),
         child: BlocConsumer<ContactUsCubit, ContactUsState>(
@@ -25,73 +27,70 @@ class ContactUsContent extends StatelessWidget {
               }
             } ,
           builder: (context, state) {
-            return Directionality(
-              textDirection: TextDirection.rtl,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ContactUsContainer(
-                    title: AppStrings.address,
-                    imageSrc: ImageAssets.address,
-                    details:ContactUsCubit.get(context).contactUsModel!.address.toString(),
-                    onTap: () {
-                    ContactUsCubit.get(context).openMap(30.164064,31.551225);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ContactUsContainer(
+                  title: AppStrings.address,
+                  imageSrc: ImageAssets.address,
+                  details:ContactUsCubit.get(context).contactUsModel!.address.toString(),
+                  onTap: () {
+                  ContactUsCubit.get(context).openMap(30.164064,31.551225);
 
-                    },
-                  ),
-                  const SpaceWidget(),
-                  ContactUsContainer(
-                    title: AppStrings.phoneNumber,
-                    imageSrc: ImageAssets.call,
-                    details:ContactUsCubit.get(context).contactUsModel!.phoneNumber.toString(),
-                    onTap: () {
-                      ContactUsCubit.get(context).phoneCall();
+                  },
+                ),
+                const SpaceWidget(),
+                ContactUsContainer(
+                  title: AppStrings.phoneNumber,
+                  imageSrc: ImageAssets.call,
+                  details:ContactUsCubit.get(context).contactUsModel!.phoneNumber.toString(),
+                  onTap: () {
+                    ContactUsCubit.get(context).phoneCall();
 
-                    },
-                  ),
-                  const SpaceWidget(),
-                  ContactUsContainer(
-                    title: AppStrings.emailAddress,
-                    imageSrc: ImageAssets.gmail,
-                    details:ContactUsCubit.get(context).contactUsModel!.email.toString(),
-                    onTap: () {
-                      ContactUsCubit.get(context).gmail();
+                  },
+                ),
+                const SpaceWidget(),
+                ContactUsContainer(
+                  title: AppStrings.emailAddress,
+                  imageSrc: ImageAssets.gmail,
+                  details:ContactUsCubit.get(context).contactUsModel!.email.toString(),
+                  onTap: () {
+                    ContactUsCubit.get(context).gmail();
 
-                    },
-                  ),
-                  const SpaceWidget(),
-                  ContactUsContainer(
-                    title: AppStrings.whatsapp,
-                    imageSrc: ImageAssets.whatsapp,
-                    details:ContactUsCubit.get(context).contactUsModel!.whatsApp.toString(),
-                    onTap: () {
-                      ContactUsCubit.get(context).whatsApp();
+                  },
+                ),
+                const SpaceWidget(),
+                ContactUsContainer(
+                  title: AppStrings.whatsapp,
+                  imageSrc: ImageAssets.whatsapp,
+                  details:ContactUsCubit.get(context).contactUsModel!.whatsApp.toString(),
+                  onTap: () {
+                    ContactUsCubit.get(context).whatsApp();
 
 
-                    },
-                  ),
-                  const SpaceWidget(),
-                  ContactUsContainer(
-                    title: AppStrings.facebook,
-                    imageSrc: ImageAssets.facebook,
-                    details: ContactUsCubit.get(context).contactUsModel!.facebook.toString(),
-                    onTap: () {
-                      ContactUsCubit.get(context).faceBook();
+                  },
+                ),
+                const SpaceWidget(),
+                ContactUsContainer(
+                  title: AppStrings.facebook,
+                  imageSrc: ImageAssets.facebook,
+                  details: ContactUsCubit.get(context).contactUsModel!.facebook.toString(),
+                  onTap: () {
+                    ContactUsCubit.get(context).faceBook();
 
-                    },
-                  ),
-                  const SpaceWidget(),
-                  ContactUsContainer(
-                    title: AppStrings.instagram,
-                    imageSrc: ImageAssets.instagram,
-                    details: ContactUsCubit.get(context).contactUsModel!.instagram.toString(),
-                    onTap: () {
-                      ContactUsCubit.get(context).instagram();
+                  },
+                ),
+                const SpaceWidget(),
+                ContactUsContainer(
+                  title: AppStrings.instagram,
+                  imageSrc: ImageAssets.instagram,
+                  details: ContactUsCubit.get(context).contactUsModel!.instagram.toString(),
+                  onTap: () {
+                    ContactUsCubit.get(context).instagram();
 
-                    },
-                  ),
-                ],
-              ),
+                  },
+                ),
+              ],
             );
           },
         ),

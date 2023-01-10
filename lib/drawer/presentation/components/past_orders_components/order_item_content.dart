@@ -1,4 +1,5 @@
 import 'package:elagk/drawer/data/models/past_orders_model.dart';
+import 'package:elagk/drawer/presentation/controller/stepper_controller/stepper_cubit.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
@@ -17,7 +18,10 @@ Widget OrderItem(
       {
         if(!isActive)
         {
-          navigateTo(context: context, screenRoute: Routes.stepperScreen);
+          StepperCubit.get(context).followOrder(orderId: pastOrder.orderId);
+          navigateTo(context: context, screenRoute: Routes.stepperScreen,
+          arguments: pastOrder.orderId
+          );
         }
       },
       child: Container(

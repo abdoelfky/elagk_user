@@ -3,10 +3,10 @@ import 'package:elagk/shared/utils/app_values.dart';
 import 'package:flutter/material.dart';
 
 class ScreenBackground extends StatelessWidget {
-  const ScreenBackground({Key? key,required this.child}) : super(key: key);
+  ScreenBackground({Key? key,required this.child, required this.textDirection }) : super(key: key);
 
   final Widget child;
-
+  final TextDirection textDirection;
   @override
   Widget build(BuildContext context) {
     return Directionality(

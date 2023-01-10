@@ -39,11 +39,13 @@ class ProfileScreen extends StatelessWidget {
                 , builder: (context, state)
             {
               if(state is ProfileGetUserDataLoadingState) {
-                return ScreenBackground(child: Center(child: CircularProgressIndicator(color: AppColors.primary,),));
+                return ScreenBackground(                textDirection: TextDirection.rtl,
+                    child: Center(child: CircularProgressIndicator(color: AppColors.primary,),));
               }
 
               else{
-                return  ScreenBackground(child: ProfileContent());
+                return  ScreenBackground(                textDirection: TextDirection.rtl,
+                    child: ProfileContent());
               }
                           })),
         // HomeScreen

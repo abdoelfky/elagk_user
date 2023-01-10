@@ -24,7 +24,7 @@ class PointsScreen extends StatelessWidget {
     // TODO: implement listener
   },
   builder: (context, state) {
-    return Directionality(
+    return ScreenBackground(
       textDirection: TextDirection.rtl,
       child: SafeArea(
         child: Scaffold(
@@ -41,94 +41,92 @@ class PointsScreen extends StatelessWidget {
           ),
 
           backgroundColor: AppColors.offWhite,
-          body: ScreenBackground(
-            child: RefreshIndicator(
-              onRefresh: () async
-              {
-                PointsCubit.get(context).getUserPoints();
-                PointsCubit.get(context).getProducts();
-              },
-              child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(AppPadding.p20),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: AppSize.s120,
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          // Pharmacy photo
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration:  BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    AppSize.s15,
-                                  ),
-                                  gradient:const LinearGradient(
-                                      begin:Alignment.topRight ,
-                                      end:Alignment.bottomRight ,
-                                      colors:
-                                      [
+          body: RefreshIndicator(
+            onRefresh: () async
+            {
+              PointsCubit.get(context).getUserPoints();
+              PointsCubit.get(context).getProducts();
+            },
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(AppPadding.p20),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: AppSize.s120,
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        // Pharmacy photo
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            decoration:  BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  AppSize.s15,
+                                ),
+                                gradient:const LinearGradient(
+                                    begin:Alignment.topRight ,
+                                    end:Alignment.bottomRight ,
+                                    colors:
+                                    [
 
-                                        Color(0xff059053),
-                                        Color(0xff12486e),
-                                      ])
-                              ),
-                              width: mediaQueryWidth(context),
-                              height: AppSize.s170,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: AppSize.s20,
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      AppStrings.numOfPoints,
-                                      style: TextStyle(
-                                          fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ),SizedBox(
-                                    height: AppSize.s10,
-                                  ),
-                                  Center(
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-
-                                        '${PointsCubit.get(context).userPoints.toString()} نقطه',
-                                        style: TextStyle(
-                                            fontSize: 19,color: Colors.white,fontWeight: FontWeight.bold
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-
+                                      Color(0xff059053),
+                                      Color(0xff12486e),
+                                    ])
                             ),
+                            width: mediaQueryWidth(context),
+                            height: AppSize.s170,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: AppSize.s20,
+                                ),
+                                Center(
+                                  child: Text(
+                                    AppStrings.numOfPoints,
+                                    style: TextStyle(
+                                        fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ),SizedBox(
+                                  height: AppSize.s10,
+                                ),
+                                Center(
+                                  child: Directionality(
+                                    textDirection: TextDirection.rtl,
+                                    child: Text(
+
+                                      '${PointsCubit.get(context).userPoints.toString()} نقطه',
+                                      style: TextStyle(
+                                          fontSize: 19,color: Colors.white,fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+
                           ),
+                        ),
 
-                          // Pharmacy information
+                        // Pharmacy information
 
-                        ],
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                        height: mediaQueryHeight(context) / AppSize.s40),
-                    const PointsSection(
-                      firstCategoryName: "categoryName",
-                    ),
-                  ],
-
-                ),
-
+                  ),
+                  SizedBox(
+                      height: mediaQueryHeight(context) / AppSize.s40),
+                  const PointsSection(
+                    firstCategoryName: "categoryName",
+                  ),
+                ],
 
               ),
+
+
             ),
           ),
         ),

@@ -59,6 +59,7 @@ class PharmacyScreen extends StatelessWidget {
                     pharmacyModel!.latitude, pharmacyModel!.longitude);
               }
               return ScreenBackground(
+                textDirection: TextDirection.rtl,
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(AppPadding.p10),
                   child: Column(

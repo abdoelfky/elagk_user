@@ -1,4 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:elagk/auth/presentation/components/activator_componant/activator_componants.dart';
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_cubit.dart';
 import 'package:elagk/auth/presentation/controller/otp_password/otp_password_state.dart';
 import 'package:elagk/auth/presentation/controller/register_controller/register_cubit.dart';
@@ -17,68 +18,69 @@ import '../../components/screen_background.dart';
 
 import '../../controller/activator/activator_cubit.dart';
 import '../../controller/activator/activator_state.dart';
-import 'activator_componant/activator_componants.dart';
 
 class ActivatorScreen extends StatelessWidget {
   static final _formKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          body: BlocConsumer<ActivatorCubit, ActivatorStates>(
-            listener: (context, state) {
-              if (state is ActivatorSuccessState) {
-                showToast(
-                    text: AppStrings.codeSendedSuccessFully1,
-                    state: ToastStates.SUCCESS);
-                navigateFinalTo(
-                    context: context,
-                    screenRoute: Routes.loginScreen);
-              } else if (state is ActivatorErrorState) {
-                showToast(
-                    text: AppStrings.codeSendError1, state: ToastStates.ERROR);
-              }
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: BlocConsumer<ActivatorCubit, ActivatorStates>(
+          listener: (context, state) {
+            if (state is ActivatorSuccessState) {
+              showToast(
+                  text: AppStrings.codeSendedSuccessFully1,
+                  state: ToastStates.SUCCESS);
+              navigateFinalTo(
+                  context: context,
+                  screenRoute: Routes.loginScreen);
+            } else if (state is ActivatorErrorState) {
+              showToast(
+                  text: AppStrings.codeSendError1, state: ToastStates.ERROR);
+            }
 
-              // if (state is ChangeDurationEndState) {
-              //   navigateFinalTo(
-              //       context: context, screenRoute: Routes.forgetPasswordScreen);
-              // }
-            },
-            builder: (context, state) {
+            // if (state is ChangeDurationEndState) {
+            //   navigateFinalTo(
+            //       context: context, screenRoute: Routes.forgetPasswordScreen);
+            // }
+          },
+          builder: (context, state) {
 
-              Duration duration = ActivatorCubit.get(context).duration;
+            Duration duration = ActivatorCubit.get(context).duration;
 
-              if ((duration == Duration(seconds: 0)&&state is OtpPasswordInitialState)||
-                  (
-                      duration == Duration(seconds: 0)&&state is ActivatorInitialState
-                  )) {
-                ActivatorCubit.get(context).otpCounter();
-              }
+            if ((duration == Duration(seconds: 0)&&state is OtpPasswordInitialState)||
+                (
+                    duration == Duration(seconds: 0)&&state is ActivatorInitialState
+                )) {
+              ActivatorCubit.get(context).otpCounter();
+            }
 
-              return ScreenBackground(
-                child: Center(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(AppPadding.p15),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const LogoWidget(),
-                          const AuthTitleAndSubtitle(
-                            authTitle: AppStrings.activator,
-                            authSubtitle: AppStrings.enterValidnum,
-                          ),
+            return ScreenBackground(
+              textDirection: TextDirection.ltr,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(AppPadding.p15),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const LogoWidget(),
+                        const AuthTitleAndSubtitle(
+                          authTitle: AppStrings.activator,
+                          authSubtitle: AppStrings.enterValidnum,
+                        ),
 
-                          SizedBox(
-                              height: mediaQueryHeight(context) / AppSize.s30),
-                          ConditionalBuilder(
-                            condition: state is! ActivatorLoadingState,
-                            builder: (context) => VerificationCode(
+                        SizedBox(
+                            height: mediaQueryHeight(context) / AppSize.s30),
+                        ConditionalBuilder(
+                          condition: state is! ActivatorLoadingState,
+                          builder: (context) => Directionality(
+                            textDirection: TextDirection.ltr,
+
+                            child: VerificationCode(
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .bodyText2!
@@ -98,54 +100,54 @@ class ActivatorScreen extends StatelessWidget {
                               onEditing: (bool value) {},
                               margin: const EdgeInsets.all(12),
                             ),
-                            fallback: (context) =>
-                                const CircularProgressIndicator(),
                           ),
-                          SizedBox(
-                              height: mediaQueryHeight(context) / AppSize.s30),
-                          buildTime(
-                            duration,
-                          ),
-                          SizedBox(
-                              height: mediaQueryHeight(context) / AppSize.s50),
+                          fallback: (context) =>
+                              const CircularProgressIndicator(),
+                        ),
+                        SizedBox(
+                            height: mediaQueryHeight(context) / AppSize.s30),
+                        buildTime(
+                          duration,
+                        ),
+                        SizedBox(
+                            height: mediaQueryHeight(context) / AppSize.s50),
 
-                          TextButton(
-                            onPressed: () {
-                              if (duration == Duration(seconds: 0)) {
-                                ActivatorCubit.get(context).otpCounter();
-                                RegisterCubit.get(context).sendOTP(email: RegisterCubit.get(context).registerModel!.email! );
-                              }
-                            },
-                            child: Text(
-                              AppStrings.sendingVerificationCodeAgain,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                  color: AppColors.yellowBold,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20
-                              ),
+                        TextButton(
+                          onPressed: () {
+                            if (duration == Duration(seconds: 0)) {
+                              ActivatorCubit.get(context).otpCounter();
+                              RegisterCubit.get(context).sendOTP(email: RegisterCubit.get(context).registerModel!.email! );
+                            }
+                          },
+                          child: Text(
+                            AppStrings.sendingVerificationCodeAgain,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .copyWith(
+                                color: AppColors.yellowBold,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20
                             ),
                           ),
-                          // MainButton(
-                          //   title: AppStrings.codeSendButton,
-                          //   onPressed: (value) async {
-                          //     if (_formKey.currentState!.validate()) {
-                          //       ActivatorPasswordCubit.get(context)
-                          //           .Activator(code:int.parse(value) ,);
-                          //     }
-                          //
-                          //   },
-                          // ),
-                        ],
-                      ),
+                        ),
+                        // MainButton(
+                        //   title: AppStrings.codeSendButton,
+                        //   onPressed: (value) async {
+                        //     if (_formKey.currentState!.validate()) {
+                        //       ActivatorPasswordCubit.get(context)
+                        //           .Activator(code:int.parse(value) ,);
+                        //     }
+                        //
+                        //   },
+                        // ),
+                      ],
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

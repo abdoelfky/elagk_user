@@ -53,7 +53,8 @@ class PharmacyProducts extends StatelessWidget {
               } else {
                 return OfferComponent(
                   index: index,
-                  pharmacyId: pharmacyId, search: true,
+                  pharmacyId: pharmacyId,
+                  search: true,
                 );
               }
             },
@@ -79,12 +80,14 @@ class PharmacyProducts extends StatelessWidget {
                   0.0) {
                 return ProductComponent(
                   index: index,
-                  pharmacyId: pharmacyId, search: false,
+                  pharmacyId: pharmacyId,
+                  search: false,
                 );
               } else {
                 return OfferComponent(
                   index: index,
-                  pharmacyId: pharmacyId, search: false,
+                  pharmacyId: pharmacyId,
+                  search: false,
                 );
               }
             },

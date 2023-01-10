@@ -20,34 +20,33 @@ class OffersScreen extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  Directionality(
-      textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: SecondAppBar(
-            context: context,
-            title: AppStrings.offers,
-            onTap: () {
-              navigateTo(
-                context: context,
-                screenRoute: Routes.basketScreen,
-              );
-            },
-            actionWidget: const AppBarBasketIcon(),
-          ),
-          backgroundColor: AppColors.offWhite,
-          body: ScreenBackground(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                bottom: AppPadding.p20,
-                right:AppPadding.p20 ,
-                  left :AppPadding.p20),
-              child: OffersSection(
-                firstCategoryName: "categoryName",
-              ),
+    return  SafeArea(
+      child: Scaffold(
+        appBar: SecondAppBar(
+          context: context,
+          title: AppStrings.offers,
+          onTap: () {
+            navigateTo(
+              context: context,
+              screenRoute: Routes.basketScreen,
+            );
+          },
+          actionWidget: const AppBarBasketIcon(),
+        ),
+        backgroundColor: AppColors.offWhite,
+        body: ScreenBackground(
+          textDirection: TextDirection.rtl,
 
-
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: AppPadding.p20,
+              right:AppPadding.p20 ,
+                left :AppPadding.p20),
+            child: OffersSection(
+              firstCategoryName: "categoryName",
             ),
+
+
           ),
         ),
       ),

@@ -72,6 +72,7 @@ class ApiConstants {
   static String getOfferProducts(int pharmacyId) =>
       "$baseUrl/Offers/GetProductsOffers/$pharmacyId";
 
-
+  //stepper
+  static String followOrder(int orderId) => "$baseUrl/OrderStepper/FollowOrder/$orderId";
 
 }

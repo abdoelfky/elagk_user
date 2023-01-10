@@ -69,6 +69,7 @@ class OnBoardingScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: model.color,
         body: ScreenBackground(
+          textDirection: TextDirection.rtl,
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Directionality(

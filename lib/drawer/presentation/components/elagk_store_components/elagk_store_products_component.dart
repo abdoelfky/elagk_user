@@ -50,7 +50,8 @@ class ElagkStoreProducts extends StatelessWidget {
               } else {
                 return ElagkStoreOfferComponent(
                   index: index,
-                  pharmacyId: 58, search: true,
+                  pharmacyId: 58,
+                  search: true,
                 );
               }
             },
