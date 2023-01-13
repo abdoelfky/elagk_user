@@ -195,6 +195,7 @@ class EditProfileContent extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                   obscure: false,
                   validator: (value) {
+
                     if (value!.length < 11) {
                       return AppStrings.enterValidnum;
                     } else {

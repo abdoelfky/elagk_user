@@ -55,6 +55,7 @@ class PostCartErrorState extends BasketStates
 class PutCartOrderLoadingState extends BasketStates {}
 
 class PutCartOrderSuccessState extends BasketStates {}
+class PutCartOrderErrorState extends BasketStates {}
 
 class PostCartOrderSuccessState extends BasketStates {}
 
@@ -84,3 +85,14 @@ class DeleteCartProductsSuccessState extends BasketStates {}
 
 class UpdatePointsSuccessState extends BasketStates {}
 
+//API POST notification FINALLY
+class PostNotificationSuccessState extends BasketStates {}
+
+class PostNotificationLoadingState extends BasketStates {}
+
+class PostNotificationErrorState extends BasketStates
+{
+  final String error;
+
+  PostNotificationErrorState(this.error);
+}

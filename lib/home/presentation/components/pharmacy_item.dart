@@ -2,6 +2,7 @@ import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_controller/categories_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_controller/categories_state.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_routes.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -23,6 +24,7 @@ class PharmacyItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           CategoriesCubit.get(context).changeStringsToDef();
+          AppConstants.pharmacyUserID=pharmacy.userId!;
           navigateTo(context: context,
               screenRoute:Routes.pharmacy,
               arguments:pharmacy );
@@ -57,13 +59,14 @@ class PharmacyItem extends StatelessWidget {
                     pharmacy.pharmacyName!,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   ),
+                  SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children:
                     [
-                      const Icon(Icons.location_on_outlined,color: Colors.green,size: 18,),
+                      const Icon(Icons.email_outlined,color: Colors.green,size: 18,),
                       const SizedBox(width: 5,),
-                      Text('الاسكندريه-الشاطئ النيل',
+                      Text(pharmacy.pharmacyEmail.toString(),
                         style: Theme.of(context).textTheme.bodyMedium,
                       )
                     ],

@@ -72,7 +72,7 @@ class AppStrings {
   static const String verify = "تأكيد";
   static const String resetPassword = "تم تغيير كلمة المرور بنجاح";
   static const String erorrResetPassword = "لم يتم تغيير كلمة المرور بنجاح    ";
-  static const String enterValidnum = "يرجي إدخال الكود";
+  static const String enterValidnum = "يرجي إدخال هاتف صحيح";
 
   // Make login screen
   static const String pleaseLoginToBrowseApp =

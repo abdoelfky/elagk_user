@@ -1,4 +1,5 @@
 import 'package:elagk/basket/data/basket_model.dart';
+import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_cubit.dart';
 import 'package:elagk/pharmacy/data/product_model.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
@@ -142,7 +143,7 @@ class BasketCubit extends Cubit<BasketStates> {
     required distance})
   async {
     emit(PostCartLoadingState());
-    DioHelper.postData(
+    await DioHelper.postData(
       url: ApiConstants.postCart,
       data: {
         "userId":CacheHelper.getData(key: AppConstants.userId),
@@ -168,7 +169,7 @@ class BasketCubit extends Cubit<BasketStates> {
   async {
     emit(GetCartIdLoadingState());
 
-    DioHelper.getData(
+    await DioHelper.getData(
         url: ApiConstants.getCartByUserId(
             CacheHelper.getData(key: AppConstants.userId).toString()))
         .then((value)
@@ -190,37 +191,49 @@ class BasketCubit extends Cubit<BasketStates> {
 
     emit(PostCartOrderLoadingState());
 
-      DioHelper.postData(url: ApiConstants.postCartProducts,
+      await DioHelper.postData(url: ApiConstants.postCartProducts,
           data: {
         "productId": basketProducts.first.productId,
         "usertId": CacheHelper.getData(key: AppConstants.userId),
         "cartId": int.parse(cartId.toString()),
         "quantity": basketProducts.first.quantity,
         "price": basketProducts.first.price
-      })
-          .then((value) {
+      }).then((value) {
 
         emit(PostCartOrderSuccessState());
 
         if(basketProducts.length>1)
         {
-          basketProducts.asMap().forEach((elementIndex, element) {
+          print('basketProducts.length');
+
+          print(basketProducts.length);
+          basketProducts.asMap().forEach((elementIndex, element) async {
             print(elementIndex);
             emit(PutCartOrderLoadingState());
             if(elementIndex>0) {
-              DioHelper.putDataFromJson(
+              print({ "productId": element.productId,
+                "usertId": CacheHelper.getData(
+                    key: AppConstants.userId),
+                "cartId": int.parse(cartId.toString()),
+                "quantity": element.quantity,
+                "price": element.price});
+             await DioHelper.postData(
                   url: ApiConstants.postCartProducts,
                   data: {
-                    "productId": basketProducts[elementIndex].productId,
+                    "productId": element.productId,
                     "usertId": CacheHelper.getData(
                         key: AppConstants.userId),
                     "cartId": int.parse(cartId.toString()),
-                    "quantity": basketProducts[elementIndex].quantity,
-                    "price": basketProducts[elementIndex].price
+                    "quantity": element.quantity,
+                    "price": element.price
                   }).then((value)
               {
 
                 emit(PutCartOrderSuccessState());
+
+              }).catchError((onError)
+              {
+                emit(PutCartOrderErrorState());
 
               });
             }
@@ -270,6 +283,7 @@ class BasketCubit extends Cubit<BasketStates> {
     ).then((value)
     {
       emit(PostOrderSuccessState());
+      postNotification(pharmacyUserID: AppConstants.pharmacyUserID);
       if(AppConstants.pointsChanges==true)
       {
         DioHelper.patchDataFromJson(
@@ -307,5 +321,36 @@ class BasketCubit extends Cubit<BasketStates> {
     AppConstants.pointsChanges=false;
     emit(DeleteCartProductsSuccessState());
   }
+
+
+
+
+  Future<void> postNotification(
+      {
+        required pharmacyUserID,
+      })
+  async {
+    emit(PostNotificationLoadingState());
+    print(pharmacyUserID);
+    DioHelper.postData(
+        url: ApiConstants.postNotification,
+        data:{
+          // "notifiactionId": 0,
+          "notifiactionTitle": "you have new order",
+          "notifiactionDescription": "hurry up to send the order to your customer",
+          "user": AppConstants.userModel,
+          "userId": "${pharmacyUserID}",
+        }
+    ).then((value)
+    {
+      emit(PostNotificationSuccessState());
+
+    }).catchError((onError)
+    {
+      emit(PostNotificationErrorState(onError.toString()));
+    });
+
+  }
+
 
 }

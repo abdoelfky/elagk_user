@@ -109,13 +109,20 @@ class StepperContent extends StatelessWidget {
                       height: mediaQueryHeight(context) * .05,
                     ),
                     StepperNotes(
-                      name:  StepperCubit.get(context)
+                      name:
+                      StepperCubit.get(context)
+                          .stepperFollowModel?.deliveryDetails !=null?
+                      StepperCubit.get(context)
                           .stepperFollowModel!.deliveryDetails!.firstName.toString()+
                       ' '+
                           StepperCubit.get(context)
-                              .stepperFollowModel!.deliveryDetails!.lastName.toString(),
-                      phones:  StepperCubit.get(context)
-                          .stepperFollowModel!.deliveryDetails!.phones!.toList(),
+                              .stepperFollowModel!.deliveryDetails!.lastName.toString():
+                      'لم يتم تحديد السائق بعد',
+                      phones:
+                      StepperCubit.get(context)
+                          .stepperFollowModel?.deliveryDetails !=null ?
+                      StepperCubit.get(context)
+                          .stepperFollowModel!.deliveryDetails!.phones!.toList() :[''],
                     )
                   ],
                 ),

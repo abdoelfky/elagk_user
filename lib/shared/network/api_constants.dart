@@ -75,4 +75,7 @@ class ApiConstants {
   //stepper
   static String followOrder(int orderId) => "$baseUrl/OrderStepper/FollowOrder/$orderId";
 
+
+  static const String postNotification = "$baseUrl/Notifications";
+
 }

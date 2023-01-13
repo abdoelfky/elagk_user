@@ -21,23 +21,22 @@ class OffersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
-      child: Scaffold(
-        appBar: SecondAppBar(
-          context: context,
-          title: AppStrings.offers,
-          onTap: () {
-            navigateTo(
-              context: context,
-              screenRoute: Routes.basketScreen,
-            );
-          },
-          actionWidget: const AppBarBasketIcon(),
-        ),
-        backgroundColor: AppColors.offWhite,
-        body: ScreenBackground(
-          textDirection: TextDirection.rtl,
-
-          child: SingleChildScrollView(
+      child: ScreenBackground(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: SecondAppBar(
+            context: context,
+            title: AppStrings.offers,
+            onTap: () {
+              navigateTo(
+                context: context,
+                screenRoute: Routes.basketScreen,
+              );
+            },
+            actionWidget: const AppBarBasketIcon(),
+          ),
+          backgroundColor: AppColors.offWhite,
+          body: SingleChildScrollView(
             padding: EdgeInsets.only(
               bottom: AppPadding.p20,
               right:AppPadding.p20 ,

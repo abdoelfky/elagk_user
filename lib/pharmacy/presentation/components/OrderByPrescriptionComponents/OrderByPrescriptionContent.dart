@@ -3,8 +3,10 @@ import 'package:elagk/auth/presentation/components/MainTextFormField.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_state.dart';
+import 'package:elagk/shared/components/alert_dialoge.dart';
 import 'package:elagk/shared/components/toast_component.dart';
 import 'package:elagk/shared/global/app_colors.dart';
+import 'package:elagk/shared/utils/app_assets.dart';
 import 'package:elagk/shared/utils/app_constants.dart';
 import 'package:elagk/shared/utils/app_strings.dart';
 import 'package:elagk/shared/utils/app_values.dart';
@@ -27,9 +29,15 @@ class OrderByPrescriptionContent extends StatelessWidget {
       {
         if (state is OrderByPerscripiyionSuccessState) {
           {
-            showToast(
-                text: AppStrings.prescriptionDone,
-                state: ToastStates.SUCCESS);
+            showDialog(
+                context: context,
+                builder: (_) {
+                  return alertDialog(
+                    imageSrc: JsonAssets.orderDone,
+                    text:
+                    AppStrings.stepperBody1,
+                  );
+                });
 
           }
 

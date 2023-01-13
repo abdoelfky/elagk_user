@@ -29,7 +29,7 @@ class StepperNotes extends StatelessWidget {
             Text(AppStrings.deliveryPhone,
                 style: Theme.of(context).textTheme.displayMedium
             ),
-            Text(phones[0],
+            Text(phones.first,
                 style: Theme.of(context).textTheme.displayMedium
             ),
           ],
