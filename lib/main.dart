@@ -20,18 +20,22 @@ import 'package:elagk/home/presentation/controllers/home_screen_controller/home_
 import 'package:elagk/onboarding/controllers/onboarding_cubit.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/categories_controller/categories_cubit.dart';
 import 'package:elagk/shared/bloc_observer.dart';
+import 'package:elagk/shared/config/noti.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'pharmacy/presentation/pharmacy_controllers/orderByPerscripiyion_controller/order_by_perscripiyion_cubit.dart';
 import 'pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
 import 'shared/global/app_theme.dart';
 import 'shared/utils/app_routes.dart';
 import 'shared/utils/app_strings.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
@@ -40,6 +44,7 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   CacheHelper.init();
+  Noti.initialize(flutterLocalNotificationsPlugin);
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -75,7 +80,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (BuildContext context) =>BasketCubit()),
           BlocProvider(create: (BuildContext context) =>ActivatorCubit()),
           BlocProvider(create: (BuildContext context) =>CategoriesCubit()),
-          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getUserProfileData()..getPermission()..getOffers()),
+          BlocProvider(create: (BuildContext context) =>HomeScreenCubit()..getUserProfileData()..getPermission()..getOffers()..getNotifications()..checkNotifications()),
           BlocProvider(create: (BuildContext context) =>OrderByPerscripiyionCubit()),
           BlocProvider(create: (BuildContext context) =>PastOrdersCubit()..getPastOrders()),
           BlocProvider(create: (BuildContext context) =>PharmacyProductiesCubit()),

@@ -1,10 +1,14 @@
+import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:elagk/basket/data/notification_model.dart';
 import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 import 'package:elagk/home/data/models/offer_product_model.dart';
 import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_state.dart';
+import 'package:elagk/main.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
+import 'package:elagk/shared/config/noti.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
 import 'package:elagk/shared/network/dio_helper.dart';
@@ -237,6 +241,65 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       throw Exception("Exception occured: $error stackTrace: $stacktrace");
     }
   }
+
+
+
+
+  //get notification
+  List<NotificationModel> notifications = [];
+  NotificationModel? lastNotification;
+
+  Timer? timer;
+
+  Future<void> getNotifications() async {
+    notifications = [];
+
+    emit(GetNotificationLoadingState());
+
+    try {
+      Response response = await Dio().get(
+          ApiConstants.getNotifications(
+              CacheHelper.getData(key: AppConstants.userId)));
+      notifications = (response.data as List)
+          .map((x) => NotificationModel.fromJson(x))
+          .toList();
+      notifications=notifications.reversed.toList();
+      print(notifications.length);
+      print(CacheHelper.getData(key: AppConstants.userId));
+      if(AppConstants.notificationLength<notifications.length) {
+        lastNotification=notifications.first;
+        getNotify();
+      }
+      AppConstants.notificationLength=notifications.length;
+
+      emit(GetNotificationSuccessState(notifications));
+    } catch (error, stacktrace) {
+      emit(GetNotificationErrorState(error.toString()));
+
+      throw Exception("Exception occured: $error stackTrace: $stacktrace");
+    }
+
+  }
+
+
+
+
+  void getNotify()
+  {
+
+    Noti.showBigTextNotification(
+        title: "${lastNotification!.notifiactionTitle}",
+        body: "${lastNotification!.notifiactionDescription}",
+        fln: flutterLocalNotificationsPlugin);
+
+  }
+
+  void checkNotifications()
+  {
+    timer = Timer.periodic(Duration(seconds: 35), (Timer t)=>getNotifications());
+
+  }
+
 
 
 }

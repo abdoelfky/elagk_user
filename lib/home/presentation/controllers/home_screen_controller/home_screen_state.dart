@@ -1,4 +1,5 @@
 
+import 'package:elagk/basket/data/notification_model.dart';
 import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
 
 abstract class HomeScreenState {}
@@ -60,3 +61,17 @@ class GetOfferProductsErrorState extends HomeScreenState
 class FilterPharmaciesLoadingState extends HomeScreenState {}
 class FilterPharmaciesSuccessState extends HomeScreenState {}
 class CalculateDistanceSuccessState extends HomeScreenState {}
+
+
+class GetNotificationLoadingState  extends HomeScreenState {}
+class GetNotificationSuccessState  extends HomeScreenState {
+  final List<NotificationModel> model;
+
+  GetNotificationSuccessState(this.model);
+}
+class GetNotificationErrorState  extends HomeScreenState
+{
+  final String error;
+
+  GetNotificationErrorState(this.error);
+}

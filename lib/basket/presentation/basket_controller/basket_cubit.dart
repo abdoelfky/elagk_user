@@ -338,8 +338,11 @@ class BasketCubit extends Cubit<BasketStates> {
           // "notifiactionId": 0,
           "notifiactionTitle": "you have new order",
           "notifiactionDescription": "hurry up to send the order to your customer",
-          "user": AppConstants.userModel,
+          // "user": AppConstants.userModel,
           "userId": "${pharmacyUserID}",
+          "action": "string",
+          "table": "string",
+          "data": "string",
         }
     ).then((value)
     {

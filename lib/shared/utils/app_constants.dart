@@ -6,6 +6,7 @@ class AppConstants {
   static const String empty = "";
   static const String userName = "userName";
   static String pharmacyUserID = "";
+  static int notificationLength = 0;
 
   static UserProfileModel? userModel ;
 

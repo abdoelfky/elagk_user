@@ -77,5 +77,6 @@ class ApiConstants {
 
 
   static const String postNotification = "$baseUrl/Notifications";
+  static String getNotifications(String userId) => "$baseUrl/Notifications/$userId";
 
 }
