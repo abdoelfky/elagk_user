@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                       color: AppColors.primary,
                                     ))
                                   : HomeScreenCubit.get(context)
-                                          .filteredPharmacies
+                                          .pharmacies
                                           .isEmpty &&
                                   state is FilterPharmaciesSuccessState
 
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                                       )
 
                                           : HomeScreenCubit.get(context)
-                                                  .filteredPharmacies
+                                                  .pharmacies
                                                   .isNotEmpty
                                               ? Column(
                                                   children: [
@@ -150,13 +150,13 @@ class HomeScreen extends StatelessWidget {
                                                           .025,
                                                     ),
                                                     HomeScreenCubit.get(context)
-                                                            .filteredOffers
+                                                            .offers
                                                             .isNotEmpty
                                                         ? OffersWidget(
                                                             offers:
                                                                 HomeScreenCubit.get(
                                                                         context)
-                                                                    .filteredOffers,
+                                                                    .offers,
                                                           )
                                                         : SizedBox(),
                                                     SizedBox(

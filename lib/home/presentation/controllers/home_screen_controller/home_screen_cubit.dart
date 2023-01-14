@@ -3,11 +3,11 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:elagk/basket/data/notification_model.dart';
 import 'package:elagk/drawer/data/models/profile/user_profile_model.dart';
-import 'package:elagk/home/data/models/offer_product_model.dart';
 import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
 import 'package:elagk/home/presentation/controllers/home_screen_controller/home_screen_state.dart';
 import 'package:elagk/main.dart';
 import 'package:elagk/pharmacy/data/pharmacy_model.dart';
+import 'package:elagk/pharmacy/data/product_model.dart';
 import 'package:elagk/shared/config/noti.dart';
 import 'package:elagk/shared/local/shared_preference.dart';
 import 'package:elagk/shared/network/api_constants.dart';
@@ -224,7 +224,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     }
   }
 
-  List<OfferProductModel> offerProducts = [];
+  List<ProductModel> offerProducts = [];
   Future<void> getOfferProducts({required int pharmacyId}) async {
     offerProducts = [];
     emit(GetOfferProductsLoadingState());
@@ -232,7 +232,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       Response response = await DioHelper
           .getData(url: ApiConstants.getOfferProducts(pharmacyId));
       offerProducts = (response.data as List)
-          .map((x) => OfferProductModel.fromJson(x))
+          .map((x) => ProductModel.fromJson(x))
           .toList();
       emit(GetOfferProductsSuccessState());
     } catch (error, stacktrace) {

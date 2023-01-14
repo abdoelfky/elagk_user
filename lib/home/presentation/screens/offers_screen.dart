@@ -1,8 +1,6 @@
 import 'package:elagk/auth/presentation/components/screen_background.dart';
-import 'package:elagk/home/data/models/offer_product_model.dart';
 import 'package:elagk/home/presentation/components/app_bar_basket_icon.dart';
 import 'package:elagk/home/presentation/components/offers_components/offers_widget.dart';
-import 'package:elagk/home/presentation/components/search_widget.dart';
 import 'package:elagk/shared/components/second_appBar.dart';
 import 'package:elagk/shared/global/app_colors.dart';
 import 'package:elagk/shared/utils/app_routes.dart';

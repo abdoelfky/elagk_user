@@ -35,13 +35,13 @@ crossAxisAlignment: CrossAxisAlignment.start,
                   return PharmacyItem
                     (pharmacy:HomeScreenCubit.get(context)
                       .searchResult.isEmpty?
-                  HomeScreenCubit.get(context).filteredPharmacies[index]:
+                  HomeScreenCubit.get(context).pharmacies[index]:
                   HomeScreenCubit.get(context).searchResult[index]
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 20,),
                 itemCount:HomeScreenCubit.get(context).searchResult.isEmpty?
-                HomeScreenCubit.get(context).filteredPharmacies.length:
+                HomeScreenCubit.get(context).pharmacies.length:
                 HomeScreenCubit.get(context).searchResult.length)
           ],);
       },

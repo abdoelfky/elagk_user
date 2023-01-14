@@ -41,7 +41,8 @@ class OffersProducts extends StatelessWidget {
           ),
           itemCount: HomeScreenCubit.get(context).offerProducts.length,
           itemBuilder: (BuildContext context, int index) {
-            return HomeOfferComponent(offerModel:HomeScreenCubit.get(context)
+            return HomeOfferComponent(
+              offerModel:HomeScreenCubit.get(context)
                 .offerProducts[index] ,);
           },
         );

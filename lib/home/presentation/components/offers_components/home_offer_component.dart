@@ -1,5 +1,4 @@
 import 'package:elagk/basket/presentation/basket_controller/basket_cubit.dart';
-import 'package:elagk/home/data/models/offer_product_model.dart';
 import 'package:elagk/home/data/models/pharmacy_offer_model.dart';
 import 'package:elagk/pharmacy/data/product_model.dart';
 import 'package:elagk/pharmacy/presentation/pharmacy_controllers/pharmacy_producties_controller/pharmacy_producties_cubit.dart';
@@ -13,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeOfferComponent extends StatelessWidget {
   HomeOfferComponent({Key? key,required this.offerModel}) : super(key: key);
-  final OfferProductModel offerModel;
+  final ProductModel offerModel;
 
   @override
   Widget build(BuildContext context) {
@@ -116,14 +115,14 @@ class HomeOfferComponent extends StatelessWidget {
                         BasketCubit.get(context).AddToCart(
                             productModel: offerModel as ProductModel,
                             phId: offerModel.pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: 10);
                       }else
                       {
                         BasketCubit.get(context).deleteCartProducts();
                         BasketCubit.get(context).AddToCart(
                             productModel: offerModel as ProductModel,
                             phId: offerModel.pharmacyId,
-                            dist: AppConstants.distance);
+                            dist: 10);
 
                       }
                     },
