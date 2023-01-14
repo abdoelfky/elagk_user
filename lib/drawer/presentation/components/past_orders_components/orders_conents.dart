@@ -35,8 +35,7 @@ class OrdersContents extends StatelessWidget {
                           OrderItem(
                           context: context,
                           pastOrder: PastOrdersCubit.get(context).pastOrders[index],
-                          isActive: PastOrdersCubit.get(context).pastOrders[index]
-                              .status!),
+                          isActive: PastOrdersCubit.get(context).pastOrders[index].status!),
                       separatorBuilder: (context, index) => MyDivider(),
                       itemCount: PastOrdersCubit.get(context).pastOrders.length),
                 ),

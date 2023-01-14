@@ -30,7 +30,7 @@ class SearchCategoriesWidget extends StatelessWidget {
               children: [
                 Container(
                   color: Color(0x35a9a3),
-                  width: width * .75,
+                  width: width * .8,
                   padding: EdgeInsets.all(AppPadding.p15),
                   child: AdvancedSearch(
 
@@ -90,7 +90,7 @@ class SearchCategoriesWidget extends StatelessWidget {
                     },
                   ),
                 ),
-                InkWell(
+              /*  InkWell(
                   onTap: ()
                   {
                     FocusScope.of(context).unfocus();
@@ -109,7 +109,7 @@ class SearchCategoriesWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                ),
+                ),*/
               ],
             ),
           ),

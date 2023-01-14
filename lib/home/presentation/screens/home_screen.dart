@@ -150,13 +150,13 @@ class HomeScreen extends StatelessWidget {
                                                           .025,
                                                     ),
                                                     HomeScreenCubit.get(context)
-                                                            .offers
+                                                            .filteredOffers
                                                             .isNotEmpty
                                                         ? OffersWidget(
                                                             offers:
                                                                 HomeScreenCubit.get(
                                                                         context)
-                                                                    .offers,
+                                                                    .filteredOffers,
                                                           )
                                                         : SizedBox(),
                                                     SizedBox(

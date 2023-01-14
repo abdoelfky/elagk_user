@@ -114,6 +114,7 @@ class AppStrings {
   static const String noPointsProductes =  'لا يوجد منتجات متاحه الان للاستبدال';
   static const String activeOrder =   'طلب نشط';
   static const String doneOrder =   'طلب مكتمل';
+  static const String cancelledOrder =   'طلب ملغي';
 
   // About us
   static const String whoAreWe = "من نحن";

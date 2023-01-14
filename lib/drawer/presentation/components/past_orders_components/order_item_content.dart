@@ -14,15 +14,16 @@ Widget OrderItem(
         required PastOrdersModel pastOrder,
         required bool isActive}) =>
     InkWell(
-      onTap: ()
-      {
-        if(!isActive)
-        {
+      onTap: () {
+        // print(pastOrder.isRejected!);
+
+
           StepperCubit.get(context).followOrder(orderId: pastOrder.orderId);
-          navigateTo(context: context, screenRoute: Routes.stepperScreen,
-          arguments: pastOrder.orderId
-          );
-        }
+          navigateTo(
+              context: context,
+              screenRoute: Routes.stepperScreen,
+              arguments: pastOrder.orderId);
+
       },
       child: Container(
         height: 80,
@@ -36,7 +37,8 @@ Widget OrderItem(
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Image.asset(
@@ -52,35 +54,41 @@ Widget OrderItem(
                 Row(
                   children: [
                     Text('الطلب رقم ' + pastOrder.orderId.toString(),
-                        style:
-                            TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                     SizedBox(
-                      width: mediaQueryWidth(context) * 0.18,
+                      width: mediaQueryWidth(context) * 0.24,
                     ),
-                    !isActive
-                        ? Text(AppStrings.activeOrder,
+                    pastOrder.isRejected!
+                        ? Text(AppStrings.cancelledOrder,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.red)):
+                    !isActive ?Text(AppStrings.activeOrder,
                             style: TextStyle(
                                 color: AppColors.primary,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))
-                        : Text(AppStrings.doneOrder,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey.shade500)),
+
+                            : Text(AppStrings.doneOrder,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey.shade500)),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                        '${DateFormat("yyyy-MM-dd").format(DateTime.parse(pastOrder.createdAt.toString()))}',
+                        '${DateFormat("yyyy-MM-dd-hh:mm").format(DateTime.parse(pastOrder.createdAt.toString()))}',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.grey.shade500)),
                     SizedBox(
-                      width: mediaQueryWidth(context) * 0.24,
+                      width: mediaQueryWidth(context) * 0.19,
                     ),
                     Text(pastOrder.totalPrice.toString() + ' جنيه ',
                         style: TextStyle(

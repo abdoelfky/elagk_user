@@ -15,6 +15,8 @@ import 'package:elagk/shared/utils/default_network_image_widget.dart';
 import 'package:elagk/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 
+import '../controller/elagk_store_controller/elagk_store_cubit.dart';
+
 
 class ElagkStoreScreen extends StatelessWidget {
   const ElagkStoreScreen({
@@ -101,8 +103,16 @@ class ElagkStoreScreen extends StatelessWidget {
 
 
           ),
+           floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.refresh),
+               onPressed: (){
+             ElagkStoreCubit.get(context).getProducts(pharmacyId: 58,
+               categoryName: ElagkStoreCubit.get(context)
+        .categories[0]
+                                    .categoryName!);
+    },
         ),
       ),
-    );
+    ));
   }
 }

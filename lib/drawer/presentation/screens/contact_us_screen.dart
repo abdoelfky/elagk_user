@@ -46,6 +46,12 @@ class ContactUsScreen extends StatelessWidget {
                 else
                   return ContactUsContent();
           }),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.refresh),
+            onPressed: (){
+              ContactUsCubit.get(context).getContactUs();
+            },
+          ),
         ),
       ),
     );

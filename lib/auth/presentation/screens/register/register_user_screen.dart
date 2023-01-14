@@ -56,7 +56,7 @@ class RegisterScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.text,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) {
                         if (value!.length < AppSize.s3) {
                           return AppStrings.enterValidFullName;
@@ -73,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.text,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) {
                         if (value!.length < AppSize.s3) {
                           return AppStrings.enterValidFullName;
@@ -92,7 +92,7 @@ class RegisterScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.phone,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) {
                         if (value!.length < AppSize.s10) {
                           return AppStrings.enterValidPhone;
@@ -110,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.emailAddress,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) => validateEmail(value!),
                     ),
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
@@ -122,7 +122,7 @@ class RegisterScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.visiblePassword,
                       textDirection: TextDirection.ltr,
-                      obscure: true,
+                      isObsecured: true,
                       validator: (value) {
                         if (value!.length < AppSize.s8) {
                           return AppStrings.enterValidPassword;
@@ -151,7 +151,7 @@ class RegisterScreen extends StatelessWidget {
                         return 'Password is Weak';
                       },
                     ),
-                    SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
+                    SizedBox(height: mediaQueryHeight(context) / AppSize.s15),
                     BlocConsumer<RegisterCubit, RegisterStates>(
                       listener: (context, state) {
                         if (state is RegisterSuccessState) {

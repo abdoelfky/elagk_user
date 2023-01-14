@@ -56,7 +56,7 @@ class ComplaintsScreen extends StatelessWidget {
                     child: MainTextFormField(
                       controller: _titleController,
                       textDirection: TextDirection.rtl,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) {
                         if (value!.length < AppSize.s3) {
                           return AppStrings.enterValidComplaintTitle;
@@ -74,7 +74,7 @@ class ComplaintsScreen extends StatelessWidget {
                     child: MainTextFormField(
                       controller: _descriptionController,
                       textDirection: TextDirection.rtl,
-                      obscure: false,
+                      isObsecured: false,
                       maxLines: AppSize.si5,
                       validator: (value) {
                         if (value!.length < AppSize.s3) {

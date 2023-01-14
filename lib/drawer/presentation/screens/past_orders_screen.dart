@@ -30,7 +30,13 @@ class OrdersScreen extends StatelessWidget {
                 );
               },
             ),
-            body: OrdersContents()
+            body: OrdersContents(),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.refresh),
+            onPressed: (){
+              PastOrdersCubit.get(context).getPastOrders();
+            },
+          ),
 
       )
       ),

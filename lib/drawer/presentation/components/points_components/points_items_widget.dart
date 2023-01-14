@@ -74,8 +74,8 @@ class PointsPharmacy extends StatelessWidget {
                       Color(0xff1c72b5),
                     ]:
                     [
-                      Colors.black,
-                      Colors.grey,
+                      Colors.red,
+                      Colors.red,
 
                     ])),
             width: AppSize.s110,

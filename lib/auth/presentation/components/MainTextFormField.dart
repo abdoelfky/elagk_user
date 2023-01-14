@@ -1,13 +1,15 @@
-import 'package:elagk/shared/global/app_colors.dart';
-import 'package:elagk/shared/utils/app_values.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../shared/global/app_colors.dart';
+import '../../../shared/utils/app_values.dart';
 
 class MainTextFormField extends StatelessWidget {
   MainTextFormField({
     Key? key,
     required this.controller,
     required this.label,
-    required this.obscure,
+
     required this.validator,
     required this.inputType,
     this.hint,
@@ -17,58 +19,59 @@ class MainTextFormField extends StatelessWidget {
     this.icon,
     this.suffixIcon,
     this.textDirection,
+    required this.isObsecured,
   }) : super(key: key);
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final String label;
   final TextInputType inputType;
   String? hint;
-  bool obscure = false;
+
   Color? focusColor;
   Color? hintColor;
   Widget? icon;
   Widget? suffixIcon;
   TextDirection? textDirection;
   int? maxLines;
+  bool isObsecured=false;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText:isObsecured,
       onEditingComplete: () => FocusScope.of(context).nextFocus(),
       validator: validator,
       controller: controller,
       keyboardType: inputType,
-      obscureText: obscure,
       maxLines: maxLines ?? AppSize.si1,
       textDirection: textDirection ?? TextDirection.rtl,
       textAlignVertical: TextAlignVertical.center,
       // cursorHeight: AppSize.s30,
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
-            height: AppSize.s1_9,
-          ),
+        height: AppSize.s1_9,
+      ),
       decoration: InputDecoration(
         alignLabelWithHint: true,
         isCollapsed: true,
         filled: true,
         fillColor: focusColor,
         focusColor: focusColor,
-        suffix: suffixIcon,
         hintText: hint ?? '',
         hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
-              color: hintColor,
-            ),
+          color: hintColor,
+        ),
         label: Text(
           label,
           style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: AppColors.lightGrey,
-              ),
+            color: AppColors.lightGrey,
+          ),
         ),
         contentPadding: const EdgeInsets.only(
           right: AppPadding.p20,
           left: AppPadding.p20,
           bottom: AppPadding.p10,
         ),
-        suffixIcon: icon,
+        suffixIcon: suffixIcon,
         focusedBorder: _outlineInputBorder(),
         enabledBorder: _outlineInputBorderStyle(),
         errorBorder: _outlineInputBorderErrorStyle(),

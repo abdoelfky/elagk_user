@@ -1,7 +1,6 @@
 class PastOrdersModel {
   int? orderId;
   bool? status;
-  bool? isRejected;
   double? distance;
   double? destinationLatitude;
   double? destinationLongitude;
@@ -10,7 +9,6 @@ class PastOrdersModel {
   String? createdAt;
   String? updatedAt;
   double? totalPrice;
-
   Null? userId;
   int? pharmacyId;
   int? cartId;
@@ -19,7 +17,6 @@ class PastOrdersModel {
   PastOrdersModel(
       {this.orderId,
         this.status,
-        this.isRejected,
         this.distance,
         this.destinationLatitude,
         this.destinationLongitude,
@@ -36,7 +33,6 @@ class PastOrdersModel {
   PastOrdersModel.fromJson(Map<String, dynamic> json) {
     orderId = json['orderId'];
     status = json['status'];
-    isRejected = json['isRejected'];
     distance = json['distance'];
     destinationLatitude = json['destinationLatitude'];
     destinationLongitude = json['destinationLongitude'];
@@ -60,7 +56,6 @@ class PastOrdersModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['orderId'] = this.orderId;
     data['status'] = this.status;
-    data['isRejected'] = this.isRejected;
     data['distance'] = this.distance;
     data['destinationLatitude'] = this.destinationLatitude;
     data['destinationLongitude'] = this.destinationLongitude;

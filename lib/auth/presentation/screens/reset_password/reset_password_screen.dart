@@ -60,7 +60,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.emailAddress,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) => validateEmail(value!),
                     ),
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
@@ -71,7 +71,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.visiblePassword,
                       textDirection: TextDirection.ltr,
-                      obscure: true,
+                      isObsecured: true,
                       validator: (value) {
                         if (value!.length < AppSize.s8) {
                           return AppStrings.enterValidPassword;
@@ -80,7 +80,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         }
                       },
                     ),
-                    SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
+                    SizedBox(height: mediaQueryHeight(context) / AppSize.s40),
                     FlutterPwValidator(
                       successColor: AppColors.primary,
                       controller: _passwordController,
@@ -99,7 +99,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         return 'Password is Weak';
                       },
                     ),
-                    SizedBox(height: mediaQueryHeight(context) / AppSize.s20),
+                    SizedBox(height: mediaQueryHeight(context) / AppSize.s15),
                     BlocConsumer<ResetPasswordCubit, ResetPasswordStates>(
                       listener: (context, state) {
                         if (state is ResetPassSuccessState) {

@@ -66,7 +66,7 @@ class PharmacyScreen extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: double.infinity,
-                        height: AppSize.s200,
+                        height: AppSize.s220,
                         child: Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
@@ -118,7 +118,7 @@ class PharmacyScreen extends StatelessWidget {
                               pharmacyModel: pharmacyModel!,
                             ),
                           ]),
-                      SizedBox(height: mediaQueryHeight(context) / AppSize.si6),
+                      SizedBox(height: mediaQueryHeight(context) / AppSize.si8),
                       SizedBox(
                           width: double.infinity,
                           height: AppSize.s60,

@@ -67,25 +67,28 @@ class OtpPasswordScreen extends StatelessWidget {
                             height: mediaQueryHeight(context) / AppSize.s30),
                         ConditionalBuilder(
                           condition: state is! OtpLoadingState,
-                          builder: (context) => VerificationCode(
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context).primaryColor),
-                            keyboardType: TextInputType.number,
-                            underlineColor: AppColors.offBlue,
-                            length: 6,
-                            cursorColor: Colors.blue,
-                            onCompleted: (String value) {
-                              if (_formKey.currentState!.validate()) {
-                                OtpPasswordCubit.get(context).Otp(
-                                  code: int.parse(value),
-                                );
-                              }
-                            },
-                            onEditing: (bool value) {},
-                            margin: const EdgeInsets.all(12),
+                          builder: (context) => Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: VerificationCode(
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context).primaryColor),
+                              keyboardType: TextInputType.number,
+                              underlineColor: AppColors.offBlue,
+                              length: 6,
+                              cursorColor: Colors.blue,
+                              onCompleted: (String value) {
+                                if (_formKey.currentState!.validate()) {
+                                  OtpPasswordCubit.get(context).Otp(
+                                    code: int.parse(value),
+                                  );
+                                }
+                              },
+                              onEditing: (bool value) {},
+                              margin: const EdgeInsets.all(12),
+                            ),
                           ),
                           fallback: (context) =>
                               const CircularProgressIndicator(),
@@ -120,16 +123,6 @@ class OtpPasswordScreen extends StatelessWidget {
                                 ),
                           ),
                         ),
-                        // MainButton(
-                        //   title: AppStrings.codeSendButton,
-                        //   onPressed: (value) async {
-                        //     if (_formKey.currentState!.validate()) {
-                        //       OtpPasswordCubit.get(context)
-                        //           .Otp(code:int.parse(value) ,);
-                        //     }
-                        //
-                        //   },
-                        // ),
                       ],
                     ),
                   ),

@@ -24,7 +24,8 @@ class SpecialCustomersCubit extends Cubit<SpecialCustomersState> {
       specialCustomers = (response.data as List)
           .map((x) => SpecialCustomerModel.fromJson(x))
           .toList();
-      specialCustomers=specialCustomers.reversed.toList();
+          specialCustomers.sort((b, a) => a.totalPrice!.compareTo(b.totalPrice!));
+
 
       emit(GetSpecialCustomersSuccessState(specialCustomers));
     } catch (error, stacktrace) {

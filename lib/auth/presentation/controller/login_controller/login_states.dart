@@ -36,4 +36,5 @@ class ProfileGetUserDataErrorState  extends LoginStates
 
   ProfileGetUserDataErrorState(this.error);
 }
-
+class ChangePasswordVisibilityState  extends LoginStates {}
+class ChangeVisibilityState  extends LoginStates {}

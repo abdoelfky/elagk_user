@@ -134,7 +134,7 @@ class EditProfileContent extends StatelessWidget {
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.name,
                   textDirection: TextDirection.rtl,
-                  obscure: false,
+                  isObsecured: false,
                   validator: (value) {
                     if (value!.length < 3) {
                       return AppStrings.enterValidFullName;
@@ -153,7 +153,7 @@ class EditProfileContent extends StatelessWidget {
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.name,
                   textDirection: TextDirection.rtl,
-                  obscure: false,
+                  isObsecured: false,
                   validator: (value) {
                     if (value!.length < 3) {
                       return AppStrings.enterValidFullName;
@@ -173,7 +173,7 @@ class EditProfileContent extends StatelessWidget {
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.name,
                   textDirection: TextDirection.rtl,
-                  obscure: false,
+                  isObsecured: false,
                   validator: (value) {
                     if (value!.length < 3) {
                       return AppStrings.enterValidFullName;
@@ -193,7 +193,7 @@ class EditProfileContent extends StatelessWidget {
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.phone,
                   textDirection: TextDirection.ltr,
-                  obscure: false,
+                  isObsecured: false,
                   validator: (value) {
 
                     if (value!.length < 11) {
@@ -215,7 +215,7 @@ class EditProfileContent extends StatelessWidget {
                   hintColor: AppColors.lightGrey,
                   inputType: TextInputType.emailAddress,
                   textDirection: TextDirection.ltr,
-                  obscure: false,
+                  isObsecured: false,
                   validator: (value) => validateEmail(value!),
                 ),
                 SizedBox(

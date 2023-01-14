@@ -129,6 +129,12 @@ class PointsScreen extends StatelessWidget {
 
             ),
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              PointsCubit.get(context).getUserPoints();  },
+            backgroundColor: AppColors.primary,
+            child: Icon(Icons.refresh),
+          ),
         ),
       ),
     );

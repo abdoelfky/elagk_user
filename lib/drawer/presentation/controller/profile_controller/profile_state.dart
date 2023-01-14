@@ -47,3 +47,5 @@ class ProfileChangePasswordErrorState  extends ProfileStates
 
   ProfileChangePasswordErrorState(this.error);
 }
+class ChangePasswordVisibilityState  extends ProfileStates {}
+class ChangeVisibilityState  extends ProfileStates {}

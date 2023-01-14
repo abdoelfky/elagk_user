@@ -59,7 +59,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       hintColor: AppColors.lightGrey,
                       inputType: TextInputType.emailAddress,
                       textDirection: TextDirection.ltr,
-                      obscure: false,
+                      isObsecured: false,
                       validator: (value) => validateEmail(value!),
                     ),
                     SizedBox(height: mediaQueryHeight(context) / AppSize.s30),
