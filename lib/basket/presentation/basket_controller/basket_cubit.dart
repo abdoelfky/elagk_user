@@ -307,6 +307,7 @@ class BasketCubit extends Cubit<BasketStates> {
 
     }).catchError((onError)
     {
+      print(onError.toString());
       emit(PostOrderErrorState(onError.toString()));
     });
 
