@@ -56,7 +56,7 @@ dependencies:
   equatable: ^2.0.5
   get_it: ^7.2.0
   dartz: ^0.10.1
-  dio: ^4.0.6
+  dio: ^5.0.3
   image_picker: ^0.8.6
   flutter_otp_text_field: ^1.1.1
   flutter_svg: ^1.1.6
